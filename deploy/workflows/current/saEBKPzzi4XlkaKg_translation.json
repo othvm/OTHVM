@@ -1,0 +1,267 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "language.translate — Prepare Text",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "language.translate": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "language.translate — Format Translation",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "language.translate — Format Translation": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "language.translate — Prepare Text": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "language.translate",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T01:11:36.294Z",
+ "id": "saEBKPzzi4XlkaKg",
+ "name": "Translation",
+ "nodes": [
+  {
+   "id": "aa080100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    -48,
+    16
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa080200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "language.translate"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      }
+     ]
+    }
+   },
+   "position": [
+    224,
+    16
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa080300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    1200,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa080400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"language.translate\" } }];"
+   },
+   "position": [
+    800,
+    288
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa080500-4000-8000-000000000000",
+   "name": "language.translate — Prepare Text",
+   "parameters": {
+    "jsCode": "// OTHVM — Translate: وحّد text (نص واحد أو مصفوفة) لعناصر قابلة للترجمة\nconst j = $input.first().json || {};\nconst raw = j.text;\nconst texts = Array.isArray(raw) ? raw : [raw];\nconst to = String(j.toLanguage || 'en').trim();\nconst from = String(j.fromLanguage || 'auto').trim() || 'auto';\nreturn texts.map((t) => ({ json: { text: String(t === undefined || t === null ? '' : t), toLanguage: to, fromLanguage: from } }));\n"
+   },
+   "position": [
+    560,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa080600-4000-8000-000000000000",
+   "maxTries": 3,
+   "name": "language.translate",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+      },
+      {
+       "name": "Referer",
+       "value": "https://translate.google.com/"
+      }
+     ]
+    },
+    "options": {},
+    "sendHeaders": true,
+    "url": "={{ \"https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=\" + ($json.fromLanguage || \"auto\") + \"&tl=\" + $json.toLanguage + \"&q=\" + encodeURIComponent($json.text) }}"
+   },
+   "position": [
+    720,
+    0
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 2000
+  },
+  {
+   "id": "aa080700-4000-8000-000000000000",
+   "name": "language.translate — Format Translation",
+   "parameters": {
+    "jsCode": "// OTHVM — Translate: parse any known response shape into {ok, translatedText, detectedLanguage}\nconst items = $input.all();\nconst first = (items[0] && items[0].json) || {};\nlet raw;\nif (Array.isArray(first)) raw = first;\nelse if (first && typeof first === 'object' && first.data !== undefined) raw = first.data;\nelse if (first && typeof first === 'object' && typeof first.translatedText === 'string') return [{ json: { ok: true, translatedText: first.translatedText, detectedLanguage: first.detectedLanguage || '' } }];\nelse if (items.length > 1) raw = items.map((i) => i.json);\nelse raw = first;\n\nlet text = '';\nlet detected = '';\nif (Array.isArray(raw)) {\n  if (raw.length && Array.isArray(raw[0])) {\n    if (Array.isArray(raw[0][0])) {\n      // legacy: [[[\"txt\",\"orig\",...],...], null, \"en\", ...]\n      text = raw[0].map((s) => String(s[0])).join('');\n      detected = typeof raw[2] === 'string' ? raw[2] : '';\n    } else {\n      // clients5 segments: [[\"txt\",\"ar\"], ...]\n      text = raw.map((s) => (Array.isArray(s) ? String(s[0]) : String(s))).join(' ');\n      detected = raw[0] && typeof raw[0][1] === 'string' ? raw[0][1] : '';\n    }\n  } else if (typeof raw[0] === 'string') {\n    // single pair: [\"txt\",\"ar\"]\n    text = raw[0];\n    detected = typeof raw[1] === 'string' ? raw[1] : '';\n  }\n}\nif (!text) throw new Error('رد غير متوقع من خدمة الترجمة: ' + JSON.stringify(raw).slice(0, 200));\nreturn [{ json: { ok: true, translatedText: text, detectedLanguage: detected } }];"
+   },
+   "position": [
+    912,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "bd4bae02-3f93-4dde-bb11-fdc9d276031c",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    132,
+    16
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-24T21:31:30.189Z"
+}

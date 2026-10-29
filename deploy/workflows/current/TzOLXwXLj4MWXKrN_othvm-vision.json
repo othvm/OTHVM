@@ -1,0 +1,191 @@
+{
+ "active": true,
+ "connections": {
+  "Flatten Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route by Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route by Tool": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Call image",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Flatten Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-24T21:43:02.180Z",
+ "id": "TzOLXwXLj4MWXKrN",
+ "name": "OTHVM — Vision",
+ "nodes": [
+  {
+   "id": "a3a2fb0d-c5f2-4da8-aadf-11b8e1a21cce",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "tool"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "e5488892-64c8-4a92-9d77-9b7ff6eb5b66",
+   "name": "Call image",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Image Vision",
+     "mode": "list",
+     "value": "hDzwsequ4HbBsJBr"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.params.operation }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    512,
+    -176
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "f054df5b-d95f-44dd-8640-7497a48be3e2",
+   "name": "Route by Tool",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "unknown"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "image"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      }
+     ]
+    }
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "fdaeb5b9-f47d-4673-8730-d66cd990918d",
+   "name": "Unknown Tool",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'unknown tool: ' + String($json.tool || '') + '. use: image' } }];"
+   },
+   "position": [
+    512,
+    240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "368b5df6-88ad-4abc-868f-f6e5d2ed8763",
+   "name": "Flatten Params",
+   "parameters": {
+    "jsCode": "// OTHVM — flatten params; keep flat args, normalize action/operation, and expose merged params.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nif (j.tool !== undefined) out.tool = j.tool;\n\nout.params = { ...out };\nreturn [{ json: out }];"
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-27T19:33:34.224Z"
+}

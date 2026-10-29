@@ -1,0 +1,192 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Has Category",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Has Category": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "MCP Dynamic",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Missing Category",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-19T10:50:11.508Z",
+ "id": "wZhbwDr2mqi7HvmT",
+ "name": "Laptop",
+ "nodes": [
+  {
+   "id": "cl000001-4000-8000-000000000001",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "action"
+      },
+      {
+       "name": "category"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "f57935df-d7a1-4776-a429-ba60b4344f85",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand params; keep flat args and normalize action/operation.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nreturn [{ json: out }];"
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "c1f0a1b2-1111-4a2b-9c3d-000000000001",
+   "name": "Has Category",
+   "parameters": {
+    "conditions": {
+     "combinator": "and",
+     "conditions": [
+      {
+       "id": "has-category",
+       "leftValue": "={{ $json.category }}",
+       "operator": {
+        "operation": "notEmpty",
+        "singleValue": true,
+        "type": "string"
+       },
+       "rightValue": ""
+      }
+     ],
+     "options": {
+      "caseSensitive": true,
+      "leftValue": "",
+      "typeValidation": "strict",
+      "version": 2
+     }
+    },
+    "options": {}
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.if",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "c1f0a1b2-1111-4a2b-9c3d-000000000002",
+   "name": "MCP Dynamic",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 360000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "=http://127.0.0.1:8765/tools/{{ $json.category }}"
+   },
+   "position": [
+    660,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "c1f0a1b2-1111-4a2b-9c3d-000000000003",
+   "name": "Missing Category",
+   "parameters": {
+    "assignments": {
+     "assignments": [
+      {
+       "id": "m1",
+       "name": "ok",
+       "type": "boolean",
+       "value": false
+      },
+      {
+       "id": "m2",
+       "name": "error",
+       "type": "string",
+       "value": "category is required: system | files | apps | windows | input | browser | network | display | audio | devices | security | power | startup | registry | permission"
+      }
+     ]
+    },
+    "options": {}
+   },
+   "position": [
+    660,
+    200
+   ],
+   "type": "n8n-nodes-base.set",
+   "typeVersion": 3.4
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "System"
+ ],
+ "updatedAt": "2026-10-27T19:33:33.684Z"
+}

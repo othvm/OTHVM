@@ -1,0 +1,61 @@
+{
+ "active": true,
+ "connections": {
+  "Webhook": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Button",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T21:27:05.767Z",
+ "id": "bNpeLw2gFhiqcode",
+ "name": "Streak Callback Handler",
+ "nodes": [
+  {
+   "id": "ac030001-4000-8000-000000000001",
+   "name": "Webhook",
+   "parameters": {
+    "httpMethod": "POST",
+    "options": {},
+    "path": "othvm-streak-callback",
+    "responseMode": "onReceived"
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "webhookId": "ac030001-4000-8000-00000000ca01"
+  },
+  {
+   "id": "ac030001-4000-8000-000000000002",
+   "name": "Button",
+   "parameters": {
+    "jsCode": "// OTHVM Streaks Callback — inline buttons (stk|done / stk|miss) -> update streak + reply. No LLM.\n// NOTE: keep the complete/miss logic in sync with System — Streaks (complete op).\nconst base = String($env.SUPABASE_URL ?? '');\nconst key = String($env.SUPABASE_SERVICE_KEY ?? '');\nconst TG = 'REPLACE_WITH_TELEGRAM_BOT_TOKEN';\nconst CHAT = 'REPLACE_WITH_TELEGRAM_CHAT_ID';\nif (!base || !key) return [{ json: { ok: false, error: 'Supabase env vars missing in the n8n environment' } }];\nconst HB = { apikey: key, Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', Accept: 'application/json' };\nconst hreq = async (o) => {\n  const opts = Object.assign({ returnFullResponse: true, ignoreHttpStatusErrors: true, timeout: 25000 }, o);\n  try { return await this.helpers.httpRequest(opts); } catch (e) { return { statusCode: 0, body: 'ERR ' + (e && e.message ? e.message : String(e)) }; }\n};\nconst parse = (r) => { let d = r.body; if (typeof d === 'string' && d.length) { try { d = JSON.parse(d); } catch (e) {} } return { st: r.statusCode ?? 0, d }; };\nconst errOf = (r) => { const d = r.d; if (d && typeof d === 'object' && (d.message || d.hint)) return String(d.message) + (d.hint ? ' — ' + String(d.hint) : ''); return String(typeof d === 'string' ? d : JSON.stringify(d || '')).slice(0, 240); };\nconst cairoToday = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());\ntry {\n  const body = $json.body || $json;\n  const cq = body && body.callback_query ? body.callback_query : body;\n  const data = String((cq && cq.data) || '');\n  const parts = data.split('|');\n  if (parts.length !== 3 || parts[0] !== 'stk') return [{ json: { ok: true, skipped: true, data: data.slice(0, 40) } }];\n  const action = parts[1];\n  const streakId = parts[2];\n  const cqId = cq.id || null;\n  const chatId = (cq.message && cq.message.chat && cq.message.chat.id) ? String(cq.message.chat.id) : CHAT;\n  const msgId = cq.message ? cq.message.message_id : null;\n  const toast = async (t) => { if (cqId) await hreq({ method: 'POST', url: 'https://api.telegram.org/bot' + TG + '/answerCallbackQuery', headers: { 'Content-Type': 'application/json' }, body: { callback_query_id: cqId, text: t }, json: true }); };\n  const send = async (t) => hreq({ method: 'POST', url: 'https://api.telegram.org/bot' + TG + '/sendMessage', headers: { 'Content-Type': 'application/json' }, body: { chat_id: chatId, text: t }, json: true });\n\n  const today = cairoToday();\n  const gr = parse(await hreq({ method: 'GET', url: base + '/rest/v1/streaks?select=*&id=eq.' + encodeURIComponent(streakId) + '&limit=1', headers: HB, json: true }));\n  if (gr.st <= 0 || gr.st >= 300 || !Array.isArray(gr.d) || !gr.d[0]) { await toast('مش لاقي السلسلة دي 🤔'); return [{ json: { ok: false, error: 'streak not found: ' + streakId } }]; }\n  const s = gr.d[0];\n  const lr = parse(await hreq({ method: 'GET', url: base + '/rest/v1/streak_logs?select=status&streak_id=eq.' + encodeURIComponent(streakId) + '&log_date=eq.' + today + '&limit=1', headers: HB, json: true }));\n  const existing = (lr.st > 0 && lr.st < 300 && Array.isArray(lr.d) && lr.d[0]) ? lr.d[0].status : null;\n  if (msgId) await hreq({ method: 'POST', url: 'https://api.telegram.org/bot' + TG + '/editMessageReplyMarkup', headers: { 'Content-Type': 'application/json' }, body: { chat_id: chatId, message_id: msgId, reply_markup: { inline_keyboard: [] } }, json: true });\n  const upsertLog = async (status) => hreq({ method: 'POST', url: base + '/rest/v1/streak_logs?on_conflict=streak_id,log_date', headers: Object.assign({}, HB, { Prefer: 'resolution=merge-duplicates,return=minimal' }), body: { streak_id: streakId, log_date: today, status: status }, json: true });\n\n  if (action === 'done') {\n    if (existing === 'completed') { await toast('مسجّل بالفعل ✅'); return [{ json: { ok: true, already: true, name: s.name } }]; }\n    const n = Number(s.current_streak || 0) + 1;\n    const longest = Math.max(Number(s.longest_streak || 0), n);\n    await hreq({ method: 'PATCH', url: base + '/rest/v1/streaks?id=eq.' + encodeURIComponent(streakId), headers: Object.assign({}, HB, { Prefer: 'return=minimal' }), body: { current_streak: n, longest_streak: longest, last_completed: today, updated_at: new Date().toISOString() }, json: true });\n    await upsertLog('completed');\n    await toast('تمام يا وحش! 🔥');\n    await send('🎉 ' + s.name + ' — سلسلة ' + n + ' يوم متواصلة! كمّل كده 🔥');\n    return [{ json: { ok: true, action: 'done', name: s.name, current_streak: n } }];\n  }\n\n  if (action === 'miss') {\n    if (existing === 'completed') { await toast('مسجّلة خلاص ✅'); return [{ json: { ok: true, already: true, name: s.name } }]; }\n    await hreq({ method: 'PATCH', url: base + '/rest/v1/streaks?id=eq.' + encodeURIComponent(streakId), headers: Object.assign({}, HB, { Prefer: 'return=minimal' }), body: { current_streak: 0, updated_at: new Date().toISOString() }, json: true });\n    await upsertLog('missed');\n    await toast('ولا يهمك 💙');\n    await send('💙 ' + s.name + ' — ولا يهمك يا المستخدم، بكرة يوم جديد وإحنا نبدأ من 1 مع بعض! 💪');\n    return [{ json: { ok: true, action: 'miss', name: s.name, current_streak: 0 } }];\n  }\n\n  await toast('حاجة غريبة 🤔');\n  return [{ json: { ok: false, error: 'unknown action: ' + action } }];\n} catch (e) {\n  return [{ json: { ok: false, error: 'خطأ: ' + String(e && e.message ? e.message : e).slice(0, 300) } }];\n}\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Communication"
+ ],
+ "updatedAt": "2026-10-24T14:29:45.822Z"
+}

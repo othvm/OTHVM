@@ -1,0 +1,625 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "contact.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "contact.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "contact.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "contact.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "contact.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "contact.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "contact.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "contact.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "contact.update pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "contact.update pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T01:11:36.178Z",
+ "id": "GIlrTwAh27aDJ90a",
+ "name": "Contacts",
+ "nodes": [
+  {
+   "id": "aa060100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "contactId",
+       "type": "string"
+      },
+      {
+       "name": "givenName",
+       "type": "string"
+      },
+      {
+       "name": "familyName",
+       "type": "string"
+      },
+      {
+       "name": "email",
+       "type": "string"
+      },
+      {
+       "name": "phone",
+       "type": "string"
+      },
+      {
+       "name": "notes",
+       "type": "string"
+      },
+      {
+       "name": "query",
+       "type": "string"
+      },
+      {
+       "name": "etag",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa060200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "contact.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "contact.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "contact.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "contact.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "contact.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "contact.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "contact.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "contact.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "contact.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "contact.update"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa060300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa060400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"contact.create, contact.delete, contact.get, contact.getAll, contact.update\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    800
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleContactsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Contacts account"
+    }
+   },
+   "id": "aa060500-4000-8000-000000000000",
+   "name": "contact.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "biographies": "={{ $json.notes || undefined }}",
+     "emailsUi": {
+      "emailsValues": [
+       {
+        "type": "home",
+        "value": "={{ $json.email }}"
+       }
+      ]
+     },
+     "phoneUi": {
+      "phoneValues": [
+       {
+        "type": "mobile",
+        "value": "={{ $json.phone }}"
+       }
+      ]
+     }
+    },
+    "familyName": "={{ $json.familyName || undefined }}",
+    "givenName": "={{ $json.givenName || undefined }}",
+    "operation": "create",
+    "resource": "contact"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.googleContacts",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa060600-4000-8000-000000000000",
+   "name": "contact.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"resourceName\",\"names\",\"emailAddresses\",\"phoneNumbers\",\"biographies\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    40
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleContactsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Contacts account"
+    }
+   },
+   "id": "aa060700-4000-8000-000000000000",
+   "name": "contact.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "contactId": "={{ $json.contactId }}",
+    "operation": "delete",
+    "resource": "contact"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.googleContacts",
+   "typeVersion": 1
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleContactsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Contacts account"
+    }
+   },
+   "id": "aa060800-4000-8000-000000000000",
+   "name": "contact.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "contactId": "={{ $json.contactId }}",
+    "fields": [
+     "names",
+     "emailAddresses",
+     "phoneNumbers",
+     "organizations"
+    ],
+    "operation": "get",
+    "resource": "contact"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.googleContacts",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa060900-4000-8000-000000000000",
+   "name": "contact.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"resourceName\",\"names\",\"emailAddresses\",\"phoneNumbers\",\"addresses\",\"biographies\",\"organizations\",\"birthdays\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleContactsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Contacts account"
+    }
+   },
+   "id": "aa061000-4000-8000-000000000000",
+   "name": "contact.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "fields": [
+     "names",
+     "emailAddresses",
+     "phoneNumbers",
+     "organizations"
+    ],
+    "limit": "={{ $json.limit ? Number($json.limit) : 100 }}",
+    "operation": "getAll",
+    "query": "={{ $json.query || undefined }}",
+    "resource": "contact",
+    "returnAll": false,
+    "useQuery": "={{ $json.query ? true : false }}"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.googleContacts",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa061100-4000-8000-000000000000",
+   "name": "contact.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"resourceName\",\"names\",\"emailAddresses\",\"phoneNumbers\",\"organizations\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleContactsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Contacts account"
+    }
+   },
+   "id": "aa061200-4000-8000-000000000000",
+   "name": "contact.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "contactId": "={{ $json.contactId }}",
+    "fields": [
+     "names",
+     "emailAddresses",
+     "phoneNumbers",
+     "organizations"
+    ],
+    "operation": "update",
+    "resource": "contact",
+    "updateFields": {
+     "biographies": "={{ $json.notes || undefined }}",
+     "emailsUi": {
+      "emailsValues": [
+       {
+        "type": "home",
+        "value": "={{ $json.email }}"
+       }
+      ]
+     },
+     "etag": "={{ $json.etag || undefined }}",
+     "familyName": "={{ $json.familyName || undefined }}",
+     "givenName": "={{ $json.givenName || undefined }}",
+     "phoneUi": {
+      "phoneValues": [
+       {
+        "type": "mobile",
+        "value": "={{ $json.phone }}"
+       }
+      ]
+     }
+    }
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.googleContacts",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa061300-4000-8000-000000000000",
+   "name": "contact.update pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"resourceName\",\"names\",\"emailAddresses\",\"phoneNumbers\",\"biographies\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    560
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-22T12:33:20.359Z"
+}

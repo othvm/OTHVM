@@ -1,0 +1,91 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Sleep Command",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-22T13:15:07.496Z",
+ "id": "EGJhUZnS00NWbp4d",
+ "name": "Sleep Scheduler",
+ "nodes": [
+  {
+   "id": "bcb69e4f-c5a7-4041-a20f-8462e57a7bf3",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "action",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "15b69e24-cbca-44c4-8b21-4169881382d2",
+   "name": "Sleep Command",
+   "parameters": {
+    "jsCode": "// OTHVM Sleep - agent tool proxy to the laptop MCP sleep engine.\nconst input = $json || {};\nconst payload = { action: String(input.action || 'status') };\nif (input.wake_at !== undefined && input.wake_at !== '') payload.wake_at = String(input.wake_at);\nif (input.time !== undefined && input.time !== '') payload.time = String(input.time);\nif (input.label !== undefined && input.label !== '') payload.label = String(input.label);\nif (input.session_id !== undefined && input.session_id !== '') payload.session_id = String(input.session_id);\nif (input.minutes !== undefined && input.minutes !== '') payload.minutes = Number(input.minutes);\nif (input.chat_id !== undefined && input.chat_id !== '') payload.chat_id = String(input.chat_id);\ntry {\n  const r = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'http://127.0.0.1:8765/tools/sleep',\n    headers: { 'Content-Type': 'application/json', 'X-API-Key': 'REPLACE_WITH_MCP_API_KEY' },\n    body: payload,\n    json: true,\n    timeout: 60000\n  });\n  return [{ json: r }];\n} catch (e) {\n  return [{ json: { ok: false, error: String((e && e.message) || e) } }];\n}",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    224,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "f4a3d545-1d94-42f0-8859-d78dcf047755",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-24T21:31:30.551Z"
+}

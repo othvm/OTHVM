@@ -1,0 +1,94 @@
+# ---------------------------------------------------------------------------
+# OTHVM — local runtime state and secrets
+# ---------------------------------------------------------------------------
+
+# Live configuration (templates are tracked as config.example.json)
+**/config.json
+!**/config.example.json
+
+# Credentials, sessions, tokens
+*.session
+*.session-journal
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+id_rsa*
+n8n_credentials.json
+credentials.json
+credentials*.json
+import_report.json
+deploy/workflows/import_report.json
+access_token.txt
+
+# Runtime state
+connection_log.txt
+permission.json
+pending_permission.json
+heartbeat.json
+browser_monitors.json
+send_log.json
+state.json
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+**/logs/
+*.log
+*.log.*
+guard.out.log
+guard.log
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Browsers and automation profiles
+browser_profile/
+.chrome-*/
+.playwright/
+
+# Local scratch space
+temp/
+tmp/
+trash/
+exports/
+backups/
+
+# Build artifacts and archives
+dist/
+build/
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.bak
+*.orig
+*.rej
+*.tmp
+
+# Editor and OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

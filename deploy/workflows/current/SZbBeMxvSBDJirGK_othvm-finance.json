@@ -1,0 +1,318 @@
+{
+ "active": true,
+ "connections": {
+  "Flatten Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route by Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route by Tool": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Call expenses",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call stripe",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call shopify",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Flatten Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-24T21:43:01.624Z",
+ "id": "SZbBeMxvSBDJirGK",
+ "name": "OTHVM — Finance",
+ "nodes": [
+  {
+   "id": "1edd2b8a-b9cf-4850-add0-599c0957733d",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "tool"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "1438345f-6fca-4e15-bb50-eb1132fa9046",
+   "name": "Call expenses",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Expense Tracker",
+     "mode": "list",
+     "value": "uLAaUThNdGTPuKXU"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.params.operation }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    544,
+    -144
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "2a1e959c-4c19-4424-8d3e-535ff980ca16",
+   "name": "Call stripe",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Stripe",
+     "mode": "list",
+     "value": "9bgzVlis8kqqfuhy"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.params.operation }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    544,
+    16
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "2d5300d5-5030-487f-b0af-4d7feb9415fa",
+   "name": "Route by Tool",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "unknown"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "expenses"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "stripe"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "shopify"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "shopify"
+      }
+     ]
+    }
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "c4308e84-1707-47e7-b733-897639fd5cce",
+   "name": "Unknown Tool",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'unknown tool: ' + String($json.tool || '') + '. use: expenses, stripe, shopify' } }];"
+   },
+   "position": [
+    544,
+    208
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "a4638b72-0c15-422d-8670-5bd6bbbe725c",
+   "name": "Flatten Params",
+   "parameters": {
+    "jsCode": "// OTHVM — flatten params; keep flat args, normalize action/operation, and expose merged params.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nif (j.tool !== undefined) out.tool = j.tool;\n\nout.params = { ...out };\nreturn [{ json: out }];"
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "c2026263-f772-4132-96e8-58adde978555",
+   "name": "Call shopify",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Shopify Store Admin",
+     "mode": "list",
+     "value": "jM2invMNfHevZCZF"
+    },
+    "workflowInputs": {
+     "mappingMode": "autoMapInputData",
+     "schema": [],
+     "value": {}
+    }
+   },
+   "position": [
+    660,
+    368
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-27T19:33:34.108Z"
+}

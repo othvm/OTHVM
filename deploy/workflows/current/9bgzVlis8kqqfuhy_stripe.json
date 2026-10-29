@@ -1,0 +1,1926 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "balance.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "charge.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "charge.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "charge.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "charge.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "coupon.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "coupon.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "customer.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "customer.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "customer.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "customer.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "customer.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "customerCard.add",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "customerCard.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "customerCard.remove",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "meterEvent.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "source.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "source.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "source.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "token.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "balance.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "balance.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "balance.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "charge.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "charge.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "charge.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "charge.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "charge.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "charge.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "charge.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "charge.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "charge.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "charge.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "charge.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "charge.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "coupon.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "coupon.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "coupon.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "coupon.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "coupon.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "coupon.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "customer.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "customer.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "customer.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "customer.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "customer.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customer.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customerCard.add": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "customerCard.add — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customerCard.add — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customerCard.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "customerCard.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customerCard.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customerCard.remove": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "customerCard.remove — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "customerCard.remove — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "meterEvent.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "meterEvent.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "meterEvent.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "source.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "source.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "source.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "source.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "source.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "source.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "source.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "source.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "source.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "token.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "token.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "token.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T14:28:23.435Z",
+ "id": "9bgzVlis8kqqfuhy",
+ "name": "Stripe",
+ "nodes": [
+  {
+   "id": "aa100100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa100200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "balance.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "balance.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "charge.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "charge.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "charge.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "charge.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "charge.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "charge.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "charge.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "charge.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "coupon.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "coupon.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "coupon.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "coupon.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "customer.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "customer.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "customer.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "customer.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "customer.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "customer.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "customer.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "customer.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "customer.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "customer.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "customerCard.add"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "customerCard.add"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "customerCard.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "customerCard.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "customerCard.remove"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "customerCard.remove"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "meterEvent.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "meterEvent.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "source.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "source.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "source.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "source.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "source.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "source.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "token.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "token.create"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa100300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa100400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"balance.get, charge.create, charge.get, charge.getAll, charge.update, coupon.create, coupon.getAll, customer.create, customer.delete, customer.get, customer.getAll, customer.update, customerCard.add, customerCard.get, customerCard.remove, meterEvent.create, source.create, source.delete, source.get, token.create\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2750
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa100500-4000-8000-000000000000",
+   "name": "balance.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "resource": "balance"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa100600-4000-8000-000000000000",
+   "name": "balance.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa100700-4000-8000-000000000000",
+   "name": "charge.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "amount": "={{ $json.amount }}",
+    "currency": "={{ $json.currency }}",
+    "customerId": "={{ $json.customerId }}",
+    "description": "={{ $json.description }}",
+    "operation": "create",
+    "receipt_email": "={{ $json.receiptEmail }}",
+    "resource": "charge",
+    "source": "={{ $json.source }}"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa100800-4000-8000-000000000000",
+   "name": "charge.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa100900-4000-8000-000000000000",
+   "name": "charge.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "chargeId": "={{ $json.chargeId }}",
+    "operation": "get",
+    "resource": "charge"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa101000-4000-8000-000000000000",
+   "name": "charge.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa101100-4000-8000-000000000000",
+   "name": "charge.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ Math.max(1, Math.min(100, Number($json.limit) || 50)) }}",
+    "operation": "getAll",
+    "resource": "charge",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa101200-4000-8000-000000000000",
+   "name": "charge.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa101300-4000-8000-000000000000",
+   "name": "charge.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "chargeId": "={{ $json.chargeId }}",
+    "description": "={{ $json.description }}",
+    "operation": "update",
+    "receipt_email": "={{ $json.receiptEmail }}",
+    "resource": "charge"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa101400-4000-8000-000000000000",
+   "name": "charge.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa101500-4000-8000-000000000000",
+   "name": "coupon.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "amountOff": "={{ $json.amountOff }}",
+    "currency": "={{ $json.currency }}",
+    "duration": "={{ $json.couponDuration || \"once\" }}",
+    "operation": "create",
+    "percentOff": "={{ $json.percentOff || 1 }}",
+    "resource": "coupon",
+    "type": "={{ $json.couponType || \"percent\" }}"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa101600-4000-8000-000000000000",
+   "name": "coupon.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa101700-4000-8000-000000000000",
+   "name": "coupon.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ Math.max(1, Math.min(100, Number($json.limit) || 50)) }}",
+    "operation": "getAll",
+    "resource": "coupon",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa101800-4000-8000-000000000000",
+   "name": "coupon.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa101900-4000-8000-000000000000",
+   "name": "customer.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "description": "={{ $json.description }}",
+    "email": "={{ $json.email }}",
+    "name": "={{ $json.name }}",
+    "operation": "create",
+    "phone": "={{ $json.phone }}",
+    "resource": "customer"
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa102000-4000-8000-000000000000",
+   "name": "customer.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    910
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa102100-4000-8000-000000000000",
+   "name": "customer.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "customerId": "={{ $json.customerId }}",
+    "operation": "delete",
+    "resource": "customer"
+   },
+   "position": [
+    540,
+    1040
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa102200-4000-8000-000000000000",
+   "name": "customer.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1040
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa102300-4000-8000-000000000000",
+   "name": "customer.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "customerId": "={{ $json.customerId }}",
+    "operation": "get",
+    "resource": "customer"
+   },
+   "position": [
+    540,
+    1170
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa102400-4000-8000-000000000000",
+   "name": "customer.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa102500-4000-8000-000000000000",
+   "name": "customer.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "email": "={{ $json.email }}",
+    "limit": "={{ Math.max(1, Math.min(100, Number($json.limit) || 50)) }}",
+    "operation": "getAll",
+    "resource": "customer",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    1300
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa102600-4000-8000-000000000000",
+   "name": "customer.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa102700-4000-8000-000000000000",
+   "name": "customer.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "customerId": "={{ $json.customerId }}",
+    "description": "={{ $json.description }}",
+    "email": "={{ $json.email }}",
+    "name": "={{ $json.name }}",
+    "operation": "update",
+    "phone": "={{ $json.phone }}",
+    "resource": "customer"
+   },
+   "position": [
+    540,
+    1430
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa102800-4000-8000-000000000000",
+   "name": "customer.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa102900-4000-8000-000000000000",
+   "name": "customerCard.add",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "customerId": "={{ $json.customerId }}",
+    "operation": "add",
+    "resource": "customerCard",
+    "token": "={{ $json.token }}"
+   },
+   "position": [
+    540,
+    1560
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa103000-4000-8000-000000000000",
+   "name": "customerCard.add — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1560
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa103100-4000-8000-000000000000",
+   "name": "customerCard.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "customerId": "={{ $json.customerId }}",
+    "operation": "get",
+    "resource": "customerCard",
+    "sourceId": "={{ $json.sourceId }}"
+   },
+   "position": [
+    540,
+    1690
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa103200-4000-8000-000000000000",
+   "name": "customerCard.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1690
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa103300-4000-8000-000000000000",
+   "name": "customerCard.remove",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "cardId": "={{ $json.cardId }}",
+    "customerId": "={{ $json.customerId }}",
+    "operation": "remove",
+    "resource": "customerCard"
+   },
+   "position": [
+    540,
+    1820
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa103400-4000-8000-000000000000",
+   "name": "customerCard.remove — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1820
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa103500-4000-8000-000000000000",
+   "name": "meterEvent.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "customerId": "={{ $json.customerId }}",
+    "eventName": "={{ $json.eventName }}",
+    "identifier": "={{ $json.eventIdentifier }}",
+    "operation": "create",
+    "resource": "meterEvent",
+    "timestamp": "={{ $json.eventTimestamp }}",
+    "value": "={{ $json.eventValue || 1 }}"
+   },
+   "position": [
+    540,
+    1950
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa103600-4000-8000-000000000000",
+   "name": "meterEvent.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1950
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa103700-4000-8000-000000000000",
+   "name": "source.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "amount": "={{ $json.amount }}",
+    "currency": "={{ $json.currency }}",
+    "customerId": "={{ $json.customerId }}",
+    "operation": "create",
+    "resource": "source",
+    "statement_descriptor": "={{ $json.statementDescriptor }}",
+    "type": "={{ $json.type || \"wechat\" }}"
+   },
+   "position": [
+    540,
+    2080
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa103800-4000-8000-000000000000",
+   "name": "source.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2080
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa103900-4000-8000-000000000000",
+   "name": "source.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "customerId": "={{ $json.customerId }}",
+    "operation": "delete",
+    "resource": "source",
+    "sourceId": "={{ $json.sourceId }}"
+   },
+   "position": [
+    540,
+    2210
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa104000-4000-8000-000000000000",
+   "name": "source.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2210
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa104100-4000-8000-000000000000",
+   "name": "source.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "resource": "source",
+    "sourceId": "={{ $json.sourceId }}"
+   },
+   "position": [
+    540,
+    2340
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa104200-4000-8000-000000000000",
+   "name": "source.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2340
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "stripeApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Stripe account"
+    }
+   },
+   "id": "aa104300-4000-8000-000000000000",
+   "name": "token.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "cvc": "={{ $json.cardCvc }}",
+    "expirationMonth": "={{ $json.cardExpMonth }}",
+    "expirationYear": "={{ $json.cardExpYear }}",
+    "number": "={{ $json.cardNumber }}",
+    "operation": "create",
+    "resource": "token",
+    "type": "={{ $json.tokenType || \"cardToken\" }}"
+   },
+   "position": [
+    540,
+    2470
+   ],
+   "type": "n8n-nodes-base.stripe",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa104400-4000-8000-000000000000",
+   "name": "token.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','object','amount','amount_off','currency','status','description','receipt_email','customer','created','name','email','phone','percent_off','duration','times_redeemed','valid','livemode','type','event_name','identifier','value','timestamp','statement_descriptor','source','failure_message','paid','refunded','invoice','payment_intent'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.available) || Array.isArray(r.pending)) { out.push({ json: { object: 'balance', available: (r.available || []).map((x) => ({ amount: x.amount, currency: x.currency })), pending: (r.pending || []).map((x) => ({ amount: x.amount, currency: x.currency })) } }); continue; }\n  if (Array.isArray(r.data)) { for (const el of r.data) out.push({ json: pick(el) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2470
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "54f6ff10-daab-4fc6-8f25-2af00990749a",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Finance"
+ ],
+ "updatedAt": "2026-10-24T21:42:16.559Z"
+}

@@ -1,0 +1,58 @@
+{
+ "active": true,
+ "connections": {
+  "Commands Webhook": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Dispatch Command",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-22T13:04:08.547Z",
+ "id": "aQTcY0SsBsY69jrr",
+ "name": "Telegram Commands",
+ "nodes": [
+  {
+   "id": "80ffc3c5-62b0-497e-868f-d89933e6bc0e",
+   "name": "Commands Webhook",
+   "parameters": {
+    "httpMethod": "POST",
+    "options": {},
+    "path": "othvm-commands",
+    "responseMode": "lastNode"
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "webhookId": "98d83b78-a314-4b33-976a-b9c7e7434ead"
+  },
+  {
+   "id": "d4c440ea-2b1e-4ed2-9422-a6e28865f2b4",
+   "name": "Dispatch Command",
+   "parameters": {
+    "jsCode": "// OTHVM Commands - deterministic slash-command bridge to the laptop MCP.\nconst envelope = $json || {};\nconst body = envelope.body || envelope;\nconst headers = envelope.headers || {};\nconst secret = 'REPLACE_WITH_COMMAND_SECRET';\nconst supplied = String(body.secret || headers['x-othvm-key'] || '');\nif (supplied !== secret) {\n  return [{ json: { ok: false, error: 'unauthorized' } }];\n}\ntry {\n  const r = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'http://127.0.0.1:8765/tools/commands',\n    headers: { 'Content-Type': 'application/json', 'X-API-Key': 'REPLACE_WITH_MCP_API_KEY' },\n    body: {\n      command: String(body.command || ''),\n      args: String(body.args || ''),\n      chat_id: String(body.chat_id || '')\n    },\n    json: true,\n    timeout: 30000\n  });\n  return [{ json: r }];\n} catch (e) {\n  return [{ json: { ok: false, error: String((e && e.message) || e) } }];\n}",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    224,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-24T14:29:47.557Z"
+}

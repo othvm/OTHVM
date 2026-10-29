@@ -1,0 +1,37 @@
+{
+	admin off
+	auto_https off
+}
+
+# Bind the listener to loopback but accept any Host header: ngrok forwards
+# requests with the public hostname, which must still match this site.
+http://:5680 {
+	bind 127.0.0.1
+
+	@telegram path_regexp telegram ^/rest/projects/[^/]+/agents/v2/[^/]+/webhooks/telegram/?$
+
+	handle @telegram {
+		reverse_proxy 127.0.0.1:5681
+	}
+
+	handle {
+		reverse_proxy 127.0.0.1:5678
+	}
+
+	# If the fast-path is down, hand Telegram updates back to n8n so the
+	# agent still answers instead of the webhook failing.
+	handle_errors {
+		@fastpath_down expression {http.error.status_code} in [502, 503, 504] && {http.request.uri.path}.startsWith('/rest/projects/')
+		handle @fastpath_down {
+			reverse_proxy 127.0.0.1:5678
+		}
+	}
+
+	log {
+		output file caddy_access.log {
+			roll_size 10MiB
+			roll_keep 3
+		}
+		format console
+	}
+}

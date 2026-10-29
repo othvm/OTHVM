@@ -1,0 +1,483 @@
+{
+ "active": true,
+ "connections": {
+  "Alert All Failed": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Format Failure",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Log All Failed": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Alert All Failed",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Log Fallback 1": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Try Fallback 1",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Log Fallback 2": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Try Fallback 2",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Log Fallback 3": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Try Fallback 3",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Model Router Webhook": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Normalize Request",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Normalize Request": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Try Primary",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Try Fallback 1": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Format Fallback 1",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Log Fallback 2",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Try Fallback 2": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Format Fallback 2",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Log Fallback 3",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Try Fallback 3": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Format Fallback 3",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Log All Failed",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Try Primary": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Format Primary",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Log Fallback 1",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-20T23:54:57.132Z",
+ "id": "KnhXvp3s9b7E2fUJ",
+ "name": "Model Router",
+ "nodes": [
+  {
+   "id": "a1000001-4000-8000-000000000001",
+   "name": "Model Router Webhook",
+   "parameters": {
+    "httpMethod": "POST",
+    "options": {},
+    "path": "othvm-model-router",
+    "responseMode": "lastNode"
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "webhookId": "a1000001-4000-8000-00000000ca01"
+  },
+  {
+   "id": "a1000002-4000-8000-000000000002",
+   "name": "Normalize Request",
+   "parameters": {
+    "jsCode": "// Model Router — accept a prompt or an OpenAI-style messages array.\nconst j = $json.body || $json;\nlet prompt = j.prompt || j.message || j.text || j.input || '';\nif (!prompt && Array.isArray(j.messages)) prompt = j.messages.map((m) => String(m && m.content || '')).join('\\n');\nprompt = String(prompt || '').trim();\nreturn [{ json: { prompt, requested_model: j.model || null, source: j.source || 'api' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googlePalmApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Gemini(PaLM) Api account"
+    }
+   },
+   "id": "a1000003-4000-8000-000000000003",
+   "maxTries": 1,
+   "name": "Try Primary",
+   "onError": "continueErrorOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ contents: [{ role: 'user', parts: [{ text: $json.prompt }] }], generationConfig: { temperature: 0.3, topP: 0.9, maxOutputTokens: 2048 } }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googlePalmApi",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent"
+   },
+   "position": [
+    460,
+    -180
+   ],
+   "retryOnFail": false,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 1000
+  },
+  {
+   "id": "a1000004-4000-8000-000000000004",
+   "name": "Format Primary",
+   "parameters": {
+    "jsCode": "// Model Router — extract Gemini text.\nconst raw = $json || {};\nlet text = '';\ntry {\n  text = ((raw.candidates && raw.candidates[0] && raw.candidates[0].content && raw.candidates[0].content.parts) || [])\n    .map((p) => p.text || '').join('').trim();\n} catch (e) { text = ''; }\nif (text.length > 8000) text = text.slice(0, 7990) + '…';\nreturn [{ json: { ok: true, model: 'google/gemini-3.5-flash-lite', text, fallback: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    720,
+    -180
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "a1000005-4000-8000-000000000005",
+   "name": "Log Fallback 1",
+   "parameters": {
+    "jsCode": "// Model Router — log a model failure to Supabase, then pass the prompt + reason onward.\nconst src = $input.first().json || {};\nconst e = src.error || src;\nlet reason = '';\nif (typeof e === 'string') reason = e;\nelse if (e && typeof e === 'object') reason = [e.message, e.description, e.code, e.status].filter(Boolean).join(' — ');\nif (!reason) reason = JSON.stringify(e || {}).slice(0, 800);\nconst base = String($env.SUPABASE_URL || '').replace(/\\/+$/, '');\nconst key = String($env.SUPABASE_SERVICE_KEY || '');\nconst prompt = $('Normalize Request').first().json.prompt;\nif (base && key) {\n  try {\n    await this.helpers.httpRequest({\n      method: 'POST',\n      url: base + '/rest/v1/model_fallback_log',\n      headers: { apikey: key, Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },\n      body: { model: 'google/gemini-3.5-flash-lite', reason: String(reason).slice(0, 1000) },\n      json: true,\n      timeout: 15000,\n    });\n  } catch (err) {}\n}\nreturn [{ json: { prompt, reason: String(reason).slice(0, 1000), from: 'primary' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    720,
+    100
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googlePalmApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Gemini(PaLM) Api account"
+    }
+   },
+   "id": "a1000006-4000-8000-000000000006",
+   "maxTries": 1,
+   "name": "Try Fallback 1",
+   "onError": "continueErrorOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ contents: [{ role: 'user', parts: [{ text: $json.prompt }] }], generationConfig: { temperature: 0.3, topP: 0.9, maxOutputTokens: 2048 } }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googlePalmApi",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent"
+   },
+   "position": [
+    960,
+    100
+   ],
+   "retryOnFail": false,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 1000
+  },
+  {
+   "id": "a1000007-4000-8000-000000000007",
+   "name": "Format Fallback 1",
+   "parameters": {
+    "jsCode": "// Model Router — extract Gemini text.\nconst raw = $json || {};\nlet text = '';\ntry {\n  text = ((raw.candidates && raw.candidates[0] && raw.candidates[0].content && raw.candidates[0].content.parts) || [])\n    .map((p) => p.text || '').join('').trim();\n} catch (e) { text = ''; }\nif (text.length > 8000) text = text.slice(0, 7990) + '…';\nreturn [{ json: { ok: true, model: 'google/gemini-3.1-flash-lite', text, fallback: true } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1220,
+    -80
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "a1000008-4000-8000-000000000008",
+   "name": "Log Fallback 2",
+   "parameters": {
+    "jsCode": "// Model Router — log a model failure to Supabase, then pass the prompt + reason onward.\nconst src = $input.first().json || {};\nconst e = src.error || src;\nlet reason = '';\nif (typeof e === 'string') reason = e;\nelse if (e && typeof e === 'object') reason = [e.message, e.description, e.code, e.status].filter(Boolean).join(' — ');\nif (!reason) reason = JSON.stringify(e || {}).slice(0, 800);\nconst base = String($env.SUPABASE_URL || '').replace(/\\/+$/, '');\nconst key = String($env.SUPABASE_SERVICE_KEY || '');\nconst prompt = $('Normalize Request').first().json.prompt;\nif (base && key) {\n  try {\n    await this.helpers.httpRequest({\n      method: 'POST',\n      url: base + '/rest/v1/model_fallback_log',\n      headers: { apikey: key, Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },\n      body: { model: 'google/gemini-3.1-flash-lite', reason: String(reason).slice(0, 1000) },\n      json: true,\n      timeout: 15000,\n    });\n  } catch (err) {}\n}\nreturn [{ json: { prompt, reason: String(reason).slice(0, 1000), from: 'fallback1' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1220,
+    200
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nvidiaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NVIDIA Nemotron account"
+    }
+   },
+   "id": "a1000009-4000-8000-000000000009",
+   "maxTries": 1,
+   "name": "Try Fallback 2",
+   "onError": "continueErrorOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ model: 'nvidia/nemotron-3-super-120b-a12b', messages: [{ role: 'user', content: $json.prompt }], temperature: 0.3, max_tokens: 2048 }) }}",
+    "method": "POST",
+    "nodeCredentialType": "nvidiaApi",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://integrate.api.nvidia.com/v1/chat/completions"
+   },
+   "position": [
+    1460,
+    200
+   ],
+   "retryOnFail": false,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 1000
+  },
+  {
+   "id": "a1000010-4000-8000-000000000010",
+   "name": "Format Fallback 2",
+   "parameters": {
+    "jsCode": "// Model Router — extract NVIDIA chat completion text.\nconst raw = $json || {};\nlet text = '';\ntry {\n  text = String((((raw.choices || [])[0] || {}).message || {}).content || '').trim();\n} catch (e) { text = ''; }\nif (text.length > 8000) text = text.slice(0, 7990) + '…';\nreturn [{ json: { ok: true, model: 'nvidia/nvidia/nemotron-3-super-120b-a12b', text, fallback: true } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1720,
+    -40
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "a1000014-4000-8000-000000000014",
+   "name": "Log Fallback 3",
+   "parameters": {
+    "jsCode": "// Model Router — log a model failure to Supabase, then pass the prompt + reason onward.\nconst src = $input.first().json || {};\nconst e = src.error || src;\nlet reason = '';\nif (typeof e === 'string') reason = e;\nelse if (e && typeof e === 'object') reason = [e.message, e.description, e.code, e.status].filter(Boolean).join(' — ');\nif (!reason) reason = JSON.stringify(e || {}).slice(0, 800);\nconst base = String($env.SUPABASE_URL || '').replace(/\\/+$/, '');\nconst key = String($env.SUPABASE_SERVICE_KEY || '');\nconst prompt = $('Normalize Request').first().json.prompt;\nif (base && key) {\n  try {\n    await this.helpers.httpRequest({\n      method: 'POST',\n      url: base + '/rest/v1/model_fallback_log',\n      headers: { apikey: key, Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },\n      body: { model: 'nvidia/nvidia/nemotron-3-super-120b-a12b', reason: String(reason).slice(0, 1000) },\n      json: true,\n      timeout: 15000,\n    });\n  } catch (err) {}\n}\nreturn [{ json: { prompt, reason: String(reason).slice(0, 1000), from: 'fallback2' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1720,
+    240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nvidiaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NVIDIA Nemotron account"
+    }
+   },
+   "id": "a1000015-4000-8000-000000000015",
+   "maxTries": 1,
+   "name": "Try Fallback 3",
+   "onError": "continueErrorOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ model: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', messages: [{ role: 'user', content: $json.prompt }], temperature: 0.3, max_tokens: 2048 }) }}",
+    "method": "POST",
+    "nodeCredentialType": "nvidiaApi",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://integrate.api.nvidia.com/v1/chat/completions"
+   },
+   "position": [
+    1960,
+    240
+   ],
+   "retryOnFail": false,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 1000
+  },
+  {
+   "id": "a1000016-4000-8000-000000000016",
+   "name": "Format Fallback 3",
+   "parameters": {
+    "jsCode": "// Model Router — extract NVIDIA chat completion text.\nconst raw = $json || {};\nlet text = '';\ntry {\n  text = String((((raw.choices || [])[0] || {}).message || {}).content || '').trim();\n} catch (e) { text = ''; }\nif (text.length > 8000) text = text.slice(0, 7990) + '…';\nreturn [{ json: { ok: true, model: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', text, fallback: true } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    2220,
+    60
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "a1000011-4000-8000-000000000011",
+   "name": "Log All Failed",
+   "parameters": {
+    "jsCode": "// Model Router — log a model failure to Supabase, then pass the prompt + reason onward.\nconst src = $input.first().json || {};\nconst e = src.error || src;\nlet reason = '';\nif (typeof e === 'string') reason = e;\nelse if (e && typeof e === 'object') reason = [e.message, e.description, e.code, e.status].filter(Boolean).join(' — ');\nif (!reason) reason = JSON.stringify(e || {}).slice(0, 800);\nconst base = String($env.SUPABASE_URL || '').replace(/\\/+$/, '');\nconst key = String($env.SUPABASE_SERVICE_KEY || '');\nconst prompt = $('Normalize Request').first().json.prompt;\nif (base && key) {\n  try {\n    await this.helpers.httpRequest({\n      method: 'POST',\n      url: base + '/rest/v1/model_fallback_log',\n      headers: { apikey: key, Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },\n      body: { model: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', reason: String(reason).slice(0, 1000) },\n      json: true,\n      timeout: 15000,\n    });\n  } catch (err) {}\n}\nreturn [{ json: { prompt, reason: String(reason).slice(0, 1000), from: 'fallback3' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    2220,
+    420
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "credentials": {
+    "telegramApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Telegram account"
+    }
+   },
+   "id": "a1000012-4000-8000-000000000012",
+   "name": "Alert All Failed",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "appendAttribution": false
+    },
+    "chatId": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+    "operation": "sendMessage",
+    "resource": "message",
+    "text": "⚠️ كل الموديلات واقعة — جرب بعد شوية"
+   },
+   "position": [
+    2460,
+    420
+   ],
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "webhookId": "fbd5ca4c-ea46-49ec-b2e3-113a98684d00"
+  },
+  {
+   "id": "a1000013-4000-8000-000000000013",
+   "name": "Format Failure",
+   "parameters": {
+    "jsCode": "// Model Router — all models failed; return a stable error payload.\nreturn [{ json: { ok: false, error: 'all_models_failed', message: '⚠️ كل الموديلات واقعة — جرب بعد شوية', models_tried: ['google/gemini-3.5-flash-lite','google/gemini-3.1-flash-lite','nvidia/nvidia/nemotron-3-super-120b-a12b','nvidia/nemotron-3-nano-omni-30b-a3b-reasoning'] } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    2700,
+    420
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "System"
+ ],
+ "updatedAt": "2026-10-22T12:33:26.856Z"
+}

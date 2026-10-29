@@ -1,0 +1,14 @@
+{
+  "api_id": 0,
+  "api_hash": "REPLACE_WITH_TELEGRAM_API_HASH",
+  "phone": "+10000000000",
+  "session_name": "telegram_personal",
+  "port": 8768,
+  "api_key": "REPLACE_WITH_LONG_RANDOM_KEY",
+  "telegram_bot_token": "REPLACE_WITH_TELEGRAM_BOT_TOKEN",
+  "telegram_chat_id": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+  "rate_limit_per_hour": 10,
+  "max_file_mb": 200,
+  "allowed_contacts": [],
+  "note": ""
+}

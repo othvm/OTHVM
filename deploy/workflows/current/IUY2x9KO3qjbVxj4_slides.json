@@ -1,0 +1,652 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "presentation.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "presentation.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "presentation.getSlides",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "presentation.replaceText",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.getThumbnail",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.getThumbnail": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.getThumbnail — Thumbnail Note",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.getThumbnail — Thumbnail Note": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "presentation.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "presentation.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "presentation.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "presentation.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "presentation.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "presentation.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "presentation.getSlides": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "presentation.getSlides pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "presentation.getSlides pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "presentation.replaceText": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "presentation.replaceText pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "presentation.replaceText pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T01:11:36.115Z",
+ "id": "IUY2x9KO3qjbVxj4",
+ "name": "Slides",
+ "nodes": [
+  {
+   "id": "aa050100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "presentationId",
+       "type": "string"
+      },
+      {
+       "name": "pageObjectId",
+       "type": "string"
+      },
+      {
+       "name": "title",
+       "type": "string"
+      },
+      {
+       "name": "text",
+       "type": "string"
+      },
+      {
+       "name": "replacement",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa050200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "presentation.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "presentation.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "presentation.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "presentation.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "presentation.getSlides"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "presentation.getSlides"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "presentation.replaceText"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "presentation.replaceText"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.getThumbnail"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.getThumbnail"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa050300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa050400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"presentation.create, presentation.get, presentation.getSlides, presentation.replaceText, page.get, page.getThumbnail\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    930
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSlidesOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Slides account"
+    }
+   },
+   "id": "aa050500-4000-8000-000000000000",
+   "name": "presentation.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "create",
+    "resource": "presentation",
+    "title": "={{ $json.title }}"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.googleSlides",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa050600-4000-8000-000000000000",
+   "name": "presentation.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"presentationId\",\"title\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    40
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSlidesOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Slides account"
+    }
+   },
+   "id": "aa050700-4000-8000-000000000000",
+   "name": "presentation.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "presentationId": "={{ $json.presentationId }}",
+    "resource": "presentation"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.googleSlides",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa050800-4000-8000-000000000000",
+   "name": "presentation.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"presentationId\",\"title\",\"revisionId\",\"slides\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSlidesOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Slides account"
+    }
+   },
+   "id": "aa050900-4000-8000-000000000000",
+   "name": "presentation.getSlides",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ $json.limit ? Number($json.limit) : 100 }}",
+    "operation": "getSlides",
+    "presentationId": "={{ $json.presentationId }}",
+    "resource": "presentation",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.googleSlides",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa051000-4000-8000-000000000000",
+   "name": "presentation.getSlides pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"objectId\",\"pageType\",\"slideProperties\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSlidesOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Slides account"
+    }
+   },
+   "id": "aa051100-4000-8000-000000000000",
+   "name": "presentation.replaceText",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "replaceText",
+    "presentationId": "={{ $json.presentationId }}",
+    "resource": "presentation",
+    "textUi": {
+     "textValues": [
+      {
+       "matchCase": false,
+       "replaceText": "={{ $json.replacement }}",
+       "text": "={{ $json.text }}"
+      }
+     ]
+    }
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.googleSlides",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa051200-4000-8000-000000000000",
+   "name": "presentation.replaceText pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"presentationId\",\"replies\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSlidesOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Slides account"
+    }
+   },
+   "id": "aa051300-4000-8000-000000000000",
+   "name": "page.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "pageObjectId": "={{ $json.pageObjectId }}",
+    "presentationId": "={{ $json.presentationId }}",
+    "resource": "page"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.googleSlides",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSlidesOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Slides account"
+    }
+   },
+   "id": "aa051400-4000-8000-000000000000",
+   "name": "page.getThumbnail",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "binaryProperty": "data",
+    "download": true,
+    "operation": "getThumbnail",
+    "pageObjectId": "={{ $json.pageObjectId }}",
+    "presentationId": "={{ $json.presentationId }}",
+    "resource": "page"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.googleSlides",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa051500-4000-8000-000000000000",
+   "name": "page.getThumbnail — Thumbnail Note",
+   "parameters": {
+    "jsCode": "// OTHVM — Slides thumbnail: بيرجّع ميتاداتا الصورة المصغرة بدون محتوى الـ binary\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  const bin = item.binary && item.binary.data;\n  out.push({\n    json: {\n      ok: true,\n      presentationId: j.presentationId || null,\n      pageObjectId: j.pageObjectId || null,\n      mimeType: (bin && bin.mimeType) || 'image/png',\n      sizeBytes: bin ? Number(bin.fileSize) || Math.round(String(bin.data || '').length * 0.75) : null,\n      note: 'اتولدت صورة مصغرة (binary) — محتوى الصورة نفسه مش بيتنقل في الأداة',\n    },\n  });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-22T12:33:24.656Z"
+}

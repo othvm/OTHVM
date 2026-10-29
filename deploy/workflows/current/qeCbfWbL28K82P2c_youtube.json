@@ -1,0 +1,2555 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "channel.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "channel.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlist.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlist.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlist.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlist.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlist.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlistItem.add",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlistItem.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlistItem.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "playlistItem.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "video.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "video.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "video.rate",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "video.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "video.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "videoCategory.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "subscription.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "subscription.subscribe",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "subscription.unsubscribe",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.insert",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.reply",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "video.upload — fetch",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "channel.uploadBanner — fetch",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.uploadBanner": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.uploadBanner pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.uploadBanner pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.uploadBanner — fetch": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.uploadBanner",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.getAll — compact",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.getAll — compact": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.insert": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.insert pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.insert pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.reply": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.reply pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.reply pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "playlist.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "playlist.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "playlist.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "playlist.update pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlist.update pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlistItem.add": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "playlistItem.add pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlistItem.add pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlistItem.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlistItem.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "playlistItem.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlistItem.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlistItem.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "playlistItem.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "playlistItem.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "subscription.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "subscription.getAll — compact",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "subscription.getAll — compact": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "subscription.subscribe": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "subscription.subscribe pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "subscription.subscribe pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "subscription.unsubscribe": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "video.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "video.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.rate": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "video.update pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.update pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.upload": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "video.upload pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.upload pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "video.upload — fetch": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "video.upload",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "videoCategory.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "videoCategory.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "videoCategory.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T01:11:36.353Z",
+ "id": "qeCbfWbL28K82P2c",
+ "name": "YouTube",
+ "nodes": [
+  {
+   "id": "aa090100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "videoId",
+       "type": "string"
+      },
+      {
+       "name": "channelId",
+       "type": "string"
+      },
+      {
+       "name": "playlistId",
+       "type": "string"
+      },
+      {
+       "name": "playlistItemId",
+       "type": "string"
+      },
+      {
+       "name": "q",
+       "type": "string"
+      },
+      {
+       "name": "title",
+       "type": "string"
+      },
+      {
+       "name": "description",
+       "type": "string"
+      },
+      {
+       "name": "rating",
+       "type": "string"
+      },
+      {
+       "name": "privacyStatus",
+       "type": "string"
+      },
+      {
+       "name": "regionCode",
+       "type": "string"
+      },
+      {
+       "name": "categoryId",
+       "type": "string"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      },
+      {
+       "name": "subscriptionId",
+       "type": "string"
+      },
+      {
+       "name": "commentText",
+       "type": "string"
+      },
+      {
+       "name": "commentId",
+       "type": "string"
+      },
+      {
+       "name": "fileUrl",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa090200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlist.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlist.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlist.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlist.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlist.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlist.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlist.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlist.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlist.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlist.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlistItem.add"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlistItem.add"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlistItem.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlistItem.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlistItem.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlistItem.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "playlistItem.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "playlistItem.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "video.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "video.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "video.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "video.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "video.rate"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "video.rate"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "video.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "video.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "video.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "video.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "videoCategory.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "videoCategory.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "subscription.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "subscription.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "subscription.subscribe"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "subscription.subscribe"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "subscription.unsubscribe"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "subscription.unsubscribe"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.insert"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.insert"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.reply"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.reply"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "video.upload"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "video.upload"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.uploadBanner"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.uploadBanner"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa090300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa090400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"channel.get, channel.getAll, channel.update, playlist.create, playlist.delete, playlist.get, playlist.getAll, playlist.update, playlistItem.add, playlistItem.delete, playlistItem.get, playlistItem.getAll, video.get, video.getAll, video.rate, video.update, video.delete, videoCategory.getAll, subscription.getAll, subscription.subscribe, subscription.unsubscribe, comment.getAll, comment.insert, comment.reply, comment.delete, video.upload, channel.uploadBanner\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3660
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa090500-4000-8000-000000000000",
+   "name": "channel.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": "={{ $json.channelId }}",
+    "operation": "get",
+    "part": [
+     "snippet",
+     "statistics"
+    ],
+    "resource": "channel"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa090600-4000-8000-000000000000",
+   "name": "channel.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"statistics\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    40
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa090700-4000-8000-000000000000",
+   "name": "channel.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "filters": {
+     "id": "={{ $json.channelId || undefined }}"
+    },
+    "limit": "={{ $json.limit ? Number($json.limit) : 25 }}",
+    "operation": "getAll",
+    "part": [
+     "snippet",
+     "statistics"
+    ],
+    "resource": "channel",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa090800-4000-8000-000000000000",
+   "name": "channel.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"statistics\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa090900-4000-8000-000000000000",
+   "name": "channel.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": "={{ $json.channelId }}",
+    "operation": "update",
+    "resource": "channel",
+    "updateFields": {
+     "brandingSettingsUi": {
+      "channelSettingsValues": {
+       "channel": {
+        "description": "={{ $json.description || undefined }}"
+       }
+      }
+     }
+    }
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa091000-4000-8000-000000000000",
+   "name": "playlist.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "create",
+    "options": {
+     "description": "={{ $json.description || undefined }}",
+     "privacyStatus": "={{ $json.privacyStatus || undefined }}"
+    },
+    "resource": "playlist",
+    "title": "={{ $json.title }}"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa091100-4000-8000-000000000000",
+   "name": "playlist.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa091200-4000-8000-000000000000",
+   "name": "playlist.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "playlistId": "={{ $json.playlistId }}",
+    "resource": "playlist"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa091300-4000-8000-000000000000",
+   "name": "playlist.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "part": [
+     "snippet",
+     "contentDetails",
+     "status"
+    ],
+    "playlistId": "={{ $json.playlistId }}",
+    "resource": "playlist"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa091400-4000-8000-000000000000",
+   "name": "playlist.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"contentDetails\",\"status\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    690
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa091500-4000-8000-000000000000",
+   "name": "playlist.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "filters": {
+     "channelId": "={{ $json.channelId || undefined }}"
+    },
+    "limit": "={{ $json.limit ? Number($json.limit) : 25 }}",
+    "operation": "getAll",
+    "part": [
+     "snippet",
+     "contentDetails"
+    ],
+    "resource": "playlist",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa091600-4000-8000-000000000000",
+   "name": "playlist.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"contentDetails\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    820
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa091700-4000-8000-000000000000",
+   "name": "playlist.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "update",
+    "playlistId": "={{ $json.playlistId }}",
+    "resource": "playlist",
+    "title": "={{ $json.title }}",
+    "updateFields": {
+     "description": "={{ $json.description || undefined }}",
+     "privacyStatus": "={{ $json.privacyStatus || undefined }}"
+    }
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa091800-4000-8000-000000000000",
+   "name": "playlist.update pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"status\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    950
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa091900-4000-8000-000000000000",
+   "name": "playlistItem.add",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "add",
+    "playlistId": "={{ $json.playlistId }}",
+    "resource": "playlistItem",
+    "videoId": "={{ $json.videoId }}"
+   },
+   "position": [
+    540,
+    1040
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa092000-4000-8000-000000000000",
+   "name": "playlistItem.add pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"contentDetails\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1080
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa092100-4000-8000-000000000000",
+   "name": "playlistItem.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "playlistItemId": "={{ $json.playlistItemId }}",
+    "resource": "playlistItem"
+   },
+   "position": [
+    540,
+    1170
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa092200-4000-8000-000000000000",
+   "name": "playlistItem.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "part": [
+     "snippet",
+     "contentDetails",
+     "status"
+    ],
+    "playlistItemId": "={{ $json.playlistItemId }}",
+    "resource": "playlistItem"
+   },
+   "position": [
+    540,
+    1300
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa092300-4000-8000-000000000000",
+   "name": "playlistItem.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"contentDetails\",\"status\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1340
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa092400-4000-8000-000000000000",
+   "name": "playlistItem.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ $json.limit ? Number($json.limit) : 25 }}",
+    "operation": "getAll",
+    "part": [
+     "snippet",
+     "contentDetails"
+    ],
+    "playlistId": "={{ $json.playlistId }}",
+    "resource": "playlistItem",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    1430
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa092500-4000-8000-000000000000",
+   "name": "playlistItem.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"contentDetails\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1470
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa092600-4000-8000-000000000000",
+   "name": "video.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "part": [
+     "snippet",
+     "statistics",
+     "contentDetails"
+    ],
+    "resource": "video",
+    "videoId": "={{ $json.videoId }}"
+   },
+   "position": [
+    540,
+    1560
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa092700-4000-8000-000000000000",
+   "name": "video.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"statistics\",\"contentDetails\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1600
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa092800-4000-8000-000000000000",
+   "name": "video.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "filters": {
+     "channelId": "={{ $json.channelId || undefined }}",
+     "q": "={{ $json.q || \"\" }}"
+    },
+    "limit": "={{ $json.limit ? Number($json.limit) : 10 }}",
+    "operation": "getAll",
+    "part": [
+     "snippet"
+    ],
+    "resource": "video",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    1690
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa092900-4000-8000-000000000000",
+   "name": "video.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1730
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa093000-4000-8000-000000000000",
+   "name": "video.rate",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "rate",
+    "rating": "={{ $json.rating || \"like\" }}",
+    "resource": "video",
+    "videoId": "={{ $json.videoId }}"
+   },
+   "position": [
+    540,
+    1820
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa093100-4000-8000-000000000000",
+   "name": "video.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "categoryId": "={{ $json.categoryId || undefined }}",
+    "operation": "update",
+    "resource": "video",
+    "title": "={{ $json.title }}",
+    "updateFields": {
+     "description": "={{ $json.description || undefined }}",
+     "privacyStatus": "={{ $json.privacyStatus || undefined }}"
+    },
+    "videoId": "={{ $json.videoId }}"
+   },
+   "position": [
+    540,
+    1950
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa093200-4000-8000-000000000000",
+   "name": "video.update pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"status\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1990
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa093300-4000-8000-000000000000",
+   "name": "video.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "resource": "video",
+    "videoId": "={{ $json.videoId }}"
+   },
+   "position": [
+    540,
+    2080
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa093400-4000-8000-000000000000",
+   "name": "videoCategory.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ $json.limit ? Number($json.limit) : 25 }}",
+    "operation": "getAll",
+    "regionCode": "={{ $json.regionCode || \"EG\" }}",
+    "resource": "videoCategory",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    2210
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa093500-4000-8000-000000000000",
+   "name": "videoCategory.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2250
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa093600-4000-8000-000000000000",
+   "name": "subscription.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "GET",
+    "nodeCredentialType": "youTubeOAuth2Api",
+    "options": {},
+    "url": "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&mine=true&maxResults=50"
+   },
+   "position": [
+    540,
+    2340
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa093700-4000-8000-000000000000",
+   "name": "subscription.getAll — compact",
+   "parameters": {
+    "jsCode": "return ((($json.items) || [])).map((i) => ({ json: { channelId: (i.snippet && i.snippet.resourceId && i.snippet.resourceId.channelId) || '', title: (i.snippet && i.snippet.title) || '' } }));",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2340
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa093800-4000-8000-000000000000",
+   "name": "subscription.subscribe",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ snippet: { resourceId: { kind: \"youtube#channel\", channelId: $json.channelId } } }) }}",
+    "method": "POST",
+    "nodeCredentialType": "youTubeOAuth2Api",
+    "options": {},
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet"
+   },
+   "position": [
+    540,
+    2470
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa093900-4000-8000-000000000000",
+   "name": "subscription.subscribe pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2510
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa094000-4000-8000-000000000000",
+   "name": "subscription.unsubscribe",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "DELETE",
+    "nodeCredentialType": "youTubeOAuth2Api",
+    "options": {},
+    "url": "=https://www.googleapis.com/youtube/v3/subscriptions?id={{ $json.subscriptionId }}"
+   },
+   "position": [
+    540,
+    2600
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa094100-4000-8000-000000000000",
+   "name": "comment.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "GET",
+    "nodeCredentialType": "youTubeOAuth2Api",
+    "options": {},
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "videoId",
+       "value": "={{ $json.videoId }}"
+      }
+     ]
+    },
+    "sendQuery": true,
+    "specifyQuery": "keypair",
+    "url": "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=20&order=relevance"
+   },
+   "position": [
+    540,
+    2730
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa094200-4000-8000-000000000000",
+   "name": "comment.getAll — compact",
+   "parameters": {
+    "jsCode": "return ((($json.items) || [])).map((i) => { const c = (i.snippet && i.snippet.topLevelComment && i.snippet.topLevelComment.snippet) || {}; return { json: { author: c.authorDisplayName || '', text: c.textDisplay || '', likes: c.likeCount || 0, id: (i.snippet && i.snippet.topLevelComment && i.snippet.topLevelComment.id) || '' } }; });",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2730
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa094300-4000-8000-000000000000",
+   "name": "comment.insert",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ snippet: { videoId: $json.videoId, topLevelComment: { snippet: { textOriginal: $json.commentText } } } }) }}",
+    "method": "POST",
+    "nodeCredentialType": "youTubeOAuth2Api",
+    "options": {},
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet"
+   },
+   "position": [
+    540,
+    2860
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa094400-4000-8000-000000000000",
+   "name": "comment.insert pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2900
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa094500-4000-8000-000000000000",
+   "name": "comment.reply",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ snippet: { parentId: $json.commentId, textOriginal: $json.commentText } } }) }}",
+    "method": "POST",
+    "nodeCredentialType": "youTubeOAuth2Api",
+    "options": {},
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://www.googleapis.com/youtube/v3/comments?part=snippet"
+   },
+   "position": [
+    540,
+    2990
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa094600-4000-8000-000000000000",
+   "name": "comment.reply pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3030
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa094700-4000-8000-000000000000",
+   "name": "comment.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "DELETE",
+    "nodeCredentialType": "youTubeOAuth2Api",
+    "options": {},
+    "url": "=https://www.googleapis.com/youtube/v3/comments?id={{ $json.commentId }}"
+   },
+   "position": [
+    540,
+    3120
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa094800-4000-8000-000000000000",
+   "name": "video.upload — fetch",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "method": "GET",
+    "options": {
+     "redirect": {
+      "redirect": {
+       "followRedirects": true
+      }
+     },
+     "response": {
+      "response": {
+       "responseFormat": "file"
+      }
+     },
+     "timeout": 300000
+    },
+    "url": "={{ $json.fileUrl }}"
+   },
+   "position": [
+    540,
+    3250
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa094900-4000-8000-000000000000",
+   "name": "video.upload",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "binaryProperty": "data",
+    "categoryId": "={{ $json.categoryId || \"22\" }}",
+    "operation": "upload",
+    "options": {
+     "description": "={{ $json.description }}",
+     "privacyStatus": "={{ $json.privacyStatus || \"private\" }}"
+    },
+    "resource": "video",
+    "title": "={{ $json.title }}"
+   },
+   "position": [
+    600,
+    3250
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa095000-4000-8000-000000000000",
+   "name": "video.upload pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"status\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3290
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa095100-4000-8000-000000000000",
+   "name": "channel.uploadBanner — fetch",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "method": "GET",
+    "options": {
+     "redirect": {
+      "redirect": {
+       "followRedirects": true
+      }
+     },
+     "response": {
+      "response": {
+       "responseFormat": "file"
+      }
+     },
+     "timeout": 300000
+    },
+    "url": "={{ $json.fileUrl }}"
+   },
+   "position": [
+    540,
+    3380
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "youTubeOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "YouTube account"
+    }
+   },
+   "id": "aa095200-4000-8000-000000000000",
+   "name": "channel.uploadBanner",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "binaryProperty": "data",
+    "channelId": "={{ $json.channelId }}",
+    "operation": "uploadBanner",
+    "resource": "channel"
+   },
+   "position": [
+    600,
+    3380
+   ],
+   "type": "n8n-nodes-base.youTube",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa095300-4000-8000-000000000000",
+   "name": "channel.uploadBanner pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"brandingSettings\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3420
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-22T12:33:25.661Z"
+}

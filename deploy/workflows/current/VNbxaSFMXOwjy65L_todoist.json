@@ -1,0 +1,3402 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.close",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.reopen",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.move",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.quickAdd",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "project.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "project.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "project.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "project.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "project.archive",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "project.unarchive",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "project.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "project.getCollaborators",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "section.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "section.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "section.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "section.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "section.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "comment.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "reminder.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "reminder.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "reminder.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "reminder.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.archive": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "project.archive — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.archive — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "project.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "project.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "project.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "project.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.getCollaborators": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "project.getCollaborators — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.getCollaborators — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.unarchive": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "project.unarchive — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.unarchive — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "project.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "project.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "reminder.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "reminder.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "reminder.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "reminder.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "reminder.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "reminder.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "reminder.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "reminder.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "reminder.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "reminder.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "reminder.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "reminder.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "section.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "section.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "section.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "section.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "section.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "section.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.close": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.close — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.close — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.move": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.move — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.move — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.quickAdd": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.quickAdd — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.quickAdd — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.reopen": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.reopen — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.reopen — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T13:40:03.553Z",
+ "id": "VNbxaSFMXOwjy65L",
+ "name": "Todoist",
+ "nodes": [
+  {
+   "id": "aa030100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "taskId",
+       "type": "string"
+      },
+      {
+       "name": "content",
+       "type": "string"
+      },
+      {
+       "name": "description",
+       "type": "string"
+      },
+      {
+       "name": "projectId",
+       "type": "string"
+      },
+      {
+       "name": "sectionId",
+       "type": "string"
+      },
+      {
+       "name": "parentId",
+       "type": "string"
+      },
+      {
+       "name": "priority",
+       "type": "number"
+      },
+      {
+       "name": "labels",
+       "type": "array"
+      },
+      {
+       "name": "dueString",
+       "type": "string"
+      },
+      {
+       "name": "dueLang",
+       "type": "string"
+      },
+      {
+       "name": "deadlineDate",
+       "type": "string"
+      },
+      {
+       "name": "name",
+       "type": "string"
+      },
+      {
+       "name": "color",
+       "type": "string"
+      },
+      {
+       "name": "commentId",
+       "type": "string"
+      },
+      {
+       "name": "labelId",
+       "type": "string"
+      },
+      {
+       "name": "reminderId",
+       "type": "string"
+      },
+      {
+       "name": "text",
+       "type": "string"
+      },
+      {
+       "name": "note",
+       "type": "string"
+      },
+      {
+       "name": "reminder",
+       "type": "string"
+      },
+      {
+       "name": "filter",
+       "type": "string"
+      },
+      {
+       "name": "ids",
+       "type": "string"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa030200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.close"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.close"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.reopen"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.reopen"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.move"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.move"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.quickAdd"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "task.quickAdd"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "project.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "project.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "project.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "project.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "project.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "project.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "project.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "project.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "project.archive"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "project.archive"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "project.unarchive"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "project.unarchive"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "project.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "project.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "project.getCollaborators"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "project.getCollaborators"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "section.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "section.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "section.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "section.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "section.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "section.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "section.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "section.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "section.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "section.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "reminder.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "reminder.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "reminder.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "reminder.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "reminder.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "reminder.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "reminder.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "reminder.delete"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa030300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa030400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"task.getAll, task.get, task.create, task.update, task.close, task.reopen, task.delete, task.move, task.quickAdd, project.getAll, project.get, project.create, project.update, project.archive, project.unarchive, project.delete, project.getCollaborators, section.getAll, section.get, section.create, section.update, section.delete, comment.getAll, comment.get, comment.create, comment.update, comment.delete, label.getAll, label.get, label.create, label.update, label.delete, reminder.getAll, reminder.create, reminder.update, reminder.delete\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    4830
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa030500-4000-8000-000000000000",
+   "name": "task.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "filter": "={{ $json.filter }}",
+    "ids": "={{ $json.ids }}",
+    "labelId": "={{ $json.labelId }}",
+    "limit": "={{ Math.max(1, Math.min(100, Number($json.limit) || 15)) }}",
+    "operation": "getAll",
+    "parentId": "={{ $json.parentId }}",
+    "projectId": "={{ $json.projectId }}",
+    "resource": "task",
+    "returnAll": false,
+    "sectionId": "={{ $json.sectionId }}"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa030600-4000-8000-000000000000",
+   "name": "task.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa030700-4000-8000-000000000000",
+   "name": "task.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "resource": "task",
+    "taskId": "={{ $json.taskId }}"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa030800-4000-8000-000000000000",
+   "name": "task.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa030900-4000-8000-000000000000",
+   "name": "task.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "content": "={{ $json.content }}",
+    "deadlineDate": "={{ $json.deadlineDate }}",
+    "description": "={{ $json.description }}",
+    "dueLang": "={{ $json.dueLang }}",
+    "dueString": "={{ $json.dueString }}",
+    "labels": "={{ $json.labels }}",
+    "operation": "create",
+    "parentId": "={{ $json.parentId }}",
+    "priority": "={{ $json.priority }}",
+    "project": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.projectId }}"
+    },
+    "resource": "task",
+    "section": "={{ $json.sectionId }}"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa031000-4000-8000-000000000000",
+   "name": "task.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa031100-4000-8000-000000000000",
+   "name": "task.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "content": "={{ $json.content }}",
+    "deadlineDate": "={{ $json.deadlineDate }}",
+    "description": "={{ $json.description }}",
+    "dueLang": "={{ $json.dueLang }}",
+    "dueString": "={{ $json.dueString }}",
+    "labels": "={{ $json.labels }}",
+    "operation": "update",
+    "priority": "={{ $json.priority }}",
+    "resource": "task",
+    "taskId": "={{ $json.taskId }}"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa031200-4000-8000-000000000000",
+   "name": "task.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa031300-4000-8000-000000000000",
+   "name": "task.close",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "close",
+    "resource": "task",
+    "taskId": "={{ $json.taskId }}"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa031400-4000-8000-000000000000",
+   "name": "task.close — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa031500-4000-8000-000000000000",
+   "name": "task.reopen",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "reopen",
+    "resource": "task",
+    "taskId": "={{ $json.taskId }}"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa031600-4000-8000-000000000000",
+   "name": "task.reopen — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa031700-4000-8000-000000000000",
+   "name": "task.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "resource": "task",
+    "taskId": "={{ $json.taskId }}"
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa031800-4000-8000-000000000000",
+   "name": "task.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa031900-4000-8000-000000000000",
+   "name": "task.move",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "move",
+    "project": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.projectId }}"
+    },
+    "resource": "task",
+    "section": "={{ $json.sectionId }}",
+    "taskId": "={{ $json.taskId }}"
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa032000-4000-8000-000000000000",
+   "name": "task.move — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    910
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa032100-4000-8000-000000000000",
+   "name": "task.quickAdd",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "auto_reminder": false,
+    "note": "={{ $json.note }}",
+    "operation": "quickAdd",
+    "reminder": "={{ $json.reminder }}",
+    "resource": "task",
+    "text": "={{ $json.text }}"
+   },
+   "position": [
+    540,
+    1040
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa032200-4000-8000-000000000000",
+   "name": "task.quickAdd — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1040
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa032300-4000-8000-000000000000",
+   "name": "project.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "getAll",
+    "resource": "project"
+   },
+   "position": [
+    540,
+    1170
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa032400-4000-8000-000000000000",
+   "name": "project.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa032500-4000-8000-000000000000",
+   "name": "project.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "projectId": "={{ $json.projectId }}",
+    "resource": "project"
+   },
+   "position": [
+    540,
+    1300
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa032600-4000-8000-000000000000",
+   "name": "project.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa032700-4000-8000-000000000000",
+   "name": "project.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "color": "={{ $json.color }}",
+    "is_favorite": false,
+    "name": "={{ $json.name }}",
+    "operation": "create",
+    "resource": "project",
+    "view_style": "={{ $json.viewStyle }}"
+   },
+   "position": [
+    540,
+    1430
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa032800-4000-8000-000000000000",
+   "name": "project.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa032900-4000-8000-000000000000",
+   "name": "project.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "color": "={{ $json.color }}",
+    "is_favorite": false,
+    "name": "={{ $json.name }}",
+    "operation": "update",
+    "projectId": "={{ $json.projectId }}",
+    "resource": "project"
+   },
+   "position": [
+    540,
+    1560
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa033000-4000-8000-000000000000",
+   "name": "project.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1560
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa033100-4000-8000-000000000000",
+   "name": "project.archive",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "archive",
+    "projectId": "={{ $json.projectId }}",
+    "resource": "project"
+   },
+   "position": [
+    540,
+    1690
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa033200-4000-8000-000000000000",
+   "name": "project.archive — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1690
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa033300-4000-8000-000000000000",
+   "name": "project.unarchive",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "unarchive",
+    "projectId": "={{ $json.projectId }}",
+    "resource": "project"
+   },
+   "position": [
+    540,
+    1820
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa033400-4000-8000-000000000000",
+   "name": "project.unarchive — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1820
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa033500-4000-8000-000000000000",
+   "name": "project.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "projectId": "={{ $json.projectId }}",
+    "resource": "project"
+   },
+   "position": [
+    540,
+    1950
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa033600-4000-8000-000000000000",
+   "name": "project.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1950
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa033700-4000-8000-000000000000",
+   "name": "project.getCollaborators",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "getCollaborators",
+    "projectId": "={{ $json.projectId }}",
+    "resource": "project"
+   },
+   "position": [
+    540,
+    2080
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa033800-4000-8000-000000000000",
+   "name": "project.getCollaborators — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2080
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa033900-4000-8000-000000000000",
+   "name": "section.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "getAll",
+    "project_id": "={{ $json.projectId }}",
+    "resource": "section"
+   },
+   "position": [
+    540,
+    2210
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa034000-4000-8000-000000000000",
+   "name": "section.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2210
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa034100-4000-8000-000000000000",
+   "name": "section.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "resource": "section",
+    "sectionId": "={{ $json.sectionId }}"
+   },
+   "position": [
+    540,
+    2340
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa034200-4000-8000-000000000000",
+   "name": "section.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2340
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa034300-4000-8000-000000000000",
+   "name": "section.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "create",
+    "resource": "section",
+    "sectionName": "={{ $json.name }}",
+    "sectionProject": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.projectId }}"
+    }
+   },
+   "position": [
+    540,
+    2470
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa034400-4000-8000-000000000000",
+   "name": "section.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2470
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa034500-4000-8000-000000000000",
+   "name": "section.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "name": "={{ $json.name }}",
+    "operation": "update",
+    "resource": "section",
+    "sectionId": "={{ $json.sectionId }}"
+   },
+   "position": [
+    540,
+    2600
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa034600-4000-8000-000000000000",
+   "name": "section.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2600
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa034700-4000-8000-000000000000",
+   "name": "section.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "resource": "section",
+    "sectionId": "={{ $json.sectionId }}"
+   },
+   "position": [
+    540,
+    2730
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa034800-4000-8000-000000000000",
+   "name": "section.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2730
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa034900-4000-8000-000000000000",
+   "name": "comment.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "getAll",
+    "project_id": "={{ $json.projectId }}",
+    "resource": "comment",
+    "task_id": "={{ $json.taskId }}"
+   },
+   "position": [
+    540,
+    2860
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa035000-4000-8000-000000000000",
+   "name": "comment.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2860
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa035100-4000-8000-000000000000",
+   "name": "comment.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "commentId": "={{ $json.commentId }}",
+    "operation": "get",
+    "resource": "comment"
+   },
+   "position": [
+    540,
+    2990
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa035200-4000-8000-000000000000",
+   "name": "comment.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2990
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa035300-4000-8000-000000000000",
+   "name": "comment.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "commentContent": "={{ $json.content }}",
+    "commentTaskId": "={{ $json.taskId }}",
+    "operation": "create",
+    "resource": "comment"
+   },
+   "position": [
+    540,
+    3120
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa035400-4000-8000-000000000000",
+   "name": "comment.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3120
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa035500-4000-8000-000000000000",
+   "name": "comment.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "commentId": "={{ $json.commentId }}",
+    "content": "={{ $json.content }}",
+    "operation": "update",
+    "resource": "comment"
+   },
+   "position": [
+    540,
+    3250
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa035600-4000-8000-000000000000",
+   "name": "comment.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3250
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa035700-4000-8000-000000000000",
+   "name": "comment.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "commentId": "={{ $json.commentId }}",
+    "operation": "delete",
+    "resource": "comment"
+   },
+   "position": [
+    540,
+    3380
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa035800-4000-8000-000000000000",
+   "name": "comment.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3380
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa035900-4000-8000-000000000000",
+   "name": "label.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "getAll",
+    "resource": "label"
+   },
+   "position": [
+    540,
+    3510
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa036000-4000-8000-000000000000",
+   "name": "label.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3510
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa036100-4000-8000-000000000000",
+   "name": "label.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "labelId": "={{ $json.labelId }}",
+    "operation": "get",
+    "resource": "label"
+   },
+   "position": [
+    540,
+    3640
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa036200-4000-8000-000000000000",
+   "name": "label.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3640
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa036300-4000-8000-000000000000",
+   "name": "label.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "color": "={{ $json.color }}",
+    "is_favorite": false,
+    "labelName": "={{ $json.name }}",
+    "operation": "create",
+    "order": 0,
+    "resource": "label"
+   },
+   "position": [
+    540,
+    3770
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa036400-4000-8000-000000000000",
+   "name": "label.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3770
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa036500-4000-8000-000000000000",
+   "name": "label.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "color": "={{ $json.color }}",
+    "is_favorite": false,
+    "labelId": "={{ $json.labelId }}",
+    "name": "={{ $json.name }}",
+    "operation": "update",
+    "order": 0,
+    "resource": "label"
+   },
+   "position": [
+    540,
+    3900
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa036600-4000-8000-000000000000",
+   "name": "label.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3900
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa036700-4000-8000-000000000000",
+   "name": "label.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "labelId": "={{ $json.labelId }}",
+    "operation": "delete",
+    "resource": "label"
+   },
+   "position": [
+    540,
+    4030
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa036800-4000-8000-000000000000",
+   "name": "label.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    4030
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa036900-4000-8000-000000000000",
+   "name": "reminder.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "getAll",
+    "resource": "reminder"
+   },
+   "position": [
+    540,
+    4160
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa037000-4000-8000-000000000000",
+   "name": "reminder.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    4160
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa037100-4000-8000-000000000000",
+   "name": "reminder.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "dueDateType": "natural_language",
+    "itemId": "={{ $json.taskId }}",
+    "minute_offset": 0,
+    "natural_language_representation": "={{ $json.text }}",
+    "operation": "create",
+    "resource": "reminder",
+    "type": "absolute"
+   },
+   "position": [
+    540,
+    4290
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa037200-4000-8000-000000000000",
+   "name": "reminder.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    4290
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa037300-4000-8000-000000000000",
+   "name": "reminder.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "minute_offset": 0,
+    "operation": "update",
+    "reminderId": "={{ $json.reminderId }}",
+    "resource": "reminder",
+    "string": "={{ $json.text }}",
+    "type": "absolute"
+   },
+   "position": [
+    540,
+    4420
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa037400-4000-8000-000000000000",
+   "name": "reminder.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    4420
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "todoistApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Todoist account"
+    }
+   },
+   "id": "aa037500-4000-8000-000000000000",
+   "name": "reminder.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "reminderId": "={{ $json.reminderId }}",
+    "resource": "reminder"
+   },
+   "position": [
+    540,
+    4550
+   ],
+   "type": "n8n-nodes-base.todoist",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa037600-4000-8000-000000000000",
+   "name": "reminder.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','content','description','name','color','isFavorite','isArchived','isCompleted','checked','projectId','sectionId','parentId','labels','priority','due','deadline','url','posted','taskId','userId','type','minuteOffset','fullName','email','order','viewStyle','collaborators','items','goal','isShared'];\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (typeof r !== 'object' || r === null || Array.isArray(r)) { out.push(item); continue; }\n  const o = {};\n  for (const k of KEYS) if (r[k] !== undefined && r[k] !== null && r[k] !== '') o[k] = r[k];\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    4550
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Productivity"
+ ],
+ "updatedAt": "2026-10-22T12:33:31.092Z"
+}

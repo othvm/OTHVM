@@ -1,0 +1,1055 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "tasklist.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "tasklist.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "tasklist.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "tasklist.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.move",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "task.clear",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.clear": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.move": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.move pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.move pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "task.update pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "task.update pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "tasklist.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "tasklist.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "tasklist.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "tasklist.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "tasklist.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "tasklist.getAll — compact",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "tasklist.getAll — compact": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "tasklist.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "tasklist.update pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "tasklist.update pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T01:11:36.245Z",
+ "id": "xt24a5CjUFV31TaE",
+ "name": "Tasks",
+ "nodes": [
+  {
+   "id": "aa070100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    -272,
+    176
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa070200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "tasklist.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "tasklist.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "tasklist.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "tasklist.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.move"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "task.clear"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      }
+     ]
+    }
+   },
+   "position": [
+    112,
+    16
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa070300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    1088,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa070400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"task.create, task.delete, task.get, task.getAll, task.update, tasklist.getAll, tasklist.create, tasklist.update, tasklist.delete, task.move, task.clear\" } }];"
+   },
+   "position": [
+    800,
+    144
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa070500-4000-8000-000000000000",
+   "name": "task.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "dueDate": "={{ $json.dueDate || undefined }}",
+     "notes": "={{ $json.notes || undefined }}"
+    },
+    "task": "MTQyNTY1OTgzNDE4NTU2NTQwNzU6MDow",
+    "title": "={{ $json.title }}"
+   },
+   "position": [
+    544,
+    0
+   ],
+   "type": "n8n-nodes-base.googleTasks",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa070600-4000-8000-000000000000",
+   "name": "task.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"title\",\"notes\",\"status\",\"due\",\"completed\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa070700-4000-8000-000000000000",
+   "name": "task.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "task": "MTQyNTY1OTgzNDE4NTU2NTQwNzU6MDow",
+    "taskId": "={{ $json.taskId }}"
+   },
+   "position": [
+    544,
+    144
+   ],
+   "type": "n8n-nodes-base.googleTasks",
+   "typeVersion": 1
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa070800-4000-8000-000000000000",
+   "name": "task.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "task": "MTQyNTY1OTgzNDE4NTU2NTQwNzU6MDow",
+    "taskId": "={{ $json.taskId }}"
+   },
+   "position": [
+    544,
+    272
+   ],
+   "type": "n8n-nodes-base.googleTasks",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa070900-4000-8000-000000000000",
+   "name": "task.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"title\",\"notes\",\"status\",\"due\",\"completed\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    272
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa071000-4000-8000-000000000000",
+   "name": "task.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {},
+    "limit": "={{ $json.limit ? Number($json.limit) : 20 }}",
+    "operation": "getAll",
+    "task": "MTQyNTY1OTgzNDE4NTU2NTQwNzU6MDow"
+   },
+   "position": [
+    544,
+    400
+   ],
+   "type": "n8n-nodes-base.googleTasks",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa071100-4000-8000-000000000000",
+   "name": "task.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"title\",\"notes\",\"status\",\"due\",\"completed\",\"webViewLink\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    400
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa071200-4000-8000-000000000000",
+   "name": "task.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "update",
+    "task": "MTQyNTY1OTgzNDE4NTU2NTQwNzU6MDow",
+    "taskId": "={{ $json.taskId }}",
+    "updateFields": {
+     "dueDate": "={{ $json.dueDate || undefined }}",
+     "notes": "={{ $json.notes || undefined }}",
+     "status": "={{ $json.status || undefined }}",
+     "title": "={{ $json.title || undefined }}"
+    }
+   },
+   "position": [
+    544,
+    528
+   ],
+   "type": "n8n-nodes-base.googleTasks",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa071300-4000-8000-000000000000",
+   "name": "task.update pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"title\",\"notes\",\"status\",\"due\",\"completed\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    528
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa071400-4000-8000-000000000000",
+   "name": "tasklist.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "nodeCredentialType": "googleTasksOAuth2Api",
+    "options": {},
+    "url": "https://tasks.googleapis.com/tasks/v1/users/@me/lists?maxResults=100"
+   },
+   "position": [
+    544,
+    656
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa071500-4000-8000-000000000000",
+   "name": "tasklist.getAll — compact",
+   "parameters": {
+    "jsCode": "const j = $json || {};\nif (j.error) return [{ json: j }];\nreturn ((j.items) || []).map((t) => ({ json: { id: t.id, title: t.title } }));"
+   },
+   "position": [
+    800,
+    656
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa071600-4000-8000-000000000000",
+   "name": "tasklist.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ title: $json.tasklistTitle }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googleTasksOAuth2Api",
+    "options": {},
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://tasks.googleapis.com/tasks/v1/users/@me/lists"
+   },
+   "position": [
+    544,
+    784
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa071700-4000-8000-000000000000",
+   "name": "tasklist.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"title\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    784
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa071800-4000-8000-000000000000",
+   "name": "tasklist.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ id: $json.tasklistId, title: $json.tasklistTitle }) }}",
+    "method": "PUT",
+    "nodeCredentialType": "googleTasksOAuth2Api",
+    "options": {},
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://tasks.googleapis.com/tasks/v1/users/@me/lists/{{ $json.tasklistId }}"
+   },
+   "position": [
+    544,
+    912
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa071900-4000-8000-000000000000",
+   "name": "tasklist.update pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"title\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    912
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa072000-4000-8000-000000000000",
+   "name": "tasklist.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "DELETE",
+    "nodeCredentialType": "googleTasksOAuth2Api",
+    "options": {},
+    "url": "=https://tasks.googleapis.com/tasks/v1/users/@me/lists/{{ $json.tasklistId }}"
+   },
+   "position": [
+    544,
+    1040
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa072100-4000-8000-000000000000",
+   "name": "task.move",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "POST",
+    "nodeCredentialType": "googleTasksOAuth2Api",
+    "options": {},
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "destinationTasklist",
+       "value": "={{ $json.destinationTasklistId }}"
+      }
+     ]
+    },
+    "sendQuery": true,
+    "url": "=https://tasks.googleapis.com/tasks/v1/lists/{{ $json.tasklistId }}/tasks/{{ $json.taskId }}/move"
+   },
+   "position": [
+    544,
+    1184
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa072200-4000-8000-000000000000",
+   "name": "task.move pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"title\",\"parent\",\"position\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1184
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa072300-4000-8000-000000000000",
+   "name": "task.clear",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "POST",
+    "nodeCredentialType": "googleTasksOAuth2Api",
+    "options": {},
+    "url": "=https://tasks.googleapis.com/tasks/v1/lists/{{ $json.tasklistId }}/clear"
+   },
+   "position": [
+    544,
+    1312
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "99395291-21d2-4338-9d81-c2a0571fc8fb",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];"
+   },
+   "position": [
+    -80,
+    176
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-24T23:44:45.840Z"
+}

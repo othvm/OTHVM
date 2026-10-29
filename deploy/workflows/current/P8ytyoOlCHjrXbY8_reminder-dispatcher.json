@@ -1,0 +1,81 @@
+{
+ "active": true,
+ "connections": {
+  "Every Minute": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Dispatch Due",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-24T14:58:54.851Z",
+ "id": "P8ytyoOlCHjrXbY8",
+ "name": "Reminder Dispatcher",
+ "nodes": [
+  {
+   "id": "reminder-schedule-0001",
+   "name": "Every Minute",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "expression": "* * * * *",
+       "field": "cronExpression"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "id": "reminder-http-0002",
+   "name": "Dispatch Due",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "{\"action\":\"due\"}",
+    "method": "POST",
+    "options": {
+     "timeout": 30000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/reminders"
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "saveDataErrorExecution": "all",
+  "saveDataSuccessExecution": "none",
+  "saveExecutionProgress": false,
+  "saveManualExecutions": false,
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-24T15:07:04.933Z"
+}

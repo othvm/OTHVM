@@ -1,0 +1,68 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Prayer Times",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T00:48:00.977Z",
+ "id": "QKWruJYfuqtKt8JC",
+ "name": "Prayer Times",
+ "nodes": [
+  {
+   "id": "aa070001-4000-8000-0000-000000000001",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "date",
+       "type": "string"
+      },
+      {
+       "name": "days",
+       "type": "number"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa070001-4000-8000-0000-000000000002",
+   "name": "Prayer Times",
+   "parameters": {
+    "jsCode": "// Prayer times - Aladhan API, method 5 (Egyptian General Authority). English output.\nconst TZ = 'Africa/Cairo';\nconst LAT = 30.584138;\nconst LON = 31.495866;\nconst METHOD = 5;\nconst PLACE = 'Zagazig, Egypt';\nconst PRAYERS = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];\n\nconst input = $input.first().json || {};\nconst now = new Date();\nconst cairoToday = new Intl.DateTimeFormat('en-CA', {\n  timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit',\n}).format(now);\nconst nowHM = new Intl.DateTimeFormat('en-GB', {\n  timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23',\n}).format(now);\nconst toMin = (hm) => {\n  const parts = String(hm).split(':');\n  return Number(parts[0]) * 60 + Number(parts[1] || 0);\n};\nconst nowM = toMin(nowHM);\nconst fmt12 = (hm) => {\n  const parts = String(hm).split(':');\n  const hour = Number(parts[0]);\n  const minute = Number(parts[1] || 0);\n  const suffix = hour < 12 ? 'AM' : 'PM';\n  const display = ((hour + 11) % 12) + 1;\n  return display + ':' + String(minute).padStart(2, '0') + ' ' + suffix;\n};\nconst addDays = (iso, amount) => {\n  const date = new Date(iso + 'T12:00:00Z');\n  date.setUTCDate(date.getUTCDate() + amount);\n  return new Intl.DateTimeFormat('en-CA', {\n    timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit',\n  }).format(date);\n};\n\nlet base = String(input.date || '').trim();\nif (!/^\\d{4}-\\d{2}-\\d{2}$/.test(base)) base = cairoToday;\nlet days = Number(input.days);\nif (!Number.isFinite(days)) days = 1;\ndays = Math.max(1, Math.min(7, Math.round(days)));\n\nconst dates = [];\nfor (let index = 0; index < days; index += 1) dates.push(addDays(base, index));\n\nconst httpRequest = this.helpers.httpRequest.bind(this.helpers);\nconst monthCache = {};\nconst clean = (value) => String(value || '').trim().split(' ')[0];\n\nasync function monthTimings(yearMonth) {\n  if (monthCache[yearMonth]) return monthCache[yearMonth];\n  const [year, month] = yearMonth.split('-');\n  const response = await httpRequest({\n    method: 'GET',\n    url: 'https://api.aladhan.com/v1/calendar?latitude=' + LAT + '&longitude=' + LON\n      + '&method=' + METHOD + '&month=' + Number(month) + '&year=' + Number(year),\n    json: true,\n    timeout: 20000,\n  });\n  const rows = (response && response.data) || [];\n  const map = {};\n  for (const row of rows) {\n    const gregorian = row && row.date && row.date.gregorian ? row.date.gregorian.date : null;\n    if (!gregorian) continue;\n    const iso = gregorian.split('-').reverse().join('-');\n    const timings = row.timings || {};\n    const times = {};\n    for (const prayer of PRAYERS) times[prayer] = clean(timings[prayer]);\n    const rawHijri = row.date && row.date.hijri;\n    const hijri = rawHijri ? {\n      day: rawHijri.day,\n      month: rawHijri.month && rawHijri.month.en,\n      year: rawHijri.year,\n      designation: rawHijri.designation && rawHijri.designation.abbreviated,\n    } : null;\n    map[iso] = { times: times, hijri: hijri };\n  }\n  monthCache[yearMonth] = map;\n  return map;\n}\n\ntry {\n  const items = [];\n  for (const iso of dates) {\n    const map = await monthTimings(iso.slice(0, 7));\n    const entry = map[iso];\n    if (!entry || !entry.times || !entry.times.Fajr) {\n      return [{ json: { ok: false, error: 'Could not fetch prayer times for ' + iso + ' from Aladhan.' } }];\n    }\n    const times12 = {};\n    for (const prayer of PRAYERS) times12[prayer] = fmt12(entry.times[prayer]);\n    const item = {\n      date: iso,\n      location: PLACE,\n      method: 'Egyptian General Authority (5)',\n      hijri: entry.hijri,\n      times: entry.times,\n      times_12h: times12,\n    };\n    if (iso === cairoToday) {\n      let next = null;\n      for (const prayer of PRAYERS) {\n        const prayerMinute = toMin(entry.times[prayer]);\n        if (prayerMinute > nowM) {\n          next = {\n            name: prayer,\n            at: entry.times[prayer],\n            at_12h: fmt12(entry.times[prayer]),\n            in_minutes: prayerMinute - nowM,\n          };\n          break;\n        }\n      }\n      if (!next) {\n        const tomorrow = addDays(cairoToday, 1);\n        const tomorrowMap = await monthTimings(tomorrow.slice(0, 7));\n        const tomorrowEntry = tomorrowMap[tomorrow];\n        if (tomorrowEntry && tomorrowEntry.times && tomorrowEntry.times.Fajr) {\n          next = {\n            name: 'Fajr',\n            day: 'tomorrow',\n            at: tomorrowEntry.times.Fajr,\n            at_12h: fmt12(tomorrowEntry.times.Fajr),\n            in_minutes: (24 * 60 - nowM) + toMin(tomorrowEntry.times.Fajr),\n          };\n        }\n      }\n      item.is_today = true;\n      item.now_cairo = nowHM;\n      item.next_prayer = next || { name: null, note: 'The next prayer is Fajr tomorrow.' };\n    }\n    items.push({ json: { ok: true, ...item } });\n  }\n  return items;\n} catch (error) {\n  return [{ json: { ok: false, error: 'Could not reach Aladhan: ' + (error && error.message ? error.message : String(error)) } }];\n}\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Lifestyle"
+ ],
+ "updatedAt": "2026-10-22T12:33:31.748Z"
+}

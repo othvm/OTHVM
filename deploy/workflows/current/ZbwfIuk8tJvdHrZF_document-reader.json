@@ -1,0 +1,828 @@
+{
+ "active": true,
+ "connections": {
+  "Batch Update Slides": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Slides Result",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Build Sheet Batch": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Format Sheet",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Build Slides Batch": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Batch Update Slides",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Create Presentation": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Build Slides Batch",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Create Spreadsheet": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Build Sheet Batch",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Download Export": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Write Export File",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Ensure Export Dir": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Download Export",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Export Result": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Format Sheet": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Write Values",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "PDF via MCP": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Prepare Export": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Ensure Export Dir",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Prepare Sheet": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Create Spreadsheet",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Prepare Slides": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Create Presentation",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "PDF via MCP",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Prepare Slides",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Prepare Sheet",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Prepare Export",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Sheet Result": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Slides Result": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Write Export File": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Export Result",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Write Values": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Sheet Result",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-19T22:46:05.345Z",
+ "id": "ZbwfIuk8tJvdHrZF",
+ "name": "Document Reader",
+ "nodes": [
+  {
+   "id": "d0c00001-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    -260,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "d0c00002-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "unknown"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "create_pdf"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "create_pdf"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "create_slides"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "create_slides"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "create_sheet"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "create_sheet"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "export"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "export"
+      }
+     ]
+    }
+   },
+   "position": [
+    -40,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "d0c00003-4000-8000-000000000000",
+   "name": "PDF via MCP",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({ action: 'create_pdf' }, $json)) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 180000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/doc"
+   },
+   "position": [
+    230,
+    -300
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "d0c00004-4000-8000-000000000000",
+   "name": "Prepare Slides",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst raw = $input.first().json || {};\nfunction parse(v, fallback) {\n  if (v === undefined || v === null || v === '') return fallback;\n  if (typeof v === 'string') { try { return JSON.parse(v); } catch (e) { return fallback; } }\n  return v;\n}\nconst title = String(raw.title || 'Presentation').trim() || 'Presentation';\nconst subtitle = String(raw.subtitle || '').trim().slice(0, 300);\nlet slides = parse(raw.slides, []);\nif (!Array.isArray(slides)) {\n  if (slides && typeof slides === 'object') {\n    slides = Object.entries(slides).map(([k, v]) => ({ title: k, bullets: Array.isArray(v) ? v : [String(v)] }));\n  } else slides = [];\n}\nif (!slides.length) throw new Error('slides مطلوبة: مصفوفة JSON من {title, bullets:[...]} أو {title, body:\"...\"}');\nslides = slides.slice(0, 40).map((s, i) => {\n  if (typeof s === 'string') return { title: s.slice(0, 300), bullets: [], body: '' };\n  const src = s && typeof s === 'object' ? s : {};\n  let bullets = Array.isArray(src.bullets) ? src.bullets : (Array.isArray(src.points) ? src.points : []);\n  bullets = bullets.slice(0, 15).map((b) => String(b).slice(0, 800));\n  let body = (!bullets.length && src.body !== undefined && src.body !== null) ? String(src.body) : '';\n  return { title: String(src.title || ('Slide ' + (i + 1))).slice(0, 300), bullets, body: body.slice(0, 5000) };\n});\nreturn [{ json: { title: title.slice(0, 300), subtitle, slides, count: slides.length } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    230,
+    -100
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSlidesOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Slides account"
+    }
+   },
+   "id": "d0c00005-4000-8000-000000000000",
+   "name": "Create Presentation",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ title: $json.title }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googleSlidesOAuth2Api",
+    "options": {
+     "timeout": 90000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://slides.googleapis.com/v1/presentations"
+   },
+   "position": [
+    470,
+    -100
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "d0c00006-4000-8000-000000000000",
+   "name": "Build Slides Batch",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst prep = $('Prepare Slides').first().json;\nconst pres = $input.first().json || {};\nif (!pres.presentationId) return [{ json: { ok: false, error: 'فشل إنشاء العرض التقديمي: ' + _err(pres.error || pres) } }];\nconst sid = pres.presentationId;\nconst url = pres.presentationUrl || ('https://docs.google.com/presentation/d/' + sid + '/edit');\nconst requests = [];\nfunction arabic(t) { return /[\\u0600-\\u06FF]/.test(String(t || '')); }\nconst first = Array.isArray(pres.slides) && pres.slides.length ? pres.slides[0] : null;\nlet titleId = null, subId = null;\nif (first && Array.isArray(first.pageElements)) {\n  for (const el of first.pageElements) {\n    const ph = el && el.shape && el.shape.placeholder;\n    if (!ph) continue;\n    if (!titleId && (ph.type === 'TITLE' || ph.type === 'CENTERED_TITLE')) titleId = el.objectId;\n    if (!subId && ph.type === 'SUBTITLE') subId = el.objectId;\n  }\n}\nif (titleId) {\n  requests.push({ insertText: { objectId: titleId, text: prep.title, insertionIndex: 0 } });\n  requests.push({ updateTextStyle: { objectId: titleId, textRange: { type: 'ALL' }, style: { bold: true, fontSize: { magnitude: 40, unit: 'PT' }, foregroundColor: { opaqueColor: { rgbColor: { red: 0.06, green: 0.09, blue: 0.16 } } } }, fields: 'bold,fontSize,foregroundColor' } });\n  requests.push({ updateParagraphStyle: { objectId: titleId, textRange: { type: 'ALL' }, style: { alignment: 'CENTER' }, fields: 'alignment' } });\n}\nif (subId && prep.subtitle) {\n  requests.push({ insertText: { objectId: subId, text: prep.subtitle, insertionIndex: 0 } });\n  requests.push({ updateTextStyle: { objectId: subId, textRange: { type: 'ALL' }, style: { fontSize: { magnitude: 20, unit: 'PT' }, foregroundColor: { opaqueColor: { rgbColor: { red: 0.29, green: 0.36, blue: 0.47 } } } }, fields: 'fontSize,foregroundColor' } });\n  requests.push({ updateParagraphStyle: { objectId: subId, textRange: { type: 'ALL' }, style: { alignment: 'CENTER' }, fields: 'alignment' } });\n}\nprep.slides.forEach((s, i) => {\n  const tid = 'dtitle_' + i;\n  const bid = 'dbody_' + i;\n  requests.push({ createSlide: { slideLayoutReference: { predefinedLayout: 'TITLE_AND_BODY' }, placeholderIdMappings: [{ layoutPlaceholder: { type: 'TITLE', index: 0 }, objectId: tid }, { layoutPlaceholder: { type: 'BODY', index: 0 }, objectId: bid }] } });\n  requests.push({ insertText: { objectId: tid, text: s.title, insertionIndex: 0 } });\n  requests.push({ updateTextStyle: { objectId: tid, textRange: { type: 'ALL' }, style: { bold: true, fontSize: { magnitude: 28, unit: 'PT' }, foregroundColor: { opaqueColor: { rgbColor: { red: 0.11, green: 0.23, blue: 0.54 } } } }, fields: 'bold,fontSize,foregroundColor' } });\n  if (arabic(s.title)) requests.push({ updateParagraphStyle: { objectId: tid, textRange: { type: 'ALL' }, style: { alignment: 'START', direction: 'RIGHT_TO_LEFT' }, fields: 'alignment,direction' } });\n  const txt = s.body || s.bullets.join('\\n');\n  if (txt) {\n    requests.push({ insertText: { objectId: bid, text: txt, insertionIndex: 0 } });\n    if (!s.body && s.bullets.length) requests.push({ createParagraphBullets: { objectId: bid, textRange: { type: 'ALL' }, bulletPreset: 'BULLET_DISC_CIRCLE_SQUARE' } });\n    requests.push({ updateTextStyle: { objectId: bid, textRange: { type: 'ALL' }, style: { fontSize: { magnitude: 18, unit: 'PT' } }, fields: 'fontSize' } });\n    if (arabic(txt)) requests.push({ updateParagraphStyle: { objectId: bid, textRange: { type: 'ALL' }, style: { alignment: 'START', direction: 'RIGHT_TO_LEFT' }, fields: 'alignment,direction' } });\n  }\n});\nreturn [{ json: { ok: true, presentationId: sid, presentationUrl: url, title: prep.title, requests, slideCount: prep.count + 1 } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    710,
+    -100
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSlidesOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Slides account"
+    }
+   },
+   "id": "d0c00007-4000-8000-000000000000",
+   "name": "Batch Update Slides",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ requests: $json.requests }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googleSlidesOAuth2Api",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://slides.googleapis.com/v1/presentations/{{ $json.presentationId }}:batchUpdate"
+   },
+   "position": [
+    950,
+    -100
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "d0c00008-4000-8000-000000000000",
+   "name": "Slides Result",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst prep = $('Prepare Slides').first().json;\nconst build = $('Build Slides Batch').first().json || {};\nconst resp = $input.first().json || {};\nconst err = resp.error || (resp.message && !resp.replies ? resp.message : null);\nif (err) return [{ json: { ok: false, error: 'فشل تنسيق الشرائح: ' + _err(err), presentation_id: build.presentationId || null, presentation_url: build.presentationUrl || null } }];\nreturn [{ json: { ok: true, presentation_id: build.presentationId, presentation_url: build.presentationUrl, title: prep.title, slides: build.slideCount, requests: (build.requests || []).length } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1190,
+    -100
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "d0c00009-4000-8000-000000000000",
+   "name": "Prepare Sheet",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst raw = $input.first().json || {};\nfunction parse(v, fallback) {\n  if (v === undefined || v === null || v === '') return fallback;\n  if (typeof v === 'string') { try { return JSON.parse(v); } catch (e) { return fallback; } }\n  return v;\n}\nfunction bool(v, dflt) {\n  if (v === undefined || v === null || v === '') return dflt;\n  if (typeof v === 'boolean') return v;\n  return ['true', '1', 'yes', 'نعم'].includes(String(v).toLowerCase());\n}\nconst title = String(raw.title || 'Spreadsheet').trim() || 'Spreadsheet';\nconst sheetName = String(raw.sheet_name || raw.sheetName || 'Sheet1').trim() || 'Sheet1';\nlet headers = parse(raw.headers, []);\nif (typeof headers === 'string') headers = headers.split(',').map((h) => h.trim()).filter(Boolean);\nif (!Array.isArray(headers)) headers = [];\nheaders = headers.map((h) => String(h).slice(0, 500));\nlet rows = parse(raw.rows !== undefined ? raw.rows : raw.data, []);\nif (!Array.isArray(rows)) rows = rows && typeof rows === 'object' ? [rows] : [];\nif (!rows.length) throw new Error('rows مطلوبة: مصفوفة JSON من صفوف (مصفوفات أو كائنات {عمود: قيمة})');\nif (rows.length > 10000) throw new Error('عدد الصفوف كبير جدًا (الحد 10000)');\nconst first = rows[0];\nif (first && typeof first === 'object' && !Array.isArray(first)) {\n  if (!headers.length) headers = Object.keys(first);\n  rows = rows.map((r) => headers.map((h) => (r && r[h] !== undefined && r[h] !== null) ? r[h] : ''));\n} else {\n  rows = rows.map((r) => Array.isArray(r) ? r.map((v) => v === null || v === undefined ? '' : v) : [r]);\n}\nconst values = headers.length ? [headers].concat(rows) : rows;\nconst colCount = Math.max(...values.map((r) => r.length), 1);\nif (colCount > 100) throw new Error('عدد الأعمدة كبير جدًا (الحد 100)');\nif (JSON.stringify(values).length > 5000000) throw new Error('البيانات كبيرة جدًا (الحد 5MB)');\nreturn [{ json: { title: title.slice(0, 200), sheetName: sheetName.slice(0, 100), headers, rows, values, freezeHeader: bool(raw.freeze_header, true), boldHeader: bool(raw.bold_header, true), rowCount: rows.length, colCount } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    230,
+    100
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "d0c00010-4000-8000-000000000000",
+   "name": "Create Spreadsheet",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ properties: { title: $json.title } }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googleSheetsOAuth2Api",
+    "options": {
+     "timeout": 90000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://sheets.googleapis.com/v4/spreadsheets"
+   },
+   "position": [
+    470,
+    100
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "d0c00011-4000-8000-000000000000",
+   "name": "Build Sheet Batch",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst prep = $('Prepare Sheet').first().json;\nconst res = $input.first().json || {};\nif (!res.spreadsheetId) return [{ json: { ok: false, error: 'فشل إنشاء جدول Google: ' + _err(res.error || res) } }];\nconst sid = res.spreadsheetId;\nconst url = res.spreadsheetUrl || ('https://docs.google.com/spreadsheets/d/' + sid + '/edit');\nconst def = (Array.isArray(res.sheets) && res.sheets[0] && res.sheets[0].properties) || {};\nconst sheetId = def.sheetId;\nconst finalName = prep.sheetName || def.title || 'Sheet1';\nconst requests = [];\nrequests.push({ updateSheetProperties: { properties: { sheetId, title: finalName, gridProperties: { frozenRowCount: prep.freezeHeader && prep.headers.length ? 1 : 0 } }, fields: 'title,gridProperties.frozenRowCount' } });\nif (prep.boldHeader && prep.headers.length) {\n  requests.push({ repeatCell: { range: { sheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: prep.headers.length }, cell: { userEnteredFormat: { textFormat: { bold: true }, backgroundColor: { red: 0.93, green: 0.95, blue: 1 } } }, fields: 'userEnteredFormat(textFormat,backgroundColor)' } });\n}\nrequests.push({ autoResizeDimensions: { dimensions: { sheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: prep.colCount } } });\nconst range = \"'\" + finalName.replace(/'/g, \"''\") + \"'!A1\";\nconst valuesUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sid + '/values/' + encodeURIComponent(range) + '?valueInputOption=USER_ENTERED';\nreturn [{ json: { ok: true, spreadsheetId: sid, spreadsheetUrl: url, sheetId, sheetName: finalName, range, values: prep.values, rows: prep.rowCount, headers: prep.headers, url: valuesUrl, requests } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    710,
+    100
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "d0c00012-4000-8000-000000000000",
+   "name": "Format Sheet",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ requests: $json.requests }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googleSheetsOAuth2Api",
+    "options": {
+     "timeout": 90000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://sheets.googleapis.com/v4/spreadsheets/{{ $json.spreadsheetId }}:batchUpdate"
+   },
+   "position": [
+    950,
+    100
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "d0c00013-4000-8000-000000000000",
+   "name": "Write Values",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ range: $('Build Sheet Batch').first().json.range, majorDimension: 'ROWS', values: $('Build Sheet Batch').first().json.values }) }}",
+    "method": "PUT",
+    "nodeCredentialType": "googleSheetsOAuth2Api",
+    "options": {
+     "timeout": 90000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "={{ $('Build Sheet Batch').first().json.url }}"
+   },
+   "position": [
+    1190,
+    100
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "d0c00014-4000-8000-000000000000",
+   "name": "Sheet Result",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst prep = $('Build Sheet Batch').first().json || {};\nconst resp = $input.first().json || {};\nconst err = resp.error || (resp.message && !resp.updatedRange && !resp.spreadsheetId ? resp.message : null);\nif (err) return [{ json: { ok: false, error: 'فشل كتابة البيانات في الجدول: ' + _err(err), spreadsheet_id: prep.spreadsheetId || null, spreadsheet_url: prep.spreadsheetUrl || null } }];\nreturn [{ json: { ok: true, spreadsheet_id: prep.spreadsheetId, spreadsheet_url: prep.spreadsheetUrl, sheet_name: prep.sheetName, rows_written: prep.rows, columns: prep.values && prep.values.length ? prefMax(prep.values) : 0, range: resp.updatedRange || prep.range } }];\nfunction prefMax(values) { let m = 1; for (const r of values) m = Math.max(m, Array.isArray(r) ? r.length : 1); return m; }",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1430,
+    100
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "d0c00015-4000-8000-000000000000",
+   "name": "Prepare Export",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst raw = $input.first().json || {};\nconst fileId = String(raw.file_id || raw.fileId || '').trim();\nif (!/^[A-Za-z0-9_-]{10,}$/.test(fileId)) throw new Error('file_id مطلوب (معرّف ملف Google Drive)');\nconst fmt = String(raw.export_format || raw.format || 'pdf').toLowerCase().replace(/^\\./, '');\nconst MAP = {\n  pdf: { mime: 'application/pdf', ext: '.pdf' },\n  docx: { mime: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', ext: '.docx' },\n  xlsx: { mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', ext: '.xlsx' },\n  pptx: { mime: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', ext: '.pptx' },\n  csv: { mime: 'text/csv', ext: '.csv' },\n  txt: { mime: 'text/plain', ext: '.txt' }\n};\nconst m = MAP[fmt];\nif (!m) throw new Error('صيغة غير مدعومة: ' + fmt + ' (pdf | docx | xlsx | pptx | csv | txt)');\nlet name = String(raw.file_name || raw.filename || ('export_' + new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-'))).trim();\nname = name.replace(/[<>:\"/\\\\|?*\\x00-\\x1f]/g, '-').slice(0, 120).replace(/[ ._-]+$/, '') || 'export';\nif (!name.toLowerCase().endsWith(m.ext)) name += m.ext;\nconst overwrite = raw.overwrite === true || String(raw.overwrite).toLowerCase() === 'true';\nif (!overwrite) name = name.slice(0, -m.ext.length) + '_' + new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-') + m.ext;\nconst outputDir = String(raw.output_dir || 'REPLACE_WITH_OTHVM_ROOT\\\\exports').trim();\nconst sep = /[\\\\/]$/.test(outputDir) ? '' : '\\\\';\nconst filePath = outputDir + sep + name;\nconst url = 'https://www.googleapis.com/drive/v3/files/' + encodeURIComponent(fileId) + '/export?mimeType=' + encodeURIComponent(m.mime);\nreturn [{ json: { fileId, format: fmt, mime: m.mime, fileName: name, filePath, outputDir, url } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    230,
+    300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "d0c00016-4000-8000-000000000000",
+   "name": "Ensure Export Dir",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify({ action: 'prepare_export_dir', output_dir: $json.outputDir }) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 30000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/doc"
+   },
+   "position": [
+    470,
+    300
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleDriveOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Drive account"
+    }
+   },
+   "id": "d0c00017-4000-8000-000000000000",
+   "name": "Download Export",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "GET",
+    "nodeCredentialType": "googleDriveOAuth2Api",
+    "options": {
+     "redirect": {
+      "redirect": {
+       "followRedirects": true
+      }
+     },
+     "response": {
+      "response": {
+       "responseFormat": "file"
+      }
+     },
+     "timeout": 180000
+    },
+    "url": "={{ $('Prepare Export').first().json.url }}"
+   },
+   "position": [
+    710,
+    300
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "d0c00018-4000-8000-000000000000",
+   "name": "Write Export File",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "dataPropertyName": "data",
+    "fileName": "={{ $('Prepare Export').first().json.filePath }}",
+    "operation": "write",
+    "options": {}
+   },
+   "position": [
+    950,
+    300
+   ],
+   "type": "n8n-nodes-base.readWriteFile",
+   "typeVersion": 1
+  },
+  {
+   "id": "d0c00019-4000-8000-000000000000",
+   "name": "Export Result",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst prep = $('Prepare Export').first().json || {};\nconst dl = $('Download Export').first().json || {};\nconst j = $input.first().json || {};\nconst err = dl.error || j.error;\nif (err) return [{ json: { ok: false, error: 'فشل تصدير الملف من Drive: ' + _err(err), file_id: prep.fileId || null, file_path: prep.filePath || null } }];\nreturn [{ json: { ok: true, file_path: prep.filePath, file_name: prep.fileName, format: prep.format, mime_type: prep.mime, file_id: prep.fileId } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1190,
+    300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "d0c00020-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String($json.operation || '') + '\". العمليات المتاحة: create_pdf, create_slides, create_sheet, export' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    230,
+    500
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "d0c00021-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "function _err(e) {\n  if (!e) return 'unknown error';\n  if (typeof e === 'string') return e;\n  if (typeof e === 'object') return String(e.message || e.description || e.error || JSON.stringify(e)).slice(0, 900);\n  return String(e).slice(0, 900);\n}\nconst out = [];\nfor (const item of $input.all().slice(0, 3)) {\n  const j = item.json || {};\n  if (item.error) { out.push({ json: { ok: false, error: _err(item.error).slice(0, 1200) } }); continue; }\n  if (j.ok === false) {\n    const o = { ok: false, error: _err(j.error).slice(0, 1200) };\n    for (const k of ['presentation_id', 'presentation_url', 'spreadsheet_id', 'spreadsheet_url', 'file_path', 'file_id', 'needs_permission', 'current_mode']) {\n      if (j[k] !== undefined && j[k] !== null) o[k] = j[k];\n    }\n    out.push({ json: o });\n    continue;\n  }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 4000 ? v.slice(0, 4000) + '…' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 6000 ? s.slice(0, 6000) + '…' : v; }\n    else o[k] = v;\n  }\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: false, error: 'no output from document workflow' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1430,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "92e57fe5-0a18-4050-ab99-3572c150b82a",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    -80,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "System"
+ ],
+ "updatedAt": "2026-10-24T21:31:29.600Z"
+}

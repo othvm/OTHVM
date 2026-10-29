@@ -1,0 +1,765 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "start — prep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "update — prep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "done — prep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "error — prep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "check — prep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "check": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "check — verdict",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "check — prep": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "check",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "check — verdict": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "done": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "done — pause",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "done — clear": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "done — del": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "done — clear",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "done — pause": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "done — del",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "done — prep": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "done",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "error": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "error — clearStore",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "error — clearStore": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "error — prep": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "error",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "start": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "start — store",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "start — prep": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "start",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "start — store": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "update — store",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "update — prep": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "update",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "update — store": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T15:12:18.959Z",
+ "id": "aIUkpUpj9EYKYvuI",
+ "name": "Progress Status",
+ "nodes": [
+  {
+   "id": "aa020100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa020200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "start"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "start"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "done"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "done"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "error"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "error"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "check"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "check"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa020300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa020400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"start, update, done, error, check\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    800
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa020500-4000-8000-000000000000",
+   "name": "start — prep",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst chat = String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID');\nconst sd = $getWorkflowStaticData('global');\nconst cl = (s, n) => { let t = String(s == null ? '' : s).split('\\n').join(' ').split('\\r').join(' ').trim(); if (t.length > n) { t = t.slice(0, n); const q = t.lastIndexOf(' '); if (q > Math.floor(n * 0.55)) t = t.slice(0, q); } return t; };\nconst S1 = cl(j.step, 60);\nconst S2 = cl(j.tool, 30);\nconst TAR = {\"gmail\":\"جيميل\",\"outlook\":\"أوتلوك\",\"microsoft_mail\":\"أوتلوك\",\"drive\":\"درايف\",\"onedrive\":\"ون درايف\",\"microsoft_drive\":\"ون درايف\",\"calendar\":\"جوجل كاليندر\",\"microsoft_calendar\":\"تقويم مايكروسوفت\",\"tasks\":\"المهام\",\"todo\":\"مهام مايكروسوفت\",\"microsoft_todo\":\"مهام مايكروسوفت\",\"docs\":\"دوكس\",\"sheets\":\"شيتس\",\"slides\":\"سلايدز\",\"contacts\":\"جهات الاتصال\",\"youtube\":\"يوتيوب\",\"books\":\"كتب جوجل\",\"translate\":\"الترجمة\",\"onenote\":\"ون نوت\",\"microsoft_onenote\":\"ون نوت\",\"telegram\":\"تلجرام\",\"memory\":\"الذاكرة\",\"web\":\"النت\",\"weather\":\"الطقس\",\"prayer_times\":\"مواعيد الصلاة\",\"daily_brief\":\"البريف اليومي\",\"notion\":\"نوشن\",\"todoist\":\"تو دوست\",\"trello\":\"تريلو\",\"airtable\":\"إيرتيبل\",\"slack\":\"سلاك\",\"discord\":\"ديسكورد\",\"github\":\"جيت هاب\",\"linear\":\"لينير\",\"wikipedia\":\"ويكيبيديا\",\"nasa\":\"ناسا\",\"wordpress\":\"ووردبريس\",\"stripe\":\"سترايب\",\"paypal\":\"باي بال\",\"canva\":\"كانفا\",\"voice_transcribe\":\"الصوت\",\"live_status\":\"الحالة\"};\nconst tar = TAR[String(j.tool || '').toLowerCase().trim()] || S2;\nconst has = (re) => re.test(S1);\nlet state = '⚙️ جاري التنفيذ...';\nlet base = 0;\nif (has(/ذاكرة|خزّن|سجّل|تذكر/)) { state = '💾 بيحدّث الذاكرة...'; base = 70; }\nelse if (has(/فكر|حلل|فهم|خطط/)) { state = '🧠 بيفكر...'; base = 15; }\nelse if (has(/بحث|دور|لاقي|جمع|قرأ|قرا|جيب|راجع/)) { state = tar ? ('🔍 بيبحث في ' + tar + '...') : '🔍 بيبحث...'; base = 35; }\nelse if (has(/كتب|صياغ|لخص|صغ|أجب/)) { state = '✍️ بيكتب...'; base = 80; }\nelse if (has(/تواصل|راسل|بعت|أرسل|رفع|نزل|حمل|جهز|نفّذ|كلم|حفظ/)) { state = tar ? ('📡 بيتواصل مع ' + tar + '...') : '📡 بيتواصل...'; base = 55; }\nconst exp = Number(j.progress);\nconst pctOf = (dflt) => (isFinite(exp) && exp > 0) ? Math.max(5, Math.min(95, Math.round(exp))) : dflt;\nconst barOf = (p) => { const f = Math.max(0, Math.min(10, Math.round(p / 10))); return '▓'.repeat(f) + '░'.repeat(10 - f) + ' ' + p + '%'; };\nconst buildText = (st) => { const L = ['⚙️ جاري التنفيذ...']; if (S1) L.push('▸ الخطوة: ' + S1); if (tar) L.push('▸ الأداة: ' + tar); L.push('▸ الحالة: ' + st); L.push(barOf(pct)); return L.join('\\n'); };\nconst pct = pctOf(base || 10);\nconst text = buildText(state);\nconst now = Date.now();\nconst recent = !!(sd.status && sd.status.message_id && String(sd.status.chat_id) === chat && sd.status.at && (now - sd.status.at < 600000));\nlet method = 'sendMessage';\nlet body = { chat_id: chat, text };\nif (recent) { method = 'editMessageText'; body = { chat_id: chat, message_id: sd.status.message_id, text }; }\nsd.started = recent ? (sd.started || now) : now;\nsd.progress = pct;\nreturn [{ json: { method, body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa020600-4000-8000-000000000000",
+   "name": "start",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 20000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/{{ $json.method }}"
+   },
+   "position": [
+    600,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa020700-4000-8000-000000000000",
+   "name": "start — store",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل تحديث رسالة الحالة';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 200) } }];\n}\nconst r = j.result || {};\nconst sd = $getWorkflowStaticData('global');\nif (r.message_id) sd.status = { message_id: r.message_id, chat_id: r.chat ? r.chat.id : undefined, at: Date.now() };\nreturn [{ json: { ok: true, message_id: r.message_id } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa020800-4000-8000-000000000000",
+   "name": "update — prep",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst chat = String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID');\nconst sd = $getWorkflowStaticData('global');\nconst cl = (s, n) => { let t = String(s == null ? '' : s).split('\\n').join(' ').split('\\r').join(' ').trim(); if (t.length > n) { t = t.slice(0, n); const q = t.lastIndexOf(' '); if (q > Math.floor(n * 0.55)) t = t.slice(0, q); } return t; };\nconst S1 = cl(j.step, 60);\nconst S2 = cl(j.tool, 30);\nconst TAR = {\"gmail\":\"جيميل\",\"outlook\":\"أوتلوك\",\"microsoft_mail\":\"أوتلوك\",\"drive\":\"درايف\",\"onedrive\":\"ون درايف\",\"microsoft_drive\":\"ون درايف\",\"calendar\":\"جوجل كاليندر\",\"microsoft_calendar\":\"تقويم مايكروسوفت\",\"tasks\":\"المهام\",\"todo\":\"مهام مايكروسوفت\",\"microsoft_todo\":\"مهام مايكروسوفت\",\"docs\":\"دوكس\",\"sheets\":\"شيتس\",\"slides\":\"سلايدز\",\"contacts\":\"جهات الاتصال\",\"youtube\":\"يوتيوب\",\"books\":\"كتب جوجل\",\"translate\":\"الترجمة\",\"onenote\":\"ون نوت\",\"microsoft_onenote\":\"ون نوت\",\"telegram\":\"تلجرام\",\"memory\":\"الذاكرة\",\"web\":\"النت\",\"weather\":\"الطقس\",\"prayer_times\":\"مواعيد الصلاة\",\"daily_brief\":\"البريف اليومي\",\"notion\":\"نوشن\",\"todoist\":\"تو دوست\",\"trello\":\"تريلو\",\"airtable\":\"إيرتيبل\",\"slack\":\"سلاك\",\"discord\":\"ديسكورد\",\"github\":\"جيت هاب\",\"linear\":\"لينير\",\"wikipedia\":\"ويكيبيديا\",\"nasa\":\"ناسا\",\"wordpress\":\"ووردبريس\",\"stripe\":\"سترايب\",\"paypal\":\"باي بال\",\"canva\":\"كانفا\",\"voice_transcribe\":\"الصوت\",\"live_status\":\"الحالة\"};\nconst tar = TAR[String(j.tool || '').toLowerCase().trim()] || S2;\nconst has = (re) => re.test(S1);\nlet state = '⚙️ جاري التنفيذ...';\nlet base = 0;\nif (has(/ذاكرة|خزّن|سجّل|تذكر/)) { state = '💾 بيحدّث الذاكرة...'; base = 70; }\nelse if (has(/فكر|حلل|فهم|خطط/)) { state = '🧠 بيفكر...'; base = 15; }\nelse if (has(/بحث|دور|لاقي|جمع|قرأ|قرا|جيب|راجع/)) { state = tar ? ('🔍 بيبحث في ' + tar + '...') : '🔍 بيبحث...'; base = 35; }\nelse if (has(/كتب|صياغ|لخص|صغ|أجب/)) { state = '✍️ بيكتب...'; base = 80; }\nelse if (has(/تواصل|راسل|بعت|أرسل|رفع|نزل|حمل|جهز|نفّذ|كلم|حفظ/)) { state = tar ? ('📡 بيتواصل مع ' + tar + '...') : '📡 بيتواصل...'; base = 55; }\nconst exp = Number(j.progress);\nconst pctOf = (dflt) => (isFinite(exp) && exp > 0) ? Math.max(5, Math.min(95, Math.round(exp))) : dflt;\nconst barOf = (p) => { const f = Math.max(0, Math.min(10, Math.round(p / 10))); return '▓'.repeat(f) + '░'.repeat(10 - f) + ' ' + p + '%'; };\nconst buildText = (st) => { const L = ['⚙️ جاري التنفيذ...']; if (S1) L.push('▸ الخطوة: ' + S1); if (tar) L.push('▸ الأداة: ' + tar); L.push('▸ الحالة: ' + st); L.push(barOf(pct)); return L.join('\\n'); };\nconst prev = (typeof sd.progress === 'number' && sd.progress > 0 && sd.progress < 95) ? sd.progress : 25;\nconst pct = pctOf(base || Math.min(90, prev + 10));\nconst text = buildText(state);\nconst explicit = (j.statusMessageId !== undefined && j.statusMessageId !== null && j.statusMessageId !== '') ? Number(j.statusMessageId) : null;\nconst fromSd = (sd.status && sd.status.message_id && String(sd.status.chat_id) === chat) ? sd.status.message_id : null;\nconst target = explicit || fromSd;\nlet method = 'sendMessage';\nlet body = { chat_id: chat, text };\nif (target) { method = 'editMessageText'; body = { chat_id: chat, message_id: Number(target), text }; }\nsd.progress = pct;\nif (!sd.started) sd.started = Date.now();\nreturn [{ json: { method, body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa020900-4000-8000-000000000000",
+   "name": "update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 20000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/{{ $json.method }}"
+   },
+   "position": [
+    600,
+    130
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa021000-4000-8000-000000000000",
+   "name": "update — store",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل تحديث رسالة الحالة';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 200) } }];\n}\nconst r = j.result || {};\nconst sd = $getWorkflowStaticData('global');\nif (r.message_id) sd.status = { message_id: r.message_id, chat_id: r.chat ? r.chat.id : undefined, at: Date.now() };\nreturn [{ json: { ok: true, message_id: r.message_id } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa021100-4000-8000-000000000000",
+   "name": "done — prep",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst chat = String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID');\nconst sd = $getWorkflowStaticData('global');\nconst el = sd.started ? Math.max(1, Math.round((Date.now() - sd.started) / 1000)) : null;\nconst exp = Number(j.progress);\nlet pct = (isFinite(exp) && exp > 0) ? Math.max(1, Math.min(100, Math.round(exp))) : 100;\nconst f = Math.max(0, Math.min(10, Math.round(pct / 10)));\nconst bar = '▓'.repeat(f) + '░'.repeat(10 - f) + ' ' + pct + '%';\nconst text = (el ? ('✅ اكتمل في ' + el + ' ثانية') : '✅ اكتمل') + '\\n' + bar;\nconst explicit = (j.statusMessageId !== undefined && j.statusMessageId !== null && j.statusMessageId !== '') ? Number(j.statusMessageId) : null;\nconst fromSd = (sd.status && sd.status.message_id && String(sd.status.chat_id) === chat) ? sd.status.message_id : null;\nconst target = explicit || fromSd;\nlet method = 'sendMessage';\nlet body = { chat_id: chat, text };\nif (target) { method = 'editMessageText'; body = { chat_id: chat, message_id: Number(target), text }; }\nreturn [{ json: { method, body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa021200-4000-8000-000000000000",
+   "name": "done",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 20000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/{{ $json.method }}"
+   },
+   "position": [
+    600,
+    260
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa021300-4000-8000-000000000000",
+   "name": "done — pause",
+   "parameters": {
+    "amount": 5,
+    "resume": "timeInterval",
+    "unit": "seconds"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.wait",
+   "typeVersion": 1.1,
+   "webhookId": "5ffd043d-a1df-4eed-adac-d801cc189bb3"
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa021400-4000-8000-000000000000",
+   "name": "done — del",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify({ chat_id: ($json.result && $json.result.chat) ? $json.result.chat.id : undefined, message_id: ($json.result && $json.result.message_id) ? $json.result.message_id : undefined }) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 15000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/deleteMessage"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa021500-4000-8000-000000000000",
+   "name": "done — clear",
+   "parameters": {
+    "jsCode": "const sd = $getWorkflowStaticData('global');\nconst had = !!(sd.status && sd.status.message_id);\nif (sd.status) delete sd.status;\nif (sd.started !== undefined) delete sd.started;\nif (sd.progress !== undefined) delete sd.progress;\nconst j = $input.first().json || {};\nif (j.error || j.ok === false) return [{ json: { ok: true, finished: true, cleaned: true, del_ok: false, had_status: had, note: 'فشل حذف رسالة الحالة — مش مشكلة' } }];\nreturn [{ json: { ok: true, finished: true, had_status: had, del_ok: j.ok === true } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa021600-4000-8000-000000000000",
+   "name": "error — prep",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst chat = String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID');\nconst sd = $getWorkflowStaticData('global');\nconst err = String(j.error || j.detail || 'خطأ غير معروف').trim().split('\\n').join(' ').slice(0, 120);\nconst text = '❌ في مشكلة: ' + err;\nconst explicit = (j.statusMessageId !== undefined && j.statusMessageId !== null && j.statusMessageId !== '') ? Number(j.statusMessageId) : null;\nconst fromSd = (sd.status && sd.status.message_id && String(sd.status.chat_id) === chat) ? sd.status.message_id : null;\nconst target = explicit || fromSd;\nlet method = 'sendMessage';\nlet body = { chat_id: chat, text };\nif (target) { method = 'editMessageText'; body = { chat_id: chat, message_id: Number(target), text }; }\nreturn [{ json: { method, body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa021700-4000-8000-000000000000",
+   "name": "error",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 20000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/{{ $json.method }}"
+   },
+   "position": [
+    600,
+    390
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa021800-4000-8000-000000000000",
+   "name": "error — clearStore",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل تحديث رسالة الحالة';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 200) } }];\n}\nconst sd = $getWorkflowStaticData('global');\nif (sd.status) delete sd.status;\nif (sd.started !== undefined) delete sd.started;\nif (sd.progress !== undefined) delete sd.progress;\nreturn [{ json: { ok: true, shown: true, note: 'رسالة المشكلة سايبها ظاهرة في الشات' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa021900-4000-8000-000000000000",
+   "name": "check — prep",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst chat = String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID');\nconst mid = Number(j.sourceMessageId || 0) || 0;\nreturn [{ json: { method: 'setMessageReaction', body: { chat_id: chat, message_id: mid, reaction: [] } } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa022000-4000-8000-000000000000",
+   "name": "check",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 20000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/{{ $json.method }}"
+   },
+   "position": [
+    600,
+    520
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa022100-4000-8000-000000000000",
+   "name": "check — verdict",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nconst parts = [j.description, j.message, (j.error && (j.error.description || j.error.message)) || (typeof j.error === 'string' ? j.error : (j.error ? JSON.stringify(j.error) : ''))].filter(Boolean).map(String).join(' | ');\nif (j.ok === true) return [{ json: { ok: true, exists: true, deleted: false } }];\nif (/message to react not found|message not found/i.test(parts)) return [{ json: { ok: true, exists: false, deleted: true } }];\nreturn [{ json: { ok: true, exists: true, deleted: false, uncertain: true, note: parts.slice(0, 140) } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "5fdc68c7-4cf0-4aee-ba89-d6f8f3a9ca4a",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "System"
+ ],
+ "updatedAt": "2026-10-24T21:42:37.378Z"
+}

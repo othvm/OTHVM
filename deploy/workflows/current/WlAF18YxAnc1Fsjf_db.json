@@ -1,0 +1,110 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "DB",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-23T10:13:57.321Z",
+ "id": "WlAF18YxAnc1Fsjf",
+ "name": "DB",
+ "nodes": [
+  {
+   "id": "trg-db-0001",
+   "name": "Input",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation"
+      },
+      {
+       "name": "action"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    -256,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "http-db-0002",
+   "name": "DB",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/db"
+   },
+   "position": [
+    96,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "87a3c326-0b57-4c35-bb02-28144a3fa188",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];"
+   },
+   "position": [
+    -80,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-24T23:21:48.791Z"
+}

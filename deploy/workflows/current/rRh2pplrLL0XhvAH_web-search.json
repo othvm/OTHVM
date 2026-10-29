@@ -1,0 +1,633 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.search — Prepare",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "web.news — Prepare",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "web.fetch — Prepare",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.fetch": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.fetch — Format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.fetch — Format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.fetch — Prepare": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.fetch",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.news": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.news — Parse",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.news — Parse": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.news — Prepare": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.news",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.search": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.search — Parse",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.search — Cookie": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.search",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.search — Home": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.search — Cookie",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.search — Parse": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "web.search — Prepare": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "web.search — Home",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T07:35:45.536Z",
+ "id": "rRh2pplrLL0XhvAH",
+ "name": "Web Search",
+ "nodes": [
+  {
+   "id": "ab090100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "ab090200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "web.search"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "web.search"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "web.news"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "web.news"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "web.fetch"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "web.fetch"
+      }
+     ]
+    }
+   },
+   "position": [
+    240,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "ab090300-4000-8000-000000000000",
+   "name": "web.search — Prepare",
+   "parameters": {
+    "jsCode": "// OTHVM — Web search: تجهيز استعلام Bing (مجاني بدون مفاتيح)\nconst j = $input.first().json || {};\nconst q = String(j.query || '').trim();\nconst maxR = Math.min(10, Math.max(1, parseInt(j.maxResults, 10) || 5));\nif (!q) return [{ json: { url: 'https://www.bing.com/search?q=test&form=QBLH', maxResults: maxR, query: '', bad: true, error: 'مطلوب نص البحث في الحقل query' } }];\nreturn [{ json: { url: 'https://www.bing.com/search?q=' + encodeURIComponent(q) + '&form=QBLH', maxResults: maxR, query: q, bad: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    440,
+    -240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "ab090400-4000-8000-000000000000",
+   "maxTries": 2,
+   "name": "web.search — Home",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+      },
+      {
+       "name": "Accept",
+       "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+      },
+      {
+       "name": "Accept-Language",
+       "value": "en-US,en;q=0.9"
+      }
+     ]
+    },
+    "options": {
+     "response": {
+      "response": {
+       "fullResponse": true,
+       "responseFormat": "text"
+      }
+     },
+     "timeout": 15000
+    },
+    "sendHeaders": true,
+    "url": "https://www.bing.com/"
+   },
+   "position": [
+    660,
+    -240
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 3000
+  },
+  {
+   "id": "ab090500-4000-8000-000000000000",
+   "name": "web.search — Cookie",
+   "parameters": {
+    "jsCode": "// OTHVM — Web search: استخراج كوكيز جلسة Bing (تفادي بوابة البوتات)\nconst home = ($input.first() || {}).json || {};\nconst h = home.headers || {};\nlet sc = h['set-cookie'] || h['Set-Cookie'] || [];\nif (!Array.isArray(sc)) sc = typeof sc === 'string' ? [sc] : [];\nconst cookie = sc.map((x) => String(x).split(';')[0].trim()).filter(Boolean).join('; ');\nreturn [{ json: { cookie: cookie } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    880,
+    -240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "ab090600-4000-8000-000000000000",
+   "maxTries": 2,
+   "name": "web.search",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+      },
+      {
+       "name": "Accept",
+       "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+      },
+      {
+       "name": "Accept-Language",
+       "value": "en-US,en;q=0.9"
+      },
+      {
+       "name": "Referer",
+       "value": "https://www.bing.com/"
+      },
+      {
+       "name": "Cookie",
+       "value": "={{ $json.cookie }}"
+      }
+     ]
+    },
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "text"
+      }
+     },
+     "timeout": 20000
+    },
+    "sendHeaders": true,
+    "url": "={{ $('web.search — Prepare').item.json.url }}"
+   },
+   "position": [
+    1100,
+    -240
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 5000
+  },
+  {
+   "id": "ab090700-4000-8000-000000000000",
+   "name": "web.search — Parse",
+   "parameters": {
+    "jsCode": "// OTHVM — Web search: تفكيك نتائج Bing إلى عناصر {title, url, snippet}\nconst prep = (($('web.search — Prepare').first() || {}).json) || {};\nconst first = (($input.first() || {}).json) || {};\nif (prep.bad) return [{ json: { ok: false, error: prep.error || 'مدخل ناقص' } }];\nfunction bodyOf(x) {\n  if (typeof x === 'string') return x;\n  if (x && typeof x === 'object') {\n    if (x.error) return null;\n    if (typeof x.data === 'string') return x.data;\n    if (typeof x.body === 'string') return x.body;\n  }\n  return null;\n}\nconst html = bodyOf(first);\nif (html === null) {\n  const e = first && first.error;\n  const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? [e.message, e.description].filter(Boolean).join(' — ') : 'فشل الاتصال بمحرك البحث');\n  return [{ json: { ok: false, error: String(msg).slice(0, 300) } }];\n}\nconst ent = (s) => String(s).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '\"').replace(/&#x27;|&#39;/g, \"'\").replace(/&nbsp;/g, ' ').replace(/&hellip;/g, '…').replace(/&#(\\d+);/g, (mm, d) => String.fromCharCode(Number(d)));\nconst strip = (s) => ent(String(s).replace(/<[^>]+>/g, ' ')).replace(/\\s+/g, ' ').trim();\nfunction realUrl(href) {\n  const h = String(href || '');\n  const um = h.match(/u=a1([A-Za-z0-9_-]+)/);\n  if (um) {\n    try {\n      let dec = Buffer.from(um[1], 'base64url').toString('utf8');\n      try { dec = decodeURIComponent(dec); } catch (e) {}\n      if (/^https?:\\/\\//i.test(dec)) return dec;\n    } catch (e) {}\n  }\n  if (/^https?:\\/\\//i.test(h) && h.indexOf('bing.com') === -1) return h;\n  return h;\n}\nconst maxR = typeof prep.maxResults === 'number' ? prep.maxResults : 5;\nconst out = [];\nconst reLi = /<li class=\"b_algo[^\"]*\"[^>]*>/g;\nconst marks = [];\nlet m;\nwhile ((m = reLi.exec(html)) !== null) marks.push(m.index + m[0].length);\nfor (let i = 0; i < marks.length && out.length < maxR; i++) {\n  const start = marks[i];\n  const end = i + 1 < marks.length ? marks[i + 1] : Math.min(html.length, start + 30000);\n  const block = html.slice(start, end);\n  const am = block.match(/<h2[^>]*>\\s*<a[^>]*href=\"([^\"]+)\"[^>]*>([\\s\\S]*?)<\\/a>/);\n  if (!am) continue;\n  const title = strip(am[2]).slice(0, 180);\n  const url = realUrl(am[1]);\n  if (!title || !url) continue;\n  let snippet = '';\n  const sm = block.match(/<p class=\"[^\"]*b_lineclamp[^\"]*\"[^>]*>([\\s\\S]*?)<\\/p>/) || block.match(/<p[^>]*>([\\s\\S]*?)<\\/p>/);\n  if (sm) snippet = strip(sm[1]).slice(0, 250);\n  out.push({ json: { title: title, url: url, snippet: snippet } });\n}\nif (!out.length) {\n  const capped = /b_results/.test(html) ? 'لا توجد نتائج للبحث ده — جرّب صياغة تانية' : 'رد غير متوقع من محرك البحث (حماية محتملة) — جرّب تاني';\n  return [{ json: { ok: false, error: capped } }];\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1320,
+    -240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ab090800-4000-8000-000000000000",
+   "name": "web.news — Prepare",
+   "parameters": {
+    "jsCode": "// OTHVM — Web news: تجهيز بحث أخبار Google News RSS (مجاني بدون مفاتيح)\nconst j = $input.first().json || {};\nconst q = String(j.query || '').trim();\nconst maxR = Math.min(15, Math.max(1, parseInt(j.maxResults, 10) || 8));\nif (!q) return [{ json: { url: 'https://news.google.com/rss/search?q=test&hl=ar&gl=EG&ceid=EG:ar', maxResults: maxR, query: '', bad: true, error: 'مطلوب نص البحث في الحقل query' } }];\nreturn [{ json: { url: 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=ar&gl=EG&ceid=EG:ar', maxResults: maxR, query: q, bad: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "ab090900-4000-8000-000000000000",
+   "maxTries": 2,
+   "name": "web.news",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+      },
+      {
+       "name": "Accept",
+       "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+      },
+      {
+       "name": "Accept-Language",
+       "value": "ar-EG,ar;q=0.9,en;q=0.8"
+      }
+     ]
+    },
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "text"
+      }
+     },
+     "timeout": 20000
+    },
+    "sendHeaders": true,
+    "url": "={{ $json.url }}"
+   },
+   "position": [
+    660,
+    0
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 4000
+  },
+  {
+   "id": "ab090a00-4000-8000-000000000000",
+   "name": "web.news — Parse",
+   "parameters": {
+    "jsCode": "// OTHVM — Web news: تفكيك خلاصة Google News إلى عناصر {title, source, date, url}\nconst prep = (($('web.news — Prepare').first() || {}).json) || {};\nconst first = (($input.first() || {}).json) || {};\nif (prep.bad) return [{ json: { ok: false, error: prep.error || 'مدخل ناقص' } }];\nfunction bodyOf(x) {\n  if (typeof x === 'string') return x;\n  if (x && typeof x === 'object') {\n    if (x.error) return null;\n    if (typeof x.data === 'string') return x.data;\n    if (typeof x.body === 'string') return x.body;\n  }\n  return null;\n}\nconst xml = bodyOf(first);\nif (xml === null) {\n  const e = first && first.error;\n  const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? [e.message, e.description].filter(Boolean).join(' — ') : 'فشل الاتصال بجوجل نيوز');\n  return [{ json: { ok: false, error: String(msg).slice(0, 300) } }];\n}\nconst ent = (s) => String(s).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '\"').replace(/&#x27;|&#39;/g, \"'\").replace(/&nbsp;/g, ' ').replace(/&#(\\d+);/g, (mm, d) => String.fromCharCode(Number(d)));\nconst unwrap = (s) => String(s).replace(/<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>/g, '$1').trim();\nconst items = [];\nconst reI = /<item>([\\s\\S]*?)<\\/item>/g;\nlet m;\nwhile ((m = reI.exec(xml)) !== null) {\n  const it = m[1];\n  const tt = it.match(/<title>([\\s\\S]*?)<\\/title>/);\n  const lk = it.match(/<link>([\\s\\S]*?)<\\/link>/);\n  const pd = it.match(/<pubDate>([\\s\\S]*?)<\\/pubDate>/);\n  const sc = it.match(/<source[^>]*>([\\s\\S]*?)<\\/source>/);\n  const title = ent(unwrap(tt ? tt[1] : '')).replace(/\\s+/g, ' ').trim();\n  if (!title) continue;\n  const item = { title: title.slice(0, 180) };\n  if (lk) item.url = ent(unwrap(lk[1])).trim();\n  if (sc) item.source = ent(unwrap(sc[1])).trim();\n  if (pd) { const d = new Date(unwrap(pd[1]).trim()); if (!isNaN(d.getTime())) item.date = d.toISOString().slice(0, 16).replace('T', ' '); }\n  items.push({ json: item });\n}\nif (!items.length) return [{ json: { ok: false, error: 'مفيش أخبار للبحث ده — جرّب صياغة تانية' } }];\nreturn items.slice(0, typeof prep.maxResults === 'number' ? prep.maxResults : 8);",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    880,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ab090b00-4000-8000-000000000000",
+   "name": "web.fetch — Prepare",
+   "parameters": {
+    "jsCode": "// OTHVM — Web fetch: تطبيع الرابط\nconst j = $input.first().json || {};\nlet u = String(j.url || '').trim();\nif (!u) return [{ json: { url: 'https://example.com', bad: true, error: 'مطلوب رابط الصفحة في الحقل url' } }];\nif (!/^https?:\\/\\//i.test(u)) {\n  if (/^[\\w.-]+\\.[a-z]{2,}(\\/|$)/i.test(u)) u = 'https://' + u;\n  else return [{ json: { url: 'https://example.com', bad: true, error: 'الرابط غير صالح: ' + u.slice(0, 120) } }];\n}\nreturn [{ json: { url: u, bad: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    440,
+    240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "ab090c00-4000-8000-000000000000",
+   "maxTries": 2,
+   "name": "web.fetch",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+      },
+      {
+       "name": "Accept",
+       "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+      },
+      {
+       "name": "Accept-Language",
+       "value": "ar-EG,ar;q=0.9,en;q=0.8"
+      }
+     ]
+    },
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "text"
+      }
+     },
+     "timeout": 25000
+    },
+    "sendHeaders": true,
+    "url": "={{ $json.url }}"
+   },
+   "position": [
+    660,
+    240
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 1500
+  },
+  {
+   "id": "ab090d00-4000-8000-000000000000",
+   "name": "web.fetch — Format",
+   "parameters": {
+    "jsCode": "// OTHVM — Web fetch: HTML → نص مقروء (حد 3500 حرف)\nconst prep = (($('web.fetch — Prepare').first() || {}).json) || {};\nconst first = (($input.first() || {}).json) || {};\nif (prep.bad) return [{ json: { ok: false, error: prep.error || 'مدخل ناقص' } }];\nfunction bodyOf(x) {\n  if (typeof x === 'string') return x;\n  if (x && typeof x === 'object') {\n    if (x.error) return null;\n    if (typeof x.data === 'string') return x.data;\n    if (typeof x.body === 'string') return x.body;\n  }\n  return null;\n}\nconst html = bodyOf(first);\nif (html === null) {\n  const e = first && first.error;\n  const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? [e.message, e.description].filter(Boolean).join(' — ') : 'فشل فتح الصفحة');\n  return [{ json: { ok: false, error: String(msg).slice(0, 300) } }];\n}\nconst ent = (s) => String(s).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '\"').replace(/&#x27;|&#39;/g, \"'\").replace(/&nbsp;/g, ' ').replace(/&hellip;/g, '…').replace(/&#(\\d+);/g, (mm, d) => String.fromCharCode(Number(d)));\nconst strip = (s) => ent(String(s).replace(/<[^>]+>/g, ' ')).replace(/\\s+/g, ' ').trim();\nconst titleM = html.match(/<title[^>]*>([\\s\\S]*?)<\\/title>/i);\nlet text = html\n  .replace(/<script[\\s\\S]*?<\\/script>/gi, ' ')\n  .replace(/<style[\\s\\S]*?<\\/style>/gi, ' ')\n  .replace(/<noscript[\\s\\S]*?<\\/noscript>/gi, ' ')\n  .replace(/<!--[\\s\\S]*?-->/g, ' ');\ntext = text.replace(/<\\/(p|div|li|h[1-6]|tr|section|article)>/gi, '\\n').replace(/<br\\s*\\/?>/gi, '\\n');\ntext = text.replace(/<[^>]+>/g, ' ');\ntext = ent(text).replace(/[ \\t\\u00a0]+/g, ' ').replace(/\\n\\s*\\n\\s*\\n+/g, '\\n\\n').replace(/^\\s+|\\s+$/g, '');\nif (!text) return [{ json: { ok: false, error: 'الصفحة مفيهاش نص مقروء (يمكن ملف أو محتوى جافاسكريبت)' } }];\nconst cut = text.slice(0, 3500);\nreturn [{ json: { ok: true, url: prep.url, title: strip(titleM ? titleM[1] : ''), text: cut, truncated: text.length > 3500 } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    880,
+    240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ab090e00-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — Web Tool output normalizer: JSON مضغوط + حدود حجم (نصوص 3500، إجمالي 12KB)\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 3500 ? v.slice(0, 3500) + '…' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '…' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1560,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ab090f00-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: web.search, web.news, web.fetch' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    480
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "b6a8bca1-21a1-4e1c-afe0-68912f3b4115",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Knowledge"
+ ],
+ "updatedAt": "2026-10-24T21:31:29.811Z"
+}

@@ -1,0 +1,257 @@
+{
+ "active": true,
+ "connections": {
+  "Build Items": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Ingest",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Find Pages": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Page List",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Find Pages",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Page List": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Read Pages",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Read Pages": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Build Items",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-19T11:20:38.338Z",
+ "id": "4EIH777TDG9Aq91I",
+ "name": "Notion Ingest",
+ "nodes": [
+  {
+   "id": "kt003-4000-8000-000000000003",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "pageSize",
+       "type": "number"
+      },
+      {
+       "name": "query",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "position": [
+    -260,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt004-4000-8000-000000000004",
+   "name": "Find Pages",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "once",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Knowledge — Notion",
+     "mode": "list",
+     "value": "bFwnd5QS25LLjc2j"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "query",
+       "id": "query",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "pageSize",
+       "id": "pageSize",
+       "required": false,
+       "type": "number"
+      }
+     ],
+     "value": {
+      "operation": "search",
+      "pageSize": "={{ Math.max(1, Math.min(100, Number($json.pageSize) || 50)) }}",
+      "query": "={{ $json.query || \"\" }}"
+     }
+    }
+   },
+   "position": [
+    -40,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "kt005-4000-8000-000000000005",
+   "name": "Page List",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const arr = Array.isArray(r) ? r : (Array.isArray(r.results) ? r.results : [r]);\n  for (const p of arr) {\n    if (!p || !p.id) continue;\n    if (p.type && p.type !== \"page\") continue;\n    out.push({ json: { pageId: p.id, title: p.title || p.id, url: p.url || \"\" } });\n  }\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt006-4000-8000-000000000006",
+   "name": "Read Pages",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "each",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Knowledge — Notion",
+     "mode": "list",
+     "value": "bFwnd5QS25LLjc2j"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "pageId",
+       "id": "pageId",
+       "required": false,
+       "type": "string"
+      }
+     ],
+     "value": {
+      "operation": "page.content",
+      "pageId": "={{ $json.pageId }}"
+     }
+    }
+   },
+   "position": [
+    400,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "kt007-4000-8000-000000000007",
+   "name": "Build Items",
+   "parameters": {
+    "jsCode": "const pages = $(\"Page List\").all().map(i => i.json);\nconst reads = $input.all().map(i => i.json);\nconst items = [];\nfor (let i = 0; i < reads.length; i++) {\n  const p = pages[i] || {};\n  const r = reads[i] || {};\n  const raw = r.lines;\n  const arr = Array.isArray(raw) ? raw : (typeof raw === \"string\" ? [raw] : []);\n  const text = arr.join(\"\\n\").trim();\n  if (!text) continue;\n  items.push({ source_id: p.pageId, title: p.title, content: \"# \" + p.title + \"\\n\\n\" + text, metadata: { url: p.url, source: \"notion\" } });\n}\nif (!items.length) return [];\nreturn [{ json: { operation: \"ingest\", source: \"notion\", items, chunk: true, replace_all: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    620,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt008-4000-8000-000000000008",
+   "name": "Ingest",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 300000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/knowledge"
+   },
+   "position": [
+    840,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Knowledge"
+ ],
+ "updatedAt": "2026-10-22T12:33:26.925Z"
+}

@@ -1,0 +1,640 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route by Operation",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "MCP forward_message": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "MCP get_contacts": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "MCP get_dialogs": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "MCP get_messages": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "MCP search_messages": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "MCP send_file": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "MCP send_message": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route by Operation": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "MCP send_message",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "MCP send_file",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "MCP get_dialogs",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "MCP get_messages",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "MCP search_messages",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "MCP get_contacts",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "MCP forward_message",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-19T22:07:23.365Z",
+ "id": "SFt6HOaBYvIgKBC2",
+ "name": "Personal Telegram (Founder)",
+ "nodes": [
+  {
+   "id": "tgp00001-4000-8000-000000000001",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    -220,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "tgp00002-4000-8000-000000000002",
+   "name": "Route by Operation",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "unknown"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "send_message"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "send_message"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "send_file"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "send_file"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "get_dialogs"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "get_dialogs"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "get_messages"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "get_messages"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "search_messages"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "search_messages"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "get_contacts"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "get_contacts"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "forward_message"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "forward_message"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "tgp01010-4000-8000-000000000010",
+   "name": "MCP send_message",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_TELEGRAM_PERSONAL_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({ action: 'send_message' }, $json)) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 180000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8768/tools/telegram_personal"
+   },
+   "position": [
+    260,
+    -300
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "tgp01011-4000-8000-000000000011",
+   "name": "MCP send_file",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_TELEGRAM_PERSONAL_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({ action: 'send_file' }, $json)) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 180000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8768/tools/telegram_personal"
+   },
+   "position": [
+    260,
+    -170
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "tgp01012-4000-8000-000000000012",
+   "name": "MCP get_dialogs",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_TELEGRAM_PERSONAL_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({ action: 'get_dialogs' }, $json)) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 180000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8768/tools/telegram_personal"
+   },
+   "position": [
+    260,
+    -40
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "tgp01013-4000-8000-000000000013",
+   "name": "MCP get_messages",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_TELEGRAM_PERSONAL_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({ action: 'get_messages' }, $json)) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 180000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8768/tools/telegram_personal"
+   },
+   "position": [
+    260,
+    90
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "tgp01014-4000-8000-000000000014",
+   "name": "MCP search_messages",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_TELEGRAM_PERSONAL_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({ action: 'search_messages' }, $json)) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 180000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8768/tools/telegram_personal"
+   },
+   "position": [
+    260,
+    220
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "tgp01015-4000-8000-000000000015",
+   "name": "MCP get_contacts",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_TELEGRAM_PERSONAL_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({ action: 'get_contacts' }, $json)) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 180000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8768/tools/telegram_personal"
+   },
+   "position": [
+    260,
+    350
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "tgp01016-4000-8000-000000000016",
+   "name": "MCP forward_message",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_TELEGRAM_PERSONAL_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({ action: 'forward_message' }, $json)) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 180000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8768/tools/telegram_personal"
+   },
+   "position": [
+    260,
+    480
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "tgp00099-4000-8000-000000000099",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String($json.operation || '') + '\". العمليات: send_message | send_file | get_dialogs | get_messages | search_messages | get_contacts | forward_message' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    260,
+    720
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "tgp00100-4000-8000-000000000100",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — Telegram Personal: keep the tool result compact and explicit.\nconst out = [];\nfor (const item of $input.all().slice(0, 10)) {\n  const j = item.json || {};\n  if (item.error) { const e = item.error; out.push({ json: { ok: false, error: String(e.message || e.description || e).slice(0, 500) } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === \"string\" && v.length > 1200) o[k] = v.slice(0, 1200) + \"…\";\n    else o[k] = v;\n  }\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: false, error: \"no output from Telegram Personal API\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "248d753f-5566-4ee8-9993-f6af85faf8d4",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    -40,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Communication"
+ ],
+ "updatedAt": "2026-10-24T21:42:16.866Z"
+}

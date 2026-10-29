@@ -1,0 +1,1003 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "spreadsheet.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "spreadsheet.deleteSpreadsheet",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sheet.appendOrUpdate — Build Rows",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sheet.append — Build Rows",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sheet.clear",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sheet.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sheet.remove",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sheet.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sheet.read",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sheet.update — Build Rows",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.append": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.append — Build Rows": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sheet.append",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.appendOrUpdate": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.appendOrUpdate — Build Rows": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sheet.appendOrUpdate",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.clear": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sheet.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.read": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.remove": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sheet.update — Build Rows": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sheet.update",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "spreadsheet.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "spreadsheet.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "spreadsheet.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "spreadsheet.deleteSpreadsheet": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T01:13:01.548Z",
+ "id": "JweQefrJNBBFgq92",
+ "name": "Sheets",
+ "nodes": [
+  {
+   "id": "aa030100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa030200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "spreadsheet.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "spreadsheet.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "spreadsheet.deleteSpreadsheet"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "spreadsheet.deleteSpreadsheet"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sheet.appendOrUpdate"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sheet.appendOrUpdate"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sheet.append"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sheet.append"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sheet.clear"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sheet.clear"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sheet.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sheet.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sheet.remove"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sheet.remove"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sheet.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sheet.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sheet.read"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sheet.read"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sheet.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sheet.update"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa030300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa030400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"spreadsheet.create, spreadsheet.deleteSpreadsheet, sheet.appendOrUpdate, sheet.append, sheet.clear, sheet.create, sheet.remove, sheet.delete, sheet.read, sheet.update\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1450
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa030500-4000-8000-000000000000",
+   "name": "spreadsheet.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "create",
+    "resource": "spreadsheet",
+    "title": "={{ $json.title }}"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "id": "aa030600-4000-8000-000000000000",
+   "name": "spreadsheet.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"spreadsheetId\",\"spreadsheetUrl\",\"title\",\"sheets\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    40
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa030700-4000-8000-000000000000",
+   "name": "spreadsheet.deleteSpreadsheet",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "operation": "deleteSpreadsheet",
+    "resource": "spreadsheet"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "id": "aa030800-4000-8000-000000000000",
+   "name": "sheet.appendOrUpdate — Build Rows",
+   "parameters": {
+    "jsCode": "// OTHVM — Sheets: حوّل dataJson (نص JSON أو كائن أو مصفوفة صفوف) لعناصر صفوف + حقول تحكم\nconst input = $input.first().json || {};\nlet data = input.dataJson;\nif (typeof data === 'string') {\n  const s = data.trim();\n  if (!s) throw new Error('dataJson فاضي — مرّر كائن صف أو مصفوفة صفوف JSON');\n  try {\n    data = JSON.parse(s);\n  } catch (e) {\n    throw new Error('dataJson مش JSON صالح: ' + e.message);\n  }\n}\nif (data === undefined || data === null) throw new Error('dataJson مطلوب (JSON string أو array/object)');\nif (!Array.isArray(data)) {\n  if (typeof data === 'object') data = [data];\n  else throw new Error('dataJson لازم يكون كائن صف أو مصفوفة صفوف');\n}\nif (!data.length) throw new Error('مصفوفة dataJson فاضية');\n// حقول التحكم تتنسخ لكل صف عشان تعبيرات عقدة Sheets تشتغل — وhandlingExtraData=ignoreIt بيمنعها من إنشاء أعمدة جديدة\nconst ctl = { spreadsheetId: input.spreadsheetId, sheetName: input.sheetName, columnToMatchOn: input.columnToMatchOn };\nconst rows = [];\nfor (const row of data) {\n  if (row === null || typeof row !== 'object' || Array.isArray(row)) {\n    throw new Error('كل صف في dataJson لازم يكون كائن {عمود: قيمة}');\n  }\n  rows.push({ json: Object.assign({}, row, ctl) });\n}\nreturn rows;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa030900-4000-8000-000000000000",
+   "name": "sheet.appendOrUpdate",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "columns": {
+     "mappingMode": "autoMapInputData",
+     "matchingColumns": [
+      "={{ $json.columnToMatchOn }}"
+     ],
+     "schema": [],
+     "value": {}
+    },
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "operation": "appendOrUpdate",
+    "options": {
+     "handlingExtraData": "ignoreIt"
+    },
+    "resource": "sheet",
+    "sheetName": {
+     "__rl": true,
+     "mode": "name",
+     "value": "={{ $json.sheetName }}"
+    }
+   },
+   "position": [
+    600,
+    260
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "id": "aa031000-4000-8000-000000000000",
+   "name": "sheet.append — Build Rows",
+   "parameters": {
+    "jsCode": "// OTHVM — Sheets: حوّل dataJson (نص JSON أو كائن أو مصفوفة صفوف) لعناصر صفوف + حقول تحكم\nconst input = $input.first().json || {};\nlet data = input.dataJson;\nif (typeof data === 'string') {\n  const s = data.trim();\n  if (!s) throw new Error('dataJson فاضي — مرّر كائن صف أو مصفوفة صفوف JSON');\n  try {\n    data = JSON.parse(s);\n  } catch (e) {\n    throw new Error('dataJson مش JSON صالح: ' + e.message);\n  }\n}\nif (data === undefined || data === null) throw new Error('dataJson مطلوب (JSON string أو array/object)');\nif (!Array.isArray(data)) {\n  if (typeof data === 'object') data = [data];\n  else throw new Error('dataJson لازم يكون كائن صف أو مصفوفة صفوف');\n}\nif (!data.length) throw new Error('مصفوفة dataJson فاضية');\n// حقول التحكم تتنسخ لكل صف عشان تعبيرات عقدة Sheets تشتغل — وhandlingExtraData=ignoreIt بيمنعها من إنشاء أعمدة جديدة\nconst ctl = { spreadsheetId: input.spreadsheetId, sheetName: input.sheetName, columnToMatchOn: input.columnToMatchOn };\nconst rows = [];\nfor (const row of data) {\n  if (row === null || typeof row !== 'object' || Array.isArray(row)) {\n    throw new Error('كل صف في dataJson لازم يكون كائن {عمود: قيمة}');\n  }\n  rows.push({ json: Object.assign({}, row, ctl) });\n}\nreturn rows;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa031100-4000-8000-000000000000",
+   "name": "sheet.append",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "columns": {
+     "mappingMode": "autoMapInputData",
+     "value": {}
+    },
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "operation": "append",
+    "options": {
+     "handlingExtraData": "ignoreIt"
+    },
+    "resource": "sheet",
+    "sheetName": {
+     "__rl": true,
+     "mode": "name",
+     "value": "={{ $json.sheetName }}"
+    }
+   },
+   "position": [
+    600,
+    390
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa031200-4000-8000-000000000000",
+   "name": "sheet.clear",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "clear": "={{ $json.deleteWhat === \"rows\" || $json.deleteWhat === \"specificRows\" ? \"specificRows\" : ($json.deleteWhat === \"columns\" || $json.deleteWhat === \"specificColumns\" ? \"specificColumns\" : ($json.deleteWhat === \"range\" || $json.deleteWhat === \"specificRange\" ? \"specificRange\" : \"wholeSheet\")) }}",
+    "columnsToDelete": "={{ $json.endIndex ? Math.max(1, Number($json.endIndex) - Number($json.startIndex || 1) + 1) : 1 }}",
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "keepFirstRow": false,
+    "operation": "clear",
+    "range": "={{ $json.range || \"A:Z\" }}",
+    "resource": "sheet",
+    "rowsToDelete": "={{ $json.endIndex ? Math.max(1, Number($json.endIndex) - Number($json.startIndex || 1) + 1) : 1 }}",
+    "sheetName": {
+     "__rl": true,
+     "mode": "name",
+     "value": "={{ $json.sheetName }}"
+    },
+    "startIndex": "={{ $json.startIndex ? Number($json.startIndex) : 1 }}"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa031300-4000-8000-000000000000",
+   "name": "sheet.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "operation": "create",
+    "resource": "sheet",
+    "title": "={{ $json.title }}"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "id": "aa031400-4000-8000-000000000000",
+   "name": "sheet.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"title\",\"sheetId\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    690
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa031500-4000-8000-000000000000",
+   "name": "sheet.remove",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "operation": "remove",
+    "resource": "sheet",
+    "sheetName": {
+     "__rl": true,
+     "mode": "name",
+     "value": "={{ $json.sheetName }}"
+    }
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa031600-4000-8000-000000000000",
+   "name": "sheet.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "numberToDelete": "={{ $json.endIndex ? Math.max(1, Number($json.endIndex) - Number($json.startIndex || 2) + 1) : 1 }}",
+    "operation": "delete",
+    "resource": "sheet",
+    "sheetName": {
+     "__rl": true,
+     "mode": "name",
+     "value": "={{ $json.sheetName }}"
+    },
+    "startIndex": "={{ $json.startIndex ? Number($json.startIndex) : 2 }}",
+    "toDelete": "={{ $json.deleteWhat === \"columns\" ? \"columns\" : \"rows\" }}"
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa031700-4000-8000-000000000000",
+   "name": "sheet.read",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "operation": "read",
+    "resource": "sheet",
+    "sheetName": {
+     "__rl": true,
+     "mode": "name",
+     "value": "={{ $json.sheetName }}"
+    }
+   },
+   "position": [
+    540,
+    1040
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "id": "aa031800-4000-8000-000000000000",
+   "name": "sheet.update — Build Rows",
+   "parameters": {
+    "jsCode": "// OTHVM — Sheets: حوّل dataJson (نص JSON أو كائن أو مصفوفة صفوف) لعناصر صفوف + حقول تحكم\nconst input = $input.first().json || {};\nlet data = input.dataJson;\nif (typeof data === 'string') {\n  const s = data.trim();\n  if (!s) throw new Error('dataJson فاضي — مرّر كائن صف أو مصفوفة صفوف JSON');\n  try {\n    data = JSON.parse(s);\n  } catch (e) {\n    throw new Error('dataJson مش JSON صالح: ' + e.message);\n  }\n}\nif (data === undefined || data === null) throw new Error('dataJson مطلوب (JSON string أو array/object)');\nif (!Array.isArray(data)) {\n  if (typeof data === 'object') data = [data];\n  else throw new Error('dataJson لازم يكون كائن صف أو مصفوفة صفوف');\n}\nif (!data.length) throw new Error('مصفوفة dataJson فاضية');\n// حقول التحكم تتنسخ لكل صف عشان تعبيرات عقدة Sheets تشتغل — وhandlingExtraData=ignoreIt بيمنعها من إنشاء أعمدة جديدة\nconst ctl = { spreadsheetId: input.spreadsheetId, sheetName: input.sheetName, columnToMatchOn: input.columnToMatchOn };\nconst rows = [];\nfor (const row of data) {\n  if (row === null || typeof row !== 'object' || Array.isArray(row)) {\n    throw new Error('كل صف في dataJson لازم يكون كائن {عمود: قيمة}');\n  }\n  rows.push({ json: Object.assign({}, row, ctl) });\n}\nreturn rows;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleSheetsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Sheets account"
+    }
+   },
+   "id": "aa031900-4000-8000-000000000000",
+   "name": "sheet.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "columns": {
+     "mappingMode": "autoMapInputData",
+     "matchingColumns": [
+      "={{ $json.columnToMatchOn }}"
+     ],
+     "value": {}
+    },
+    "documentId": {
+     "__rl": true,
+     "mode": "id",
+     "value": "={{ $json.spreadsheetId }}"
+    },
+    "operation": "update",
+    "options": {
+     "handlingExtraData": "ignoreIt"
+    },
+    "resource": "sheet",
+    "sheetName": {
+     "__rl": true,
+     "mode": "name",
+     "value": "={{ $json.sheetName }}"
+    }
+   },
+   "position": [
+    600,
+    1170
+   ],
+   "type": "n8n-nodes-base.googleSheets",
+   "typeVersion": 4.7
+  },
+  {
+   "id": "e77bfad5-dea2-4b78-9005-0a5eee512d30",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-24T21:31:29.289Z"
+}

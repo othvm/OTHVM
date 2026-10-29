@@ -1,0 +1,210 @@
+{
+  "_notes": [
+    "Reference copy of the live OTHVM n8n agent. The n8n public API does not expose agents, so this file is descriptive and is not directly importable.",
+    "Paste agent/INSTRUCTIONS.md into the agent instructions field and create the five skills from agent/skills/.",
+    "Resolve every REPLACE_WITH_* placeholder on the target instance. Workflow IDs are in deploy/workflows/manifest.json."
+  ],
+  "name": "OTHVM",
+  "model": "nvidia/nvidia/nemotron-3-ultra-550b-a55b",
+  "credential": "REPLACE_WITH_NVIDIA_CREDENTIAL_ID",
+  "instructions": "See agent/INSTRUCTIONS.md",
+  "personalisation": {
+    "icon": "bot",
+    "gradient": {
+      "from": "#FC5C00",
+      "to": "#0097F0",
+      "angle": 358,
+      "fromStop": 19,
+      "toStop": 83
+    }
+  },
+  "memory": {
+    "enabled": true,
+    "storage": "n8n",
+    "observationalMemory": {
+      "enabled": true,
+      "observerModel": {
+        "model": "google/gemini-3.5-flash-lite",
+        "credential": "REPLACE_WITH_GOOGLE_GEMINI_CREDENTIAL_ID"
+      },
+      "reflectorModel": {
+        "model": "google/gemini-3.5-flash-lite",
+        "credential": "REPLACE_WITH_GOOGLE_GEMINI_CREDENTIAL_ID"
+      }
+    }
+  },
+  "config": {
+    "reasoning": "low",
+    "webSearch": {
+      "enabled": false
+    },
+    "toolCallConcurrency": 5,
+    "maxIterations": 100
+  },
+  "mcpServers": [],
+  "providerTools": {},
+  "subAgents": {},
+  "vectorStores": [
+    {
+      "provider": "supabase",
+      "name": "knowledge",
+      "credential": "REPLACE_WITH_SUPABASE_CREDENTIAL_ID",
+      "useWhen": "Long-term memory: Notion documents, Gmail messages, Drive files, and GitHub content. Search it before answering questions about the operator’s past, goals, projects, emails, or documents. Returns the four best excerpts with source and similarity score.",
+      "embedding": {
+        "model": "google/gemini-embedding-001",
+        "credential": "REPLACE_WITH_GOOGLE_GEMINI_CREDENTIAL_ID"
+      },
+      "tableName": "knowledge_base",
+      "queryName": "match_knowledge"
+    }
+  ],
+  "tools": [
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "Gmail",
+      "name": "mail",
+      "description": "[Mail] Gmail search, read, send, reply, label, draft. params: {operation, ...}. Ops: message.getAll/get/send/reply/delete/trash/addLabels/removeLabels/markAsRead/markAsUnread; label.create/get/getAll/update/delete; draft.create/get/getAll/delete/send; thread.get/getAll/reply. Email only.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "Calendar",
+      "name": "calendar",
+      "description": "[Calendar] List, create, read, update, move, and delete events and calendars. params: {operation, eventId, timeMin, timeMax, summary, start, end, location, description, calendarId, rrule}. Use ISO 8601 with +03:00.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Files",
+      "name": "files",
+      "description": "[Files] Drive, Sheets, Slides, Docs, and document export. params: {tool: drive|sheet|slides|docs|document, params:{operation, ...}}. drive: file.copy/createFromText/deleteFile/download/move/share/update/upload/export, fileFolder.search/create; sheet: spreadsheet.create/get/getAll/update, values.get/append/update/clear; slides: presentation.create/get/getSlides/replaceText, page.get/getThumbnail; docs: document.create/get/update; document: create_pdf/create_slides/create_sheet/export. Google Docs text belongs here, not in notes.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Tasks",
+      "name": "tasks",
+      "description": "[Tasks] Google Tasks, Todoist, Linear, and local todos. params: {tool: google|todoist|linear|local, params:{operation, ...}}. google: task.create/get/getAll/update/delete/move/clear, tasklist.getAll/create/update/delete; todoist: task/project/section/label/comment operations; linear: issue/project/team/comment operations; local: list/add/update/done/delete on Supabase todos. Use local when the operator does not name an account.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Notes",
+      "name": "notes",
+      "description": "[Notes] Notion pages and local Supabase notes. params: {tool: notion|local, params:{operation, ...}}. notion: search, page.get/create/append/content, database.query/create/update; local: list/add/update/delete with content and tags. Google Docs lives in files.docs.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "Contacts",
+      "name": "contacts",
+      "description": "[Contacts] Google Contacts. params: {operation, contactId, givenName, familyName, email, phone, notes, query, etag}. Ops: contact.getAll/get/create/update/delete. Search with query.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "Android",
+      "name": "phone",
+      "description": "[Phone] Android over ADB/Tailscale. params {action, ...}. status, info, battery, storage, wifi, network, alarms, alarm_create, notifications, screenshot, ui, tap, tap_text, swipe, type, key, open_app, shell, files, pull, push. Check status first; only claim connected when connected=true.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "Laptop",
+      "name": "computer",
+      "description": "[Computer] Full Windows laptop control. params {category, action, ...}. Categories: system, files, apps, windows, input, browser, network, display, audio, devices, security, power, startup, registry. Call system.catalog for the live list. system: info, battery, uptime, disk, memory, cpu, gpu, screenshot, screen_record, get_processes, process_start, process_details, kill_process, system_command (PowerShell/CMD), clipboard_get/set, volume_get/set, mute, brightness_get/set, service_list/control, task_list/create/delete/run/end, audit_log, ocr, event_log, installed_apps, notification, sessions, users, windows_updates, wsl_list/run, docker_list/control. files: file_read/write/append/delete/move/copy/list/search, folder_create/delete, trash_list/restore/undo/trash_empty, hash, zip/unzip, permissions, owner, search_content, duplicates, large_files, share_list/create. apps: open_application, close_application, focus_window, list_windows, minimize/maximize, installed, uninstall, default_get, launch_as_admin. windows: list, focus, minimize, maximize, restore, move, resize, close, always_on_top, snap. input: keyboard_type/shortcut/press, mouse_click/move/scroll/drag/down/up, media_key. browser: browser_open/navigate/click/type/extract/screenshot/execute_js/scroll/close/get_url/get_title, fill_form, extract_table, monitor_page, login_and_action. network: interfaces, ip, wifi_status/list/connect/disconnect, ping, dns, public_ip, ports, connections, vpn_list, proxy_get/set, hosts_read/write, firewall_status/rules/add/remove. display: monitors, resolution_get/set, refresh_rate_set, wallpaper_get/set, theme_get/set, notifications_get/set, screen_off. audio: devices, default_get, media_play_pause/next/prev/stop, now_playing. devices: bluetooth_status/on/off/devices, usb_list, printer_list/default, print_file, drivers, problem_devices. security: defender_status/scan/update, firewall_*, bitlocker_status, secure_boot, tpm, users, sessions, event_log, windows_updates. power: shutdown, restart, sleep, hibernate, lock, signout, cancel_shutdown, screen_off, battery, plans, plan_set, last_wake, requests, sleep_states. startup: list/add/remove. registry: read/list/write/delete (HKCU/HKLM/HKCR/HKU/HKCC; sensitive keys blocked). T2/T3 gates apply; deletes go to trash. Short aliases (shell, browser.open, apps.open) also work.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Info",
+      "name": "info",
+      "description": "[Info] Weather, prayer, web search/news/fetch, Wikipedia, translate, YouTube, Google Books, NASA. params: {tool: weather|prayer|search|news|fetch|wiki|translate|youtube|books|nasa, params:{operation, ...}}. youtube: channel/video/playlist/subscription/comment operations; books: bookshelf/volume operations; nasa: apod.get, asteroid, epic, image library.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Automation",
+      "name": "automation",
+      "description": "[Automation] n8n workflows, progress, streaks, sleep/wake, goals/loops, briefs, modes, reminders, morning briefing, status. params: {tool: workflow|progress|streak|sleep|loops|briefs|modes|reminders|morning|status, params:{operation, ...}}. status: deterministic /status report with live Google credential health — use it for any status question instead of guessing. workflow: list/get/create/update/activate/deactivate/run/delete/executions; progress: start/check/update/done/error; streak: list/check/update; sleep: start/status/cancel; loops: create/list/get/ack/snooze/pause/resume/cancel/update/stats and goal_create/list/update/done; briefs/modes: list/get/run/toggle; reminders: due/list/add/cancel; morning: trigger Morning Briefing now.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Memory",
+      "name": "memory",
+      "description": "[Memory] Supabase DB, knowledge/vector search, Airtable, conversation context. params: {tool: db|knowledge|airtable|context, params:{operation, ...}}. db: read/write/delete/query/execute/count/schema.*/admin.*; knowledge: search/add/ingest/stats/listSources/get/delete; airtable: records/tables/bases; context: latest/history/threads/summarize/sync/maintain. Prefer knowledge.search before answering about past notes, documents, or projects.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Dev",
+      "name": "dev",
+      "description": "[Dev] Run code, code sessions, GitHub. params: {tool: code|session|github, params:{operation, ...}} (flat operation also accepted). code: read_project/analyze_file/find_in_project/git_status/git_diff/git_log/git_commit/git_push/run_script/install_packages/create_project; session: open_file/read_section/edit_section/save_file/run_tests; github: repo/issue/pr/file/release/review/workflow operations. Use for local scripts and repository work, not general Windows control.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Finance",
+      "name": "finance",
+      "description": "[Finance] Expenses, Stripe, Shopify. params: {tool: expenses|stripe|shopify, params:{operation, ...}}. expenses: log/savings/today/week/month/delete/categories; stripe: balance.get, customer.*, charge.*, paymentLink.*, refund.*, invoice.*, product.*, price.*; shopify: shop.get, product.*, order.*, variant.* (needs SHOPIFY_STORE_DOMAIN and SHOPIFY_ADMIN_TOKEN).",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Telegram",
+      "name": "telegram",
+      "description": "[Telegram] Bot, personal account, Discord, voice notes. params: {tool: bot|personal|discord|voice|speak, params:{operation, ...}}. bot: sendMessage/sendPhoto/sendDocument/sendAudio/sendVoice/getChat/getUpdates/poll; voice: {file_id, reply_to_message_id?, chat_id?} → {ok, text, language, uncertain} (Groq Whisper turbo + Gemini fallback); speak: {text, lang?, chatId?} → short free Arabic TTS audio (max ~190 chars); personal: send_message/send_file/get_dialogs/get_messages (confirm first); discord: message/channel/guild operations.",
+      "allOutputs": false
+    },
+    {
+      "type": "workflow",
+      "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+      "workflow": "OTHVM — Vision",
+      "name": "vision",
+      "description": "[Vision] Image analysis only. params: {tool: image, params:{operation:\"analyze\", image_url|image_path|file_id|image_base64, prompt}}. For PDFs and decks use files.document; for screen OCR use computer system.ocr.",
+      "allOutputs": false
+    }
+  ],
+  "skills": [
+    {
+      "type": "skill",
+      "id": "REPLACE_WITH_SKILL_ID",
+      "name": "daily-plan"
+    },
+    {
+      "type": "skill",
+      "id": "REPLACE_WITH_SKILL_ID",
+      "name": "wake-loop"
+    },
+    {
+      "type": "skill",
+      "id": "REPLACE_WITH_SKILL_ID",
+      "name": "device-ops"
+    },
+    {
+      "type": "skill",
+      "id": "REPLACE_WITH_SKILL_ID",
+      "name": "dev-ship"
+    },
+    {
+      "type": "skill",
+      "id": "REPLACE_WITH_SKILL_ID",
+      "name": "research-memory"
+    }
+  ]
+}

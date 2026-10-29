@@ -1,0 +1,1040 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "base.getMany",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "base.getSchema",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "record.search",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "record.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "record.create — prep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "record.update — prep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "record.upsert — prep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "record.deleteRecord",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "base.getMany": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "base.getMany — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "base.getMany — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "base.getSchema": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "base.getSchema — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "base.getSchema — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.create — prep": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.create",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.deleteRecord": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.deleteRecord — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.deleteRecord — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.search": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.search — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.search — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.update — prep": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.update",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.upsert": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.upsert — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.upsert — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "record.upsert — prep": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "record.upsert",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T14:00:06.801Z",
+ "id": "YELzrCPWadSrKb9T",
+ "name": "Airtable",
+ "nodes": [
+  {
+   "id": "aa050100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "baseId",
+       "type": "string"
+      },
+      {
+       "name": "tableId",
+       "type": "string"
+      },
+      {
+       "name": "recordId",
+       "type": "string"
+      },
+      {
+       "name": "fields",
+       "type": "object"
+      },
+      {
+       "name": "matchColumns",
+       "type": "array"
+      },
+      {
+       "name": "typecast",
+       "type": "boolean"
+      },
+      {
+       "name": "filter",
+       "type": "string"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      },
+      {
+       "name": "view",
+       "type": "string"
+      },
+      {
+       "name": "fieldNames",
+       "type": "array"
+      },
+      {
+       "name": "sortField",
+       "type": "string"
+      },
+      {
+       "name": "sortDirection",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa050200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "base.getMany"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "base.getMany"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "base.getSchema"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "base.getSchema"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "record.search"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "record.search"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "record.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "record.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "record.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "record.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "record.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "record.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "record.upsert"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "record.upsert"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "record.deleteRecord"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "record.deleteRecord"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa050300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa050400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"base.getMany, base.getSchema, record.search, record.get, record.create, record.update, record.upsert, record.deleteRecord\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1190
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "airtableTokenApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Airtable account"
+    }
+   },
+   "id": "aa050500-4000-8000-000000000000",
+   "name": "base.getMany",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ Math.max(1, Math.min(1000, Number($json.limit) || 100)) }}",
+    "operation": "getMany",
+    "resource": "base",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.airtable",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa050600-4000-8000-000000000000",
+   "name": "base.getMany — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error || r.error) { const _e = item.error || r.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) {\n    const o = { id: r.id, createdTime: r.createdTime };\n    for (const [k, v] of Object.entries(r.fields)) {\n      if (typeof v === 'string') o[k] = v.length > 300 ? v.slice(0, 300) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 200);\n      if (Object.keys(o).length >= 16) break;\n    }\n    out.push({ json: o });\n    continue;\n  }\n  out.push({ json: r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "airtableTokenApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Airtable account"
+    }
+   },
+   "id": "aa050700-4000-8000-000000000000",
+   "name": "base.getSchema",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "base": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.baseId }}"
+    },
+    "operation": "getSchema",
+    "resource": "base"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.airtable",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa050800-4000-8000-000000000000",
+   "name": "base.getSchema — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error || r.error) { const _e = item.error || r.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) {\n    const o = { id: r.id, createdTime: r.createdTime };\n    for (const [k, v] of Object.entries(r.fields)) {\n      if (typeof v === 'string') o[k] = v.length > 300 ? v.slice(0, 300) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 200);\n      if (Object.keys(o).length >= 16) break;\n    }\n    out.push({ json: o });\n    continue;\n  }\n  out.push({ json: r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "airtableTokenApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Airtable account"
+    }
+   },
+   "id": "aa050900-4000-8000-000000000000",
+   "name": "record.search",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "base": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.baseId }}"
+    },
+    "direction": "={{ $json.sortDirection }}",
+    "field": "={{ $json.sortField }}",
+    "fields": "={{ $json.fieldNames }}",
+    "filterByFormula": "={{ $json.filter }}",
+    "limit": "={{ Math.max(1, Math.min(100, Number($json.limit) || 100)) }}",
+    "operation": "search",
+    "resource": "record",
+    "returnAll": false,
+    "table": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.tableId }}"
+    },
+    "view": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.view }}"
+    }
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.airtable",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa051000-4000-8000-000000000000",
+   "name": "record.search — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error || r.error) { const _e = item.error || r.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) {\n    const o = { id: r.id, createdTime: r.createdTime };\n    for (const [k, v] of Object.entries(r.fields)) {\n      if (typeof v === 'string') o[k] = v.length > 300 ? v.slice(0, 300) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 200);\n      if (Object.keys(o).length >= 16) break;\n    }\n    out.push({ json: o });\n    continue;\n  }\n  out.push({ json: r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "airtableTokenApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Airtable account"
+    }
+   },
+   "id": "aa051100-4000-8000-000000000000",
+   "name": "record.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "base": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.baseId }}"
+    },
+    "id": "={{ $json.recordId }}",
+    "operation": "get",
+    "resource": "record",
+    "table": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.tableId }}"
+    }
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.airtable",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa051200-4000-8000-000000000000",
+   "name": "record.get — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error || r.error) { const _e = item.error || r.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) {\n    const o = { id: r.id, createdTime: r.createdTime };\n    for (const [k, v] of Object.entries(r.fields)) {\n      if (typeof v === 'string') o[k] = v.length > 300 ? v.slice(0, 300) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 200);\n      if (Object.keys(o).length >= 16) break;\n    }\n    out.push({ json: o });\n    continue;\n  }\n  out.push({ json: r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa051300-4000-8000-000000000000",
+   "name": "record.create — prep",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const f = (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) ? r.fields : {};\n  out.push({ json: Object.assign({}, r, f, r.recordId ? { id: r.recordId } : {}) });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "airtableTokenApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Airtable account"
+    }
+   },
+   "id": "aa051400-4000-8000-000000000000",
+   "name": "record.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "base": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.baseId }}"
+    },
+    "columns": {
+     "mappingMode": "autoMapInputData",
+     "matchingColumns": [],
+     "value": {}
+    },
+    "operation": "create",
+    "options": {
+     "ignoreFields": "operation,baseId,tableId,recordId,fields,matchColumns,filter,limit,view,fieldNames,sortField,sortDirection,typecast",
+     "typecast": "={{ $json.typecast === true }}"
+    },
+    "resource": "record",
+    "table": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.tableId }}"
+    }
+   },
+   "position": [
+    600,
+    520
+   ],
+   "type": "n8n-nodes-base.airtable",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa051500-4000-8000-000000000000",
+   "name": "record.create — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error || r.error) { const _e = item.error || r.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) {\n    const o = { id: r.id, createdTime: r.createdTime };\n    for (const [k, v] of Object.entries(r.fields)) {\n      if (typeof v === 'string') o[k] = v.length > 300 ? v.slice(0, 300) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 200);\n      if (Object.keys(o).length >= 16) break;\n    }\n    out.push({ json: o });\n    continue;\n  }\n  out.push({ json: r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa051600-4000-8000-000000000000",
+   "name": "record.update — prep",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const f = (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) ? r.fields : {};\n  out.push({ json: Object.assign({}, r, f, r.recordId ? { id: r.recordId } : {}) });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "airtableTokenApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Airtable account"
+    }
+   },
+   "id": "aa051700-4000-8000-000000000000",
+   "name": "record.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "base": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.baseId }}"
+    },
+    "columns": {
+     "mappingMode": "autoMapInputData",
+     "matchingColumns": [
+      "id"
+     ],
+     "value": {}
+    },
+    "operation": "update",
+    "options": {
+     "ignoreFields": "operation,baseId,tableId,recordId,fields,matchColumns,filter,limit,view,fieldNames,sortField,sortDirection,typecast",
+     "typecast": "={{ $json.typecast === true }}"
+    },
+    "resource": "record",
+    "table": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.tableId }}"
+    }
+   },
+   "position": [
+    600,
+    650
+   ],
+   "type": "n8n-nodes-base.airtable",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa051800-4000-8000-000000000000",
+   "name": "record.update — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error || r.error) { const _e = item.error || r.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) {\n    const o = { id: r.id, createdTime: r.createdTime };\n    for (const [k, v] of Object.entries(r.fields)) {\n      if (typeof v === 'string') o[k] = v.length > 300 ? v.slice(0, 300) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 200);\n      if (Object.keys(o).length >= 16) break;\n    }\n    out.push({ json: o });\n    continue;\n  }\n  out.push({ json: r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa051900-4000-8000-000000000000",
+   "name": "record.upsert — prep",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const f = (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) ? r.fields : {};\n  out.push({ json: Object.assign({}, r, f, r.recordId ? { id: r.recordId } : {}) });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "airtableTokenApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Airtable account"
+    }
+   },
+   "id": "aa052000-4000-8000-000000000000",
+   "name": "record.upsert",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "base": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.baseId }}"
+    },
+    "columns": {
+     "mappingMode": "autoMapInputData",
+     "matchingColumns": "={{ $json.matchColumns || [] }}",
+     "value": {}
+    },
+    "operation": "upsert",
+    "options": {
+     "ignoreFields": "operation,baseId,tableId,recordId,fields,matchColumns,filter,limit,view,fieldNames,sortField,sortDirection,typecast",
+     "typecast": "={{ $json.typecast === true }}"
+    },
+    "resource": "record",
+    "table": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.tableId }}"
+    }
+   },
+   "position": [
+    600,
+    780
+   ],
+   "type": "n8n-nodes-base.airtable",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa052100-4000-8000-000000000000",
+   "name": "record.upsert — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error || r.error) { const _e = item.error || r.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) {\n    const o = { id: r.id, createdTime: r.createdTime };\n    for (const [k, v] of Object.entries(r.fields)) {\n      if (typeof v === 'string') o[k] = v.length > 300 ? v.slice(0, 300) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 200);\n      if (Object.keys(o).length >= 16) break;\n    }\n    out.push({ json: o });\n    continue;\n  }\n  out.push({ json: r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "airtableTokenApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Airtable account"
+    }
+   },
+   "id": "aa052200-4000-8000-000000000000",
+   "name": "record.deleteRecord",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "base": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.baseId }}"
+    },
+    "id": "={{ $json.recordId }}",
+    "operation": "deleteRecord",
+    "resource": "record",
+    "table": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.tableId }}"
+    }
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.airtable",
+   "typeVersion": 2.2
+  },
+  {
+   "id": "aa052300-4000-8000-000000000000",
+   "name": "record.deleteRecord — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error || r.error) { const _e = item.error || r.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (r.fields && typeof r.fields === 'object' && !Array.isArray(r.fields)) {\n    const o = { id: r.id, createdTime: r.createdTime };\n    for (const [k, v] of Object.entries(r.fields)) {\n      if (typeof v === 'string') o[k] = v.length > 300 ? v.slice(0, 300) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 200);\n      if (Object.keys(o).length >= 16) break;\n    }\n    out.push({ json: o });\n    continue;\n  }\n  out.push({ json: r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    910
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Integrations"
+ ],
+ "updatedAt": "2026-10-22T12:33:27.841Z"
+}

@@ -1,0 +1,2511 @@
+{
+ "generatedAt": "2026-10-28T00:55:19Z",
+ "source": "live n8n instance",
+ "sanitized": true,
+ "sanitizerVersion": 2,
+ "workflowCount": 68,
+ "activeCount": 67,
+ "inactiveCount": 1,
+ "importOrder": [
+  "YELzrCPWadSrKb9T",
+  "f3ayGrSbQHQc8GW8",
+  "obcOTcarZUHYFl3n",
+  "o0mMFCT8UUTeW0Je",
+  "okqSphl5QOsYgyZO",
+  "Su159D05IL5LioR1",
+  "GIlrTwAh27aDJ90a",
+  "hfWwsq2WFlf8KZgG",
+  "WlAF18YxAnc1Fsjf",
+  "LtSybNB56L8wfPd7",
+  "ZbwfIuk8tJvdHrZF",
+  "MH4tXVVtnElWIWsj",
+  "4Ba30yhWX3LFiHZv",
+  "Ygv84MkRxGy4lfmz",
+  "uLAaUThNdGTPuKXU",
+  "e7XvsPZcFoRT6Y7G",
+  "NACjwj8f4104QeES",
+  "bvHBH9aLZJHeDrhx",
+  "R1e8Zh8gJSCRzm32",
+  "eas5JwtqMZqzJQvo",
+  "bxCA1iNEGrfoptMY",
+  "PCeM3BnTopz6x70g",
+  "hDzwsequ4HbBsJBr",
+  "wZhbwDr2mqi7HvmT",
+  "dQY95kTp1zsUtunx",
+  "4V9X1WAuQTr7Gd5v",
+  "amQ0OQHM0FHAcg5y",
+  "KnhXvp3s9b7E2fUJ",
+  "QKWruJYfuqtKt8JC",
+  "fRbjxY4Vm4mZMOGA",
+  "1oiKQuNFZUF3YOeX",
+  "dmAuMGGB0NBHeSa8",
+  "bFwnd5QS25LLjc2j",
+  "4EIH777TDG9Aq91I",
+  "AisqHM592kAxlMNO",
+  "EGJhUZnS00NWbp4d",
+  "aIUkpUpj9EYKYvuI",
+  "glZGwPyczwkDc5XB",
+  "rZTTC5wXYuHQXbkA",
+  "gfLSxNSdgxZDcyyc",
+  "IUY2x9KO3qjbVxj4",
+  "JweQefrJNBBFgq92",
+  "OwbdanxSYI0jK2IA",
+  "9bgzVlis8kqqfuhy",
+  "jM2invMNfHevZCZF",
+  "SZbBeMxvSBDJirGK",
+  "PtmKyOOLgBNP5p1l",
+  "qeCbfWbL28K82P2c",
+  "rRh2pplrLL0XhvAH",
+  "saEBKPzzi4XlkaKg",
+  "Vh8u95FQrK65CjBs",
+  "Lo4M8vtRRFyB4lJI",
+  "OKoYPIvTXMuLqcMQ",
+  "VNbxaSFMXOwjy65L",
+  "xt24a5CjUFV31TaE",
+  "RkB4Dpx9skZ8WyWu",
+  "8RyBRyVsJEBl7WNT",
+  "SFt6HOaBYvIgKBC2",
+  "sPjXzDAowwQy6WmW",
+  "S9sR3ooJ9pdhSf6R",
+  "TzOLXwXLj4MWXKrN",
+  "Tc4gH8HuhiSdDXZE",
+  "P8ytyoOlCHjrXbY8",
+  "VuZZX0P36eczE3Gw",
+  "17LZ2ChTSfvyjxjr",
+  "bNpeLw2gFhiqcode",
+  "BQrvcly7UGJMSPQ3",
+  "aQTcY0SsBsY69jrr"
+ ],
+ "credentialTypes": [
+  {
+   "type": "airtableTokenApi",
+   "references": 8,
+   "workflowCount": 1,
+   "names": [
+    "Airtable account"
+   ]
+  },
+  {
+   "type": "discordBotApi",
+   "references": 18,
+   "workflowCount": 1,
+   "names": [
+    "Discord account"
+   ]
+  },
+  {
+   "type": "githubOAuth2Api",
+   "references": 49,
+   "workflowCount": 1,
+   "names": [
+    "GitHub account"
+   ]
+  },
+  {
+   "type": "gmailOAuth2",
+   "references": 32,
+   "workflowCount": 4,
+   "names": [
+    "Gmail account"
+   ]
+  },
+  {
+   "type": "googleBooksOAuth2Api",
+   "references": 9,
+   "workflowCount": 1,
+   "names": [
+    "Google Books account"
+   ]
+  },
+  {
+   "type": "googleCalendarOAuth2Api",
+   "references": 14,
+   "workflowCount": 4,
+   "names": [
+    "Google Calendar account"
+   ]
+  },
+  {
+   "type": "googleContactsOAuth2Api",
+   "references": 6,
+   "workflowCount": 2,
+   "names": [
+    "Google Contacts account"
+   ]
+  },
+  {
+   "type": "googleDocsOAuth2Api",
+   "references": 3,
+   "workflowCount": 1,
+   "names": [
+    "Google Docs account"
+   ]
+  },
+  {
+   "type": "googleDriveOAuth2Api",
+   "references": 23,
+   "workflowCount": 3,
+   "names": [
+    "Google Drive account"
+   ]
+  },
+  {
+   "type": "googlePalmApi",
+   "references": 4,
+   "workflowCount": 3,
+   "names": [
+    "Google Gemini(PaLM) Api account"
+   ]
+  },
+  {
+   "type": "googleSheetsOAuth2Api",
+   "references": 13,
+   "workflowCount": 2,
+   "names": [
+    "Google Sheets account"
+   ]
+  },
+  {
+   "type": "googleSlidesOAuth2Api",
+   "references": 8,
+   "workflowCount": 2,
+   "names": [
+    "Google Slides account"
+   ]
+  },
+  {
+   "type": "googleTasksOAuth2Api",
+   "references": 13,
+   "workflowCount": 3,
+   "names": [
+    "Google Tasks account"
+   ]
+  },
+  {
+   "type": "linearApi",
+   "references": 7,
+   "workflowCount": 1,
+   "names": [
+    "Linear account"
+   ]
+  },
+  {
+   "type": "nasaApi",
+   "references": 15,
+   "workflowCount": 1,
+   "names": [
+    "NASA account"
+   ]
+  },
+  {
+   "type": "notionApi",
+   "references": 7,
+   "workflowCount": 1,
+   "names": [
+    "Notion account"
+   ]
+  },
+  {
+   "type": "nvidiaApi",
+   "references": 2,
+   "workflowCount": 1,
+   "names": [
+    "NVIDIA Nemotron account"
+   ]
+  },
+  {
+   "type": "stripeApi",
+   "references": 20,
+   "workflowCount": 1,
+   "names": [
+    "Stripe account"
+   ]
+  },
+  {
+   "type": "telegramApi",
+   "references": 10,
+   "workflowCount": 6,
+   "names": [
+    "Telegram account"
+   ]
+  },
+  {
+   "type": "todoistApi",
+   "references": 36,
+   "workflowCount": 1,
+   "names": [
+    "Todoist account"
+   ]
+  },
+  {
+   "type": "youTubeOAuth2Api",
+   "references": 27,
+   "workflowCount": 1,
+   "names": [
+    "YouTube account"
+   ]
+  }
+ ],
+ "webhookPaths": [
+  {
+   "workflowId": "4V9X1WAuQTr7Gd5v",
+   "workflowName": "Loop Ack",
+   "node": "Loop Button Webhook",
+   "path": "loop-ack",
+   "method": "GET"
+  },
+  {
+   "workflowId": "aQTcY0SsBsY69jrr",
+   "workflowName": "Telegram Commands",
+   "node": "Commands Webhook",
+   "path": "othvm-commands",
+   "method": "POST"
+  },
+  {
+   "workflowId": "PCeM3BnTopz6x70g",
+   "workflowName": "Google Health",
+   "node": "Health In",
+   "path": "othvm-google-health",
+   "method": "POST"
+  },
+  {
+   "workflowId": "KnhXvp3s9b7E2fUJ",
+   "workflowName": "Model Router",
+   "node": "Model Router Webhook",
+   "path": "othvm-model-router",
+   "method": "POST"
+  },
+  {
+   "workflowId": "bNpeLw2gFhiqcode",
+   "workflowName": "Streak Callback Handler",
+   "node": "Webhook",
+   "path": "othvm-streak-callback",
+   "method": "POST"
+  },
+  {
+   "workflowId": "VuZZX0P36eczE3Gw",
+   "workflowName": "Sleep Wake Monitor",
+   "node": "Sleep Button Webhook",
+   "path": "sleep-monitor",
+   "method": "GET"
+  }
+ ],
+ "warnings": [],
+ "workflows": [
+  {
+   "id": "YELzrCPWadSrKb9T",
+   "name": "Airtable",
+   "file": "YELzrCPWadSrKb9T_airtable.json",
+   "active": true,
+   "createdAt": "2026-10-18T14:00:06.801Z",
+   "updatedAt": "2026-10-22T12:33:27.841Z",
+   "tags": [
+    "Integrations"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "airtableTokenApi",
+     "name": "Airtable account",
+     "references": 8
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 1
+  },
+  {
+   "id": "f3ayGrSbQHQc8GW8",
+   "name": "Android",
+   "file": "f3ayGrSbQHQc8GW8_android.json",
+   "active": true,
+   "createdAt": "2026-10-22T13:25:54.259Z",
+   "updatedAt": "2026-10-27T19:33:33.629Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 2
+  },
+  {
+   "id": "obcOTcarZUHYFl3n",
+   "name": "Azkar",
+   "file": "obcOTcarZUHYFl3n_azkar.json",
+   "active": true,
+   "createdAt": "2026-10-23T11:25:47.835Z",
+   "updatedAt": "2026-10-26T12:18:49.223Z",
+   "tags": [],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Every 5 Minutes",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "*/5 * * * *"
+       }
+      ]
+     }
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "telegramApi",
+     "name": "Telegram account",
+     "references": 1
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 3
+  },
+  {
+   "id": "o0mMFCT8UUTeW0Je",
+   "name": "Calendar",
+   "file": "o0mMFCT8UUTeW0Je_calendar.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:35.972Z",
+   "updatedAt": "2026-10-27T19:33:33.572Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleCalendarOAuth2Api",
+     "name": "Google Calendar account",
+     "references": 10
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 4
+  },
+  {
+   "id": "okqSphl5QOsYgyZO",
+   "name": "Code Runner",
+   "file": "okqSphl5QOsYgyZO_code-runner.json",
+   "active": true,
+   "createdAt": "2026-10-19T22:14:24.437Z",
+   "updatedAt": "2026-10-24T21:31:30.727Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 5
+  },
+  {
+   "id": "Su159D05IL5LioR1",
+   "name": "Code Session",
+   "file": "Su159D05IL5LioR1_code-session.json",
+   "active": true,
+   "createdAt": "2026-10-19T22:25:04.865Z",
+   "updatedAt": "2026-10-24T21:31:30.937Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 6
+  },
+  {
+   "id": "GIlrTwAh27aDJ90a",
+   "name": "Contacts",
+   "file": "GIlrTwAh27aDJ90a_contacts.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:36.178Z",
+   "updatedAt": "2026-10-22T12:33:20.359Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleContactsOAuth2Api",
+     "name": "Google Contacts account",
+     "references": 5
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 7
+  },
+  {
+   "id": "hfWwsq2WFlf8KZgG",
+   "name": "Conversation Summarizer",
+   "file": "hfWwsq2WFlf8KZgG_conversation-summarizer.json",
+   "active": true,
+   "createdAt": "2026-10-19T11:37:32.043Z",
+   "updatedAt": "2026-10-23T10:15:16.247Z",
+   "tags": [
+    "Scheduled"
+   ],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Every 10 Minutes",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "minutes",
+        "minutesInterval": 10
+       }
+      ]
+     }
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 8
+  },
+  {
+   "id": "WlAF18YxAnc1Fsjf",
+   "name": "DB",
+   "file": "WlAF18YxAnc1Fsjf_db.json",
+   "active": true,
+   "createdAt": "2026-10-23T10:13:57.321Z",
+   "updatedAt": "2026-10-24T23:21:48.791Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 9
+  },
+  {
+   "id": "LtSybNB56L8wfPd7",
+   "name": "Discord",
+   "file": "LtSybNB56L8wfPd7_discord.json",
+   "active": true,
+   "createdAt": "2026-10-18T14:20:48.753Z",
+   "updatedAt": "2026-10-22T12:33:29.376Z",
+   "tags": [
+    "Communication"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "discordBotApi",
+     "name": "Discord account",
+     "references": 18
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 10
+  },
+  {
+   "id": "ZbwfIuk8tJvdHrZF",
+   "name": "Document Reader",
+   "file": "ZbwfIuk8tJvdHrZF_document-reader.json",
+   "active": true,
+   "createdAt": "2026-10-19T22:46:05.345Z",
+   "updatedAt": "2026-10-24T21:31:29.600Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleDriveOAuth2Api",
+     "name": "Google Drive account",
+     "references": 1
+    },
+    {
+     "type": "googleSheetsOAuth2Api",
+     "name": "Google Sheets account",
+     "references": 3
+    },
+    {
+     "type": "googleSlidesOAuth2Api",
+     "name": "Google Slides account",
+     "references": 2
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 11
+  },
+  {
+   "id": "MH4tXVVtnElWIWsj",
+   "name": "Drive",
+   "file": "MH4tXVVtnElWIWsj_drive.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:35.845Z",
+   "updatedAt": "2026-10-24T21:31:26.363Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleDriveOAuth2Api",
+     "name": "Google Drive account",
+     "references": 21
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 12
+  },
+  {
+   "id": "4Ba30yhWX3LFiHZv",
+   "name": "Drive Ingest",
+   "file": "4Ba30yhWX3LFiHZv_drive-ingest.json",
+   "active": true,
+   "createdAt": "2026-10-19T11:20:38.524Z",
+   "updatedAt": "2026-10-22T12:33:25.915Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Find Files",
+     "id": "MH4tXVVtnElWIWsj",
+     "name": "Drive"
+    },
+    {
+     "node": "Export Text",
+     "id": "MH4tXVVtnElWIWsj",
+     "name": "Drive"
+    }
+   ],
+   "importIndex": 13
+  },
+  {
+   "id": "Ygv84MkRxGy4lfmz",
+   "name": "Email Brief",
+   "file": "Ygv84MkRxGy4lfmz_email-brief.json",
+   "active": true,
+   "createdAt": "2026-10-16T22:50:10.446Z",
+   "updatedAt": "2026-10-27T22:02:42.880Z",
+   "tags": [
+    "Scheduled"
+   ],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Gmail Check (08:00)",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "0 8 * * *"
+       }
+      ]
+     }
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "gmailOAuth2",
+     "name": "Gmail account",
+     "references": 1
+    },
+    {
+     "type": "googlePalmApi",
+     "name": "Google Gemini(PaLM) Api account",
+     "references": 1
+    },
+    {
+     "type": "telegramApi",
+     "name": "Telegram account",
+     "references": 1
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 14
+  },
+  {
+   "id": "uLAaUThNdGTPuKXU",
+   "name": "Expense Tracker",
+   "file": "uLAaUThNdGTPuKXU_expense-tracker.json",
+   "active": true,
+   "createdAt": "2026-10-19T09:31:09.563Z",
+   "updatedAt": "2026-10-24T21:30:29.106Z",
+   "tags": [
+    "Finance"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 15
+  },
+  {
+   "id": "e7XvsPZcFoRT6Y7G",
+   "name": "GitHub",
+   "file": "e7XvsPZcFoRT6Y7G_github.json",
+   "active": true,
+   "createdAt": "2026-10-18T14:47:04.089Z",
+   "updatedAt": "2026-10-24T21:31:31.270Z",
+   "tags": [
+    "Development"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "githubOAuth2Api",
+     "name": "GitHub account",
+     "references": 49
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 16
+  },
+  {
+   "id": "NACjwj8f4104QeES",
+   "name": "GitHub Ingest",
+   "file": "NACjwj8f4104QeES_github-ingest.json",
+   "active": true,
+   "createdAt": "2026-10-19T11:20:38.613Z",
+   "updatedAt": "2026-10-22T12:33:26.012Z",
+   "tags": [
+    "Development"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Get Repos",
+     "id": "e7XvsPZcFoRT6Y7G",
+     "name": "GitHub"
+    },
+    {
+     "node": "List Files",
+     "id": "e7XvsPZcFoRT6Y7G",
+     "name": "GitHub"
+    },
+    {
+     "node": "Get Readme",
+     "id": "e7XvsPZcFoRT6Y7G",
+     "name": "GitHub"
+    },
+    {
+     "node": "Get Issues",
+     "id": "e7XvsPZcFoRT6Y7G",
+     "name": "GitHub"
+    },
+    {
+     "node": "Get Commits",
+     "id": "e7XvsPZcFoRT6Y7G",
+     "name": "GitHub"
+    }
+   ],
+   "importIndex": 17
+  },
+  {
+   "id": "bvHBH9aLZJHeDrhx",
+   "name": "Gmail",
+   "file": "bvHBH9aLZJHeDrhx_gmail.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:03:12.160Z",
+   "updatedAt": "2026-10-27T19:33:33.351Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "gmailOAuth2",
+     "name": "Gmail account",
+     "references": 29
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 18
+  },
+  {
+   "id": "R1e8Zh8gJSCRzm32",
+   "name": "Gmail Ingest",
+   "file": "R1e8Zh8gJSCRzm32_gmail-ingest.json",
+   "active": true,
+   "createdAt": "2026-10-19T11:20:38.433Z",
+   "updatedAt": "2026-10-22T12:33:26.095Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Find Emails",
+     "id": "bvHBH9aLZJHeDrhx",
+     "name": "Gmail"
+    }
+   ],
+   "importIndex": 19
+  },
+  {
+   "id": "eas5JwtqMZqzJQvo",
+   "name": "Google Books",
+   "file": "eas5JwtqMZqzJQvo_google-books.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:36.480Z",
+   "updatedAt": "2026-10-24T14:29:45.124Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleBooksOAuth2Api",
+     "name": "Google Books account",
+     "references": 9
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 20
+  },
+  {
+   "id": "bxCA1iNEGrfoptMY",
+   "name": "Google Docs",
+   "file": "bxCA1iNEGrfoptMY_google-docs.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:36.528Z",
+   "updatedAt": "2026-10-24T21:31:26.851Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleDocsOAuth2Api",
+     "name": "Google Docs account",
+     "references": 3
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 21
+  },
+  {
+   "id": "PCeM3BnTopz6x70g",
+   "name": "Google Health",
+   "file": "PCeM3BnTopz6x70g_google-health.json",
+   "active": true,
+   "createdAt": "2026-10-26T11:34:32.883Z",
+   "updatedAt": "2026-10-26T11:38:18.802Z",
+   "tags": [],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Health In",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "othvm-google-health",
+     "method": "POST",
+     "webhookId": "othvm-google-health"
+    }
+   ],
+   "webhooks": [
+    {
+     "node": "Health In",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "othvm-google-health",
+     "method": "POST",
+     "webhookId": "othvm-google-health"
+    }
+   ],
+   "credentials": [
+    {
+     "type": "gmailOAuth2",
+     "name": "Gmail account",
+     "references": 1
+    },
+    {
+     "type": "googleCalendarOAuth2Api",
+     "name": "Google Calendar account",
+     "references": 1
+    },
+    {
+     "type": "googleContactsOAuth2Api",
+     "name": "Google Contacts account",
+     "references": 1
+    },
+    {
+     "type": "googleDriveOAuth2Api",
+     "name": "Google Drive account",
+     "references": 1
+    },
+    {
+     "type": "googleTasksOAuth2Api",
+     "name": "Google Tasks account",
+     "references": 1
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 22
+  },
+  {
+   "id": "hDzwsequ4HbBsJBr",
+   "name": "Image Vision",
+   "file": "hDzwsequ4HbBsJBr_image-vision.json",
+   "active": true,
+   "createdAt": "2026-10-19T22:32:55.689Z",
+   "updatedAt": "2026-10-24T21:31:28.079Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 23
+  },
+  {
+   "id": "wZhbwDr2mqi7HvmT",
+   "name": "Laptop",
+   "file": "wZhbwDr2mqi7HvmT_laptop.json",
+   "active": true,
+   "createdAt": "2026-10-19T10:50:11.508Z",
+   "updatedAt": "2026-10-27T19:33:33.684Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 24
+  },
+  {
+   "id": "dQY95kTp1zsUtunx",
+   "name": "Linear",
+   "file": "dQY95kTp1zsUtunx_linear.json",
+   "active": true,
+   "createdAt": "2026-10-18T14:22:11.054Z",
+   "updatedAt": "2026-10-22T12:33:29.726Z",
+   "tags": [
+    "Development"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "linearApi",
+     "name": "Linear account",
+     "references": 7
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 25
+  },
+  {
+   "id": "4V9X1WAuQTr7Gd5v",
+   "name": "Loop Ack",
+   "file": "4V9X1WAuQTr7Gd5v_loop-ack.json",
+   "active": true,
+   "createdAt": "2026-10-24T22:05:20.316Z",
+   "updatedAt": "2026-10-24T22:05:20.316Z",
+   "tags": [],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Loop Button Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "loop-ack",
+     "method": "GET",
+     "webhookId": "448d2d70-f231-4206-8a30-b9c7ca845229"
+    }
+   ],
+   "webhooks": [
+    {
+     "node": "Loop Button Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "loop-ack",
+     "method": "GET",
+     "webhookId": "448d2d70-f231-4206-8a30-b9c7ca845229"
+    }
+   ],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 26
+  },
+  {
+   "id": "amQ0OQHM0FHAcg5y",
+   "name": "Loops",
+   "file": "amQ0OQHM0FHAcg5y_loops.json",
+   "active": true,
+   "createdAt": "2026-10-24T22:05:19.950Z",
+   "updatedAt": "2026-10-24T22:05:19.950Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 27
+  },
+  {
+   "id": "KnhXvp3s9b7E2fUJ",
+   "name": "Model Router",
+   "file": "KnhXvp3s9b7E2fUJ_model-router.json",
+   "active": true,
+   "createdAt": "2026-10-20T23:54:57.132Z",
+   "updatedAt": "2026-10-22T12:33:26.856Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Model Router Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "othvm-model-router",
+     "method": "POST",
+     "webhookId": "a1000001-4000-8000-00000000ca01"
+    }
+   ],
+   "webhooks": [
+    {
+     "node": "Model Router Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "othvm-model-router",
+     "method": "POST",
+     "webhookId": "a1000001-4000-8000-00000000ca01"
+    }
+   ],
+   "credentials": [
+    {
+     "type": "googlePalmApi",
+     "name": "Google Gemini(PaLM) Api account",
+     "references": 2
+    },
+    {
+     "type": "nvidiaApi",
+     "name": "NVIDIA Nemotron account",
+     "references": 2
+    },
+    {
+     "type": "telegramApi",
+     "name": "Telegram account",
+     "references": 1
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 28
+  },
+  {
+   "id": "1oiKQuNFZUF3YOeX",
+   "name": "Morning Briefing",
+   "file": "1oiKQuNFZUF3YOeX_morning-briefing.json",
+   "active": true,
+   "createdAt": "2026-10-19T23:18:54.553Z",
+   "updatedAt": "2026-10-26T12:28:53.344Z",
+   "tags": [
+    "Scheduled"
+   ],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Daily at 05:00",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "0 5,6 * * *"
+       }
+      ]
+     }
+    },
+    {
+     "node": "On-demand",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "gmailOAuth2",
+     "name": "Gmail account",
+     "references": 1
+    },
+    {
+     "type": "googleCalendarOAuth2Api",
+     "name": "Google Calendar account",
+     "references": 1
+    },
+    {
+     "type": "googleTasksOAuth2Api",
+     "name": "Google Tasks account",
+     "references": 1
+    },
+    {
+     "type": "telegramApi",
+     "name": "Telegram account",
+     "references": 1
+    }
+   ],
+   "dependencies": [
+    {
+     "node": "Weather Today",
+     "id": "fRbjxY4Vm4mZMOGA",
+     "name": "Weather Forecast"
+    },
+    {
+     "node": "Prayer Times Today",
+     "id": "QKWruJYfuqtKt8JC",
+     "name": "Prayer Times"
+    }
+   ],
+   "importIndex": 31
+  },
+  {
+   "id": "dmAuMGGB0NBHeSa8",
+   "name": "NASA",
+   "file": "dmAuMGGB0NBHeSa8_nasa.json",
+   "active": true,
+   "createdAt": "2026-10-18T13:30:17.500Z",
+   "updatedAt": "2026-10-22T12:33:18.269Z",
+   "tags": [
+    "Knowledge"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "nasaApi",
+     "name": "NASA account",
+     "references": 15
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 32
+  },
+  {
+   "id": "bFwnd5QS25LLjc2j",
+   "name": "Notion",
+   "file": "bFwnd5QS25LLjc2j_notion.json",
+   "active": true,
+   "createdAt": "2026-10-17T16:56:07.979Z",
+   "updatedAt": "2026-10-24T21:42:15.773Z",
+   "tags": [
+    "Knowledge"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "notionApi",
+     "name": "Notion account",
+     "references": 7
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 33
+  },
+  {
+   "id": "4EIH777TDG9Aq91I",
+   "name": "Notion Ingest",
+   "file": "4EIH777TDG9Aq91I_notion-ingest.json",
+   "active": true,
+   "createdAt": "2026-10-19T11:20:38.338Z",
+   "updatedAt": "2026-10-22T12:33:26.925Z",
+   "tags": [
+    "Knowledge"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Find Pages",
+     "id": "bFwnd5QS25LLjc2j",
+     "name": "Notion"
+    },
+    {
+     "node": "Read Pages",
+     "id": "bFwnd5QS25LLjc2j",
+     "name": "Notion"
+    }
+   ],
+   "importIndex": 34
+  },
+  {
+   "id": "rZTTC5wXYuHQXbkA",
+   "name": "OTHVM — Automation",
+   "file": "rZTTC5wXYuHQXbkA_othvm-automation.json",
+   "active": true,
+   "createdAt": "2026-10-24T21:32:31.623Z",
+   "updatedAt": "2026-10-27T19:33:33.988Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call workflow",
+     "id": "AisqHM592kAxlMNO",
+     "name": "Workflows"
+    },
+    {
+     "node": "Call streak",
+     "id": "glZGwPyczwkDc5XB",
+     "name": "Streak Tracker"
+    },
+    {
+     "node": "Call sleep",
+     "id": "EGJhUZnS00NWbp4d",
+     "name": "Sleep Scheduler"
+    },
+    {
+     "node": "Call progress",
+     "id": "aIUkpUpj9EYKYvuI",
+     "name": "Progress Status"
+    },
+    {
+     "node": "Call loops",
+     "id": "amQ0OQHM0FHAcg5y",
+     "name": "Loops"
+    },
+    {
+     "node": "Call briefs",
+     "id": "AisqHM592kAxlMNO",
+     "name": "Workflows"
+    },
+    {
+     "node": "Call modes",
+     "id": "AisqHM592kAxlMNO",
+     "name": "Workflows"
+    },
+    {
+     "node": "Call morning",
+     "id": "1oiKQuNFZUF3YOeX",
+     "name": "Morning Briefing"
+    }
+   ],
+   "importIndex": 39
+  },
+  {
+   "id": "gfLSxNSdgxZDcyyc",
+   "name": "OTHVM — Dev",
+   "file": "gfLSxNSdgxZDcyyc_othvm-dev.json",
+   "active": true,
+   "createdAt": "2026-10-24T21:32:31.960Z",
+   "updatedAt": "2026-10-27T22:00:25.121Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call code",
+     "id": "okqSphl5QOsYgyZO",
+     "name": "Code Runner"
+    },
+    {
+     "node": "Call session",
+     "id": "Su159D05IL5LioR1",
+     "name": "Code Session"
+    },
+    {
+     "node": "Call github",
+     "id": "e7XvsPZcFoRT6Y7G",
+     "name": "GitHub"
+    }
+   ],
+   "importIndex": 40
+  },
+  {
+   "id": "OwbdanxSYI0jK2IA",
+   "name": "OTHVM — Files",
+   "file": "OwbdanxSYI0jK2IA_othvm-files.json",
+   "active": true,
+   "createdAt": "2026-10-24T21:32:31.305Z",
+   "updatedAt": "2026-10-27T19:33:33.744Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call drive",
+     "id": "MH4tXVVtnElWIWsj",
+     "name": "Drive"
+    },
+    {
+     "node": "Call sheet",
+     "id": "JweQefrJNBBFgq92",
+     "name": "Sheets"
+    },
+    {
+     "node": "Call slides",
+     "id": "IUY2x9KO3qjbVxj4",
+     "name": "Slides"
+    },
+    {
+     "node": "Call docs",
+     "id": "bxCA1iNEGrfoptMY",
+     "name": "Google Docs"
+    },
+    {
+     "node": "Call document",
+     "id": "ZbwfIuk8tJvdHrZF",
+     "name": "Document Reader"
+    }
+   ],
+   "importIndex": 43
+  },
+  {
+   "id": "SZbBeMxvSBDJirGK",
+   "name": "OTHVM — Finance",
+   "file": "SZbBeMxvSBDJirGK_othvm-finance.json",
+   "active": true,
+   "createdAt": "2026-10-24T21:43:01.624Z",
+   "updatedAt": "2026-10-27T19:33:34.108Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call expenses",
+     "id": "uLAaUThNdGTPuKXU",
+     "name": "Expense Tracker"
+    },
+    {
+     "node": "Call stripe",
+     "id": "9bgzVlis8kqqfuhy",
+     "name": "Stripe"
+    },
+    {
+     "node": "Call shopify",
+     "id": "jM2invMNfHevZCZF",
+     "name": "Shopify Store Admin"
+    }
+   ],
+   "importIndex": 46
+  },
+  {
+   "id": "Vh8u95FQrK65CjBs",
+   "name": "OTHVM — Info",
+   "file": "Vh8u95FQrK65CjBs_othvm-info.json",
+   "active": true,
+   "createdAt": "2026-10-24T21:32:30.971Z",
+   "updatedAt": "2026-10-27T19:33:33.926Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call weather",
+     "id": "fRbjxY4Vm4mZMOGA",
+     "name": "Weather Forecast"
+    },
+    {
+     "node": "Call prayer",
+     "id": "QKWruJYfuqtKt8JC",
+     "name": "Prayer Times"
+    },
+    {
+     "node": "Call search",
+     "id": "rRh2pplrLL0XhvAH",
+     "name": "Web Search"
+    },
+    {
+     "node": "Call news",
+     "id": "rRh2pplrLL0XhvAH",
+     "name": "Web Search"
+    },
+    {
+     "node": "Call fetch",
+     "id": "rRh2pplrLL0XhvAH",
+     "name": "Web Search"
+    },
+    {
+     "node": "Call wiki",
+     "id": "PtmKyOOLgBNP5p1l",
+     "name": "Wikipedia"
+    },
+    {
+     "node": "Call translate",
+     "id": "saEBKPzzi4XlkaKg",
+     "name": "Translation"
+    },
+    {
+     "node": "Call youtube",
+     "id": "qeCbfWbL28K82P2c",
+     "name": "YouTube"
+    },
+    {
+     "node": "Call books",
+     "id": "eas5JwtqMZqzJQvo",
+     "name": "Google Books"
+    },
+    {
+     "node": "Call nasa",
+     "id": "dmAuMGGB0NBHeSa8",
+     "name": "NASA"
+    }
+   ],
+   "importIndex": 51
+  },
+  {
+   "id": "Lo4M8vtRRFyB4lJI",
+   "name": "OTHVM — Memory",
+   "file": "Lo4M8vtRRFyB4lJI_othvm-memory.json",
+   "active": true,
+   "createdAt": "2026-10-24T23:40:27.562Z",
+   "updatedAt": "2026-10-27T22:00:24.883Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call db",
+     "id": "WlAF18YxAnc1Fsjf",
+     "name": "DB"
+    },
+    {
+     "node": "Call airtable",
+     "id": "YELzrCPWadSrKb9T",
+     "name": "Airtable"
+    }
+   ],
+   "importIndex": 52
+  },
+  {
+   "id": "OKoYPIvTXMuLqcMQ",
+   "name": "OTHVM — Notes",
+   "file": "OKoYPIvTXMuLqcMQ_othvm-notes.json",
+   "active": true,
+   "createdAt": "2026-10-24T21:43:01.289Z",
+   "updatedAt": "2026-10-27T19:33:33.863Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call notion",
+     "id": "bFwnd5QS25LLjc2j",
+     "name": "Notion"
+    }
+   ],
+   "importIndex": 53
+  },
+  {
+   "id": "RkB4Dpx9skZ8WyWu",
+   "name": "OTHVM — Tasks",
+   "file": "RkB4Dpx9skZ8WyWu_othvm-tasks.json",
+   "active": true,
+   "createdAt": "2026-10-24T23:40:27.445Z",
+   "updatedAt": "2026-10-27T19:33:33.800Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call google tasks",
+     "id": "xt24a5CjUFV31TaE",
+     "name": "Tasks"
+    },
+    {
+     "node": "Call todoist",
+     "id": "VNbxaSFMXOwjy65L",
+     "name": "Todoist"
+    },
+    {
+     "node": "Call linear",
+     "id": "dQY95kTp1zsUtunx",
+     "name": "Linear"
+    }
+   ],
+   "importIndex": 56
+  },
+  {
+   "id": "S9sR3ooJ9pdhSf6R",
+   "name": "OTHVM — Telegram",
+   "file": "S9sR3ooJ9pdhSf6R_othvm-telegram.json",
+   "active": true,
+   "createdAt": "2026-10-24T21:43:01.909Z",
+   "updatedAt": "2026-10-27T19:33:34.161Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call bot",
+     "id": "sPjXzDAowwQy6WmW",
+     "name": "Telegram Bot"
+    },
+    {
+     "node": "Call personal",
+     "id": "SFt6HOaBYvIgKBC2",
+     "name": "Personal Telegram (Founder)"
+    },
+    {
+     "node": "Call discord",
+     "id": "LtSybNB56L8wfPd7",
+     "name": "Discord"
+    },
+    {
+     "node": "Call Voice",
+     "id": "8RyBRyVsJEBl7WNT",
+     "name": "Voice"
+    }
+   ],
+   "importIndex": 60
+  },
+  {
+   "id": "TzOLXwXLj4MWXKrN",
+   "name": "OTHVM — Vision",
+   "file": "TzOLXwXLj4MWXKrN_othvm-vision.json",
+   "active": true,
+   "createdAt": "2026-10-24T21:43:02.180Z",
+   "updatedAt": "2026-10-27T19:33:34.224Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [
+    {
+     "node": "Call image",
+     "id": "hDzwsequ4HbBsJBr",
+     "name": "Image Vision"
+    }
+   ],
+   "importIndex": 61
+  },
+  {
+   "id": "SFt6HOaBYvIgKBC2",
+   "name": "Personal Telegram (Founder)",
+   "file": "SFt6HOaBYvIgKBC2_personal-telegram-founder.json",
+   "active": true,
+   "createdAt": "2026-10-19T22:07:23.365Z",
+   "updatedAt": "2026-10-24T21:42:16.866Z",
+   "tags": [
+    "Communication"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 58
+  },
+  {
+   "id": "QKWruJYfuqtKt8JC",
+   "name": "Prayer Times",
+   "file": "QKWruJYfuqtKt8JC_prayer-times.json",
+   "active": true,
+   "createdAt": "2026-10-17T00:48:00.977Z",
+   "updatedAt": "2026-10-22T12:33:31.748Z",
+   "tags": [
+    "Lifestyle"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 29
+  },
+  {
+   "id": "Tc4gH8HuhiSdDXZE",
+   "name": "Proactive Checks",
+   "file": "Tc4gH8HuhiSdDXZE_proactive-checks.json",
+   "active": true,
+   "createdAt": "2026-10-16T22:50:10.543Z",
+   "updatedAt": "2026-10-27T22:02:42.694Z",
+   "tags": [
+    "Scheduled"
+   ],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Prayers (*/5)",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "*/5 * * * *"
+       }
+      ]
+     }
+    },
+    {
+     "node": "Events (*/2h)",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "0 */2 * * *"
+       }
+      ]
+     }
+    },
+    {
+     "node": "Weather Alert (*/3h)",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "0 */3 * * *"
+       }
+      ]
+     }
+    },
+    {
+     "node": "Tomorrow Weather (20:00)",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "0 20 * * *"
+       }
+      ]
+     }
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleCalendarOAuth2Api",
+     "name": "Google Calendar account",
+     "references": 2
+    },
+    {
+     "type": "telegramApi",
+     "name": "Telegram account",
+     "references": 4
+    }
+   ],
+   "dependencies": [
+    {
+     "node": "Fetch Weather",
+     "id": "fRbjxY4Vm4mZMOGA",
+     "name": "Weather Forecast"
+    }
+   ],
+   "importIndex": 62
+  },
+  {
+   "id": "aIUkpUpj9EYKYvuI",
+   "name": "Progress Status",
+   "file": "aIUkpUpj9EYKYvuI_progress-status.json",
+   "active": true,
+   "createdAt": "2026-10-18T15:12:18.959Z",
+   "updatedAt": "2026-10-24T21:42:37.378Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 37
+  },
+  {
+   "id": "P8ytyoOlCHjrXbY8",
+   "name": "Reminder Dispatcher",
+   "file": "P8ytyoOlCHjrXbY8_reminder-dispatcher.json",
+   "active": true,
+   "createdAt": "2026-10-24T14:58:54.851Z",
+   "updatedAt": "2026-10-24T15:07:04.933Z",
+   "tags": [],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Every Minute",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "* * * * *"
+       }
+      ]
+     }
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 63
+  },
+  {
+   "id": "JweQefrJNBBFgq92",
+   "name": "Sheets",
+   "file": "JweQefrJNBBFgq92_sheets.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:13:01.548Z",
+   "updatedAt": "2026-10-24T21:31:29.289Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleSheetsOAuth2Api",
+     "name": "Google Sheets account",
+     "references": 10
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 42
+  },
+  {
+   "id": "jM2invMNfHevZCZF",
+   "name": "Shopify Store Admin",
+   "file": "jM2invMNfHevZCZF_shopify-store-admin.json",
+   "active": true,
+   "createdAt": "2026-10-23T12:46:04.705Z",
+   "updatedAt": "2026-10-24T14:28:59.219Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 45
+  },
+  {
+   "id": "EGJhUZnS00NWbp4d",
+   "name": "Sleep Scheduler",
+   "file": "EGJhUZnS00NWbp4d_sleep-scheduler.json",
+   "active": true,
+   "createdAt": "2026-10-22T13:15:07.496Z",
+   "updatedAt": "2026-10-24T21:31:30.551Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 36
+  },
+  {
+   "id": "VuZZX0P36eczE3Gw",
+   "name": "Sleep Wake Monitor",
+   "file": "VuZZX0P36eczE3Gw_sleep-wake-monitor.json",
+   "active": true,
+   "createdAt": "2026-10-22T13:15:07.362Z",
+   "updatedAt": "2026-10-24T14:29:47.436Z",
+   "tags": [],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Sleep Button Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "sleep-monitor",
+     "method": "GET",
+     "webhookId": "93db998f-4db7-4189-8fe9-fa61bfbb20f3"
+    },
+    {
+     "node": "Every 5 Minutes",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "minutes",
+        "minutesInterval": 5
+       }
+      ]
+     }
+    }
+   ],
+   "webhooks": [
+    {
+     "node": "Sleep Button Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "sleep-monitor",
+     "method": "GET",
+     "webhookId": "93db998f-4db7-4189-8fe9-fa61bfbb20f3"
+    }
+   ],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 64
+  },
+  {
+   "id": "IUY2x9KO3qjbVxj4",
+   "name": "Slides",
+   "file": "IUY2x9KO3qjbVxj4_slides.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:36.115Z",
+   "updatedAt": "2026-10-22T12:33:24.656Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleSlidesOAuth2Api",
+     "name": "Google Slides account",
+     "references": 6
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 41
+  },
+  {
+   "id": "17LZ2ChTSfvyjxjr",
+   "name": "Social Media Hub",
+   "file": "17LZ2ChTSfvyjxjr_social-media-hub.json",
+   "active": false,
+   "createdAt": "2026-10-22T13:16:29.924Z",
+   "updatedAt": "2026-10-24T14:29:44.155Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 65
+  },
+  {
+   "id": "bNpeLw2gFhiqcode",
+   "name": "Streak Callback Handler",
+   "file": "bNpeLw2gFhiqcode_streak-callback-handler.json",
+   "active": true,
+   "createdAt": "2026-10-18T21:27:05.767Z",
+   "updatedAt": "2026-10-24T14:29:45.822Z",
+   "tags": [
+    "Communication"
+   ],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "othvm-streak-callback",
+     "method": "POST",
+     "webhookId": "ac030001-4000-8000-00000000ca01"
+    }
+   ],
+   "webhooks": [
+    {
+     "node": "Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "othvm-streak-callback",
+     "method": "POST",
+     "webhookId": "ac030001-4000-8000-00000000ca01"
+    }
+   ],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 66
+  },
+  {
+   "id": "BQrvcly7UGJMSPQ3",
+   "name": "Streak Reminder",
+   "file": "BQrvcly7UGJMSPQ3_streak-reminder.json",
+   "active": true,
+   "createdAt": "2026-10-18T21:27:05.663Z",
+   "updatedAt": "2026-10-24T16:04:59.744Z",
+   "tags": [
+    "Scheduled"
+   ],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Every Minute",
+     "type": "n8n-nodes-base.scheduleTrigger",
+     "kind": "schedule",
+     "rule": {
+      "interval": [
+       {
+        "field": "cronExpression",
+        "expression": "*/5 * * * *"
+       }
+      ]
+     }
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 67
+  },
+  {
+   "id": "glZGwPyczwkDc5XB",
+   "name": "Streak Tracker",
+   "file": "glZGwPyczwkDc5XB_streak-tracker.json",
+   "active": true,
+   "createdAt": "2026-10-18T21:27:05.559Z",
+   "updatedAt": "2026-10-24T21:31:30.381Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 38
+  },
+  {
+   "id": "9bgzVlis8kqqfuhy",
+   "name": "Stripe",
+   "file": "9bgzVlis8kqqfuhy_stripe.json",
+   "active": true,
+   "createdAt": "2026-10-18T14:28:23.435Z",
+   "updatedAt": "2026-10-24T21:42:16.559Z",
+   "tags": [
+    "Finance"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "stripeApi",
+     "name": "Stripe account",
+     "references": 20
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 44
+  },
+  {
+   "id": "xt24a5CjUFV31TaE",
+   "name": "Tasks",
+   "file": "xt24a5CjUFV31TaE_tasks.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:36.245Z",
+   "updatedAt": "2026-10-24T23:44:45.840Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googleTasksOAuth2Api",
+     "name": "Google Tasks account",
+     "references": 11
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 55
+  },
+  {
+   "id": "sPjXzDAowwQy6WmW",
+   "name": "Telegram Bot",
+   "file": "sPjXzDAowwQy6WmW_telegram-bot.json",
+   "active": true,
+   "createdAt": "2026-10-18T15:12:18.824Z",
+   "updatedAt": "2026-10-24T21:31:27.795Z",
+   "tags": [
+    "Communication"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 59
+  },
+  {
+   "id": "aQTcY0SsBsY69jrr",
+   "name": "Telegram Commands",
+   "file": "aQTcY0SsBsY69jrr_telegram-commands.json",
+   "active": true,
+   "createdAt": "2026-10-22T13:04:08.547Z",
+   "updatedAt": "2026-10-24T14:29:47.557Z",
+   "tags": [],
+   "entryPoint": true,
+   "triggers": [
+    {
+     "node": "Commands Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "othvm-commands",
+     "method": "POST",
+     "webhookId": "98d83b78-a314-4b33-976a-b9c7e7434ead"
+    }
+   ],
+   "webhooks": [
+    {
+     "node": "Commands Webhook",
+     "type": "n8n-nodes-base.webhook",
+     "kind": "webhook",
+     "path": "othvm-commands",
+     "method": "POST",
+     "webhookId": "98d83b78-a314-4b33-976a-b9c7e7434ead"
+    }
+   ],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 68
+  },
+  {
+   "id": "VNbxaSFMXOwjy65L",
+   "name": "Todoist",
+   "file": "VNbxaSFMXOwjy65L_todoist.json",
+   "active": true,
+   "createdAt": "2026-10-18T13:40:03.553Z",
+   "updatedAt": "2026-10-22T12:33:31.092Z",
+   "tags": [
+    "Productivity"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "todoistApi",
+     "name": "Todoist account",
+     "references": 36
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 54
+  },
+  {
+   "id": "saEBKPzzi4XlkaKg",
+   "name": "Translation",
+   "file": "saEBKPzzi4XlkaKg_translation.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:36.294Z",
+   "updatedAt": "2026-10-24T21:31:30.189Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 50
+  },
+  {
+   "id": "8RyBRyVsJEBl7WNT",
+   "name": "Voice",
+   "file": "8RyBRyVsJEBl7WNT_voice.json",
+   "active": true,
+   "createdAt": "2026-10-17T14:48:22.044Z",
+   "updatedAt": "2026-10-26T11:18:41.434Z",
+   "tags": [
+    "System"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "googlePalmApi",
+     "name": "Google Gemini(PaLM) Api account",
+     "references": 1
+    },
+    {
+     "type": "telegramApi",
+     "name": "Telegram account",
+     "references": 2
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 57
+  },
+  {
+   "id": "fRbjxY4Vm4mZMOGA",
+   "name": "Weather Forecast",
+   "file": "fRbjxY4Vm4mZMOGA_weather-forecast.json",
+   "active": true,
+   "createdAt": "2026-10-16T14:38:23.029Z",
+   "updatedAt": "2026-10-24T14:29:47.335Z",
+   "tags": [
+    "Lifestyle"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "When Executed by Another Workflow",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 30
+  },
+  {
+   "id": "rRh2pplrLL0XhvAH",
+   "name": "Web Search",
+   "file": "rRh2pplrLL0XhvAH_web-search.json",
+   "active": true,
+   "createdAt": "2026-10-17T07:35:45.536Z",
+   "updatedAt": "2026-10-24T21:31:29.811Z",
+   "tags": [
+    "Knowledge"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 49
+  },
+  {
+   "id": "PtmKyOOLgBNP5p1l",
+   "name": "Wikipedia",
+   "file": "PtmKyOOLgBNP5p1l_wikipedia.json",
+   "active": true,
+   "createdAt": "2026-10-18T13:20:27.214Z",
+   "updatedAt": "2026-10-24T21:31:29.981Z",
+   "tags": [
+    "Knowledge"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 47
+  },
+  {
+   "id": "AisqHM592kAxlMNO",
+   "name": "Workflows",
+   "file": "AisqHM592kAxlMNO_workflows.json",
+   "active": true,
+   "createdAt": "2026-10-23T10:13:57.647Z",
+   "updatedAt": "2026-10-24T21:31:27.574Z",
+   "tags": [],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [],
+   "dependencies": [],
+   "importIndex": 35
+  },
+  {
+   "id": "qeCbfWbL28K82P2c",
+   "name": "YouTube",
+   "file": "qeCbfWbL28K82P2c_youtube.json",
+   "active": true,
+   "createdAt": "2026-10-17T01:11:36.353Z",
+   "updatedAt": "2026-10-22T12:33:25.661Z",
+   "tags": [
+    "Google"
+   ],
+   "entryPoint": false,
+   "triggers": [
+    {
+     "node": "Input",
+     "type": "n8n-nodes-base.executeWorkflowTrigger",
+     "kind": "executeWorkflow"
+    }
+   ],
+   "webhooks": [],
+   "credentials": [
+    {
+     "type": "youTubeOAuth2Api",
+     "name": "YouTube account",
+     "references": 27
+    }
+   ],
+   "dependencies": [],
+   "importIndex": 48
+  }
+ ]
+}

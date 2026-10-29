@@ -1,0 +1,94 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Streaks",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T21:27:05.559Z",
+ "id": "glZGwPyczwkDc5XB",
+ "name": "Streak Tracker",
+ "nodes": [
+  {
+   "id": "ac010001-4000-8000-000000000001",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "ac010001-4000-8000-000000000002",
+   "name": "Streaks",
+   "parameters": {
+    "jsCode": "// OTHVM Streaks Tool — habit streaks registry + completions. No LLM.\nconst base = String($env.SUPABASE_URL ?? '');\nconst key = String($env.SUPABASE_SERVICE_KEY ?? '');\nconst TG = 'REPLACE_WITH_TELEGRAM_BOT_TOKEN';\nconst CHAT = 'REPLACE_WITH_TELEGRAM_CHAT_ID';\nif (!base || !key) return [{ json: { ok: false, error: 'Supabase env vars missing in the n8n environment' } }];\nconst HB = { apikey: key, Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', Accept: 'application/json' };\nconst hreq = async (o) => {\n  const opts = Object.assign({ returnFullResponse: true, ignoreHttpStatusErrors: true, timeout: 25000 }, o);\n  try { return await this.helpers.httpRequest(opts); } catch (e) { return { statusCode: 0, body: 'ERR ' + (e && e.message ? e.message : String(e)) }; }\n};\nconst parse = (r) => { let d = r.body; if (typeof d === 'string' && d.length) { try { d = JSON.parse(d); } catch (e) {} } return { st: r.statusCode ?? 0, d }; };\nconst errOf = (r) => { const d = r.d; if (d && typeof d === 'object' && (d.message || d.hint)) return String(d.message) + (d.hint ? ' — ' + String(d.hint) : ''); return String(typeof d === 'string' ? d : JSON.stringify(d || '')).slice(0, 240); };\nconst cairoToday = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());\nconst input = $input.first().json || {};\nconst NAME = (v) => String(v == null ? '' : v).trim();\nlet op = NAME(input.operation);\nif (op.indexOf('streaks.') === 0) op = op.slice(8);\nconst getRow = async (name) => {\n  const r = parse(await hreq({ method: 'GET', url: base + '/rest/v1/streaks?select=*&name=eq.' + encodeURIComponent(name) + '&limit=1', headers: HB, json: true }));\n  if (r.st > 0 && r.st < 300 && Array.isArray(r.d)) return { row: r.d[0] || null };\n  return { row: null, err: errOf(r) };\n};\nconst validTime = (t) => { const p = String(t).split(':'); return p.length === 2 && Number(p[0]) >= 0 && Number(p[0]) <= 23 && Number(p[1]) >= 0 && Number(p[1]) <= 59; };\nconst compact = (x) => ({ name: x.name, reminder_time: x.reminder_time, reminder_message: x.reminder_message, current_streak: x.current_streak, longest_streak: x.longest_streak, last_completed: x.last_completed, is_active: x.is_active });\n\ntry {\n  if (op === 'list') {\n    const r = parse(await hreq({ method: 'GET', url: base + '/rest/v1/streaks?select=*&order=created_at.asc', headers: HB, json: true }));\n    if (r.st <= 0 || r.st >= 300 || !Array.isArray(r.d)) return [{ json: { ok: false, error: errOf(r) } }];\n    return [{ json: { ok: true, count: r.d.length, streaks: r.d.map(compact) } }];\n  }\n\n  if (op === 'create') {\n    const name = NAME(input.name);\n    if (!name) return [{ json: { ok: false, error: 'name مطلوب' } }];\n    const dup = await getRow(name);\n    if (dup.err) return [{ json: { ok: false, error: dup.err } }];\n    if (dup.row) return [{ json: { ok: false, error: 'في سلسلة بنفس الاسم بالفعل: ' + name } }];\n    const time = NAME(input.reminder_time) || '19:00';\n    if (!validTime(time)) return [{ json: { ok: false, error: 'reminder_time لازم يكون HH:MM بنظام 24 ساعة، مثال: 19:00' } }];\n    const ins = parse(await hreq({ method: 'POST', url: base + '/rest/v1/streaks', headers: Object.assign({}, HB, { Prefer: 'return=representation' }), body: { name: name, reminder_time: time, reminder_message: NAME(input.reminder_message), current_streak: 0, longest_streak: 0 }, json: true }));\n    if (ins.st <= 0 || ins.st >= 300) return [{ json: { ok: false, error: 'فشل إنشاء السلسلة: ' + errOf(ins) } }];\n    const row = Array.isArray(ins.d) ? ins.d[0] : ins.d;\n    return [{ json: { ok: true, streak: compact(row || { name: name, reminder_time: time, current_streak: 0, longest_streak: 0, is_active: true }) } }];\n  }\n\n  if (op === 'update') {\n    const name = NAME(input.name);\n    if (!name) return [{ json: { ok: false, error: 'name مطلوب' } }];\n    const g = await getRow(name);\n    if (g.err) return [{ json: { ok: false, error: g.err } }];\n    if (!g.row) return [{ json: { ok: false, error: 'مفيش سلسلة بالاسم ده: ' + name } }];\n    const patch = { updated_at: new Date().toISOString() };\n    if (input.reminder_time !== undefined && NAME(input.reminder_time)) { if (!validTime(NAME(input.reminder_time))) return [{ json: { ok: false, error: 'reminder_time لازم يكون HH:MM' } }]; patch.reminder_time = NAME(input.reminder_time); }\n    if (input.reminder_message !== undefined) patch.reminder_message = NAME(input.reminder_message);\n    if (input.is_active !== undefined) patch.is_active = (input.is_active === true || String(input.is_active) === 'true');\n    if (Object.keys(patch).length === 1) return [{ json: { ok: false, error: 'مفيش أي حقل للتعديل — ابعت reminder_time أو reminder_message أو is_active' } }];\n    const up = parse(await hreq({ method: 'PATCH', url: base + '/rest/v1/streaks?name=eq.' + encodeURIComponent(name), headers: Object.assign({}, HB, { Prefer: 'return=representation' }), body: patch, json: true }));\n    if (up.st <= 0 || up.st >= 300) return [{ json: { ok: false, error: errOf(up) } }];\n    const row = Array.isArray(up.d) ? up.d[0] : up.d;\n    return [{ json: { ok: true, streak: compact(row || {}) } }];\n  }\n\n  if (op === 'pause' || op === 'resume') {\n    const name = NAME(input.name);\n    if (!name) return [{ json: { ok: false, error: 'name مطلوب' } }];\n    const g = await getRow(name);\n    if (g.err) return [{ json: { ok: false, error: g.err } }];\n    if (!g.row) return [{ json: { ok: false, error: 'مفيش سلسلة بالاسم ده: ' + name } }];\n    const active = op === 'resume';\n    const up = parse(await hreq({ method: 'PATCH', url: base + '/rest/v1/streaks?name=eq.' + encodeURIComponent(name), headers: Object.assign({}, HB, { Prefer: 'return=minimal' }), body: { is_active: active, updated_at: new Date().toISOString() }, json: true }));\n    if (up.st <= 0 || up.st >= 300) return [{ json: { ok: false, error: errOf(up) } }];\n    return [{ json: { ok: true, name: name, is_active: active } }];\n  }\n\n  if (op === 'delete') {\n    const name = NAME(input.name);\n    if (!name) return [{ json: { ok: false, error: 'name مطلوب' } }];\n    const g = await getRow(name);\n    if (g.err) return [{ json: { ok: false, error: g.err } }];\n    if (!g.row) return [{ json: { ok: false, error: 'مفيش سلسلة بالاسم ده: ' + name } }];\n    const del = parse(await hreq({ method: 'DELETE', url: base + '/rest/v1/streaks?name=eq.' + encodeURIComponent(name), headers: Object.assign({}, HB, { Prefer: 'return=minimal' }), json: true }));\n    if (del.st <= 0 || del.st >= 300) return [{ json: { ok: false, error: errOf(del) } }];\n    return [{ json: { ok: true, deleted: name, note: 'سجلات الأيام اتمسحت معاها تلقائياً' } }];\n  }\n\n  if (op === 'complete') {\n    const name = NAME(input.name);\n    if (!name) return [{ json: { ok: false, error: 'name مطلوب' } }];\n    const g = await getRow(name);\n    if (g.err) return [{ json: { ok: false, error: g.err } }];\n    if (!g.row) return [{ json: { ok: false, error: 'مفيش سلسلة بالاسم ده: ' + name } }];\n    const s = g.row;\n    const today = cairoToday();\n    const lr = parse(await hreq({ method: 'GET', url: base + '/rest/v1/streak_logs?select=status&streak_id=eq.' + encodeURIComponent(s.id) + '&log_date=eq.' + today + '&limit=1', headers: HB, json: true }));\n    const existing = (lr.st > 0 && lr.st < 300 && Array.isArray(lr.d) && lr.d[0]) ? lr.d[0].status : null;\n    if (existing === 'completed') return [{ json: { ok: true, already_today: true, name: name, current_streak: s.current_streak, longest_streak: s.longest_streak, message: 'مسجّلة بالفعل النهارده ✅ — سلسلة ' + name + ' زي ما هي ' + s.current_streak + ' يوم.' } }];\n    const n = Number(s.current_streak || 0) + 1;\n    const longest = Math.max(Number(s.longest_streak || 0), n);\n    const up = parse(await hreq({ method: 'PATCH', url: base + '/rest/v1/streaks?id=eq.' + encodeURIComponent(s.id), headers: Object.assign({}, HB, { Prefer: 'return=minimal' }), body: { current_streak: n, longest_streak: longest, last_completed: today, updated_at: new Date().toISOString() }, json: true }));\n    if (up.st <= 0 || up.st >= 300) return [{ json: { ok: false, error: errOf(up) } }];\n    await hreq({ method: 'POST', url: base + '/rest/v1/streak_logs?on_conflict=streak_id,log_date', headers: Object.assign({}, HB, { Prefer: 'resolution=merge-duplicates,return=minimal' }), body: { streak_id: s.id, log_date: today, status: 'completed' }, json: true });\n    return [{ json: { ok: true, name: name, current_streak: n, longest_streak: longest, last_completed: today, is_record: n === longest && n > 1, message: '🎉 تمام! سلسلة ' + name + ' بقت ' + n + ' يوم متواصلين — كمّل كده يا وحش! 🔥' } }];\n  }\n\n  if (op === 'status') {\n    const name = NAME(input.name);\n    if (!name) return [{ json: { ok: false, error: 'name مطلوب' } }];\n    const g = await getRow(name);\n    if (g.err) return [{ json: { ok: false, error: g.err } }];\n    if (!g.row) return [{ json: { ok: false, error: 'مفيش سلسلة بالاسم ده: ' + name } }];\n    const s = g.row;\n    const lr = parse(await hreq({ method: 'GET', url: base + '/rest/v1/streak_logs?select=log_date,status&streak_id=eq.' + encodeURIComponent(s.id) + '&order=log_date.desc&limit=14', headers: HB, json: true }));\n    const logs = (lr.st > 0 && lr.st < 300 && Array.isArray(lr.d)) ? lr.d : [];\n    const today = cairoToday();\n    const todayLog = logs.find((x) => x.log_date === today) || null;\n    return [{ json: { ok: true, streak: compact(s), today: today, today_status: todayLog ? todayLog.status : null, recent_logs: logs } }];\n  }\n\n  return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + op + '\". المتاح: list, create, update, pause, resume, delete, complete, status' } }];\n} catch (e) {\n  return [{ json: { ok: false, error: 'خطأ غير متوقع: ' + String(e && e.message ? e.message : e).slice(0, 300) } }];\n}\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "5059cf78-6730-4fc5-8b66-3883f9ea3698",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "System"
+ ],
+ "updatedAt": "2026-10-24T21:31:30.381Z"
+}

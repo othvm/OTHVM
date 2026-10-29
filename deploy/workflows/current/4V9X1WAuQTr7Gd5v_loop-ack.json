@@ -1,0 +1,93 @@
+{
+ "active": true,
+ "connections": {
+  "Handle Loop Button": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Loop Button Page",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Loop Button Webhook": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Handle Loop Button",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-24T22:05:20.316Z",
+ "id": "4V9X1WAuQTr7Gd5v",
+ "name": "Loop Ack",
+ "nodes": [
+  {
+   "id": "db17a129-515e-4d00-a8a8-f3e9af7673d7",
+   "name": "Loop Button Webhook",
+   "parameters": {
+    "httpMethod": "GET",
+    "options": {},
+    "path": "loop-ack",
+    "responseMode": "responseNode"
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "webhookId": "448d2d70-f231-4206-8a30-b9c7ca845229"
+  },
+  {
+   "id": "c58cc6d6-da2f-483c-bc26-631d2fc1ba8c",
+   "name": "Handle Loop Button",
+   "parameters": {
+    "jsCode": "// OTHVM Loops - handle a Telegram URL button click, update the loop, show an Arabic page.\nconst q = $json.query || $json;\nconst action = String(q.action || '').toLowerCase();\nconst lid = String(q.loop_id || '');\nconst minutes = Number(q.minutes || 10);\nconst allowed = ['ack', 'snooze', 'stop'];\nlet r = { ok: false, error: 'invalid request' };\nif (allowed.indexOf(action) >= 0 && lid) {\n  try {\n    r = await this.helpers.httpRequest({\n      method: 'POST',\n      url: 'http://127.0.0.1:8765/tools/loops',\n      headers: { 'Content-Type': 'application/json', 'X-API-Key': 'REPLACE_WITH_MCP_API_KEY' },\n      body: { action: action, loop_id: lid, minutes: minutes },\n      json: true,\n      timeout: 45000\n    });\n  } catch (e) {\n    r = { ok: false, error: String((e && e.message) || e) };\n  }\n}\nconst reply = String(r.reply || (r.ok ? 'تم.' : ('خطأ: ' + (r.error || 'تعذر تنفيذ الطلب'))));\nconst safe = reply.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\\n/g, '<br>');\nconst icon = r.ok ? '✅' : '⚠️';\nconst title = r.ok ? 'تم' : 'حصل خطأ';\nconst html = '<!doctype html><html lang=\"ar\" dir=\"rtl\"><head><meta charset=\"utf-8\">'\n  + '<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">'\n  + '<title>OTHVM Loops</title><style>'\n  + 'body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0b1220;color:#e5e7eb;font-family:system-ui,Segoe UI,Arial,sans-serif}'\n  + '.card{max-width:520px;margin:24px;padding:32px 28px;border-radius:24px;background:#111a2e;border:1px solid #24324d;box-shadow:0 20px 60px rgba(0,0,0,.35);text-align:center}'\n  + '.icon{font-size:56px;line-height:1;margin-bottom:12px}'\n  + 'h1{font-size:26px;margin:0 0 14px}'\n  + 'p{font-size:17px;line-height:1.8;margin:0 0 10px;color:#cbd5e1}'\n  + '.hint{font-size:13px;color:#7c8aa5;margin-top:22px}'\n  + '</style></head><body><div class=\"card\"><div class=\"icon\">' + icon + '</div><h1>' + title + '</h1><p>' + safe + '</p>'\n  + '<p class=\"hint\">يمكنك قفل الصفحة والعودة إلى تيليجرام.</p></div></body></html>';\nreturn [{ json: { ok: !!r.ok, reply: reply, html: html, action: action, loop_id: lid } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    240,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "b60ac74e-e650-445e-99b7-bf921c1e4a9a",
+   "name": "Loop Button Page",
+   "parameters": {
+    "options": {
+     "responseHeaders": {
+      "entries": [
+       {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+       }
+      ]
+     }
+    },
+    "respondWith": "text",
+    "responseBody": "={{ $json.html }}"
+   },
+   "position": [
+    480,
+    0
+   ],
+   "type": "n8n-nodes-base.respondToWebhook",
+   "typeVersion": 1.1
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-24T22:05:20.316Z"
+}

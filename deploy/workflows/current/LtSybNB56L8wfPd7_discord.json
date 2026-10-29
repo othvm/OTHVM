@@ -1,0 +1,1966 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "channel.deleteChannel",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "channel.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "channel.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "channel.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "member.ban",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "member.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "member.kick",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "member.roleAdd",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "member.roleRemove",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "member.timeout",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "member.unban",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.deleteMessage",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.react",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.send",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.sendAndWait",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.deleteChannel": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.deleteChannel — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.deleteChannel — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "channel.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "channel.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.ban": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "member.ban — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.ban — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "member.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.kick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "member.kick — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.kick — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.roleAdd": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "member.roleAdd — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.roleAdd — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.roleRemove": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "member.roleRemove — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.roleRemove — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.timeout": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "member.timeout — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.timeout — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.unban": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "member.unban — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "member.unban — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.deleteMessage": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.deleteMessage — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.deleteMessage — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.react": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.react — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.react — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.send": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.send — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.send — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.sendAndWait": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.sendAndWait — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.sendAndWait — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T14:20:48.753Z",
+ "id": "LtSybNB56L8wfPd7",
+ "name": "Discord",
+ "nodes": [
+  {
+   "id": "aa070100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "guildId",
+       "type": "string"
+      },
+      {
+       "name": "channelId",
+       "type": "string"
+      },
+      {
+       "name": "userId",
+       "type": "string"
+      },
+      {
+       "name": "messageId",
+       "type": "string"
+      },
+      {
+       "name": "emoji",
+       "type": "string"
+      },
+      {
+       "name": "text",
+       "type": "string"
+      },
+      {
+       "name": "name",
+       "type": "string"
+      },
+      {
+       "name": "topic",
+       "type": "string"
+      },
+      {
+       "name": "roleIds",
+       "type": "array"
+      },
+      {
+       "name": "duration",
+       "type": "number"
+      },
+      {
+       "name": "reasonCustom",
+       "type": "string"
+      },
+      {
+       "name": "deleteSeconds",
+       "type": "number"
+      },
+      {
+       "name": "after",
+       "type": "string"
+      },
+      {
+       "name": "sendTo",
+       "type": "string"
+      },
+      {
+       "name": "replyTo",
+       "type": "string"
+      },
+      {
+       "name": "filter",
+       "type": "array"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa070200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.deleteChannel"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.deleteChannel"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "channel.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "channel.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "member.ban"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "member.ban"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "member.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "member.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "member.kick"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "member.kick"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "member.roleAdd"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "member.roleAdd"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "member.roleRemove"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "member.roleRemove"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "member.timeout"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "member.timeout"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "member.unban"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "member.unban"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.deleteMessage"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.deleteMessage"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.react"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.react"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.send"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.send"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.sendAndWait"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.sendAndWait"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa070300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa070400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"channel.create, channel.deleteChannel, channel.get, channel.getAll, channel.update, member.ban, member.getAll, member.kick, member.roleAdd, member.roleRemove, member.timeout, member.unban, message.deleteMessage, message.get, message.getAll, message.react, message.send, message.sendAndWait\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2490
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa070500-4000-8000-000000000000",
+   "name": "channel.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "name": "={{ $json.name }}",
+    "operation": "create",
+    "resource": "channel",
+    "topic": "={{ $json.topic }}",
+    "type": "={{ $json.type || \"0\" }}"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "142073eb-081f-49b2-b608-a5327970f361"
+  },
+  {
+   "id": "aa070600-4000-8000-000000000000",
+   "name": "channel.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa070700-4000-8000-000000000000",
+   "name": "channel.deleteChannel",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "operation": "deleteChannel",
+    "resource": "channel"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "cb6992a7-dee4-47a8-b1da-b17701dd9db0"
+  },
+  {
+   "id": "aa070800-4000-8000-000000000000",
+   "name": "channel.deleteChannel — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa070900-4000-8000-000000000000",
+   "name": "channel.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "operation": "get",
+    "resource": "channel"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "d895029d-2d00-40b3-a4c6-119177f139b0"
+  },
+  {
+   "id": "aa071000-4000-8000-000000000000",
+   "name": "channel.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa071100-4000-8000-000000000000",
+   "name": "channel.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "filter": "={{ $json.filter }}",
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "limit": "={{ Math.max(1, Math.min(200, Number($json.limit) || 100)) }}",
+    "operation": "getAll",
+    "resource": "channel",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "d89bfe33-43e9-43fa-9a3f-c9f27bbc6efb"
+  },
+  {
+   "id": "aa071200-4000-8000-000000000000",
+   "name": "channel.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa071300-4000-8000-000000000000",
+   "name": "channel.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "name": "={{ $json.name }}",
+    "operation": "update",
+    "resource": "channel",
+    "topic": "={{ $json.topic }}"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "330c6a4e-de2e-4442-970e-924407e53dd4"
+  },
+  {
+   "id": "aa071400-4000-8000-000000000000",
+   "name": "channel.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa071500-4000-8000-000000000000",
+   "name": "member.ban",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "deleteMessageSeconds": "={{ $json.deleteSeconds || 0 }}",
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "operation": "ban",
+    "reason": "={{ $json.reasonCustom ? \"other\" : \"suspicious_spam\" }}",
+    "reasonCustom": "={{ $json.reasonCustom }}",
+    "resource": "member",
+    "userId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.userId }}"
+    }
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "4798930d-9496-433f-8432-84c86f5a2f88"
+  },
+  {
+   "id": "aa071600-4000-8000-000000000000",
+   "name": "member.ban — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa071700-4000-8000-000000000000",
+   "name": "member.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "after": "={{ $json.after }}",
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "limit": "={{ Math.max(1, Math.min(200, Number($json.limit) || 100)) }}",
+    "operation": "getAll",
+    "resource": "member",
+    "returnAll": false,
+    "simplify": true
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "8644df50-b96b-4665-9702-840236412562"
+  },
+  {
+   "id": "aa071800-4000-8000-000000000000",
+   "name": "member.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa071900-4000-8000-000000000000",
+   "name": "member.kick",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "operation": "kick",
+    "reason": "={{ $json.reasonCustom ? \"other\" : \"suspicious_spam\" }}",
+    "reasonCustom": "={{ $json.reasonCustom }}",
+    "resource": "member",
+    "userId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.userId }}"
+    }
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "25da5013-ae13-4d4f-b05a-ec20d45c3907"
+  },
+  {
+   "id": "aa072000-4000-8000-000000000000",
+   "name": "member.kick — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    910
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa072100-4000-8000-000000000000",
+   "name": "member.roleAdd",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "operation": "roleAdd",
+    "resource": "member",
+    "role": "={{ $json.roleIds }}",
+    "userId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.userId }}"
+    }
+   },
+   "position": [
+    540,
+    1040
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "dbdb19c2-1c1d-45e8-b5c6-54e902be9390"
+  },
+  {
+   "id": "aa072200-4000-8000-000000000000",
+   "name": "member.roleAdd — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1040
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa072300-4000-8000-000000000000",
+   "name": "member.roleRemove",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "operation": "roleRemove",
+    "resource": "member",
+    "role": "={{ $json.roleIds }}",
+    "userId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.userId }}"
+    }
+   },
+   "position": [
+    540,
+    1170
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "d36a0566-b59c-4435-bd48-a7cb4920cc6b"
+  },
+  {
+   "id": "aa072400-4000-8000-000000000000",
+   "name": "member.roleRemove — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa072500-4000-8000-000000000000",
+   "name": "member.timeout",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "duration": "={{ $json.duration || 3600 }}",
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "operation": "timeout",
+    "reason": "={{ $json.reasonCustom ? \"other\" : \"suspicious_spam\" }}",
+    "reasonCustom": "={{ $json.reasonCustom }}",
+    "resource": "member",
+    "userId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.userId }}"
+    }
+   },
+   "position": [
+    540,
+    1300
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "7deb5e18-0cda-4975-add2-2cf8e1804997"
+  },
+  {
+   "id": "aa072600-4000-8000-000000000000",
+   "name": "member.timeout — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa072700-4000-8000-000000000000",
+   "name": "member.unban",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "operation": "unban",
+    "reason": "={{ $json.reasonCustom ? \"other\" : \"suspicious_spam\" }}",
+    "reasonCustom": "={{ $json.reasonCustom }}",
+    "resource": "member",
+    "userId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.userId }}"
+    }
+   },
+   "position": [
+    540,
+    1430
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "215a6445-87f4-4da7-a602-b0e26f2c468c"
+  },
+  {
+   "id": "aa072800-4000-8000-000000000000",
+   "name": "member.unban — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa072900-4000-8000-000000000000",
+   "name": "message.deleteMessage",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "messageId": "={{ $json.messageId }}",
+    "operation": "deleteMessage",
+    "resource": "message"
+   },
+   "position": [
+    540,
+    1560
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "fcfb0c7c-0de5-4656-b20e-31dea32ad3f8"
+  },
+  {
+   "id": "aa073000-4000-8000-000000000000",
+   "name": "message.deleteMessage — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1560
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa073100-4000-8000-000000000000",
+   "name": "message.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "messageId": "={{ $json.messageId }}",
+    "operation": "get",
+    "resource": "message",
+    "simplify": true
+   },
+   "position": [
+    540,
+    1690
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "57a1ad8d-f093-4b86-860c-0554384b12ea"
+  },
+  {
+   "id": "aa073200-4000-8000-000000000000",
+   "name": "message.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1690
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa073300-4000-8000-000000000000",
+   "name": "message.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "limit": "={{ Math.max(1, Math.min(200, Number($json.limit) || 100)) }}",
+    "operation": "getAll",
+    "resource": "message",
+    "returnAll": false,
+    "simplify": true
+   },
+   "position": [
+    540,
+    1820
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "bf87ac1d-f3a3-46d5-8db9-31da41056444"
+  },
+  {
+   "id": "aa073400-4000-8000-000000000000",
+   "name": "message.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1820
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa073500-4000-8000-000000000000",
+   "name": "message.react",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "emoji": "={{ $json.emoji }}",
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "messageId": "={{ $json.messageId }}",
+    "operation": "react",
+    "resource": "message"
+   },
+   "position": [
+    540,
+    1950
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "472aef01-f9a7-417a-9f68-f931b3ec77f0"
+  },
+  {
+   "id": "aa073600-4000-8000-000000000000",
+   "name": "message.react — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1950
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa073700-4000-8000-000000000000",
+   "name": "message.send",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "content": "={{ $json.text }}",
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "message_reference": "={{ $json.replyTo }}",
+    "operation": "send",
+    "resource": "message",
+    "sendTo": "={{ $json.sendTo || \"channel\" }}",
+    "userId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.userId }}"
+    }
+   },
+   "position": [
+    540,
+    2080
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "b1c8a001-db21-4e32-8c7f-9199c55ce0ad"
+  },
+  {
+   "id": "aa073800-4000-8000-000000000000",
+   "name": "message.send — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2080
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "discordBotApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Discord account"
+    }
+   },
+   "id": "aa073900-4000-8000-000000000000",
+   "name": "message.sendAndWait",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "appendAttribution": false,
+    "channelId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.channelId }}"
+    },
+    "guildId": {
+     "__rl": true,
+     "mode": "list",
+     "value": "={{ $json.guildId }}"
+    },
+    "limitType": "afterTimeInterval",
+    "message": "={{ $json.text }}",
+    "operation": "sendAndWait",
+    "resource": "message",
+    "responseType": "approval",
+    "resumeAmount": 24,
+    "resumeUnit": "hours",
+    "sendTo": "channel"
+   },
+   "position": [
+    540,
+    2210
+   ],
+   "type": "n8n-nodes-base.discord",
+   "typeVersion": 2,
+   "webhookId": "55bea553-8230-4693-bcb4-88e16f0a18e4"
+  },
+  {
+   "id": "aa074000-4000-8000-000000000000",
+   "name": "message.sendAndWait — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','name','type','guild_id','position','topic','content','timestamp','channel_id','nick','joined_at','roles','tts','pinned','url','user_id','status'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.user && typeof x.user === 'object') { o.user = x.user.username || x.user.global_name || x.user.id; o.userId = x.user.id; }\n  else if (typeof x.user === 'string') o.user = x.user;\n  if (x.author && typeof x.author === 'object') o.author = x.author.username || x.author.id;\n  if (Array.isArray(x.reactions)) o.reactions = x.reactions.map((r) => ({ emoji: (r.emoji && r.emoji.name) || r.emoji, count: r.count }));\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2210
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Communication"
+ ],
+ "updatedAt": "2026-10-22T12:33:29.376Z"
+}

@@ -1,0 +1,94 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expenses",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-19T09:31:09.563Z",
+ "id": "uLAaUThNdGTPuKXU",
+ "name": "Expense Tracker",
+ "nodes": [
+  {
+   "id": "ad010001-4000-8000-000000000001",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "ad010001-4000-8000-000000000002",
+   "name": "Expenses",
+   "parameters": {
+    "jsCode": "// OTHVM Expenses Tool — personal expense tracker. No LLM.\nconst base = String($env.SUPABASE_URL ?? '');\nconst key = String($env.SUPABASE_SERVICE_KEY ?? '');\nconst TG = 'REPLACE_WITH_TELEGRAM_BOT_TOKEN';\nconst CHAT = 'REPLACE_WITH_TELEGRAM_CHAT_ID';\nif (!base || !key) return [{ json: { ok: false, error: 'Supabase env vars missing in the n8n environment' } }];\nconst HB = { apikey: key, Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', Accept: 'application/json' };\nconst hreq = async (o) => {\n  const opts = Object.assign({ returnFullResponse: true, ignoreHttpStatusErrors: true, timeout: 25000 }, o);\n  try { return await this.helpers.httpRequest(opts); } catch (e) { return { statusCode: 0, body: 'ERR ' + (e && e.message ? e.message : String(e)) }; }\n};\nconst parse = (r) => { let d = r.body; if (typeof d === 'string' && d.length) { try { d = JSON.parse(d); } catch (e) {} } return { st: r.statusCode ?? 0, d }; };\nconst errOf = (r) => { const d = r.d; if (d && typeof d === 'object' && (d.message || d.hint)) return String(d.message) + (d.hint ? ' — ' + String(d.hint) : ''); return String(typeof d === 'string' ? d : JSON.stringify(d || '')).slice(0, 240); };\nconst cairoToday = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());\nconst input = $input.first().json || {};\nconst NAME = (v) => String(v == null ? '' : v).trim();\nlet op = NAME(input.operation);\nif (op.indexOf('expense.') === 0) op = op.slice(8);\nconst round2 = (n) => Math.round(Number(n || 0) * 100) / 100;\nconst money = (n) => String(round2(n));\nconst isDate = (s) => { if (typeof s !== 'string' || s.length !== 10) return false; const p = s.split('-'); if (p.length !== 3) return false; const y = Number(p[0]); const m = Number(p[1]); const d = Number(p[2]); return y > 2000 && m >= 1 && m <= 12 && d >= 1 && d <= 31; };\nconst weekStartCairo = () => { const t = cairoToday().split('-').map(Number); const dt = new Date(Date.UTC(t[0], t[1] - 1, t[2])); const back = (dt.getUTCDay() + 1) % 7; dt.setUTCDate(dt.getUTCDate() - back); return dt.toISOString().slice(0, 10); };\nconst monthStartCairo = () => cairoToday().slice(0, 8) + '01';\nconst sumRows = (rows) => rows.reduce((a, x) => a + Number(x.amount || 0), 0);\nconst byCat = (rows) => { const m = {}; for (const x of rows) { const c = String(x.category || 'متفرقات'); if (!m[c]) m[c] = { category: c, total: 0, count: 0 }; m[c].total += Number(x.amount || 0); m[c].count += 1; } return Object.keys(m).map((k) => m[k]).sort((a, b) => b.total - a.total); };\n\ntry {\n  if (op === 'log') {\n    const amount = round2(input.amount);\n    if (!isFinite(amount) || amount <= 0) return [{ json: { ok: false, error: 'amount لازم يكون رقم أكبر من صفر' } }];\n    const category = NAME(input.category) || 'متفرقات';\n    const description = NAME(input.description);\n    const spentOn = NAME(input.spent_on);\n    if (spentOn && !isDate(spentOn)) return [{ json: { ok: false, error: 'spent_on لازم يكون YYYY-MM-DD (اتركه فاضي = النهارده بتوقيت القاهرة)' } }];\n    const body = { amount: amount, category: category, description: description, currency: 'EGP' };\n    if (spentOn) body.spent_on = spentOn;\n    const ins = parse(await hreq({ method: 'POST', url: base + '/rest/v1/expenses', headers: Object.assign({}, HB, { Prefer: 'return=representation' }), body: body, json: true }));\n    if (ins.st <= 0 || ins.st >= 300) return [{ json: { ok: false, error: 'فشل تسجيل المصروف: ' + errOf(ins) } }];\n    const row = Array.isArray(ins.d) ? ins.d[0] : ins.d;\n    const day = spentOn || cairoToday();\n    const tr = parse(await hreq({ method: 'GET', url: base + '/rest/v1/expenses?select=amount&spent_on=eq.' + day, headers: HB, json: true }));\n    const rows = (tr.st > 0 && tr.st < 300 && Array.isArray(tr.d)) ? tr.d : [row];\n    const total = round2(sumRows(rows));\n    return [{ json: { ok: true, expense: { id: row.id, amount: amount, category: category, description: description, spent_on: (row && row.spent_on) || day }, today: { date: day, total: total, count: rows.length }, message: '✅ اتسجل: ' + money(amount) + ' جنيه — ' + category + '. إجمالي النهارده: ' + money(total) + ' جنيه في ' + rows.length + ' عملية.' } }];\n  }\n\n  if (op === 'savings') {\n    const amount = round2(input.amount);\n    if (!isFinite(amount) || amount <= 0) return [{ json: { ok: false, error: 'amount لازم يكون رقم أكبر من صفر' } }];\n    const note = NAME(input.note);\n    const ins = parse(await hreq({ method: 'POST', url: base + '/rest/v1/savings_log', headers: Object.assign({}, HB, { Prefer: 'return=representation' }), body: { amount: amount, note: note, currency: 'EGP' }, json: true }));\n    if (ins.st <= 0 || ins.st >= 300) return [{ json: { ok: false, error: 'فشل تسجيل التوفير: ' + errOf(ins) } }];\n    const sr = parse(await hreq({ method: 'GET', url: base + '/rest/v1/savings_log?select=amount,saved_on', headers: HB, json: true }));\n    const rows = (sr.st > 0 && sr.st < 300 && Array.isArray(sr.d)) ? sr.d : [];\n    const mStart = monthStartCairo();\n    const monthRows = rows.filter((x) => String(x.saved_on || '') >= mStart);\n    return [{ json: { ok: true, saved: { amount: amount, note: note }, total_saved: round2(sumRows(rows)), month_saved: round2(sumRows(monthRows)), message: '💚 تمام! اتوفّر ' + money(amount) + ' جنيه. إجمالي التوفير: ' + money(sumRows(rows)) + ' جنيه (منهم ' + money(sumRows(monthRows)) + ' الشهر ده).' } }];\n  }\n\n  if (op === 'today') {\n    const day = cairoToday();\n    const r = parse(await hreq({ method: 'GET', url: base + '/rest/v1/expenses?select=id,amount,category,description,spent_on&spent_on=eq.' + day + '&order=created_at.desc', headers: HB, json: true }));\n    if (r.st <= 0 || r.st >= 300) return [{ json: { ok: false, error: errOf(r) } }];\n    const rows = Array.isArray(r.d) ? r.d : [];\n    const total = round2(sumRows(rows));\n    const list = rows.map((x) => ({ id: x.id, amount: Number(x.amount), category: x.category, description: x.description }));\n    return [{ json: { ok: true, date: day, count: rows.length, total: total, expenses: list, summary: rows.length ? ('مصاريف النهارده: ' + money(total) + ' جنيه في ' + rows.length + ' عملية') : 'مفيش مصاريف مسجلة النهارده — يوم هادي 💚' } }];\n  }\n\n  if (op === 'week' || op === 'month') {\n    const start = op === 'week' ? weekStartCairo() : monthStartCairo();\n    const end = cairoToday();\n    const r = parse(await hreq({ method: 'GET', url: base + '/rest/v1/expenses?select=id,amount,category,description,spent_on&spent_on=gte.' + start + '&spent_on=lte.' + end + '&order=spent_on.desc', headers: HB, json: true }));\n    if (r.st <= 0 || r.st >= 300) return [{ json: { ok: false, error: errOf(r) } }];\n    const rows = Array.isArray(r.d) ? r.d : [];\n    const total = round2(sumRows(rows));\n    const cats = byCat(rows).map((c) => ({ category: c.category, total: round2(c.total), count: c.count }));\n    const label = op === 'week' ? ('مصاريف الأسبوع (من السبت ' + start + ' لحد ' + end + ')') : ('مصاريف الشهر (من ' + start + ' لحد ' + end + ')');\n    const head = rows.length ? (label + ': ' + money(total) + ' جنيه في ' + rows.length + ' عملية') : (label + ': مفيش مصاريف مسجلة — تمام! 💚');\n    const catLines = cats.map((c) => '• ' + c.category + ': ' + money(c.total) + ' جنيه (' + c.count + ')');\n    return [{ json: { ok: true, from: start, to: end, count: rows.length, total: total, by_category: cats, recent: rows.slice(0, 10).map((x) => ({ id: x.id, amount: Number(x.amount), category: x.category, spent_on: x.spent_on })), summary: [head].concat(catLines).join('\\n') } }];\n  }\n\n  if (op === 'delete') {\n    const id = NAME(input.id);\n    if (!id) return [{ json: { ok: false, error: 'id مطلوب — هات id من expense.today أو expense.week' } }];\n    const del = parse(await hreq({ method: 'DELETE', url: base + '/rest/v1/expenses?id=eq.' + encodeURIComponent(id), headers: Object.assign({}, HB, { Prefer: 'return=representation' }), json: true }));\n    if (del.st <= 0 || del.st >= 300) return [{ json: { ok: false, error: errOf(del) } }];\n    const gone = Array.isArray(del.d) ? del.d : [];\n    if (!gone.length) return [{ json: { ok: false, error: 'مفيش مصروف بالمعرّف ده: ' + id } }];\n    const g = gone[0];\n    return [{ json: { ok: true, deleted: { id: g.id, amount: Number(g.amount), category: g.category, spent_on: g.spent_on }, message: '🗑️ اتمسح: ' + money(g.amount) + ' جنيه — ' + String(g.category || '') + ' (' + String(g.spent_on || '') + ')' } }];\n  }\n\n  if (op === 'categories') {\n    const r = parse(await hreq({ method: 'GET', url: base + '/rest/v1/expense_categories?select=name,is_active&order=created_at.asc', headers: HB, json: true }));\n    if (r.st <= 0 || r.st >= 300) return [{ json: { ok: false, error: errOf(r) } }];\n    const cats = (Array.isArray(r.d) ? r.d : []).map((x) => x.name);\n    const er = parse(await hreq({ method: 'GET', url: base + '/rest/v1/expenses?select=category', headers: HB, json: true }));\n    const used = {};\n    if (er.st > 0 && er.st < 300 && Array.isArray(er.d)) for (const x of er.d) { const c = String(x.category || ''); used[c] = (used[c] || 0) + 1; }\n    return [{ json: { ok: true, count: cats.length, categories: cats, usage: used } }];\n  }\n\n  return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + op + '\". المتاح: log, savings, today, week, month, delete, categories' } }];\n} catch (e) {\n  return [{ json: { ok: false, error: 'خطأ غير متوقع: ' + String(e && e.message ? e.message : e).slice(0, 300) } }];\n}\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "a68e2599-b5e0-4580-90b2-a299546a27a5",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Finance"
+ ],
+ "updatedAt": "2026-10-24T21:30:29.106Z"
+}

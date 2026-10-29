@@ -1,0 +1,843 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "search",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.append",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.content",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "database.query",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.archive",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "database.query": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "database.query pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "database.query pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.append": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.append pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.append pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.archive": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.archive pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.archive pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.content": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.content pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.content pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "search": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "search pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "search pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T16:56:07.979Z",
+ "id": "bFwnd5QS25LLjc2j",
+ "name": "Notion",
+ "nodes": [
+  {
+   "id": "ab200000-4000-8000-0000-000000000001",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    480
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000002",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "search"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "search"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.append"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.append"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.content"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.content"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "database.query"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "database.query"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.archive"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.archive"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    480
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "credentials": {
+    "notionApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Notion account"
+    }
+   },
+   "id": "ab200000-4000-8000-0000-000000000003",
+   "name": "search",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Notion-Version",
+       "value": "2022-06-28"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({}, String($json.query || '').trim() ? { query: String($json.query) } : {}, { page_size: Math.min(Math.max(Number($json.pageSize) || 10, 1), 25) })) }}",
+    "method": "POST",
+    "nodeCredentialType": "notionApi",
+    "options": {},
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "https://api.notion.com/v1/search"
+   },
+   "position": [
+    540,
+    -240
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000004",
+   "name": "search pick",
+   "parameters": {
+    "jsCode": "// compact Notion search results\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { out.push(item); continue; }\n  const j = item.json || {};\n  if (!Array.isArray(j.results)) { out.push(item); continue; }\n  for (const r of j.results.slice(0, 25)) {\n    let title = '';\n    if (r.object === 'page') {\n      const props = r.properties || {};\n      for (const k of Object.keys(props)) {\n        const p = props[k];\n        if (p && p.type === 'title' && Array.isArray(p.title)) { title = p.title.map((t) => t.plain_text).join('').trim(); break; }\n      }\n    } else if (r.object === 'database') {\n      title = Array.isArray(r.title) ? r.title.map((t) => t.plain_text).join('').trim() : '';\n    }\n    out.push({ json: { type: r.object, title: title || '(بدون عنوان)', id: r.id, url: r.url || null } });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'مفيش نتائج' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    -240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "credentials": {
+    "notionApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Notion account"
+    }
+   },
+   "id": "ab200000-4000-8000-0000-000000000005",
+   "name": "page.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Notion-Version",
+       "value": "2022-06-28"
+      }
+     ]
+    },
+    "method": "GET",
+    "nodeCredentialType": "notionApi",
+    "options": {},
+    "sendHeaders": true,
+    "url": "=https://api.notion.com/v1/pages/{{ $json.pageId }}"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000006",
+   "name": "page.get pick",
+   "parameters": {
+    "jsCode": "// compact a Notion page (title + flattened properties)\nconst propText = (p) => {\n  if (!p || !p.type) return null;\n  const t = p.type;\n  if (t === 'title') return (p.title || []).map((x) => x.plain_text).join('').trim();\n  if (t === 'rich_text') return (p.rich_text || []).map((x) => x.plain_text).join('').trim();\n  if (t === 'number') return p.number;\n  if (t === 'select') return p.select ? p.select.name : null;\n  if (t === 'status') return p.status ? p.status.name : null;\n  if (t === 'multi_select') return (p.multi_select || []).map((x) => x.name).join('، ');\n  if (t === 'date') return p.date ? (p.date.start + (p.date.end ? ' → ' + p.date.end : '')) : null;\n  if (t === 'checkbox') return p.checkbox;\n  if (t === 'url') return p.url;\n  if (t === 'email') return p.email;\n  if (t === 'phone_number') return p.phone_number;\n  if (t === 'people') return (p.people || []).map((x) => x.name).join('، ');\n  if (t === 'relation') return ((p.relation || []).length) + ' مرتبط';\n  if (t === 'formula') { const f = p.formula || {}; return f.string !== undefined ? f.string : (f.number !== undefined ? f.number : (f.boolean !== undefined ? f.boolean : null)); }\n  return null;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { out.push(item); continue; }\n  const j = item.json || {};\n  if (j.object !== 'page' || !j.id) { out.push(item); continue; }\n  const props = {};\n  let title = '';\n  for (const k of Object.keys(j.properties || {})) {\n    const v = propText(j.properties[k]);\n    if (v === null || v === undefined || v === '') continue;\n    props[k] = v;\n    if (j.properties[k].type === 'title') title = String(v);\n  }\n  out.push({ json: { id: j.id, title: title || '(بدون عنوان)', url: j.url || null, created: String(j.created_time || '').slice(0, 16), edited: String(j.last_edited_time || '').slice(0, 16), properties: props } });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "credentials": {
+    "notionApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Notion account"
+    }
+   },
+   "id": "ab200000-4000-8000-0000-000000000007",
+   "name": "page.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Notion-Version",
+       "value": "2022-06-28"
+      }
+     ]
+    },
+    "jsonBody": "={{ (() => { const isDb = String($json.parentType || 'page').toLowerCase() === 'database'; const parent = isDb ? { database_id: $json.parentId } : { page_id: $json.parentId }; const tp = String($json.titleProp || 'title').trim() || 'title'; const props = {}; props[tp] = { title: [ { text: { content: String($json.title || '').slice(0, 1900) } } ] }; const body = { parent, properties: props }; const content = String($json.content || '').trim(); if (content) { body.children = content.split('\\n').map((l) => String(l).trim()).filter((l) => l).slice(0, 90).map((l) => ({ object: 'block', type: 'paragraph', paragraph: { rich_text: [ { type: 'text', text: { content: l.slice(0, 1900) } } ] } })); } return JSON.stringify(body); })() }}",
+    "method": "POST",
+    "nodeCredentialType": "notionApi",
+    "options": {},
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "https://api.notion.com/v1/pages"
+   },
+   "position": [
+    540,
+    240
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000008",
+   "name": "page.create pick",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  if (item.error) { out.push(item); continue; }\n  const j = item.json || {};\n  if (j.object !== 'page' || !j.id) { out.push(item); continue; }\n  out.push({ json: { ok: true, message: 'اتعملت صفحة جديدة', id: j.id, url: j.url || null } });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "credentials": {
+    "notionApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Notion account"
+    }
+   },
+   "id": "ab200000-4000-8000-0000-000000000009",
+   "name": "page.append",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Notion-Version",
+       "value": "2022-06-28"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify({ children: String($json.content || '').split('\\n').map((l) => String(l).trim()).filter((l) => l).slice(0, 90).map((l) => ({ object: 'block', type: 'paragraph', paragraph: { rich_text: [ { type: 'text', text: { content: l.slice(0, 1900) } } ] } })) }) }}",
+    "method": "PATCH",
+    "nodeCredentialType": "notionApi",
+    "options": {},
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "=https://api.notion.com/v1/blocks/{{ $json.pageId }}/children"
+   },
+   "position": [
+    540,
+    480
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000010",
+   "name": "page.append pick",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  if (item.error) { out.push(item); continue; }\n  const j = item.json || {};\n  if (j.object !== 'list' || !Array.isArray(j.results)) { out.push(item); continue; }\n  out.push({ json: { ok: true, message: 'اتضاف محتوى للصفحة', blocks_added: j.results.length } });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    480
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "credentials": {
+    "notionApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Notion account"
+    }
+   },
+   "id": "ab200000-4000-8000-0000-000000000011",
+   "name": "page.content",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Notion-Version",
+       "value": "2022-06-28"
+      }
+     ]
+    },
+    "method": "GET",
+    "nodeCredentialType": "notionApi",
+    "options": {},
+    "sendHeaders": true,
+    "url": "=https://api.notion.com/v1/blocks/{{ $json.pageId }}/children?page_size=50"
+   },
+   "position": [
+    540,
+    720
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000012",
+   "name": "page.content pick",
+   "parameters": {
+    "jsCode": "// read a Notion page's blocks as plain lines\nconst rich = (rt) => (rt || []).map((x) => x.plain_text).join('');\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { out.push(item); continue; }\n  const j = item.json || {};\n  if (j.object !== 'list' || !Array.isArray(j.results)) { out.push(item); continue; }\n  const lines = [];\n  for (const b of j.results) {\n    const t = b.type;\n    const d = (b[t] || {});\n    let s = '';\n    if (t === 'child_page') s = '📄 ' + String(d.title || '');\n    else if (t === 'to_do') s = (d.checked ? '☑ ' : '☐ ') + rich(d.rich_text);\n    else s = rich(d.rich_text);\n    if (!s || !String(s).trim()) continue;\n    if (t === 'heading_1') s = '# ' + s;\n    else if (t === 'heading_2') s = '## ' + s;\n    else if (t === 'heading_3') s = '### ' + s;\n    else if (t === 'bulleted_list_item') s = '• ' + s;\n    else if (t === 'numbered_list_item') s = '‣ ' + s;\n    else if (t === 'quote') s = '« ' + s;\n    lines.push(s);\n  }\n  out.push({ json: { ok: true, count: j.results.length, has_more: !!j.has_more, lines } });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    720
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "credentials": {
+    "notionApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Notion account"
+    }
+   },
+   "id": "ab200000-4000-8000-0000-000000000013",
+   "name": "database.query",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Notion-Version",
+       "value": "2022-06-28"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify({ page_size: Math.min(Math.max(Number($json.pageSize) || 25, 1), 100) }) }}",
+    "method": "POST",
+    "nodeCredentialType": "notionApi",
+    "options": {},
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "=https://api.notion.com/v1/databases/{{ $json.databaseId }}/query"
+   },
+   "position": [
+    540,
+    960
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000014",
+   "name": "database.query pick",
+   "parameters": {
+    "jsCode": "// compact database rows\nconst propText = (p) => {\n  if (!p || !p.type) return null;\n  const t = p.type;\n  if (t === 'title') return (p.title || []).map((x) => x.plain_text).join('').trim();\n  if (t === 'rich_text') return (p.rich_text || []).map((x) => x.plain_text).join('').trim();\n  if (t === 'number') return p.number;\n  if (t === 'select') return p.select ? p.select.name : null;\n  if (t === 'status') return p.status ? p.status.name : null;\n  if (t === 'multi_select') return (p.multi_select || []).map((x) => x.name).join('، ');\n  if (t === 'date') return p.date ? (p.date.start + (p.date.end ? ' → ' + p.date.end : '')) : null;\n  if (t === 'checkbox') return p.checkbox;\n  if (t === 'url') return p.url;\n  if (t === 'email') return p.email;\n  if (t === 'phone_number') return p.phone_number;\n  if (t === 'people') return (p.people || []).map((x) => x.name).join('، ');\n  if (t === 'relation') return ((p.relation || []).length) + ' مرتبط';\n  if (t === 'formula') { const f = p.formula || {}; return f.string !== undefined ? f.string : (f.number !== undefined ? f.number : (f.boolean !== undefined ? f.boolean : null)); }\n  return null;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { out.push(item); continue; }\n  const j = item.json || {};\n  if (j.object !== 'list' || !Array.isArray(j.results)) { out.push(item); continue; }\n  for (const r of j.results.slice(0, 50)) {\n    const props = {};\n    let title = '';\n    for (const k of Object.keys(r.properties || {})) {\n      const v = propText(r.properties[k]);\n      if (v === null || v === undefined || v === '') continue;\n      props[k] = v;\n      if (r.properties[k].type === 'title') title = String(v);\n    }\n    out.push({ json: { id: r.id, title: title || '(بدون عنوان)', url: r.url || null, properties: props } });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'مفيش صفوف' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    960
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "credentials": {
+    "notionApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Notion account"
+    }
+   },
+   "id": "ab200000-4000-8000-0000-000000000015",
+   "name": "page.archive",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Notion-Version",
+       "value": "2022-06-28"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify({ archived: true }) }}",
+    "method": "PATCH",
+    "nodeCredentialType": "notionApi",
+    "options": {},
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "=https://api.notion.com/v1/pages/{{ $json.pageId }}"
+   },
+   "position": [
+    540,
+    1200
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000016",
+   "name": "page.archive pick",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  if (item.error) { out.push(item); continue; }\n  const j = item.json || {};\n  if (j.object !== 'page' || !j.id) { out.push(item); continue; }\n  out.push({ json: { ok: true, message: 'اتعملت أرشفة للصفحة', id: j.id, archived: !!j.archived } });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1200
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000017",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: search, page.get, page.create, page.append, page.content, database.query, page.archive' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1440
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ab200000-4000-8000-0000-000000000018",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1400,
+    480
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "b9a38de3-476e-412b-92c5-3ebe8464039b",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    480
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Knowledge"
+ ],
+ "updatedAt": "2026-10-24T21:42:15.773Z"
+}

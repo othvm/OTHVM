@@ -1,0 +1,648 @@
+{
+ "active": true,
+ "connections": {
+  "Assess": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Check Source",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Check Deleted": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Source Deleted?",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Check Source": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Check Deleted",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Deleted Out": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Result",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Echo": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Result",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Echo?": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Echo",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Result",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Fix Binary": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Has File?",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Gemini Audio": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Gemini Format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Gemini Format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Assess",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Get Voice File": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Fix Binary",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Has File?": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Whisper",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Assess",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Get Voice File",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Source Deleted?": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Deleted Out",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Echo?",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Whisper": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Whisper OK?",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Whisper OK?": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Gemini Audio",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Assess",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T14:48:22.044Z",
+ "id": "8RyBRyVsJEBl7WNT",
+ "name": "Voice",
+ "nodes": [
+  {
+   "id": "ac010100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "file_id",
+       "type": "string"
+      },
+      {
+       "name": "reply_to_message_id",
+       "type": "number"
+      },
+      {
+       "name": "chat_id",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "credentials": {
+    "telegramApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Telegram account"
+    }
+   },
+   "id": "ac010200-4000-8000-000000000000",
+   "name": "Get Voice File",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "download": true,
+    "fileId": "={{ $json.file_id }}",
+    "operation": "get",
+    "resource": "file"
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "webhookId": "ced2de92-5405-4a23-8faf-6dd0d5cce27d"
+  },
+  {
+   "id": "ac010300-4000-8000-000000000000",
+   "name": "Fix Binary",
+   "parameters": {
+    "jsCode": "// OTHVM — Voice Tool: تجهيز الملف الصوتي (اسم وميْم مناسبين لخدمة التفريغ + base64 لمساري Gemini)\nconst item = $input.first() || { json: {} };\nconst j = item.json || {};\nif (item.binary && item.binary.data) {\n  const b = item.binary.data;\n  b.fileName = 'voice.ogg';\n  b.fileExtension = 'ogg';\n  if (!b.mimeType) b.mimeType = 'audio/ogg';\n  delete j.error;\n  let audio_base64 = '';\n  try {\n    const buf = await this.helpers.getBinaryDataBuffer(0, 'data');\n    audio_base64 = buf.toString('base64');\n  } catch (e) {\n    return [{ json: { ok: false, error: 'تعذر تجهيز الملف للتفريغ: ' + String(e.message || e).slice(0, 200) } }];\n  }\n  return [{ json: { ok: true, audio_base64: audio_base64, audio_mime: b.mimeType || 'audio/ogg' }, binary: item.binary }];\n}\nconst e = j.error;\nconst msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter(Boolean).join(' — ') || 'فشل تنزيل الملف من تلجرام') : 'فشل تنزيل الملف الصوتي من تلجرام');\nreturn [{ json: { ok: false, error: String(msg).slice(0, 300) } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    480,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ac010400-4000-8000-000000000000",
+   "name": "Has File?",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "No file"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ String($json.ok) }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "true"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "Has file"
+      }
+     ]
+    }
+   },
+   "position": [
+    680,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "ac010500-4000-8000-000000000000",
+   "maxTries": 2,
+   "name": "Whisper",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "bodyParameters": {
+     "parameters": [
+      {
+       "inputDataFieldName": "data",
+       "name": "file",
+       "parameterType": "formBinaryData"
+      },
+      {
+       "name": "model",
+       "value": "whisper-large-v3-turbo"
+      },
+      {
+       "name": "response_format",
+       "value": "verbose_json"
+      },
+      {
+       "name": "temperature",
+       "value": "0"
+      }
+     ]
+    },
+    "contentType": "multipart-form-data",
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Authorization",
+       "value": "Bearer REPLACE_WITH_GROQ_API_KEY"
+      }
+     ]
+    },
+    "method": "POST",
+    "options": {
+     "timeout": 90000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "url": "https://api.groq.com/openai/v1/audio/transcriptions"
+   },
+   "position": [
+    900,
+    -160
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 2000
+  },
+  {
+   "id": "ac010600-4000-8000-000000000000",
+   "name": "Assess",
+   "parameters": {
+    "jsCode": "// OTHVM — Voice Tool: تقييم جودة التفريغ (verbose_json) + تجهيز رسالة الصدى للمؤسس\nconst j = ($input.first() || {}).json || {};\nconst errOf = (x) => {\n  if (!x) return '';\n  if (typeof x === 'string') return x;\n  if (typeof x === 'object') return [x.message, x.description].filter(Boolean).join(' — ') || JSON.stringify(x).slice(0, 200);\n  return String(x);\n};\nlet inp = {};\ntry { inp = $('Input').first().json || {}; } catch (e) { inp = {}; }\nconst carry = {};\nif (inp.reply_to_message_id !== undefined && inp.reply_to_message_id !== null && inp.reply_to_message_id !== '' && !isNaN(Number(inp.reply_to_message_id))) carry.reply_to_message_id = Number(inp.reply_to_message_id);\nif (inp.chat_id !== undefined && inp.chat_id !== null && String(inp.chat_id).trim()) carry.chat_id = String(inp.chat_id).trim();\nif (j.ok === false) return [{ json: Object.assign({ ok: false, error: String(j.error || 'فشل غير معروف').slice(0, 300) }, carry) }];\nif (j.error) return [{ json: Object.assign({ ok: false, error: String(errOf(j.error) || 'فشل غير معروف').slice(0, 300) }, carry) }];\nconst text = typeof j.text === 'string' ? j.text.trim() : '';\nif (!text) return [{ json: Object.assign({ ok: false, error: 'التفريغ رجع فاضي — يمكن مفيش كلام مفهوم في التسجيل' }, carry) }];\nconst segs = Array.isArray(j.segments) ? j.segments : [];\nlet maxNsp = 0;\nlet minAlp = 0;\nlet maxEnd = 0;\nfor (const s of segs) {\n  if (s && typeof s.no_speech_prob === 'number' && s.no_speech_prob > maxNsp) maxNsp = s.no_speech_prob;\n  if (s && typeof s.avg_logprob === 'number' && s.avg_logprob < minAlp) minAlp = s.avg_logprob;\n  if (s && typeof s.end === 'number' && s.end > maxEnd) maxEnd = s.end;\n}\nconst norm = text.toLowerCase().replace(/[\\u064B-\\u0652]/g, '').replace(/[.!،,?؟\\s\"'«»…\\-_]+/g, ' ').trim();\nconst short = norm.length <= 60;\nconst asrStock = short && (norm.indexOf('thank you for watching') !== -1 || norm.indexOf('thanks for watching') !== -1 || norm.indexOf('subscribe') !== -1);\nconst stockExact = ['شكرا للمشاهدة', 'ترجمة نانسي قنقر', 'لا تنسوا الاشتراك في القناة', 'لا تنسى الاشتراك في القناة', 'اشترك في القناة', 'المزيد من الفيديوهات'].indexOf(norm) !== -1;\nif (asrStock || stockExact) return [{ json: Object.assign({ ok: false, error: 'التسجيل مش فيه كلام واضح — يمكن فاضي أو ضوضاء. اطلب من المستخدم يبعت التسجيل تاني أو يكتب الرسالة.' }, carry) }];\nconst dur = typeof j.duration === 'number' ? j.duration : 0;\nconst overrun = dur > 0 && maxEnd > dur + 5;\nconst uncertain = maxNsp > 0.6 || minAlp < -1.2 || overrun;\nlet plain = text.replace(/\\s+/g, ' ');\nif (plain.length > 900) plain = plain.slice(0, 900) + '…';\nconst echo = (uncertain ? '🎙️ سمعت كده (مش متأكد قوي): \"' : '🎙️ فهمت: \"') + plain + '\"';\nconst out = Object.assign({ ok: true, text: text, uncertain: uncertain, echo: echo }, carry);\nif (typeof j.language === 'string' && j.language) out.language = j.language;\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1140,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "ac011000-4000-8000-000000000000",
+   "name": "Check Source",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify({ chat_id: String($json.chat_id || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number($json.reply_to_message_id || 0), reaction: [] }) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 15000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/setMessageReaction"
+   },
+   "position": [
+    1250,
+    -180
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "ac011100-4000-8000-000000000000",
+   "name": "Check Deleted",
+   "parameters": {
+    "jsCode": "// OTHVM — Voice Tool: هل رسالة الفويس المصدر لسه موجودة؟ (فشل الفحص = بنفترض موجودة — مش بنعطّل)\nconst a = (() => { try { return $('Assess').first().json || {}; } catch (e) { return {}; } })();\nconst p = ($input.first() || {}).json || {};\nconst parts = [p.description, p.message, (p.error && (p.error.description || p.error.message)) || (typeof p.error === 'string' ? p.error : (p.error ? JSON.stringify(p.error) : ''))].filter(Boolean).map(String).join(' | ');\nconst del = /message to react not found|message not found/i.test(parts);\nreturn [{ json: Object.assign({}, a, { sourceDeleted: del }) }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1430,
+    -180
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ac011200-4000-8000-000000000000",
+   "name": "Source Deleted?",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Alive"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ String($json.sourceDeleted) }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "true"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "Deleted"
+      }
+     ]
+    }
+   },
+   "position": [
+    1610,
+    -180
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "ac011300-4000-8000-000000000000",
+   "name": "Deleted Out",
+   "parameters": {
+    "jsCode": "// OTHVM — Voice Tool: الفويس المصدر اتمسح قبل المعالجة — مفيش صدى ومفيش تفريغ\nreturn [{ json: { ok: true, deleted: true, uncertain: false, note: 'الفويس المصدر اتمسح — مفيش رد' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1790,
+    -180
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ac010700-4000-8000-000000000000",
+   "name": "Echo?",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "No echo"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ String($json.ok) }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "true"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "Echo"
+      }
+     ]
+    }
+   },
+   "position": [
+    1360,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "credentials": {
+    "telegramApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Telegram account"
+    }
+   },
+   "id": "ac010800-4000-8000-000000000000",
+   "name": "Echo",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "appendAttribution": false,
+     "reply_to_message_id": "={{ $json.reply_to_message_id }}"
+    },
+    "chatId": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+    "operation": "sendMessage",
+    "resource": "message",
+    "text": "={{ $json.echo }}"
+   },
+   "position": [
+    1560,
+    0
+   ],
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "webhookId": "c5ac7dcf-d025-4d49-9f96-cbe787e5b7ec"
+  },
+  {
+   "id": "ac010900-4000-8000-000000000000",
+   "name": "Result",
+   "parameters": {
+    "jsCode": "// OTHVM — Voice Tool: المخرجات النهائية للأجنت {ok, text, language, uncertain} أو {ok:false, error} أو {ok:true, deleted:true}\nconst cur = ($input.first() || {}).json || {};\nif (cur.deleted === true) return [{ json: { ok: true, deleted: true, note: cur.note || 'الفويس اتمسح' } }];\nlet a = null;\ntry { a = $('Assess').first().json; } catch (e) { a = null; }\nif (!a) a = ($input.first() || {}).json || {};\nif (a.ok === false) return [{ json: { ok: false, error: String(a.error || 'فشل غير معروف').slice(0, 300) } }];\nconst out = { ok: true, text: a.text };\nif (a.language) out.language = a.language;\nout.uncertain = a.uncertain === true;\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1780,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "88337235-79d4-4e3e-901a-dd34a0247dd1",
+   "name": "Whisper OK?",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "ok"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.error ? 'failed' : 'ok' }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "failed"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "failed"
+      }
+     ]
+    }
+   },
+   "position": [
+    1120,
+    120
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "credentials": {
+    "googlePalmApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Gemini(PaLM) Api account"
+    }
+   },
+   "id": "ee937f7b-5be2-4b3a-bc82-af18ed975a54",
+   "maxTries": 3,
+   "name": "Gemini Audio",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ contents: [{ role: 'user', parts: [{ text: 'Transcribe this audio exactly in its original language. Return only the transcript, no commentary.' }, { inline_data: { mime_type: $('Fix Binary').first().json.audio_mime || 'audio/ogg', data: $('Fix Binary').first().json.audio_base64 } }] }], generationConfig: { temperature: 0, maxOutputTokens: 2048 } }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googlePalmApi",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent"
+   },
+   "position": [
+    1360,
+    240
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "waitBetweenTries": 3000
+  },
+  {
+   "id": "055ddf16-8b14-4fa3-8ae9-2d469e5a391a",
+   "name": "Gemini Format",
+   "parameters": {
+    "jsCode": "// OTHVM — Gemini audio fallback: extract transcript text.\nconst j = ($input.first() || {}).json || {};\nif (j.error) {\n  const e = j.error;\n  const msg = typeof e === 'string' ? e : [e.message, e.description].filter(Boolean).join(' — ') || JSON.stringify(e).slice(0, 300);\n  return [{ json: { ok: false, error: 'Groq failed and Gemini fallback failed: ' + String(msg).slice(0, 400) } }];\n}\nlet text = '';\ntry {\n  text = (((j.candidates || [])[0] || {}).content?.parts || []).map((p) => p.text || '').join('').trim();\n} catch (e) { text = ''; }\nif (!text) return [{ json: { ok: false, error: 'Groq failed and Gemini returned no transcript' } }];\nreturn [{ json: { ok: true, text, language: '', duration: 0 } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1600,
+    240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "System"
+ ],
+ "updatedAt": "2026-10-26T11:18:41.434Z"
+}

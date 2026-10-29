@@ -1,0 +1,801 @@
+{
+ "active": true,
+ "connections": {
+  "Flatten Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route by Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route by Tool": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Call workflow",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call streak",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call sleep",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call progress",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call loops",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call briefs",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call modes",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call reminders",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call morning",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call status",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Flatten Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-24T21:32:31.623Z",
+ "id": "rZTTC5wXYuHQXbkA",
+ "name": "OTHVM — Automation",
+ "nodes": [
+  {
+   "id": "3165d5dc-b1e8-45f5-af2c-8f69bd666f36",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "tool"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "dccb19ee-1a96-4e0a-95ed-7a1fd3eb2aed",
+   "name": "Call workflow",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Workflows",
+     "mode": "list",
+     "value": "AisqHM592kAxlMNO"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.params.operation }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    624,
+    -320
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "e7a9d79f-d56e-42b2-ac46-402300410361",
+   "name": "Call streak",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Streak Tracker",
+     "mode": "list",
+     "value": "glZGwPyczwkDc5XB"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.params.operation }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    624,
+    -176
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "024e1cb0-00cf-43d5-b58a-7290824cf8bb",
+   "name": "Call sleep",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Sleep Scheduler",
+     "mode": "list",
+     "value": "EGJhUZnS00NWbp4d"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "action",
+       "id": "action",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "action": "={{ $json.params.action }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    624,
+    -32
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "948f61d1-0631-41f8-979a-0e3e79ce82b8",
+   "name": "Call progress",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Progress Status",
+     "mode": "list",
+     "value": "aIUkpUpj9EYKYvuI"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.params.operation }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    624,
+    112
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "48ad47c1-3f4f-40db-b065-79b3f228b26b",
+   "name": "Route by Tool",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "unknown"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "workflow"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "streak"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sleep"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "progress"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "loops"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "briefs"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "briefs"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "modes"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "modes"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "reminders"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "reminders"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "morning"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "morning"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "status"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "status"
+      }
+     ]
+    }
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "2313611a-d62e-42d9-bb54-71cfdcd194da",
+   "name": "Unknown Tool",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'unknown tool: ' + String($json.tool || '') + '. use: workflow, streak, sleep, progress, loops, briefs, modes, reminders, morning' } }];"
+   },
+   "position": [
+    624,
+    432
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "6b2aa64c-7e4c-4e9d-b2f2-3daf877c8157",
+   "name": "Call loops",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Loops",
+     "mode": "list",
+     "value": "amQ0OQHM0FHAcg5y"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.params.operation }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    624,
+    272
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "3cbed7a0-0198-4666-9adf-980fb456c6b4",
+   "name": "Flatten Params",
+   "parameters": {
+    "jsCode": "// OTHVM — flatten params; keep flat args, normalize action/operation, and expose merged params.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nif (j.tool !== undefined) out.tool = j.tool;\n\nout.params = { ...out };\nreturn [{ json: out }];"
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "ca2785dc-f776-4eb8-823a-556cdbd1214a",
+   "name": "Call briefs",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Workflows",
+     "mode": "list",
+     "value": "AisqHM592kAxlMNO"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ 'briefs.' + ($json.operation || 'list') }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    660,
+    592
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "65974418-6d6b-4384-9673-da5dadff918b",
+   "name": "Call modes",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Workflows",
+     "mode": "list",
+     "value": "AisqHM592kAxlMNO"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ 'modes.' + ($json.operation || 'list') }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    660,
+    752
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "16a2bc29-7c0d-4af5-8501-d35b8d184cab",
+   "name": "Call reminders",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify(Object.assign({}, $json, { action: ($json.action || $json.operation || 'list') })) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/reminders"
+   },
+   "position": [
+    660,
+    912
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "62522a94-05a2-4b59-9fdf-5d7acaeb8586",
+   "name": "Call morning",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Morning Briefing",
+     "mode": "list",
+     "value": "1oiKQuNFZUF3YOeX"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "reason",
+       "id": "reason",
+       "required": false,
+       "type": "string"
+      }
+     ],
+     "value": {
+      "reason": "={{ $json.params.reason || $json.operation || 'on-demand' }}"
+     }
+    }
+   },
+   "position": [
+    660,
+    1072
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "d5170c2e-d8e6-4e56-b0c8-8cd90327f6e3",
+   "name": "Call status",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify({ command: \"/status\", args: \"\", chat_id: String(($json.params && $json.params.chat_id) || \"\") }) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 60000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/commands"
+   },
+   "position": [
+    980,
+    520
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-27T19:33:33.988Z"
+}

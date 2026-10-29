@@ -1,0 +1,269 @@
+{
+ "active": true,
+ "connections": {
+  "Calendar List": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Drive Files",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Contacts Me": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Summarize",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Drive Files": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Task Lists",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Gmail Profile": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Calendar List",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Health In": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Gmail Profile",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Summarize": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Respond",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Task Lists": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Contacts Me",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-26T11:34:32.883Z",
+ "id": "PCeM3BnTopz6x70g",
+ "name": "Google Health",
+ "nodes": [
+  {
+   "id": "aa010100-000000000001",
+   "name": "Health In",
+   "parameters": {
+    "httpMethod": "POST",
+    "options": {},
+    "path": "othvm-google-health",
+    "responseMode": "responseNode"
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2.1,
+   "webhookId": "othvm-google-health"
+  },
+  {
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa010200-000000000001",
+   "name": "Gmail Profile",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "GET",
+    "nodeCredentialType": "gmailOAuth2",
+    "options": {
+     "timeout": 15000
+    },
+    "url": "https://gmail.googleapis.com/gmail/v1/users/me/profile"
+   },
+   "position": [
+    240,
+    -320
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa010200-000000000002",
+   "name": "Calendar List",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "GET",
+    "nodeCredentialType": "googleCalendarOAuth2Api",
+    "options": {
+     "timeout": 15000
+    },
+    "url": "https://www.googleapis.com/calendar/v3/users/me/calendarList?maxResults=1"
+   },
+   "position": [
+    480,
+    -320
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "credentials": {
+    "googleDriveOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Drive account"
+    }
+   },
+   "id": "aa010200-000000000003",
+   "name": "Drive Files",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "GET",
+    "nodeCredentialType": "googleDriveOAuth2Api",
+    "options": {
+     "timeout": 15000
+    },
+    "url": "https://www.googleapis.com/drive/v3/files?pageSize=1&fields=files(id)"
+   },
+   "position": [
+    720,
+    -320
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "credentials": {
+    "googleTasksOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Tasks account"
+    }
+   },
+   "id": "aa010200-000000000004",
+   "name": "Task Lists",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "GET",
+    "nodeCredentialType": "googleTasksOAuth2Api",
+    "options": {
+     "timeout": 15000
+    },
+    "url": "https://tasks.googleapis.com/tasks/v1/users/@me/lists?maxResults=1"
+   },
+   "position": [
+    960,
+    -320
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "credentials": {
+    "googleContactsOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Contacts account"
+    }
+   },
+   "id": "aa010200-000000000005",
+   "name": "Contacts Me",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "GET",
+    "nodeCredentialType": "googleContactsOAuth2Api",
+    "options": {
+     "timeout": 15000
+    },
+    "url": "https://people.googleapis.com/v1/people/me?personFields=names"
+   },
+   "position": [
+    1200,
+    -320
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa010300-000000000001",
+   "name": "Summarize",
+   "parameters": {
+    "jsCode": "// OTHVM — summarize live Google credential health from the five probe nodes.\nconst check = (name) => {\n  try {\n    const first = $(name).first();\n    const j = (first && first.json) || {};\n    if (first && first.error) {\n      const e = first.error;\n      return { ok: false, error: String((e && (e.message || e.description)) || e).slice(0, 240) };\n    }\n    if (j.error) {\n      const e = j.error;\n      return { ok: false, error: String((e && (e.message || e.description)) || e).slice(0, 240) };\n    }\n    return { ok: true };\n  } catch (e) {\n    return { ok: false, error: String((e && e.message) || e).slice(0, 240) };\n  }\n};\nconst services = {\n  gmail: check('Gmail Profile'),\n  calendar: check('Calendar List'),\n  drive: check('Drive Files'),\n  tasks: check('Task Lists'),\n  contacts: check('Contacts Me'),\n};\nconst failed = Object.entries(services).filter(([, v]) => !v.ok).map(([k]) => k);\nreturn [{ json: { ok: failed.length === 0, checked_at: new Date().toISOString(), services, failed } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1440,
+    -320
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa010400-000000000001",
+   "name": "Respond",
+   "parameters": {
+    "options": {},
+    "respondWith": "json",
+    "responseBody": "={{ JSON.stringify($json) }}"
+   },
+   "position": [
+    1680,
+    -320
+   ],
+   "type": "n8n-nodes-base.respondToWebhook",
+   "typeVersion": 1.1
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-26T11:38:18.802Z"
+}

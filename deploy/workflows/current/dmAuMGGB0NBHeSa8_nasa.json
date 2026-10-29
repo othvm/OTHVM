@@ -1,0 +1,1477 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "neo.browse",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "neo.feed",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "neo.lookup",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "apod.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.cme",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.highSpeedStream",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.shock",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.magnetopause",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.notifications",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.radiationBelt",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.energeticParticle",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.solarFlare",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "donki.wsaEnlil",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "earth.assets",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "earth.imagery",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "apod.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "apod.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "apod.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.cme": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.cme — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.cme — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.energeticParticle": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.energeticParticle — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.energeticParticle — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.highSpeedStream": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.highSpeedStream — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.highSpeedStream — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.magnetopause": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.magnetopause — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.magnetopause — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.notifications": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.notifications — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.notifications — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.radiationBelt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.radiationBelt — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.radiationBelt — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.shock": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.shock — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.shock — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.solarFlare": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.solarFlare — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.solarFlare — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.wsaEnlil": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "donki.wsaEnlil — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "donki.wsaEnlil — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "earth.assets": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "earth.assets — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "earth.assets — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "earth.imagery": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "earth.imagery — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "earth.imagery — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "neo.browse": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "neo.browse — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "neo.browse — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "neo.feed": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "neo.feed — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "neo.feed — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "neo.lookup": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "neo.lookup — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "neo.lookup — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T13:30:17.500Z",
+ "id": "dmAuMGGB0NBHeSa8",
+ "name": "NASA",
+ "nodes": [
+  {
+   "id": "aa020100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      },
+      {
+       "name": "asteroidId"
+      },
+      {
+       "name": "date"
+      },
+      {
+       "name": "startDate"
+      },
+      {
+       "name": "endDate"
+      },
+      {
+       "name": "lat",
+       "type": "number"
+      },
+      {
+       "name": "lon",
+       "type": "number"
+      },
+      {
+       "name": "dim",
+       "type": "number"
+      },
+      {
+       "name": "includeCloseApproachData",
+       "type": "boolean"
+      },
+      {
+       "name": "location"
+      },
+      {
+       "name": "catalog"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa020200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "neo.browse"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "neo.feed"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "neo.lookup"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "apod.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.cme"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.highSpeedStream"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.shock"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.magnetopause"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.notifications"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.radiationBelt"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.energeticParticle"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.solarFlare"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "donki.wsaEnlil"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "earth.assets"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "earth.imagery"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      }
+     ]
+    }
+   },
+   "position": [
+    272,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa020300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    1088,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa020400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"neo.browse, neo.feed, neo.lookup, apod.get, donki.cme, donki.highSpeedStream, donki.shock, donki.magnetopause, donki.notifications, donki.radiationBelt, donki.energeticParticle, donki.solarFlare, donki.wsaEnlil, earth.assets, earth.imagery\" } }];"
+   },
+   "position": [
+    800,
+    2112
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa020500-4000-8000-000000000000",
+   "name": "neo.browse",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ Math.max(1, Math.min(50, Number($json.limit) || 10)) }}",
+    "resource": "asteroidNeoBrowse"
+   },
+   "position": [
+    544,
+    0
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa020600-4000-8000-000000000000",
+   "name": "neo.browse — format",
+   "parameters": {
+    "jsCode": "const pick = (a) => ({ name: a.name, id: a.id, hazardous: a.is_potentially_hazardous_asteroid, sizeKm: a.estimated_diameter?.kilometers?.estimated_diameter_max, velocityKms: a.close_approach_data?.[0]?.relative_velocity?.kilometers_per_second, missKm: a.close_approach_data?.[0]?.miss_distance?.kilometers, when: a.close_approach_data?.[0]?.close_approach_date });\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!r.name) { out.push(item); continue; }\n  out.push({ json: pick(r) });\n}\nreturn out.length ? out.slice(0, 15) : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa020700-4000-8000-000000000000",
+   "name": "neo.feed",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "asteroidNeoFeed"
+   },
+   "position": [
+    544,
+    144
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa020800-4000-8000-000000000000",
+   "name": "neo.feed — format",
+   "parameters": {
+    "jsCode": "const pick = (a) => ({ name: a.name, id: a.id, hazardous: a.is_potentially_hazardous_asteroid, sizeKm: a.estimated_diameter?.kilometers?.estimated_diameter_max, velocityKms: a.close_approach_data?.[0]?.relative_velocity?.kilometers_per_second, missKm: a.close_approach_data?.[0]?.miss_distance?.kilometers, when: a.close_approach_data?.[0]?.close_approach_date });\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!r.name) { out.push(item); continue; }\n  out.push({ json: pick(r) });\n}\nreturn out.length ? out.slice(0, 15) : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    144
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa020900-4000-8000-000000000000",
+   "name": "neo.lookup",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "includeCloseApproachData": "={{ $json.includeCloseApproachData ? true : false }}"
+    },
+    "asteroidId": "={{ $json.asteroidId }}",
+    "resource": "asteroidNeoLookup"
+   },
+   "position": [
+    544,
+    272
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa021000-4000-8000-000000000000",
+   "name": "neo.lookup — format",
+   "parameters": {
+    "jsCode": "const pick = (a) => ({ name: a.name, id: a.id, hazardous: a.is_potentially_hazardous_asteroid, sizeKm: a.estimated_diameter?.kilometers?.estimated_diameter_max, velocityKms: a.close_approach_data?.[0]?.relative_velocity?.kilometers_per_second, missKm: a.close_approach_data?.[0]?.miss_distance?.kilometers, when: a.close_approach_data?.[0]?.close_approach_date });\nconst out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!r.name) { out.push(item); continue; }\n  out.push({ json: pick(r) });\n}\nreturn out.length ? out.slice(0, 15) : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    272
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa021100-4000-8000-000000000000",
+   "name": "apod.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "date": "={{ $json.date || $now.minus({ days: 1 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "download": false
+   },
+   "position": [
+    544,
+    400
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa021200-4000-8000-000000000000",
+   "name": "apod.get — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!r.title) { out.push({ json: r }); continue; }\n  out.push({ json: { date: r.date, title: r.title, media_type: r.media_type, explanation: r.explanation, url: r.url, hdurl: r.hdurl, copyright: r.copyright } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    400
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa021300-4000-8000-000000000000",
+   "name": "donki.cme",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiCoronalMassEjection"
+   },
+   "position": [
+    544,
+    528
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa021400-4000-8000-000000000000",
+   "name": "donki.cme — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    528
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa021500-4000-8000-000000000000",
+   "name": "donki.highSpeedStream",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiHighSpeedStream"
+   },
+   "position": [
+    544,
+    656
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa021600-4000-8000-000000000000",
+   "name": "donki.highSpeedStream — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    656
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa021700-4000-8000-000000000000",
+   "name": "donki.shock",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "catalog": "={{ $json.catalog || 'ALL' }}",
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "location": "={{ $json.location || 'ALL' }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiInterplanetaryShock"
+   },
+   "position": [
+    544,
+    784
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa021800-4000-8000-000000000000",
+   "name": "donki.shock — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    784
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa021900-4000-8000-000000000000",
+   "name": "donki.magnetopause",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiMagnetopauseCrossing"
+   },
+   "position": [
+    544,
+    912
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa022000-4000-8000-000000000000",
+   "name": "donki.magnetopause — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    912
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa022100-4000-8000-000000000000",
+   "name": "donki.notifications",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiNotifications"
+   },
+   "position": [
+    544,
+    1040
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa022200-4000-8000-000000000000",
+   "name": "donki.notifications — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1040
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa022300-4000-8000-000000000000",
+   "name": "donki.radiationBelt",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiRadiationBeltEnhancement"
+   },
+   "position": [
+    544,
+    1184
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa022400-4000-8000-000000000000",
+   "name": "donki.radiationBelt — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1184
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa022500-4000-8000-000000000000",
+   "name": "donki.energeticParticle",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiSolarEnergeticParticle"
+   },
+   "position": [
+    544,
+    1312
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa022600-4000-8000-000000000000",
+   "name": "donki.energeticParticle — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1312
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa022700-4000-8000-000000000000",
+   "name": "donki.solarFlare",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiSolarFlare"
+   },
+   "position": [
+    544,
+    1440
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa022800-4000-8000-000000000000",
+   "name": "donki.solarFlare — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1440
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa022900-4000-8000-000000000000",
+   "name": "donki.wsaEnlil",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "endDate": "={{ $json.endDate || $now.toFormat('yyyy-MM-dd') }}",
+     "startDate": "={{ $json.startDate || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}"
+    },
+    "resource": "donkiWsaEnlilSimulation"
+   },
+   "position": [
+    544,
+    1568
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa023000-4000-8000-000000000000",
+   "name": "donki.wsaEnlil — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const arr = Array.isArray(r) ? r : (Object.values(r).find((v) => Array.isArray(v)) || null);\n  if (!arr) { out.push({ json: r }); continue; }\n  for (const e of arr.slice(0, 10)) {\n    const o = {};\n    for (const [k, v] of Object.entries(e)) {\n      if (v === null || v === undefined || v === '') continue;\n      if (typeof v === 'string') o[k] = v.length > 250 ? v.slice(0, 250) : v;\n      else if (typeof v === 'number' || typeof v === 'boolean') o[k] = v;\n      else o[k] = JSON.stringify(v).slice(0, 150);\n      if (Object.keys(o).length >= 12) break;\n    }\n    out.push({ json: o });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1568
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa023100-4000-8000-000000000000",
+   "name": "earth.assets",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "date": "={{ $json.date || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}",
+     "dim": "={{ Number($json.dim) || 0.15 }}"
+    },
+    "lat": "={{ Number($json.lat) }}",
+    "lon": "={{ Number($json.lon) }}",
+    "resource": "earthAssets"
+   },
+   "position": [
+    544,
+    1696
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa023200-4000-8000-000000000000",
+   "name": "earth.assets — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const a = Array.isArray(r.results) && r.results[0] ? r.results[0] : r;\n  if (!a || !a.date) { out.push({ json: r }); continue; }\n  out.push({ json: { date: a.date, id: a.id, url: a.url, dataset: a.resource?.dataset, planet: a.resource?.planet } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1696
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "nasaApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "NASA account"
+    }
+   },
+   "id": "aa023300-4000-8000-000000000000",
+   "name": "earth.imagery",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "date": "={{ $json.date || $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}",
+     "dim": "={{ Number($json.dim) || 0.15 }}"
+    },
+    "lat": "={{ Number($json.lat) }}",
+    "lon": "={{ Number($json.lon) }}",
+    "resource": "earthImagery"
+   },
+   "position": [
+    544,
+    1824
+   ],
+   "type": "n8n-nodes-base.nasa",
+   "typeVersion": 1
+  },
+  {
+   "id": "aa023400-4000-8000-000000000000",
+   "name": "earth.imagery — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const b = item.binary && item.binary[Object.keys(item.binary)[0]];\n  if (b) { out.push({ json: { ok: true, note: 'صورة الأرض اتجابت كملف (مش نص) — الاسم: ' + (b.fileName || 'image') + ' — لو محتاج بيانات نصية استخدم earth.assets' } }); continue; }\n  out.push({ json: item.json || {} });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1824
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Knowledge"
+ ],
+ "updatedAt": "2026-10-22T12:33:18.269Z"
+}

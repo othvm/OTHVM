@@ -1,0 +1,362 @@
+{
+ "active": true,
+ "connections": {
+  "Flatten Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route by Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route by Tool": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Call db",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call knowledge",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call airtable",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call context",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Flatten Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-24T23:40:27.562Z",
+ "id": "Lo4M8vtRRFyB4lJI",
+ "name": "OTHVM — Memory",
+ "nodes": [
+  {
+   "id": "8b20543b-684b-4900-82de-383c3a336a5c",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "tool",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1
+  },
+  {
+   "id": "6d374d5c-1d24-40f3-bd2c-90df409fc060",
+   "name": "Flatten Params",
+   "parameters": {
+    "jsCode": "// OTHVM — flatten params; keep flat args, normalize action/operation, and expose merged params.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nif (j.tool !== undefined) out.tool = j.tool;\nif (out.tool === undefined) out.tool = 'db';\nout.params = { ...out };\nreturn [{ json: out }];"
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "1162692c-8699-4bf6-88fc-951abe3ed276",
+   "name": "Route by Tool",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "unknown"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "db"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "db"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "knowledge"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "knowledge"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "airtable"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "airtable"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "context"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "context"
+      }
+     ]
+    }
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3
+  },
+  {
+   "id": "4eefe889-31fa-4b66-a93a-d725558d4f88",
+   "name": "Call db",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "DB",
+     "mode": "list",
+     "value": "WlAF18YxAnc1Fsjf"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.operation }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    660,
+    -160
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "5cd4c087-58de-482d-96a2-a05fad5edb53",
+   "name": "Call knowledge",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/knowledge"
+   },
+   "position": [
+    660,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "fd8681d2-f084-4474-8b94-bc7f3a4b708b",
+   "name": "Call airtable",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Airtable",
+     "mode": "list",
+     "value": "YELzrCPWadSrKb9T"
+    },
+    "workflowInputs": {
+     "mappingMode": "autoMapInputData",
+     "schema": [],
+     "value": {}
+    }
+   },
+   "position": [
+    660,
+    160
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "edd9c076-2460-495b-adf9-246b59a1ad61",
+   "name": "Unknown Tool",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'unknown tool: ' + String($json.tool || '') + '. use: db, knowledge, airtable, context' } }];"
+   },
+   "position": [
+    660,
+    320
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "18a956db-aca3-44f2-9bf5-705eb2ec4001",
+   "name": "Call context",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 120000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/context"
+   },
+   "position": [
+    660,
+    180
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-27T22:00:24.883Z"
+}

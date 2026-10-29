@@ -1,0 +1,3150 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendMessage — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "editMessageText — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "deleteMessage — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "forwardMessage — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "copyMessage — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendPhoto — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendDocument — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendAudio — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendVoice — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendVideo — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendSticker — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendAnimation — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendLocation — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendContact — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendPoll — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendDice — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "sendChatAction — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "getFile — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "editMessageCaption — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "editMessageReplyMarkup — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "setMessageReaction — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "pinChatMessage — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "unpinChatMessage — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "answerCallbackQuery — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "getChat — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "getChatMember — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "getUpdates — body",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "answerCallbackQuery": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "answerCallbackQuery — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "answerCallbackQuery — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "answerCallbackQuery",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "answerCallbackQuery — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "copyMessage": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "copyMessage — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "copyMessage — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "copyMessage",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "copyMessage — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "deleteMessage": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "deleteMessage — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "deleteMessage — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "deleteMessage",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "deleteMessage — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageCaption": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "editMessageCaption — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageCaption — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "editMessageCaption",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageCaption — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageReplyMarkup": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "editMessageReplyMarkup — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageReplyMarkup — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "editMessageReplyMarkup",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageReplyMarkup — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageText": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "editMessageText — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageText — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "editMessageText",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "editMessageText — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "forwardMessage": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "forwardMessage — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "forwardMessage — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "forwardMessage",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "forwardMessage — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getChat": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "getChat — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getChat — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "getChat",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getChat — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getChatMember": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "getChatMember — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getChatMember — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "getChatMember",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getChatMember — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getFile": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "getFile — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getFile — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "getFile",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getFile — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getUpdates": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "getUpdates — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getUpdates — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "getUpdates",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "getUpdates — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "pinChatMessage": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "pinChatMessage — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "pinChatMessage — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "pinChatMessage",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "pinChatMessage — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendAnimation": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendAnimation — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendAnimation — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendAnimation",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendAnimation — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendAudio": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendAudio — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendAudio — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendAudio",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendAudio — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendChatAction": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendChatAction — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendChatAction — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendChatAction",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendChatAction — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendContact": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendContact — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendContact — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendContact",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendContact — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendDice": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendDice — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendDice — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendDice",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendDice — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendDocument": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendDocument — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendDocument — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendDocument",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendDocument — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendLocation": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendLocation — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendLocation — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendLocation",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendLocation — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendMessage": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendMessage — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendMessage — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendMessage",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendMessage — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendPhoto": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendPhoto — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendPhoto — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendPhoto",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendPhoto — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendPoll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendPoll — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendPoll — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendPoll",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendPoll — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendSticker": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendSticker — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendSticker — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendSticker",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendSticker — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendVideo": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendVideo — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendVideo — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendVideo",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendVideo — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendVoice": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendVoice — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendVoice — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "sendVoice",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "sendVoice — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "setMessageReaction": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "setMessageReaction — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "setMessageReaction — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "setMessageReaction",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "setMessageReaction — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "unpinChatMessage": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "unpinChatMessage — fmt",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "unpinChatMessage — body": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "unpinChatMessage",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "unpinChatMessage — fmt": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T15:12:18.824Z",
+ "id": "sPjXzDAowwQy6WmW",
+ "name": "Telegram Bot",
+ "nodes": [
+  {
+   "id": "aa010100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "action",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa010200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendMessage"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendMessage"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "editMessageText"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "editMessageText"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "deleteMessage"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "deleteMessage"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "forwardMessage"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "forwardMessage"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "copyMessage"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "copyMessage"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendPhoto"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendPhoto"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendDocument"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendDocument"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendAudio"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendAudio"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendVoice"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendVoice"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendVideo"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendVideo"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendSticker"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendSticker"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendAnimation"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendAnimation"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendLocation"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendLocation"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendContact"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendContact"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendPoll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendPoll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendDice"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendDice"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "sendChatAction"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "sendChatAction"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "getFile"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "getFile"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "editMessageCaption"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "editMessageCaption"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "editMessageReplyMarkup"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "editMessageReplyMarkup"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "setMessageReaction"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "setMessageReaction"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "pinChatMessage"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "pinChatMessage"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "unpinChatMessage"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "unpinChatMessage"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "answerCallbackQuery"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "answerCallbackQuery"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "getChat"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "getChat"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "getChatMember"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "getChatMember"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "getUpdates"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "getUpdates"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa010300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa010400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"sendMessage, editMessageText, deleteMessage, forwardMessage, copyMessage, sendPhoto, sendDocument, sendAudio, sendVoice, sendVideo, sendSticker, sendAnimation, sendLocation, sendContact, sendPoll, sendDice, sendChatAction, getFile, editMessageCaption, editMessageReplyMarkup, setMessageReaction, pinChatMessage, unpinChatMessage, answerCallbackQuery, getChat, getChatMember, getUpdates\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3660
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa010500-4000-8000-000000000000",
+   "name": "sendMessage — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), text: j.text };\nif (j.replyToMessageId !== undefined && j.replyToMessageId !== null && j.replyToMessageId !== '') body.reply_parameters = { message_id: Number(j.replyToMessageId), allow_sending_without_reply: true };\nif (j.parseMode) body.parse_mode = j.parseMode;\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa010600-4000-8000-000000000000",
+   "name": "sendMessage",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendMessage"
+   },
+   "position": [
+    600,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa010700-4000-8000-000000000000",
+   "name": "sendMessage — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa010800-4000-8000-000000000000",
+   "name": "editMessageText — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number(j.messageId), text: j.text };\nif (j.parseMode) body.parse_mode = j.parseMode;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa010900-4000-8000-000000000000",
+   "name": "editMessageText",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/editMessageText"
+   },
+   "position": [
+    600,
+    130
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011000-4000-8000-000000000000",
+   "name": "editMessageText — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa011100-4000-8000-000000000000",
+   "name": "deleteMessage — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number(j.messageId) };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa011200-4000-8000-000000000000",
+   "name": "deleteMessage",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/deleteMessage"
+   },
+   "position": [
+    600,
+    260
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011300-4000-8000-000000000000",
+   "name": "deleteMessage — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\no.deleted = true;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa011400-4000-8000-000000000000",
+   "name": "forwardMessage — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), from_chat_id: String(j.fromChatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number(j.messageId) };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa011500-4000-8000-000000000000",
+   "name": "forwardMessage",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/forwardMessage"
+   },
+   "position": [
+    600,
+    390
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011600-4000-8000-000000000000",
+   "name": "forwardMessage — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa011700-4000-8000-000000000000",
+   "name": "copyMessage — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), from_chat_id: String(j.fromChatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number(j.messageId) };\nif (j.caption) body.caption = j.caption;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa011800-4000-8000-000000000000",
+   "name": "copyMessage",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/copyMessage"
+   },
+   "position": [
+    600,
+    520
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011900-4000-8000-000000000000",
+   "name": "copyMessage — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa012000-4000-8000-000000000000",
+   "name": "sendPhoto — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst src = j.fileUrl || j.fileId;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), photo: src };\nif (j.caption) body.caption = j.caption;\nif (j.parseMode && j.caption) body.parse_mode = j.parseMode;\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa012100-4000-8000-000000000000",
+   "name": "sendPhoto",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendPhoto"
+   },
+   "position": [
+    600,
+    650
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa012200-4000-8000-000000000000",
+   "name": "sendPhoto — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa012300-4000-8000-000000000000",
+   "name": "sendDocument — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst src = j.fileUrl || j.fileId;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), document: src };\nif (j.caption) body.caption = j.caption;\nif (j.parseMode && j.caption) body.parse_mode = j.parseMode;\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa012400-4000-8000-000000000000",
+   "name": "sendDocument",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendDocument"
+   },
+   "position": [
+    600,
+    780
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa012500-4000-8000-000000000000",
+   "name": "sendDocument — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa012600-4000-8000-000000000000",
+   "name": "sendAudio — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst src = j.fileUrl || j.fileId;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), audio: src };\nif (j.caption) body.caption = j.caption;\nif (j.parseMode && j.caption) body.parse_mode = j.parseMode;\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa012700-4000-8000-000000000000",
+   "name": "sendAudio",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendAudio"
+   },
+   "position": [
+    600,
+    910
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa012800-4000-8000-000000000000",
+   "name": "sendAudio — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    910
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa012900-4000-8000-000000000000",
+   "name": "sendVoice — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst src = j.fileUrl || j.fileId;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), voice: src };\nif (j.caption) body.caption = j.caption;\nif (j.parseMode && j.caption) body.parse_mode = j.parseMode;\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1040
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa013000-4000-8000-000000000000",
+   "name": "sendVoice",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendVoice"
+   },
+   "position": [
+    600,
+    1040
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa013100-4000-8000-000000000000",
+   "name": "sendVoice — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1040
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa013200-4000-8000-000000000000",
+   "name": "sendVideo — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst src = j.fileUrl || j.fileId;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), video: src };\nif (j.caption) body.caption = j.caption;\nif (j.parseMode && j.caption) body.parse_mode = j.parseMode;\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa013300-4000-8000-000000000000",
+   "name": "sendVideo",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendVideo"
+   },
+   "position": [
+    600,
+    1170
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa013400-4000-8000-000000000000",
+   "name": "sendVideo — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa013500-4000-8000-000000000000",
+   "name": "sendSticker — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst src = j.fileUrl || j.fileId;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), sticker: src };\nif (j.caption) body.caption = j.caption;\nif (j.parseMode && j.caption) body.parse_mode = j.parseMode;\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa013600-4000-8000-000000000000",
+   "name": "sendSticker",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendSticker"
+   },
+   "position": [
+    600,
+    1300
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa013700-4000-8000-000000000000",
+   "name": "sendSticker — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa013800-4000-8000-000000000000",
+   "name": "sendAnimation — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst src = j.fileUrl || j.fileId;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), animation: src };\nif (j.caption) body.caption = j.caption;\nif (j.parseMode && j.caption) body.parse_mode = j.parseMode;\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa013900-4000-8000-000000000000",
+   "name": "sendAnimation",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendAnimation"
+   },
+   "position": [
+    600,
+    1430
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa014000-4000-8000-000000000000",
+   "name": "sendAnimation — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa014100-4000-8000-000000000000",
+   "name": "sendLocation — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), latitude: Number(j.latitude), longitude: Number(j.longitude) };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1560
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa014200-4000-8000-000000000000",
+   "name": "sendLocation",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendLocation"
+   },
+   "position": [
+    600,
+    1560
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa014300-4000-8000-000000000000",
+   "name": "sendLocation — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1560
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa014400-4000-8000-000000000000",
+   "name": "sendContact — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), phone_number: j.phoneNumber, first_name: j.firstName };\nif (j.lastName) body.last_name = j.lastName;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1690
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa014500-4000-8000-000000000000",
+   "name": "sendContact",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendContact"
+   },
+   "position": [
+    600,
+    1690
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa014600-4000-8000-000000000000",
+   "name": "sendContact — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1690
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa014700-4000-8000-000000000000",
+   "name": "sendPoll — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nlet arr = [];\nconst raw = j.optionsJson;\nif (Array.isArray(raw)) arr = raw.map(String);\nelse if (typeof raw === 'string' && raw.trim()) {\n  try { const p = JSON.parse(raw); if (Array.isArray(p)) arr = p.map(String); } catch (e) {}\n  if (!arr.length) arr = raw.split(/[,،]/).map((s) => s.trim()).filter(Boolean);\n}\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), question: j.question, options: arr };\nif (j.isAnonymous === false) body.is_anonymous = false;\nif (j.pollType === 'quiz' && j.correctOptionId !== undefined && j.correctOptionId !== null) { body.type = 'quiz'; body.correct_option_id = Number(j.correctOptionId); }\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1820
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa014800-4000-8000-000000000000",
+   "name": "sendPoll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendPoll"
+   },
+   "position": [
+    600,
+    1820
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa014900-4000-8000-000000000000",
+   "name": "sendPoll — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1820
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa015000-4000-8000-000000000000",
+   "name": "sendDice — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID') };\nif (j.emoji) body.emoji = j.emoji;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    1950
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa015100-4000-8000-000000000000",
+   "name": "sendDice",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendDice"
+   },
+   "position": [
+    600,
+    1950
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa015200-4000-8000-000000000000",
+   "name": "sendDice — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1950
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa015300-4000-8000-000000000000",
+   "name": "sendChatAction — body",
+   "parameters": {
+    "jsCode": "const chat = String($json.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID');\nconst body = { chat_id: chat, action: String($json.action || 'typing') };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    2080
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa015400-4000-8000-000000000000",
+   "name": "sendChatAction",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/sendChatAction"
+   },
+   "position": [
+    600,
+    2080
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa015500-4000-8000-000000000000",
+   "name": "sendChatAction — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\no.sent = true;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2080
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa015600-4000-8000-000000000000",
+   "name": "getFile — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { file_id: j.fileId || j.fileUrl };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    2210
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa015700-4000-8000-000000000000",
+   "name": "getFile",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/getFile"
+   },
+   "position": [
+    600,
+    2210
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa015800-4000-8000-000000000000",
+   "name": "getFile — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.file_id) o.file_id = r.file_id;\nif (r.file_path) o.file_path = r.file_path;\nif (r.file_size) o.file_size = r.file_size;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2210
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa015900-4000-8000-000000000000",
+   "name": "editMessageCaption — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number(j.messageId), caption: j.caption };\nif (j.parseMode) body.parse_mode = j.parseMode;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    2340
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa016000-4000-8000-000000000000",
+   "name": "editMessageCaption",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/editMessageCaption"
+   },
+   "position": [
+    600,
+    2340
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa016100-4000-8000-000000000000",
+   "name": "editMessageCaption — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2340
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa016200-4000-8000-000000000000",
+   "name": "editMessageReplyMarkup — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nlet markup = j.replyMarkupJson;\ntry { if (typeof markup === 'string' && markup.trim()) markup = JSON.parse(markup); } catch (e) {}\nif (!markup || typeof markup !== 'object') markup = { inline_keyboard: [] };\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number(j.messageId), reply_markup: markup };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    2470
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa016300-4000-8000-000000000000",
+   "name": "editMessageReplyMarkup",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/editMessageReplyMarkup"
+   },
+   "position": [
+    600,
+    2470
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa016400-4000-8000-000000000000",
+   "name": "editMessageReplyMarkup — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.message_id) o.message_id = r.message_id;\nif (r.chat && r.chat.id) o.chat_id = r.chat.id;\nif (r.date) o.date = r.date;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2470
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa016500-4000-8000-000000000000",
+   "name": "setMessageReaction — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nlet rx = j.reactionJson;\nif (typeof rx === 'string') { const t = rx.trim(); if (t.startsWith('[') || t.startsWith('{')) { try { rx = JSON.parse(t); } catch (e) {} } }\nif (typeof rx === 'string') rx = [{ type: 'emoji', emoji: rx }];\nif (Array.isArray(rx)) rx = rx.map((x) => typeof x === 'string' ? { type: 'emoji', emoji: x } : x);\nif (!Array.isArray(rx)) rx = [];\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number(j.messageId), reaction: rx };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    2600
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa016600-4000-8000-000000000000",
+   "name": "setMessageReaction",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/setMessageReaction"
+   },
+   "position": [
+    600,
+    2600
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa016700-4000-8000-000000000000",
+   "name": "setMessageReaction — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\no.reacted = true;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2600
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa016800-4000-8000-000000000000",
+   "name": "pinChatMessage — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID'), message_id: Number(j.messageId) };\nif (j.disableNotification) body.disable_notification = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    2730
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa016900-4000-8000-000000000000",
+   "name": "pinChatMessage",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/pinChatMessage"
+   },
+   "position": [
+    600,
+    2730
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa017000-4000-8000-000000000000",
+   "name": "pinChatMessage — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\no.pinned = true;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2730
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa017100-4000-8000-000000000000",
+   "name": "unpinChatMessage — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { chat_id: String(j.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID') };\nif (j.messageId !== undefined && j.messageId !== null && j.messageId !== '') body.message_id = Number(j.messageId);\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    2860
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa017200-4000-8000-000000000000",
+   "name": "unpinChatMessage",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/unpinChatMessage"
+   },
+   "position": [
+    600,
+    2860
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa017300-4000-8000-000000000000",
+   "name": "unpinChatMessage — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\no.unpinned = true;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2860
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa017400-4000-8000-000000000000",
+   "name": "answerCallbackQuery — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { callback_query_id: j.callbackQueryId };\nif (j.text) body.text = j.text;\nif (j.showAlert) body.show_alert = true;\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    2990
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa017500-4000-8000-000000000000",
+   "name": "answerCallbackQuery",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/answerCallbackQuery"
+   },
+   "position": [
+    600,
+    2990
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa017600-4000-8000-000000000000",
+   "name": "answerCallbackQuery — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\no.answered = true;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2990
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa017700-4000-8000-000000000000",
+   "name": "getChat — body",
+   "parameters": {
+    "jsCode": "const chat = String($json.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID');\nconst body = { chat_id: chat };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    3120
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa017800-4000-8000-000000000000",
+   "name": "getChat",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/getChat"
+   },
+   "position": [
+    600,
+    3120
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa017900-4000-8000-000000000000",
+   "name": "getChat — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.id) o.id = r.id;\nif (r.type) o.type = r.type;\nif (r.title) o.title = r.title;\nif (r.username) o.username = r.username;\nif (r.first_name) o.first_name = r.first_name;\nif (r.last_name) o.last_name = r.last_name;\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3120
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa018000-4000-8000-000000000000",
+   "name": "getChatMember — body",
+   "parameters": {
+    "jsCode": "const chat = String($json.chatId || 'REPLACE_WITH_TELEGRAM_CHAT_ID');\nconst body = { chat_id: chat, user_id: String($json.userId || 'REPLACE_WITH_TELEGRAM_CHAT_ID') };\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    3250
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa018100-4000-8000-000000000000",
+   "name": "getChatMember",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/getChatMember"
+   },
+   "position": [
+    600,
+    3250
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa018200-4000-8000-000000000000",
+   "name": "getChatMember — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (r.status) o.status = r.status;\nif (r.user) o.user = { id: r.user.id, first_name: r.user.first_name, username: r.user.username, is_bot: r.user.is_bot };\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3250
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa018300-4000-8000-000000000000",
+   "name": "getUpdates — body",
+   "parameters": {
+    "jsCode": "const j = $json;\nconst body = { limit: Number(j.limit || 20) };\nif (j.offset !== undefined && j.offset !== null && j.offset !== '') body.offset = Number(j.offset);\nreturn [{ json: { body } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    540,
+    3380
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa018400-4000-8000-000000000000",
+   "name": "getUpdates",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 45000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://api.telegram.org/botREPLACE_WITH_TELEGRAM_BOT_TOKEN/getUpdates"
+   },
+   "position": [
+    600,
+    3380
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa018500-4000-8000-000000000000",
+   "name": "getUpdates — fmt",
+   "parameters": {
+    "jsCode": "const j = $input.first().json || {};\nif (j.ok !== true) {\n  let e = j.description || j.error || 'فشل نداء تليجرام';\n  if (typeof e === 'object') e = e.message || JSON.stringify(e);\n  return [{ json: { ok: false, error: String(e).slice(0, 300) } }];\n}\nconst r = (j.result && typeof j.result === 'object') ? j.result : {};\nconst o = { ok: true };\nif (Array.isArray(r)) { o.count = r.length; o.update_ids = r.slice(0, 5).map((u) => u.update_id); }\nreturn [{ json: o }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3380
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "1211e7bd-4113-4049-955e-35c6bb55d188",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Communication"
+ ],
+ "updatedAt": "2026-10-24T21:31:27.795Z"
+}

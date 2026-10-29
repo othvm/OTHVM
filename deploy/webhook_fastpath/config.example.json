@@ -1,0 +1,14 @@
+{
+  "host": "127.0.0.1",
+  "port": 5681,
+  "mcp_base": "http://127.0.0.1:8765",
+  "mcp_api_key": "REPLACE_WITH_MCP_API_KEY",
+  "telegram_bot_token": "REPLACE_WITH_TELEGRAM_BOT_TOKEN",
+  "telegram_secret": "REPLACE_WITH_TELEGRAM_WEBHOOK_SECRET",
+  "allowed_user_id": "REPLACE_WITH_TELEGRAM_USER_ID",
+  "allowed_chat_id": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+  "n8n_base": "http://127.0.0.1:5678",
+  "desktop_dir": "C:/Users/YOU/Desktop",
+  "dedupe_seconds": 600,
+  "log_path": "fastpath.log"
+}

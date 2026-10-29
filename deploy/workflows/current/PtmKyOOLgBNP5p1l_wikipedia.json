@@ -1,0 +1,1300 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "search.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.summary",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.content",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.random",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.languages",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.categories",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.links",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "page.media",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "geo.search",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "feed.onThisDay",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "feed.onThisDay": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "feed.onThisDay — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "feed.onThisDay — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "geo.search": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "geo.search — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "geo.search — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.categories": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.categories — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.categories — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.content": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.content — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.content — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.languages": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.languages — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.languages — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.links": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.links — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.links — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.media": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.media — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.media — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.random": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.random — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.random — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.summary": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "page.summary — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "page.summary — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "search.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "search.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "search.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T13:20:27.214Z",
+ "id": "PtmKyOOLgBNP5p1l",
+ "name": "Wikipedia",
+ "nodes": [
+  {
+   "id": "aa010100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa010200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "search.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "search.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.summary"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.summary"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.content"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.content"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.random"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.random"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.languages"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.languages"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.categories"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.categories"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.links"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.links"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "page.media"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "page.media"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "geo.search"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "geo.search"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "feed.onThisDay"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "feed.onThisDay"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa010300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa010400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"search.get, page.summary, page.content, page.random, page.languages, page.categories, page.links, page.media, geo.search, feed.onThisDay\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1450
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa010500-4000-8000-000000000000",
+   "name": "search.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "action",
+       "value": "query"
+      },
+      {
+       "name": "list",
+       "value": "search"
+      },
+      {
+       "name": "srsearch",
+       "value": "={{ $json.q }}"
+      },
+      {
+       "name": "srlimit",
+       "value": "={{ Math.max(1, Math.min(50, Number($json.limit) || 10)) }}"
+      },
+      {
+       "name": "format",
+       "value": "json"
+      },
+      {
+       "name": "formatversion",
+       "value": "2"
+      }
+     ]
+    },
+    "sendHeaders": true,
+    "sendQuery": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/w/api.php"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa010600-4000-8000-000000000000",
+   "name": "search.get — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!(r.query && Array.isArray(r.query.search))) { out.push(item); continue; }\n  for (const x of r.query.search) out.push({ json: { title: x.title, pageid: x.pageid, words: x.wordcount, snippet: String(x.snippet || '').replace(/<[^>]+>/g, '').replace(/&quot;/g, '\"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#160;|&nbsp;/g, ' ') } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa010700-4000-8000-000000000000",
+   "name": "page.summary",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "sendHeaders": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/api/rest_v1/page/summary/{{ encodeURIComponent(String($json.title || \"\").trim().replace(/ /g, \"_\")) }}"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa010800-4000-8000-000000000000",
+   "name": "page.summary — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!r.title || r.type === 'disambiguation') { out.push({ json: { ok: false, error: 'مفيش ملخص مباشر للعنوان دا (ممكن يكون عنوان توضيحي) — جرّب search.get الأول' } }); continue; }\n  out.push({ json: { title: r.title, description: r.description, extract: r.extract, url: (r.content_urls && r.content_urls.desktop && r.content_urls.desktop.page) || null } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa010900-4000-8000-000000000000",
+   "name": "page.content",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 25000
+    },
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "action",
+       "value": "query"
+      },
+      {
+       "name": "prop",
+       "value": "extracts"
+      },
+      {
+       "name": "explaintext",
+       "value": "1"
+      },
+      {
+       "name": "exintro",
+       "value": "={{ $json.introOnly ? 1 : 0 }}"
+      },
+      {
+       "name": "titles",
+       "value": "={{ $json.title }}"
+      },
+      {
+       "name": "redirects",
+       "value": "1"
+      },
+      {
+       "name": "format",
+       "value": "json"
+      },
+      {
+       "name": "formatversion",
+       "value": "2"
+      }
+     ]
+    },
+    "sendHeaders": true,
+    "sendQuery": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/w/api.php"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011000-4000-8000-000000000000",
+   "name": "page.content — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const pages = r.query && r.query.pages;\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!Array.isArray(pages)) { out.push(item); continue; }\n  for (const p of pages) {\n    if (p.missing) { out.push({ json: { ok: false, error: 'الصفحة غير موجودة: ' + String(p.title) } }); continue; }\n    out.push({ json: { title: p.title, pageid: p.pageid, extract: p.extract } });\n  }\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa011100-4000-8000-000000000000",
+   "name": "page.random",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "sendHeaders": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/api/rest_v1/page/random/summary"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011200-4000-8000-000000000000",
+   "name": "page.random — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!r.title) { out.push(item); continue; }\n  out.push({ json: { title: r.title, extract: r.extract, url: (r.content_urls && r.content_urls.desktop && r.content_urls.desktop.page) || null } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa011300-4000-8000-000000000000",
+   "name": "page.languages",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "action",
+       "value": "query"
+      },
+      {
+       "name": "prop",
+       "value": "langlinks"
+      },
+      {
+       "name": "lllimit",
+       "value": "={{ Math.max(1, Math.min(500, Number($json.limit) || 50)) }}"
+      },
+      {
+       "name": "titles",
+       "value": "={{ $json.title }}"
+      },
+      {
+       "name": "redirects",
+       "value": "1"
+      },
+      {
+       "name": "format",
+       "value": "json"
+      },
+      {
+       "name": "formatversion",
+       "value": "2"
+      }
+     ]
+    },
+    "sendHeaders": true,
+    "sendQuery": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/w/api.php"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011400-4000-8000-000000000000",
+   "name": "page.languages — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const pages = r.query && r.query.pages;\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!Array.isArray(pages)) { out.push(item); continue; }\n  for (const p of pages) for (const l of (p.langlinks || [])) out.push({ json: { lang: l.lang, title: l.title } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa011500-4000-8000-000000000000",
+   "name": "page.categories",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "action",
+       "value": "query"
+      },
+      {
+       "name": "prop",
+       "value": "categories"
+      },
+      {
+       "name": "cllimit",
+       "value": "={{ Math.max(1, Math.min(500, Number($json.limit) || 50)) }}"
+      },
+      {
+       "name": "titles",
+       "value": "={{ $json.title }}"
+      },
+      {
+       "name": "redirects",
+       "value": "1"
+      },
+      {
+       "name": "format",
+       "value": "json"
+      },
+      {
+       "name": "formatversion",
+       "value": "2"
+      }
+     ]
+    },
+    "sendHeaders": true,
+    "sendQuery": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/w/api.php"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011600-4000-8000-000000000000",
+   "name": "page.categories — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const pages = r.query && r.query.pages;\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!Array.isArray(pages)) { out.push(item); continue; }\n  for (const p of pages) for (const c of (p.categories || [])) out.push({ json: { category: c.title } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa011700-4000-8000-000000000000",
+   "name": "page.links",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "action",
+       "value": "query"
+      },
+      {
+       "name": "prop",
+       "value": "links"
+      },
+      {
+       "name": "pllimit",
+       "value": "={{ Math.max(1, Math.min(500, Number($json.limit) || 50)) }}"
+      },
+      {
+       "name": "titles",
+       "value": "={{ $json.title }}"
+      },
+      {
+       "name": "redirects",
+       "value": "1"
+      },
+      {
+       "name": "format",
+       "value": "json"
+      },
+      {
+       "name": "formatversion",
+       "value": "2"
+      }
+     ]
+    },
+    "sendHeaders": true,
+    "sendQuery": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/w/api.php"
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa011800-4000-8000-000000000000",
+   "name": "page.links — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const pages = r.query && r.query.pages;\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!Array.isArray(pages)) { out.push(item); continue; }\n  for (const p of pages) for (const l of (p.links || [])) out.push({ json: { title: l.title } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa011900-4000-8000-000000000000",
+   "name": "page.media",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "action",
+       "value": "query"
+      },
+      {
+       "name": "prop",
+       "value": "images"
+      },
+      {
+       "name": "imlimit",
+       "value": "={{ Math.max(1, Math.min(200, Number($json.limit) || 20)) }}"
+      },
+      {
+       "name": "titles",
+       "value": "={{ $json.title }}"
+      },
+      {
+       "name": "redirects",
+       "value": "1"
+      },
+      {
+       "name": "format",
+       "value": "json"
+      },
+      {
+       "name": "formatversion",
+       "value": "2"
+      }
+     ]
+    },
+    "sendHeaders": true,
+    "sendQuery": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/w/api.php"
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa012000-4000-8000-000000000000",
+   "name": "page.media — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  const pages = r.query && r.query.pages;\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!Array.isArray(pages)) { out.push(item); continue; }\n  for (const p of pages) for (const m of (p.images || [])) out.push({ json: { file: m.title } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    910
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa012100-4000-8000-000000000000",
+   "name": "geo.search",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "action",
+       "value": "query"
+      },
+      {
+       "name": "list",
+       "value": "geosearch"
+      },
+      {
+       "name": "gscoord",
+       "value": "={{ Number($json.lat) + \"|\" + Number($json.lon) }}"
+      },
+      {
+       "name": "gsradius",
+       "value": "={{ Math.max(10, Math.min(10000, (Number($json.radiusKm) || 10) * 1000)) }}"
+      },
+      {
+       "name": "gslimit",
+       "value": "={{ Math.max(1, Math.min(50, Number($json.limit) || 10)) }}"
+      },
+      {
+       "name": "format",
+       "value": "json"
+      },
+      {
+       "name": "formatversion",
+       "value": "2"
+      }
+     ]
+    },
+    "sendHeaders": true,
+    "sendQuery": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/w/api.php"
+   },
+   "position": [
+    540,
+    1040
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa012200-4000-8000-000000000000",
+   "name": "geo.search — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!(r.query && Array.isArray(r.query.geosearch))) { out.push(item); continue; }\n  for (const g of r.query.geosearch) out.push({ json: { title: g.title, pageid: g.pageid, lat: g.lat, lon: g.lon, distM: g.dist } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1040
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "aa012300-4000-8000-000000000000",
+   "name": "feed.onThisDay",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "User-Agent",
+       "value": "OTHVM-Assistant/1.0 (personal n8n agent)"
+      }
+     ]
+    },
+    "method": "GET",
+    "options": {
+     "timeout": 20000
+    },
+    "sendHeaders": true,
+    "url": "=https://{{ (($json.lang || 'en') + '').toLowerCase().replace(/[^a-z-]/g, '').slice(0, 9) || 'en' }}.wikipedia.org/api/rest_v1/feed/onthisday/events/{{ String(Number($json.mm) || (new Date()).getMonth() + 1).padStart(2, \"0\") }}/{{ String(Number($json.dd) || (new Date()).getDate()).padStart(2, \"0\") }}"
+   },
+   "position": [
+    540,
+    1170
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa012400-4000-8000-000000000000",
+   "name": "feed.onThisDay — format",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  if (!Array.isArray(r.events)) { out.push(item); continue; }\n  for (const e of r.events.slice(0, 10)) out.push({ json: { year: e.year, text: e.text } });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "08f3b0a1-5c60-442c-b30a-2d995e66bac7",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand the generic params object into the flat fields the workflow expects.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = Object.assign({}, p);\nfor (const k of ['operation', 'action', 'category']) {\n  if (j[k] !== undefined && j[k] !== null && j[k] !== '') out[k] = j[k];\n}\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Knowledge"
+ ],
+ "updatedAt": "2026-10-24T21:31:29.981Z"
+}

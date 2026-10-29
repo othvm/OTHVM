@@ -1,0 +1,68 @@
+{
+ "active": true,
+ "connections": {
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Weather (Open-Meteo)",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-16T14:38:23.029Z",
+ "id": "fRbjxY4Vm4mZMOGA",
+ "name": "Weather Forecast",
+ "nodes": [
+  {
+   "id": "aa020002-4000-8000-000000000001",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "location",
+       "type": "string"
+      },
+      {
+       "name": "days",
+       "type": "number"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa020002-4000-8000-000000000002",
+   "name": "Weather (Open-Meteo)",
+   "parameters": {
+    "jsCode": "// Weather - Open-Meteo (keyless). English output, Celsius, human-readable wind.\nconst input = $input.first().json || {};\nconst ZAGAZIG = { lat: 30.584138, lon: 31.495866, name: 'Zagazig, Egypt' };\n\nconst WMO_EN = {\n  0: 'Clear sky',\n  1: 'Mainly clear',\n  2: 'Partly cloudy',\n  3: 'Overcast',\n  45: 'Fog',\n  48: 'Depositing rime fog',\n  51: 'Light drizzle',\n  53: 'Moderate drizzle',\n  55: 'Dense drizzle',\n  56: 'Light freezing drizzle',\n  57: 'Dense freezing drizzle',\n  61: 'Slight rain',\n  63: 'Moderate rain',\n  65: 'Heavy rain',\n  66: 'Light freezing rain',\n  67: 'Heavy freezing rain',\n  71: 'Slight snow',\n  73: 'Moderate snow',\n  75: 'Heavy snow',\n  77: 'Snow grains',\n  80: 'Slight rain showers',\n  81: 'Moderate rain showers',\n  82: 'Violent rain showers',\n  85: 'Slight snow showers',\n  86: 'Heavy snow showers',\n  95: 'Thunderstorm',\n  96: 'Thunderstorm with slight hail',\n  99: 'Thunderstorm with heavy hail',\n};\n\nfunction describe(code) {\n  return WMO_EN[code] || ('Weather code ' + code);\n}\n\nfunction windCategory(value) {\n  const n = Number(value);\n  if (!Number.isFinite(n)) return '';\n  if (n < 6) return 'calm';\n  if (n < 20) return 'light breeze';\n  if (n < 39) return 'moderate breeze';\n  if (n < 50) return 'fresh breeze';\n  if (n < 62) return 'strong wind';\n  if (n < 75) return 'near gale';\n  if (n < 89) return 'gale';\n  return 'storm';\n}\n\nfunction round(value) {\n  const n = Number(value);\n  return Number.isFinite(n) ? Math.round(n * 10) / 10 : null;\n}\n\nconst httpRequest = this.helpers.httpRequest.bind(this.helpers);\n\nlet days = Number(input.days);\nif (!Number.isFinite(days) || days < 1) days = 1;\ndays = Math.min(Math.round(days), 7);\n\nlet place = ZAGAZIG;\nconst wanted = input.location === null || input.location === undefined ? '' : String(input.location).trim();\nif (wanted) {\n  try {\n    const geocodeUrl = 'https://geocoding-api.open-meteo.com/v1/search?name=' + encodeURIComponent(wanted) + '&count=1&language=en&format=json';\n    const geocode = await httpRequest({ method: 'GET', url: geocodeUrl, json: true, timeout: 20000 });\n    const hit = geocode && Array.isArray(geocode.results) ? geocode.results[0] : null;\n    if (!hit) {\n      return [{ json: { ok: false, error: 'Location not found for \"' + wanted + '\". Try a clearer city name.' } }];\n    }\n    place = {\n      lat: hit.latitude,\n      lon: hit.longitude,\n      name: hit.name + (hit.country ? ', ' + hit.country : ''),\n    };\n  } catch (error) {\n    return [{ json: { ok: false, error: 'Could not search for the location: ' + (error && error.message ? error.message : String(error)) } }];\n  }\n}\n\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=' + place.lat + '&longitude=' + place.lon\n  + '&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_gusts_10m'\n  + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,sunrise,sunset'\n  + '&temperature_unit=celsius&wind_speed_unit=kmh&timezone=Africa%2FCairo&forecast_days=' + days;\n\nconst sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));\nlet lastError = null;\nlet data = null;\nfor (let attempt = 1; attempt <= 3; attempt += 1) {\n  try {\n    const response = await httpRequest({ method: 'GET', url, json: true, timeout: 30000 });\n    if (response && response.current && response.daily) {\n      data = response;\n      break;\n    }\n    lastError = new Error('The weather service returned an unexpected response.');\n  } catch (error) {\n    lastError = error;\n  }\n  if (attempt < 3) await sleep(1200 * attempt);\n}\nif (!data) {\n  return [{ json: { ok: false, error: 'Could not fetch weather after 3 attempts: ' + (lastError && lastError.message ? lastError.message : String(lastError)) } }];\n}\n\nconst current = data.current;\nconst daily = data.daily;\nconst forecast = (daily.time || []).map((date, index) => {\n  const windMax = daily.wind_speed_10m_max ? daily.wind_speed_10m_max[index] : null;\n  const gustMax = daily.wind_gusts_10m_max ? daily.wind_gusts_10m_max[index] : null;\n  return {\n    date: date,\n    desc: describe(daily.weather_code[index]),\n    min: round(daily.temperature_2m_min[index]),\n    max: round(daily.temperature_2m_max[index]),\n    rain_chance: daily.precipitation_probability_max ? daily.precipitation_probability_max[index] : null,\n    wind_speed_max: round(windMax),\n    wind_category: windCategory(windMax),\n    wind_description: windCategory(windMax),\n    wind_gusts_max: round(gustMax),\n    sunrise: daily.sunrise ? daily.sunrise[index] : null,\n    sunset: daily.sunset ? daily.sunset[index] : null,\n  };\n});\n\nreturn [{\n  json: {\n    ok: true,\n    location: place.name,\n    units: { temperature: 'C', wind: 'km/h' },\n    current: {\n      time: current.time,\n      temp: round(current.temperature_2m),\n      feels_like: round(current.apparent_temperature),\n      humidity: round(current.relative_humidity_2m),\n      wind: round(current.wind_speed_10m),\n      wind_gust: round(current.wind_gusts_10m),\n      wind_category: windCategory(current.wind_speed_10m),\n      wind_description: windCategory(current.wind_speed_10m),\n      precip: round(current.precipitation),\n      desc: describe(current.weather_code),\n    },\n    forecast: forecast,\n  },\n}];\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Lifestyle"
+ ],
+ "updatedAt": "2026-10-24T14:29:47.335Z"
+}

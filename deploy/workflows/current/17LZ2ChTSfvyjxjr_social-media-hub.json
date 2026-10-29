@@ -1,0 +1,101 @@
+{
+ "active": false,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Social Router",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-22T13:16:29.924Z",
+ "id": "17LZ2ChTSfvyjxjr",
+ "name": "Social Media Hub",
+ "nodes": [
+  {
+   "id": "08beea50-fb2b-4bed-a50e-2d1ed21b7d21",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "platform",
+       "type": "string"
+      },
+      {
+       "name": "message",
+       "type": "string"
+      },
+      {
+       "name": "media_url",
+       "type": "string"
+      },
+      {
+       "name": "chat_id",
+       "type": "string"
+      },
+      {
+       "name": "message_id",
+       "type": "string"
+      },
+      {
+       "name": "title",
+       "type": "string"
+      },
+      {
+       "name": "subreddit",
+       "type": "string"
+      },
+      {
+       "name": "url",
+       "type": "string"
+      },
+      {
+       "name": "dry_run",
+       "type": "boolean"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "07f3f694-b0a1-4422-ae6a-74cb5a646d92",
+   "name": "Social Router",
+   "parameters": {
+    "jsCode": "// OTHVM — Social Media Hub (single Code node, parallel fan-out)\n// Platforms: Telegram (live), X, Reddit, LinkedIn, Meta, TikTok (ready when env tokens exist).\n// Operations: platforms | post | telegram | delete | history | help\n\nconst input = $json || {};\nconst op = String(input.operation || 'post').toLowerCase().trim();\nconst clean = (v) => String(v == null ? '' : v).trim();\nconst env = (k) => {\n  try {\n    return clean($env[k]);\n  } catch (e) {\n    return '';\n  }\n};\nconst http = (opts) => this.helpers.httpRequest(opts);\nconst clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, Number(n) || lo));\n\nconst SB_URL = env('SUPABASE_URL').replace(/\\/+$/, '');\nconst SB_KEY = env('SUPABASE_SERVICE_KEY');\n\nasync function request(opts) {\n  try {\n    return await http(opts);\n  } catch (e) {\n    let msg = (e && e.message) || 'request failed';\n    const b = e && e.response && e.response.body;\n    if (b) {\n      if (typeof b === 'string') msg = b;\n      else msg = b.description || b.error_description || b.error || b.message || JSON.stringify(b);\n    }\n    return { __error: String(msg).slice(0, 500) };\n  }\n}\n\nconst fail = (platform, status, error) => ({\n  ok: false,\n  platform,\n  status: status || 'failed',\n  error: String(error || '').slice(0, 500),\n});\n\nconst cfg = {\n  telegram: {\n    label: 'Telegram',\n    configured: !!env('TELEGRAM_BOT_TOKEN'),\n    supported: true,\n    env: ['TELEGRAM_BOT_TOKEN', 'OWNER_CHAT_ID'],\n  },\n  x: {\n    label: 'X',\n    configured: !!(env('X_USER_ACCESS_TOKEN') || env('X_ACCESS_TOKEN')),\n    supported: true,\n    env: ['X_USER_ACCESS_TOKEN'],\n  },\n  reddit: {\n    label: 'Reddit',\n    configured: !!(env('REDDIT_CLIENT_ID') && env('REDDIT_CLIENT_SECRET') && env('REDDIT_USERNAME') && env('REDDIT_PASSWORD')),\n    supported: true,\n    env: ['REDDIT_CLIENT_ID', 'REDDIT_CLIENT_SECRET', 'REDDIT_USERNAME', 'REDDIT_PASSWORD'],\n  },\n  linkedin: {\n    label: 'LinkedIn',\n    configured: !!(env('LINKEDIN_ACCESS_TOKEN') && env('LINKEDIN_AUTHOR_URN')),\n    supported: true,\n    env: ['LINKEDIN_ACCESS_TOKEN', 'LINKEDIN_AUTHOR_URN'],\n  },\n  meta: {\n    label: 'Meta',\n    configured: !!(env('META_PAGE_ID') && env('META_PAGE_ACCESS_TOKEN')),\n    supported: true,\n    env: ['META_PAGE_ID', 'META_PAGE_ACCESS_TOKEN'],\n  },\n  tiktok: {\n    label: 'TikTok',\n    configured: !!env('TIKTOK_ACCESS_TOKEN'),\n    supported: false,\n    env: ['TIKTOK_ACCESS_TOKEN', 'TIKTOK_OPEN_ID'],\n    note: 'TikTok Content Posting API requires a chunked video/photo upload flow; not implemented in this hub.',\n  },\n};\n\nconst platformList = () =>\n  Object.keys(cfg).map((id) => ({\n    id,\n    label: cfg[id].label,\n    ready: cfg[id].configured && cfg[id].supported,\n    configured: cfg[id].configured,\n    supported: cfg[id].supported,\n    env: cfg[id].env,\n    note: cfg[id].note || null,\n  }));\n\nasync function postTelegram(text, media, chatId) {\n  const token = env('TELEGRAM_BOT_TOKEN');\n  if (!token) return fail('telegram', 'not_configured', 'TELEGRAM_BOT_TOKEN is not configured.');\n  const chat = clean(chatId) || env('OWNER_CHAT_ID');\n  if (!chat) return fail('telegram', 'invalid', 'chat_id is required (or set OWNER_CHAT_ID).');\n  if (!text && !media) return fail('telegram', 'invalid', 'message or media_url is required.');\n  const isVideo = /\\.(mp4|mov|m4v|webm)(\\?|#|$)/i.test(media);\n  const method = media ? (isVideo ? 'sendVideo' : 'sendPhoto') : 'sendMessage';\n  const body = media\n    ? { chat_id: chat, [isVideo ? 'video' : 'photo']: media, caption: text || '' }\n    : { chat_id: chat, text: text || '' };\n  const r = await request({\n    method: 'POST',\n    url: 'https://api.telegram.org/bot' + token + '/' + method,\n    body,\n    json: true,\n    timeout: 30000,\n  });\n  if (!r || r.__error || r.ok !== true) {\n    return fail('telegram', 'failed', (r && (r.__error || r.description)) || 'Telegram rejected the request.');\n  }\n  const m = r.result || {};\n  const uname = m.chat && m.chat.username;\n  return {\n    ok: true,\n    platform: 'telegram',\n    status: 'posted',\n    id: m.message_id,\n    url: uname ? 'https://t.me/' + uname : null,\n    chat_id: chat,\n  };\n}\n\nasync function deleteTelegram(chatId, messageId) {\n  const token = env('TELEGRAM_BOT_TOKEN');\n  if (!token) return fail('telegram', 'not_configured', 'TELEGRAM_BOT_TOKEN is not configured.');\n  const chat = clean(chatId) || env('OWNER_CHAT_ID');\n  const mid = Number(messageId);\n  if (!chat || !mid) return fail('telegram', 'invalid', 'chat_id and numeric message_id are required.');\n  const r = await request({\n    method: 'POST',\n    url: 'https://api.telegram.org/bot' + token + '/deleteMessage',\n    body: { chat_id: chat, message_id: mid },\n    json: true,\n    timeout: 20000,\n  });\n  if (!r || r.__error || r.ok !== true) {\n    return fail('telegram', 'failed', (r && (r.__error || r.description)) || 'Telegram rejected the delete.');\n  }\n  return { ok: true, platform: 'telegram', status: 'deleted', id: mid, chat_id: chat };\n}\n\nasync function postX(text, media) {\n  const token = env('X_USER_ACCESS_TOKEN') || env('X_ACCESS_TOKEN');\n  if (!token) return fail('x', 'not_configured', 'X_USER_ACCESS_TOKEN is not configured (user-context OAuth 2.0 token required to post).');\n  if (media) return fail('x', 'unsupported', 'X media upload is not implemented in this hub; post text only.');\n  if (!text) return fail('x', 'invalid', 'message is required.');\n  const r = await request({\n    method: 'POST',\n    url: 'https://api.x.com/2/tweets',\n    headers: { Authorization: 'Bearer ' + token },\n    body: { text },\n    json: true,\n    timeout: 20000,\n  });\n  if (!r || r.__error) return fail('x', 'failed', r && r.__error);\n  const id = r && r.data && r.data.id;\n  if (!id) return fail('x', 'failed', (r && (r.detail || r.title || JSON.stringify(r.errors || r))) || 'X API rejected the post.');\n  return { ok: true, platform: 'x', status: 'posted', id, url: 'https://x.com/i/web/status/' + id };\n}\n\nasync function postReddit(text, media, title, subreddit, linkUrl) {\n  const cid = env('REDDIT_CLIENT_ID');\n  const sec = env('REDDIT_CLIENT_SECRET');\n  const user = env('REDDIT_USERNAME');\n  const pass = env('REDDIT_PASSWORD');\n  if (!cid || !sec || !user || !pass) {\n    return fail('reddit', 'not_configured', 'REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, REDDIT_USERNAME, and REDDIT_PASSWORD are required.');\n  }\n  const sr = clean(subreddit) || env('REDDIT_DEFAULT_SUBREDDIT');\n  if (!sr) return fail('reddit', 'invalid', 'subreddit is required.');\n  if (!text && !linkUrl) return fail('reddit', 'invalid', 'message or url is required.');\n  const ua = env('REDDIT_USER_AGENT') || 'OTHVM/1.0';\n  const auth = await request({\n    method: 'POST',\n    url: 'https://www.reddit.com/api/v1/access_token',\n    headers: {\n      Authorization: 'Basic ' + btoa(cid + ':' + sec),\n      'Content-Type': 'application/x-www-form-urlencoded',\n      'User-Agent': ua,\n    },\n    body:\n      'grant_type=password&username=' +\n      encodeURIComponent(user) +\n      '&password=' +\n      encodeURIComponent(pass),\n    timeout: 20000,\n  });\n  if (!auth || auth.__error || !auth.access_token) {\n    return fail('reddit', 'failed', (auth && (auth.__error || auth.error)) || 'Reddit authentication failed.');\n  }\n  const kind = linkUrl ? 'link' : 'self';\n  const payload =\n    'sr=' +\n    encodeURIComponent(sr) +\n    '&title=' +\n    encodeURIComponent(clean(title) || text.slice(0, 100)) +\n    '&kind=' +\n    kind +\n    '&api_type=json' +\n    (linkUrl ? '&url=' + encodeURIComponent(linkUrl) : '&text=' + encodeURIComponent(text));\n  const r = await request({\n    method: 'POST',\n    url: 'https://oauth.reddit.com/api/submit',\n    headers: {\n      Authorization: 'Bearer ' + auth.access_token,\n      'Content-Type': 'application/x-www-form-urlencoded',\n      'User-Agent': ua,\n    },\n    body: payload,\n    timeout: 20000,\n  });\n  if (!r || r.__error) return fail('reddit', 'failed', r && r.__error);\n  const errs = r.json && r.json.errors;\n  if (errs && errs.length) return fail('reddit', 'failed', JSON.stringify(errs));\n  const data = (r.json && r.json.data) || {};\n  if (!data.id) return fail('reddit', 'failed', 'Reddit did not return a post id.');\n  const url = data.url ? (String(data.url).startsWith('http') ? data.url : 'https://www.reddit.com' + data.url) : null;\n  return { ok: true, platform: 'reddit', status: 'posted', id: data.id, url };\n}\n\nasync function postLinkedIn(text, media) {\n  const token = env('LINKEDIN_ACCESS_TOKEN');\n  const author = env('LINKEDIN_AUTHOR_URN');\n  if (!token || !author) return fail('linkedin', 'not_configured', 'LINKEDIN_ACCESS_TOKEN and LINKEDIN_AUTHOR_URN are required.');\n  if (media) return fail('linkedin', 'unsupported', 'LinkedIn media upload is not implemented in this hub; post text only.');\n  if (!text) return fail('linkedin', 'invalid', 'message is required.');\n  const body = {\n    author,\n    lifecycleState: 'PUBLISHED',\n    specificContent: {\n      'com.linkedin.ugc.ShareContent': {\n        shareCommentary: { text },\n        shareMediaCategory: 'NONE',\n      },\n    },\n    visibility: { 'com.linkedin.ugc.MemberNetworkVisibility': 'PUBLIC' },\n  };\n  const r = await request({\n    method: 'POST',\n    url: 'https://api.linkedin.com/v2/ugcPosts',\n    headers: { Authorization: 'Bearer ' + token, 'X-Restli-Protocol-Version': '2.0.0' },\n    body,\n    json: true,\n    timeout: 20000,\n  });\n  if (!r || r.__error) return fail('linkedin', 'failed', r && r.__error);\n  const id = r.id || r['$id'] || (r.value && r.value.id);\n  if (!id) return fail('linkedin', 'failed', 'LinkedIn did not return a post id.');\n  return { ok: true, platform: 'linkedin', status: 'posted', id, url: 'https://www.linkedin.com/feed/update/' + id };\n}\n\nasync function postMeta(text, media) {\n  const page = env('META_PAGE_ID');\n  const token = env('META_PAGE_ACCESS_TOKEN');\n  const ver = env('META_API_VERSION') || 'v23.0';\n  if (!page || !token) return fail('meta', 'not_configured', 'META_PAGE_ID and META_PAGE_ACCESS_TOKEN are required.');\n  if (!text && !media) return fail('meta', 'invalid', 'message or media_url is required.');\n  const base = 'https://graph.facebook.com/' + ver + '/' + page;\n  const r = media\n    ? await request({\n        method: 'POST',\n        url: base + '/photos',\n        body: { url: media, caption: text || '', access_token: token },\n        json: true,\n        timeout: 30000,\n      })\n    : await request({\n        method: 'POST',\n        url: base + '/feed',\n        body: { message: text, access_token: token },\n        json: true,\n        timeout: 20000,\n      });\n  if (!r || r.__error) return fail('meta', 'failed', r && r.__error);\n  const id = r.id || r.post_id;\n  if (!id) return fail('meta', 'failed', (r.error && r.error.message) || 'Meta did not return a post id.');\n  return { ok: true, platform: 'meta', status: 'posted', id, url: 'https://www.facebook.com/' + id };\n}\n\nasync function postTikTok(text, media) {\n  if (!env('TIKTOK_ACCESS_TOKEN')) return fail('tiktok', 'not_configured', 'TIKTOK_ACCESS_TOKEN is not configured.');\n  return fail('tiktok', 'unsupported', 'TikTok requires a chunked video/photo upload flow; this hub does not implement it yet.');\n}\n\nasync function publishOne(platform, text, media, extra) {\n  try {\n    if (platform === 'telegram') return await postTelegram(text, media, extra.chat_id);\n    if (platform === 'x') return await postX(text, media);\n    if (platform === 'reddit') return await postReddit(text, media, extra.title, extra.subreddit, extra.url);\n    if (platform === 'linkedin') return await postLinkedIn(text, media);\n    if (platform === 'meta') return await postMeta(text, media);\n    if (platform === 'tiktok') return await postTikTok(text, media);\n    return fail(platform, 'invalid', 'Unsupported platform.');\n  } catch (e) {\n    return fail(platform, 'failed', (e && e.message) || e);\n  }\n}\n\nasync function logResults(results, text, media) {\n  if (!SB_URL || !SB_KEY) return { logged: 0, error: 'Supabase is not configured.' };\n  const rows = results.map((r) => ({\n    platform: r.platform,\n    content: text || '',\n    media_url: media || null,\n    external_id: r.id != null ? String(r.id) : null,\n    url: r.url || null,\n    status: r.status || (r.ok ? 'posted' : 'failed'),\n    error: r.error || null,\n    metadata: { operation: op, chat_id: r.chat_id || null, dry_run: !!input.dry_run },\n  }));\n  const r = await request({\n    method: 'POST',\n    url: SB_URL + '/rest/v1/social_posts',\n    headers: {\n      apikey: SB_KEY,\n      Authorization: 'Bearer ' + SB_KEY,\n      'Content-Type': 'application/json',\n      Prefer: 'return=minimal',\n    },\n    body: rows,\n    json: true,\n    timeout: 15000,\n  });\n  if (r && r.__error) return { logged: 0, error: r.__error };\n  return { logged: rows.length };\n}\n\nasync function history(limit) {\n  if (!SB_URL || !SB_KEY) return { ok: false, error: 'Supabase is not configured.' };\n  const n = clamp(limit, 1, 50);\n  const r = await request({\n    method: 'GET',\n    url:\n      SB_URL +\n      '/rest/v1/social_posts?select=platform,status,content,external_id,url,error,created_at&order=created_at.desc&limit=' +\n      n,\n    headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, Accept: 'application/json' },\n    json: true,\n    timeout: 15000,\n  });\n  if (r && r.__error) return { ok: false, error: r.__error };\n  return { ok: true, count: (r || []).length, posts: r || [] };\n}\n\n// ---------- Operations ----------\nif (op === 'platforms' || op === 'status' || op === 'help') {\n  const platforms = platformList();\n  return [\n    {\n      json: {\n        ok: true,\n        operation: 'platforms',\n        platforms,\n        ready: platforms.filter((p) => p.ready).map((p) => p.id),\n        operations: ['platforms', 'post', 'telegram', 'delete', 'history', 'help'],\n        fields: ['operation', 'platform', 'message', 'media_url', 'chat_id', 'message_id', 'title', 'subreddit', 'url', 'dry_run', 'limit'],\n      },\n    },\n  ];\n}\n\nif (op === 'history') {\n  const h = await history(input.limit);\n  return [{ json: Object.assign({ operation: 'history' }, h) }];\n}\n\nif (op === 'delete') {\n  const r = await deleteTelegram(input.chat_id, input.message_id);\n  const log = await logResults([r], '', '');\n  return [\n    {\n      json: {\n        ok: r.ok,\n        operation: 'delete',\n        result: r,\n        log,\n        reply: (r.ok ? '✅ ' : '❌ ') + 'Telegram: ' + (r.ok ? 'تم حذف الرسالة ' + r.id : r.error),\n      },\n    },\n  ];\n}\n\nif (op === 'post' || op === 'publish' || op === 'telegram') {\n  const text = clean(input.message);\n  const media = clean(input.media_url);\n  if (!text && !media) {\n    return [{ json: { ok: false, operation: 'post', error: 'message or media_url is required.' } }];\n  }\n  let requested = clean(input.platform).toLowerCase();\n  if (op === 'telegram') requested = 'telegram';\n  if (!requested) requested = 'telegram';\n  let targets = requested\n    .split(',')\n    .map((s) => s.trim())\n    .filter(Boolean);\n  if (targets.indexOf('all') !== -1) {\n    targets = Object.keys(cfg).filter((k) => cfg[k].supported && cfg[k].configured);\n  }\n  if (!targets.length) {\n    return [{ json: { ok: false, operation: 'post', error: 'No configured platform for \"all\". Configure credentials first or name a platform.' } }];\n  }\n  const unknown = targets.filter((t) => !cfg[t]);\n  if (unknown.length) {\n    return [{ json: { ok: false, operation: 'post', error: 'Unknown platform(s): ' + unknown.join(', '), supported: Object.keys(cfg) } }];\n  }\n\n  if (input.dry_run) {\n    return [\n      {\n        json: {\n          ok: true,\n          operation: 'post',\n          dry_run: true,\n          requested: targets,\n          planned: targets.map((p) => ({\n            platform: p,\n            ready: cfg[p].configured && cfg[p].supported,\n            note: cfg[p].note || (cfg[p].configured ? 'ready' : 'missing ' + cfg[p].env.join(', ')),\n          })),\n        },\n      },\n    ];\n  }\n\n  const extra = {\n    chat_id: clean(input.chat_id),\n    title: clean(input.title),\n    subreddit: clean(input.subreddit),\n    url: clean(input.url),\n  };\n  const results = await Promise.all(targets.map((p) => publishOne(p, text, media, extra)));\n  const log = await logResults(results, text, media);\n  const posted = results.filter((r) => r.ok).length;\n  const reply = results\n    .map((r) => (r.ok ? '✅ ' : '❌ ') + cfg[r.platform].label + (r.ok ? ' — تم النشر' : ' — ' + (r.error || r.status)))\n    .join('\\n');\n  return [\n    {\n      json: {\n        ok: posted > 0,\n        operation: 'post',\n        requested: targets,\n        posted,\n        failed: results.length - posted,\n        results,\n        log,\n        reply,\n      },\n    },\n  ];\n}\n\nreturn [\n  {\n    json: {\n      ok: false,\n      error: 'Unknown operation: ' + op,\n      operations: ['platforms', 'post', 'telegram', 'delete', 'history', 'help'],\n    },\n  },\n];\n"
+   },
+   "position": [
+    224,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-24T14:29:44.155Z"
+}

@@ -1,0 +1,5 @@
+telethon==1.45.0
+fastapi==0.149.0
+uvicorn==0.54.0
+httpx==0.28.1
+pydantic==2.14.1

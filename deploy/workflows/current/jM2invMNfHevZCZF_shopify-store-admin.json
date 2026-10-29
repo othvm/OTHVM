@@ -1,0 +1,114 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Shopify Router",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-23T12:46:04.705Z",
+ "id": "jM2invMNfHevZCZF",
+ "name": "Shopify Store Admin",
+ "nodes": [
+  {
+   "id": "shopify000-0000-4000-8000-000000000001",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "query",
+       "type": "string"
+      },
+      {
+       "name": "variables",
+       "type": "any"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      },
+      {
+       "name": "product_id",
+       "type": "string"
+      },
+      {
+       "name": "order_id",
+       "type": "string"
+      },
+      {
+       "name": "title",
+       "type": "string"
+      },
+      {
+       "name": "description",
+       "type": "string"
+      },
+      {
+       "name": "status",
+       "type": "string"
+      },
+      {
+       "name": "vendor",
+       "type": "string"
+      },
+      {
+       "name": "product_type",
+       "type": "string"
+      },
+      {
+       "name": "tags",
+       "type": "string"
+      },
+      {
+       "name": "variant_id",
+       "type": "string"
+      },
+      {
+       "name": "price",
+       "type": "string"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "id": "shopify000-0000-4000-8000-000000000002",
+   "name": "Shopify Router",
+   "parameters": {
+    "jsCode": "// OTHVM — Shopify Store Admin (Admin GraphQL API).\n// Env: SHOPIFY_STORE_DOMAIN, SHOPIFY_ADMIN_TOKEN, optional SHOPIFY_API_VERSION.\n// Required app scopes: read_products, write_products, read_orders, read_inventory, read_locations.\n// Operations: shop | products | product | product_variants | orders | order | create_product | update_product | update_variant_price | raw\n\nconst input = $json || {};\nconst op = String(input.operation || 'shop').toLowerCase().trim();\nconst clean = (v) => String(v == null ? '' : v).trim();\nconst env = (k) => {\n  try {\n    return clean($env[k]);\n  } catch (e) {\n    return '';\n  }\n};\nconst http = (opts) => this.helpers.httpRequest(opts);\nconst clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, Number(n) || lo));\n\nconst DOMAIN = env('SHOPIFY_STORE_DOMAIN').replace(/^https?:\\/\\//i, '').replace(/\\/.*$/, '');\nconst TOKEN = env('SHOPIFY_ADMIN_TOKEN');\nconst VERSION = env('SHOPIFY_API_VERSION') || '2026-07';\nconst SCOPES = ['read_products', 'write_products', 'read_orders', 'read_inventory', 'read_locations'];\n\nif (!DOMAIN || !TOKEN) {\n  return [\n    {\n      json: {\n        ok: false,\n        operation: op,\n        error: 'Shopify is not configured. Set SHOPIFY_STORE_DOMAIN and SHOPIFY_ADMIN_TOKEN, then activate this workflow.',\n        required_env: ['SHOPIFY_STORE_DOMAIN', 'SHOPIFY_ADMIN_TOKEN'],\n        required_scopes: SCOPES,\n      },\n    },\n  ];\n}\n\nconst endpoint = 'https://' + DOMAIN + '/admin/api/' + VERSION + '/graphql.json';\n\nasync function gql(query, variables) {\n  try {\n    const r = await http({\n      method: 'POST',\n      url: endpoint,\n      headers: { 'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json' },\n      body: { query, variables: variables || {} },\n      json: true,\n      timeout: 30000,\n    });\n    if (r && Array.isArray(r.errors) && r.errors.length) {\n      return { ok: false, error: r.errors.map((e) => e.message).join('; ') };\n    }\n    return { ok: true, data: (r && r.data) || null };\n  } catch (e) {\n    let msg = (e && e.message) || 'Shopify request failed';\n    const b = e && e.response && e.response.body;\n    if (b) {\n      if (typeof b === 'string') msg = b;\n      else msg = b.errors || b.error || b.message || JSON.stringify(b);\n    }\n    return { ok: false, error: String(msg).slice(0, 500) };\n  }\n}\n\nconst gid = (kind, value) => {\n  const v = clean(value);\n  if (!v) return '';\n  return v.indexOf('gid://') === 0 ? v : 'gid://shopify/' + kind + '/' + v;\n};\n\nconst strip = (o) => {\n  const out = {};\n  for (const k of Object.keys(o)) {\n    const v = o[k];\n    if (v !== null && v !== undefined && v !== '') out[k] = v;\n  }\n  return out;\n};\n\nconst mutationErrors = (data) => {\n  if (!data) return [];\n  for (const key of Object.keys(data)) {\n    const v = data[key];\n    if (v && Array.isArray(v.userErrors) && v.userErrors.length) {\n      return v.userErrors.map((e) => (Array.isArray(e.field) ? e.field.join('.') + ': ' : '') + e.message);\n    }\n  }\n  return [];\n};\n\nasync function run() {\n  if (op === 'shop') {\n    return gql(\n      'query ShopInfo { shop { name myshopifyDomain currencyCode email primaryDomain { url } plan { displayName } } }'\n    );\n  }\n\n  if (op === 'products') {\n    return gql(\n      'query Products($first: Int!, $query: String) { products(first: $first, query: $query) { nodes { id title handle status vendor productType totalInventory updatedAt priceRangeV2 { minVariantPrice { amount currencyCode } maxVariantPrice { amount currencyCode } } } } }',\n      { first: clamp(input.limit, 1, 100), query: clean(input.query) || null }\n    );\n  }\n\n  if (op === 'product') {\n    const id = gid('Product', input.product_id);\n    if (!id) return { ok: false, error: 'product_id is required.' };\n    return gql(\n      'query Product($id: ID!) { product(id: $id) { id title handle status vendor productType descriptionHtml tags totalInventory updatedAt variants(first: 100) { nodes { id title sku price inventoryQuantity } } } }',\n      { id }\n    );\n  }\n\n  if (op === 'product_variants') {\n    const id = gid('Product', input.product_id);\n    if (!id) return { ok: false, error: 'product_id is required.' };\n    return gql(\n      'query ProductVariants($id: ID!) { product(id: $id) { id title variants(first: 100) { nodes { id title sku price inventoryQuantity } } } }',\n      { id }\n    );\n  }\n\n  if (op === 'orders') {\n    return gql(\n      'query Orders($first: Int!, $query: String) { orders(first: $first, query: $query, sortKey: CREATED_AT, reverse: true) { nodes { id name createdAt updatedAt displayFinancialStatus displayFulfillmentStatus totalPriceSet { shopMoney { amount currencyCode } } customer { displayName email } lineItems(first: 10) { nodes { title quantity } } } } }',\n      { first: clamp(input.limit, 1, 100), query: clean(input.query) || null }\n    );\n  }\n\n  if (op === 'order') {\n    const id = gid('Order', input.order_id);\n    if (!id) return { ok: false, error: 'order_id is required.' };\n    return gql(\n      'query Order($id: ID!) { order(id: $id) { id name createdAt displayFinancialStatus displayFulfillmentStatus note totalPriceSet { shopMoney { amount currencyCode } } customer { displayName email } lineItems(first: 50) { nodes { title quantity sku originalUnitPriceSet { shopMoney { amount currencyCode } } } } } }',\n      { id }\n    );\n  }\n\n  if (op === 'create_product') {\n    const title = clean(input.title);\n    if (!title) return { ok: false, error: 'title is required to create a product.' };\n    const product = strip({\n      title,\n      descriptionHtml: clean(input.description),\n      status: clean(input.status) || 'DRAFT',\n      vendor: clean(input.vendor),\n      productType: clean(input.product_type),\n      tags: clean(input.tags)\n        ? clean(input.tags)\n            .split(',')\n            .map((s) => s.trim())\n            .filter(Boolean)\n        : null,\n    });\n    return gql(\n      'mutation CreateProduct($input: ProductCreateInput!) { productCreate(product: $input) { product { id title handle status } userErrors { field message } } }',\n      { input: product }\n    );\n  }\n\n  if (op === 'update_product') {\n    const id = gid('Product', input.product_id);\n    if (!id) return { ok: false, error: 'product_id is required.' };\n    const product = strip({\n      id,\n      title: clean(input.title),\n      descriptionHtml: clean(input.description),\n      status: clean(input.status),\n      vendor: clean(input.vendor),\n      productType: clean(input.product_type),\n      tags: clean(input.tags)\n        ? clean(input.tags)\n            .split(',')\n            .map((s) => s.trim())\n            .filter(Boolean)\n        : null,\n    });\n    return gql(\n      'mutation UpdateProduct($input: ProductUpdateInput!) { productUpdate(product: $input) { product { id title handle status updatedAt } userErrors { field message } } }',\n      { input: product }\n    );\n  }\n\n  if (op === 'update_variant_price') {\n    const id = gid('ProductVariant', input.variant_id);\n    const price = clean(input.price);\n    if (!id || !price) return { ok: false, error: 'variant_id and price are required.' };\n    return gql(\n      'mutation UpdateVariantPrice($productVariant: ProductVariantInput!) { productVariantUpdate(productVariant: $productVariant) { productVariant { id title price } userErrors { field message } } }',\n      { productVariant: { id, price } }\n    );\n  }\n\n  if (op === 'raw') {\n    const query = clean(input.query);\n    if (!query) return { ok: false, error: 'query is required for raw.' };\n    return gql(query, input.variables && typeof input.variables === 'object' ? input.variables : {});\n  }\n\n  return { ok: false, error: 'Unknown operation: ' + op };\n}\n\nconst result = await run();\nif (!result.ok) {\n  return [{ json: { ok: false, operation: op, error: result.error, required_scopes: SCOPES } }];\n}\n\nconst errors = mutationErrors(result.data);\nif (errors.length) {\n  return [{ json: { ok: false, operation: op, error: errors.join('; '), data: result.data, required_scopes: SCOPES } }];\n}\n\nreturn [{ json: { ok: true, operation: op, data: result.data } }];\n"
+   },
+   "position": [
+    240,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-24T14:28:59.219Z"
+}

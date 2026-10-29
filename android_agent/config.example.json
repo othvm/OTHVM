@@ -1,0 +1,13 @@
+{
+  "tailscale_phone_ip": "",
+  "local_phone_ip": "",
+  "adb_port": 5555,
+  "server_port": 8767,
+  "api_key": "REPLACE_WITH_LONG_RANDOM_KEY",
+  "adb_path": "C:/platform-tools/adb.exe",
+  "tailscale_path": "C:/Program Files/Tailscale/tailscale.exe",
+  "clock_package": "com.sec.android.app.clockpackage",
+  "reconnect_interval_seconds": 60,
+  "command_timeout_seconds": 25,
+  "note": "Leave tailscale_phone_ip empty to auto-discover the phone from tailscale status --json."
+}

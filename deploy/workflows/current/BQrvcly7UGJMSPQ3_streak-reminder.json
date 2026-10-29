@@ -1,0 +1,66 @@
+{
+ "active": true,
+ "connections": {
+  "Every Minute": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Check",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T21:27:05.663Z",
+ "id": "BQrvcly7UGJMSPQ3",
+ "name": "Streak Reminder",
+ "nodes": [
+  {
+   "id": "ac020001-4000-8000-000000000001",
+   "name": "Every Minute",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "expression": "*/5 * * * *",
+       "field": "cronExpression"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "id": "ac020001-4000-8000-000000000002",
+   "name": "Check",
+   "parameters": {
+    "jsCode": "// Streak Reminder — runs every 5 minutes, sends each streak its daily reminder once.\n// Catch-up window: if the exact minute is missed (n8n restart, 5-minute grid,\n// reminder time not divisible by 5), the reminder still goes out later the same\n// day. A heartbeat row is written to system_flags for observability.\nconst base = String($env.SUPABASE_URL ?? '');\nconst key = String($env.SUPABASE_SERVICE_KEY ?? '');\nconst TG = 'REPLACE_WITH_TELEGRAM_BOT_TOKEN';\nconst CHAT = 'REPLACE_WITH_TELEGRAM_CHAT_ID';\nconst CATCHUP_MINUTES = 180;\nif (!base || !key) return [{ json: { ok: false, error: 'Supabase env vars missing in the n8n environment' } }];\nconst HB = { apikey: key, Authorization: 'Bearer ' + key, 'Content-Type': 'application/json', Accept: 'application/json' };\nconst hreq = async (o) => {\n  const opts = Object.assign({ returnFullResponse: true, ignoreHttpStatusErrors: true, timeout: 25000 }, o);\n  try { return await this.helpers.httpRequest(opts); } catch (e) { return { statusCode: 0, body: 'ERR ' + (e && e.message ? e.message : String(e)) }; }\n};\nconst parse = (r) => { let d = r.body; if (typeof d === 'string' && d.length) { try { d = JSON.parse(d); } catch (e) {} } return { st: r.statusCode ?? 0, d }; };\nconst errOf = (r) => { const d = r.d; if (d && typeof d === 'object' && (d.message || d.hint)) return String(d.message) + (d.hint ? ' — ' + String(d.hint) : ''); return String(typeof d === 'string' ? d : JSON.stringify(d || '')).slice(0, 240); };\nconst cairoToday = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());\nconst cairoMinutes = () => {\n  const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Cairo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());\n  const get = (t) => Number((parts.find((p) => p.type === t) || {}).value || 0);\n  return { h: get('hour'), m: get('minute') };\n};\nconst toMinutes = (v) => {\n  const m = String(v || '').match(/^(\\d{1,2}):(\\d{2})/);\n  if (!m) return null;\n  const h = Number(m[1]); const mi = Number(m[2]);\n  if (h > 23 || mi > 59) return null;\n  return h * 60 + mi;\n};\ntry {\n  const now = new Date();\n  const today = cairoToday();\n  const { h, m } = cairoMinutes();\n  const nowMin = h * 60 + m;\n  const hhmm = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');\n  const MOTIVE = [\n    'الاستمرارية أقوى من الحماس — كمّل! 💪',\n    'كل يوم خطوة صغيرة بتفرق — متكسرش السلسلة! 🔥',\n    'البطل مش اللي مابيغلطش — البطل اللي مابيكسّرش السلسلة! 🏆',\n    'دقيقة واحدة بتكفي — بس متسيبش السلسلة تموت! ⚡',\n    'اللي بينجح بيعمل الحاجة حتى لما مش حاببها — يلا! 🚀',\n    'سلسلتك بتكبر كل يوم — كمّل النهارده كمان! 📈',\n    'أصعب حاجة هي البداية — وإنت بدأت خلاص! 🌟',\n    'تخيل السلسلة لما تبقى 30 يوم — النهارده خطوة منهم! 🎯'\n  ];\n  const r = parse(await hreq({ method: 'GET', url: base + '/rest/v1/streaks?select=*&is_active=eq.true', headers: HB, json: true }));\n  if (r.st <= 0 || r.st >= 300 || !Array.isArray(r.d)) return [{ json: { ok: false, error: 'تعذر الجلب: ' + errOf(r) } }];\n  const dayNum = Math.floor(now.getTime() / 86400000);\n  const sent = [];\n  for (const s of r.d) {\n    const due = toMinutes(s.reminder_time);\n    if (due === null) continue;\n    const late = nowMin - due;\n    if (late < 0 || late > CATCHUP_MINUTES) continue;\n    if (String(s.last_reminder_sent || '') === today) continue;\n    const nm = String(s.name || '');\n    let hsum = 0;\n    for (let i = 0; i < nm.length; i++) hsum += nm.charCodeAt(i);\n    const motive = MOTIVE[(dayNum + hsum) % MOTIVE.length];\n    const n = Number(s.current_streak || 0);\n    const head = n > 0 ? ('🔥 ' + nm + ' — سلسلة ' + n + ' يوم متواصلة!') : ('🔥 ' + nm + ' — يلا نبدأ سلسلة جديدة النهارده!');\n    const text = head + '\\n\\n' + motive + '\\n\\nعملت النهارده؟';\n    const kb = { inline_keyboard: [[{ text: '✅ تمّ', callback_data: 'stk|done|' + s.id }, { text: '❌ مش النهارده', callback_data: 'stk|miss|' + s.id }]] };\n    const snd = parse(await hreq({ method: 'POST', url: 'https://api.telegram.org/bot' + TG + '/sendMessage', headers: { 'Content-Type': 'application/json' }, body: { chat_id: CHAT, text: text, reply_markup: kb }, json: true }));\n    const okSent = snd.st > 0 && snd.st < 300 && snd.d && snd.d.ok === true;\n    let marked = false;\n    if (okSent) {\n      const up = parse(await hreq({ method: 'PATCH', url: base + '/rest/v1/streaks?id=eq.' + encodeURIComponent(s.id), headers: Object.assign({}, HB, { Prefer: 'return=minimal' }), body: { last_reminder_sent: today, updated_at: new Date().toISOString() }, json: true }));\n      marked = up.st > 0 && up.st < 300;\n    }\n    sent.push({ name: nm, due: s.reminder_time, late_min: late, sent: okSent, message_id: okSent ? snd.d.result.message_id : null, marked: marked });\n  }\n  const run = { last_run: now.toISOString(), at: hhmm, due_count: sent.length, sent: sent };\n  await hreq({ method: 'POST', url: base + '/rest/v1/system_flags?on_conflict=key', headers: Object.assign({}, HB, { Prefer: 'resolution=merge-duplicates,return=minimal' }), body: { key: 'streak_reminder_last_run', value: run, updated_at: now.toISOString(), updated_by: 'streak-reminder' }, json: true });\n  return [{ json: Object.assign({ ok: true }, run) }];\n} catch (e) {\n  return [{ json: { ok: false, error: 'خطأ: ' + String(e && e.message ? e.message : e).slice(0, 300) } }];\n}\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "saveDataErrorExecution": "all",
+  "saveDataSuccessExecution": "none",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Scheduled"
+ ],
+ "updatedAt": "2026-10-24T16:04:59.744Z"
+}

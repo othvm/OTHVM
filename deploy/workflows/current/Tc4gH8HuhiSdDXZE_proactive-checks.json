@@ -1,0 +1,608 @@
+{
+ "active": true,
+ "connections": {
+  "Check Prayer Times": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Send Prayer Reminder",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Check Tomorrow Plan": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Send Evening Warning",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Check Weather Alert": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Send Weather Alert",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Events (*/2h)": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Upcoming Events",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Fetch Weather": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Tomorrow Calendar",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Filter Reminders": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Send Event Reminder",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Prayers (*/5)": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Check Prayer Times",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Send Evening Warning": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Mark Tomorrow Warned",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Send Event Reminder": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Log Reminder Sent",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Send Prayer Reminder": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Mark Prayer Sent",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Send Weather Alert": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Mark Weather Alerted",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Tomorrow Calendar": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Check Tomorrow Plan",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Tomorrow Weather (20:00)": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Fetch Weather",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Upcoming Events": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Filter Reminders",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Weather Alert (*/3h)": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Check Weather Alert",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-16T22:50:10.543Z",
+ "id": "Tc4gH8HuhiSdDXZE",
+ "name": "Proactive Checks",
+ "nodes": [
+  {
+   "id": "aa050101-4000-8000-0000-000000000001",
+   "name": "Prayers (*/5)",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "expression": "*/5 * * * *",
+       "field": "cronExpression"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    -330
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "disabled": true,
+   "id": "aa070101-4000-8000-0000-000000000001",
+   "name": "Events (*/2h)",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "expression": "0 */2 * * *",
+       "field": "cronExpression"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    -110
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "id": "aa060101-4000-8000-0000-000000000001",
+   "name": "Weather Alert (*/3h)",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "expression": "0 */3 * * *",
+       "field": "cronExpression"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    110
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "id": "aa080101-4000-8000-0000-000000000001",
+   "name": "Tomorrow Weather (20:00)",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "expression": "0 20 * * *",
+       "field": "cronExpression"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    330
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "id": "aa050102-4000-8000-0000-000000000002",
+   "maxTries": 3,
+   "name": "Check Prayer Times",
+   "parameters": {
+    "jsCode": "\n// OTHVM — Prayer time reminders (Aladhan API — no LLM)\nconst TZ = 'Africa/Cairo';\nconst LAT = 30.584138;\nconst LON = 31.495866;\nconst METHOD = 5; // Egyptian General Authority of Survey\nconst SCHOOL = 0; // Standard (Shafi'i)\nconst WINDOW_MIN = 10; // الدقائق المسموح فيها بالإرسال بعد دخول الوقت\n\nconst PRAYERS = [\n  ['Fajr', 'الفجر'],\n  ['Dhuhr', 'الظهر'],\n  ['Asr', 'العصر'],\n  ['Maghrib', 'المغرب'],\n  ['Isha', 'العشاء'],\n];\n\nconst now = new Date();\nconst today = new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);\nconst nowHM = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(now);\nconst toMin = (hm) => {\n  const p = String(hm).split(':');\n  return Number(p[0]) * 60 + Number(p[1] || 0);\n};\nconst nowM = toMin(nowHM);\n\nconst sd = $getWorkflowStaticData('global');\nif (!sd.times || sd.times.date !== today) {\n  const dmy = today.split('-').reverse().join('-');\n  const res = await this.helpers.httpRequest({\n    method: 'GET',\n    url: 'https://api.aladhan.com/v1/timings/' + dmy + '?latitude=' + LAT + '&longitude=' + LON + '&method=' + METHOD + '&school=' + SCHOOL,\n    json: true,\n    timeout: 20000,\n  });\n  const t = res && res.data && res.data.timings ? res.data.timings : null;\n  if (!t) return [];\n  const clean = (v) => String(v || '').trim().split(' ')[0];\n  sd.times = { date: today, list: {} };\n  for (const p of PRAYERS) sd.times.list[p[0]] = clean(t[p[0]]);\n}\nif (!sd.sent || sd.sent.date !== today) sd.sent = { date: today, list: [] };\n\nconst fmt12 = (hm) => {\n  const p = String(hm).split(':');\n  const h = Number(p[0]);\n  const m = Number(p[1] || 0);\n  const period = h < 12 ? 'صباحاً' : 'مساءً';\n  const h12 = ((h + 11) % 12) + 1;\n  return h12 + ':' + String(m).padStart(2, '0') + ' ' + period;\n};\n\nconst out = [];\nconst outPrayers = [];\nfor (const p of PRAYERS) {\n  const en = p[0];\n  const ar = p[1];\n  const timeStr = sd.times.list[en];\n  if (!timeStr) continue;\n  const pM = toMin(timeStr);\n  const due = nowM >= pM && nowM <= pM + WINDOW_MIN;\n  if (!due) continue;\n  if (sd.sent.list.indexOf(en) !== -1) continue;\n  outPrayers.push(en);\n  out.push('🕌 حان وقت صلاة ' + ar + ' — ' + fmt12(timeStr));\n}\n\nif (!out.length) return [];\nreturn [{ json: { message: out.join('\\n'), prayers: outPrayers } }];\n"
+   },
+   "position": [
+    220,
+    -330
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "waitBetweenTries": 5000
+  },
+  {
+   "credentials": {
+    "telegramApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Telegram account"
+    }
+   },
+   "id": "aa050103-4000-8000-0000-000000000003",
+   "name": "Send Prayer Reminder",
+   "parameters": {
+    "additionalFields": {
+     "appendAttribution": false
+    },
+    "chatId": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+    "operation": "sendMessage",
+    "resource": "message",
+    "text": "={{ $json.message }}"
+   },
+   "position": [
+    440,
+    -330
+   ],
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "webhookId": "f0c924bb-570c-4818-b422-ca020b6b1b9b"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "executeOnce": true,
+   "id": "aa070102-4000-8000-0000-000000000002",
+   "name": "Upcoming Events",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "calendar": {
+     "__rl": true,
+     "cachedResultName": "primary",
+     "mode": "list",
+     "value": "primary"
+    },
+    "limit": 50,
+    "operation": "getAll",
+    "options": {
+     "orderBy": "startTime",
+     "timeZone": "Africa/Cairo"
+    },
+    "resource": "event",
+    "returnAll": false,
+    "timeMax": "={{ $now.plus({ hours: 3 }) }}",
+    "timeMin": "={{ $now }}"
+   },
+   "position": [
+    220,
+    -110
+   ],
+   "type": "n8n-nodes-base.googleCalendar",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "aa070103-4000-8000-0000-000000000003",
+   "maxTries": 3,
+   "name": "Filter Reminders",
+   "parameters": {
+    "jsCode": "\n// OTHVM — Calendar Check: تذكير بالمواعيد خلال نافذة زمنية (بدون LLM)\nconst evs = $input.all().map((i) => i.json).filter((j) => j && !j.error && j.start);\n\nconst WINDOW_H = 3; // نافذة التذكير (بالساعات) — تُبنى من CONFIG\nconst now = new Date();\nconst nowMs = now.getTime();\nconst inWin = nowMs + WINDOW_H * 3600 * 1000;\nconst candidates = [];\nfor (const ev of evs) {\n  const s = ev.start || {};\n  if (!s.dateTime) continue;\n  const st = new Date(s.dateTime).getTime();\n  if (st >= nowMs && st <= inWin && ev.id) candidates.push({ ev, st });\n}\nif (!candidates.length) return [];\n\nconst base = String($env.SUPABASE_URL || '').replace(/\\/+$/, '');\nconst key = String($env.SUPABASE_SERVICE_KEY || '');\nconst since = new Date(nowMs - 24 * 3600 * 1000).toISOString();\nlet sentIds = [];\nif (base && key) {\n  try {\n    const rows = await this.helpers.httpRequest({\n      method: 'GET',\n      url: base + '/rest/v1/sent_reminders_log?select=event_id&sent_at=gte.' + encodeURIComponent(since),\n      headers: { apikey: key, Authorization: 'Bearer ' + key },\n      json: true,\n      timeout: 15000,\n    });\n    sentIds = (rows || []).map((r) => r.event_id);\n  } catch (e) { sentIds = []; }\n}\nconst due = candidates.filter((c) => sentIds.indexOf(c.ev.id) === -1).sort((a, b) => a.st - b.st);\nif (!due.length) return [];\n\nconst pad = (n) => String(n).padStart(2, '0');\nconst fmt12 = (d) => {\n  const hm = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Cairo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(d);\n  const p = hm.split(':');\n  const h = Number(p[0]);\n  const period = h < 12 ? 'صباحاً' : 'مساءً';\n  return (((h + 11) % 12) + 1) + ':' + pad(Number(p[1] || 0)) + ' ' + period;\n};\nconst cairoDate = (d) => new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);\n\nconst dayName = (d) => new Intl.DateTimeFormat('ar-EG-u-nu-latn', { timeZone: 'Africa/Cairo', weekday: 'long' }).format(d);\nconst todayStr = cairoDate(now);\nconst lines = ['⏰ تذكير بمواعيد قريبة:'];\nfor (const c of due) {\n  const d = new Date(c.ev.start.dateTime);\n  const when = cairoDate(d) === todayStr ? fmt12(d) : dayName(d) + ' ' + fmt12(d);\n  const loc = c.ev.location ? ' 📍 ' + String(c.ev.location).slice(0, 40) : '';\n  lines.push('• ' + when + ' — ' + (c.ev.summary || '(بدون عنوان)') + loc);\n}\nreturn [{ json: { message: lines.join('\\n'), events: due.map((c) => ({ event_id: c.ev.id, event_title: String(c.ev.summary || '').slice(0, 150) })) } }];\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    440,
+    -110
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "waitBetweenTries": 5000
+  },
+  {
+   "credentials": {
+    "telegramApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Telegram account"
+    }
+   },
+   "id": "aa070104-4000-8000-0000-000000000004",
+   "name": "Send Event Reminder",
+   "parameters": {
+    "additionalFields": {
+     "appendAttribution": false
+    },
+    "chatId": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+    "operation": "sendMessage",
+    "resource": "message",
+    "text": "={{ $json.message }}"
+   },
+   "position": [
+    660,
+    -110
+   ],
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "webhookId": "22e32042-9d2d-423c-a425-fee219afdf0a"
+  },
+  {
+   "id": "aa060102-4000-8000-0000-000000000002",
+   "maxTries": 3,
+   "name": "Check Weather Alert",
+   "parameters": {
+    "jsCode": "\n// OTHVM — Weather Alert (Open-Meteo hourly — no LLM)\nconst TZ = 'Africa/Cairo';\nconst LAT = 30.584138;\nconst LON = 31.495866;\nconst TH = {\n  heatC: 40,\n  windKmh: 45,\n  rainMm: 5,\n  rainProb: 70,\n  rainMmLight: 1,\n  stormCode: 95,\n};\n\nconst now = new Date();\nconst dPart = new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);\nconst hPart = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', hourCycle: 'h23' }).format(now);\nconst today = dPart;\nconst nowKey = dPart + 'T' + hPart + ':00';\n\nconst res = await this.helpers.httpRequest({\n  method: 'GET',\n  url: 'https://api.open-meteo.com/v1/forecast?latitude=' + LAT + '&longitude=' + LON + '&hourly=temperature_2m,precipitation,precipitation_probability,weathercode,windspeed_10m&timezone=Africa%2FCairo&forecast_days=2',\n  json: true,\n  timeout: 20000,\n});\nconst H = res && res.hourly ? res.hourly : null;\nif (!H || !Array.isArray(H.time)) return [];\n\nconst fmt12 = (hm) => {\n  const p = String(hm).split(':');\n  const h = Number(p[0]);\n  const m = Number(p[1] || 0);\n  const period = h < 12 ? 'صباحاً' : 'مساءً';\n  const h12 = ((h + 11) % 12) + 1;\n  return h12 + ':' + String(m).padStart(2, '0') + ' ' + period;\n};\nconst windAr = (kmh) => {\n  const n = Math.round(Number(kmh));\n  if (!Number.isFinite(n)) return 'رياح متغيرة';\n  if (n <= 15) return 'هواء هادئ';\n  if (n <= 30) return 'نسيم خفيف';\n  if (n <= 50) return 'رياح قوية';\n  return 'رياح شديدة ⚠️';\n};\n\nconst alerts = [];\nlet count = 0;\nfor (let i = 0; i < H.time.length; i++) {\n  const t = H.time[i];\n  if (t < nowKey) continue;\n  count++;\n  if (count > 24) break;\n  const temp = Number(H.temperature_2m[i]);\n  const code = Number(H.weathercode[i]);\n  const mm = Number(H.precipitation[i] || 0);\n  const prob = Number(H.precipitation_probability[i] || 0);\n  const wind = Number(H.windspeed_10m[i]);\n  const hm = t.slice(11, 16);\n  if (code >= TH.stormCode) alerts.push({ type: 'storm', text: '⛈️ عاصفة رعدية متوقعة حوالي ' + fmt12(hm) });\n  else if (mm >= TH.rainMm || (prob >= TH.rainProb && mm >= TH.rainMmLight)) alerts.push({ type: 'rain', text: '🌧️ أمطار غزيرة متوقعة حوالي ' + fmt12(hm) + (prob > 30 ? ' (احتمال ' + prob + '%)' : '') });\n  if (temp >= TH.heatC) alerts.push({ type: 'heat', text: '🥵 حرارة شديدة متوقعة حوالي ' + fmt12(hm) + ' (' + Math.round(temp) + '°م)' });\n  if (wind >= TH.windKmh) alerts.push({ type: 'wind', text: '💨 ' + windAr(wind) + ' متوقعة حوالي ' + fmt12(hm) });\n}\n\nconst firstByType = {};\nfor (const a of alerts) if (!firstByType[a.type]) firstByType[a.type] = a;\n\nconst sd = $getWorkflowStaticData('global');\nif (!sd.alerted || sd.alerted.date !== today) sd.alerted = { date: today, list: [] };\n\nconst toSend = Object.keys(firstByType).map((k) => firstByType[k]).filter((a) => sd.alerted.list.indexOf(a.type) === -1);\nif (toSend.length === 0) return [];\nconst lines = ['⚠️ تنبيه طقس:'];\nfor (const a of toSend) lines.push('• ' + a.text);\nreturn [{ json: { message: lines.join('\\n'), types: toSend.map((a) => a.type) } }];\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    220,
+    110
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "waitBetweenTries": 5000
+  },
+  {
+   "credentials": {
+    "telegramApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Telegram account"
+    }
+   },
+   "id": "aa060103-4000-8000-0000-000000000003",
+   "name": "Send Weather Alert",
+   "parameters": {
+    "additionalFields": {
+     "appendAttribution": false
+    },
+    "chatId": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+    "operation": "sendMessage",
+    "resource": "message",
+    "text": "={{ $json.message }}"
+   },
+   "position": [
+    440,
+    110
+   ],
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "webhookId": "448b95cf-499c-42c7-91f5-9dd84d1661e2"
+  },
+  {
+   "executeOnce": true,
+   "id": "aa080102-4000-8000-0000-000000000002",
+   "name": "Fetch Weather",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "once",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Lifestyle — Weather",
+     "mode": "list",
+     "value": "fRbjxY4Vm4mZMOGA"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "location",
+       "id": "location",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "days",
+       "id": "days",
+       "required": false,
+       "type": "number"
+      }
+     ],
+     "value": {
+      "days": 2,
+      "location": ""
+     }
+    }
+   },
+   "position": [
+    220,
+    330
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "executeOnce": true,
+   "id": "aa080103-4000-8000-0000-000000000003",
+   "name": "Tomorrow Calendar",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "calendar": {
+     "__rl": true,
+     "cachedResultName": "primary",
+     "mode": "list",
+     "value": "primary"
+    },
+    "limit": 50,
+    "operation": "getAll",
+    "options": {
+     "orderBy": "startTime",
+     "timeZone": "Africa/Cairo"
+    },
+    "resource": "event",
+    "returnAll": false,
+    "timeMax": "={{ $now.setZone('Africa/Cairo').startOf('day').plus({ days: 2 }) }}",
+    "timeMin": "={{ $now.setZone('Africa/Cairo').startOf('day').plus({ days: 1 }) }}"
+   },
+   "position": [
+    440,
+    330
+   ],
+   "type": "n8n-nodes-base.googleCalendar",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "aa080104-4000-8000-0000-000000000004",
+   "maxTries": 3,
+   "name": "Check Tomorrow Plan",
+   "parameters": {
+    "jsCode": "\n// OTHVM — Weather Tomorrow Check: طقس بكرة + مواعيد محتملة للخروج (بدون LLM)\nlet w = {};\ntry { w = $('Fetch Weather').first().json || {}; } catch (e) { w = {}; }\nconst f = w && w.ok && Array.isArray(w.forecast) && w.forecast[1] ? w.forecast[1] : null;\nconst WEATHER_AR = {\n  'clear sky': 'سماء صافية',\n  'mainly clear': 'صافية غالباً',\n  'partly cloudy': 'غائم جزئياً',\n  'overcast': 'غائم',\n  'fog': 'ضباب',\n  'depositing rime fog': 'ضباب متجمد',\n  'light drizzle': 'رذاذ خفيف',\n  'moderate drizzle': 'رذاذ متوسط',\n  'dense drizzle': 'رذاذ كثيف',\n  'light freezing drizzle': 'رذاذ متجمد خفيف',\n  'dense freezing drizzle': 'رذاذ متجمد كثيف',\n  'slight rain': 'مطر خفيف',\n  'moderate rain': 'مطر متوسط',\n  'heavy rain': 'مطر غزير',\n  'light freezing rain': 'مطر متجمد خفيف',\n  'heavy freezing rain': 'مطر متجمد غزير',\n  'slight snow': 'ثلج خفيف',\n  'moderate snow': 'ثلج متوسط',\n  'heavy snow': 'ثلج غزير',\n  'snow grains': 'حبيبات ثلج',\n  'slight rain showers': 'زخات مطر خفيفة',\n  'moderate rain showers': 'زخات مطر متوسطة',\n  'violent rain showers': 'زخات مطر عنيفة',\n  'slight snow showers': 'زخات ثلج خفيفة',\n  'heavy snow showers': 'زخات ثلج غزيرة',\n  'thunderstorm': 'عاصفة رعدية',\n  'thunderstorm with slight hail': 'عاصفة رعدية مع برد خفيف',\n  'thunderstorm with heavy hail': 'عاصفة رعدية مع برد غزير',\n};\nconst weatherAr = (s) => WEATHER_AR[String(s || '').toLowerCase()] || 'طقس متغير';\nconst evs = $('Tomorrow Calendar').all().map((i) => i.json).filter((j) => j && !j.error && j.start);\n\nconst timed = evs.filter((ev) => ev.start && ev.start.dateTime);\nconst eligible = timed.filter((ev) => {\n  if (ev.hangoutLink) return false;\n  const loc = String(ev.location || '');\n  if (/zoom|meet|online|remote|أونلاين|عن بعد/i.test(loc)) return false;\n  const title = String(ev.summary || '').trim();\n  if (/^sleep$/i.test(title) || /نوم/i.test(title)) return false;\n  return true;\n});\n\nlet bad = false;\nlet why = '';\nlet descAr = '';\nif (f) {\n  descAr = weatherAr(f.desc);\n  const rain = Number(f.rain_chance || 0);\n  const max = Number(f.max || 0);\n  if (/عاصفة|غزير|عنيفة|متجمد|ثلج/.test(descAr)) { bad = true; why = descAr; }\n  else if (rain >= 50) { bad = true; why = 'فرصة مطر ' + rain + '%'; }\n  else if (max >= 40) { bad = true; why = 'حرارة ' + Math.round(max) + '°م'; }\n}\n\n\nconst pad = (n) => String(n).padStart(2, '0');\nconst fmt12 = (d) => {\n  const hm = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Cairo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(d);\n  const p = hm.split(':');\n  const h = Number(p[0]);\n  const period = h < 12 ? 'صباحاً' : 'مساءً';\n  return (((h + 11) % 12) + 1) + ':' + pad(Number(p[1] || 0)) + ' ' + period;\n};\nconst cairoDate = (d) => new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);\n\n\nif (!bad || eligible.length === 0) return [];\n\nconst sd = $getWorkflowStaticData('global');\nconst todayStr = cairoDate(new Date());\nif (sd.warnedOn === todayStr) return [];\n\nconst lines = ['⚠️ تحذير المساء — بكرة الطقس مش مناسب للخروج:'];\nconst tempRange = f ? Math.round(f.min) + '°م—' + Math.round(f.max) + '°م' : '';\nconst detail = (why !== descAr && descAr ? descAr + ' • ' : '') + tempRange;\nlines.push('• الحالة: ' + why + (detail ? ' (' + detail + ')' : ''));\nlines.push('');\nlines.push('🗓 مواعيد بكرة المحتمل تأثرها (' + eligible.length + '):');\nfor (const ev of eligible.slice(0, 8)) lines.push('• ' + fmt12(new Date(ev.start.dateTime)) + ' — ' + (ev.summary || '(بدون عنوان)'));\nlines.push('');\nlines.push('خد احتياطك أو اجّل اللي تقدر عليه.');\nreturn [{ json: { message: lines.join('\\n'), warned_on: todayStr } }];\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    660,
+    330
+   ],
+   "retryOnFail": true,
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "waitBetweenTries": 5000
+  },
+  {
+   "credentials": {
+    "telegramApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Telegram account"
+    }
+   },
+   "id": "aa080105-4000-8000-0000-000000000005",
+   "name": "Send Evening Warning",
+   "parameters": {
+    "additionalFields": {
+     "appendAttribution": false
+    },
+    "chatId": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+    "operation": "sendMessage",
+    "resource": "message",
+    "text": "={{ $json.message }}"
+   },
+   "position": [
+    880,
+    330
+   ],
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "webhookId": "8947bb77-8d94-4a97-a92f-719a575739ad"
+  },
+  {
+   "id": "89ed81ff-2778-478c-84a1-2b36852d96a2",
+   "name": "Mark Prayer Sent",
+   "parameters": {
+    "jsCode": "// Mark prayers sent only after Telegram accepted the aggregate message.\nconst src = $('Check Prayer Times').first().json || {};\nconst keys = Array.isArray(src.prayers) ? src.prayers : [];\nif (!keys.length) return [];\nconst today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());\nconst sd = $getWorkflowStaticData('global');\nif (!sd.sent || sd.sent.date !== today) sd.sent = { date: today, list: [] };\nfor (const key of keys) if (sd.sent.list.indexOf(key) === -1) sd.sent.list.push(key);\nreturn [{ json: { ok: true, prayers: keys } }];"
+   },
+   "position": [
+    440,
+    -170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "f157277a-9729-4730-be64-69967f0e3598",
+   "name": "Log Reminder Sent",
+   "parameters": {
+    "jsCode": "// Log sent calendar reminders only after Telegram accepted the message.\nconst src = $('Filter Reminders').first().json || {};\nconst events = Array.isArray(src.events) ? src.events : [];\nif (!events.length) return [];\nconst base = String($env.SUPABASE_URL || '').replace(/\\/+$/, '');\nconst key = String($env.SUPABASE_SERVICE_KEY || '');\nif (!base || !key) return [{ json: { ok: false, error: 'supabase env missing' } }];\nlet lastErr = '';\nfor (let attempt = 0; attempt < 3; attempt++) {\n  try {\n    await this.helpers.httpRequest({\n      method: 'POST',\n      url: base + '/rest/v1/sent_reminders_log',\n      headers: { apikey: key, Authorization: 'Bearer ' + key, Prefer: 'return=representation' },\n      body: events,\n      json: true,\n      timeout: 15000,\n    });\n    return [{ json: { ok: true, logged: events.length } }];\n  } catch (e) { lastErr = String(e && e.message ? e.message : e); }\n  await new Promise((r) => setTimeout(r, 500 * (attempt + 1)));\n}\nreturn [{ json: { ok: false, error: lastErr.slice(0, 300) } }];"
+   },
+   "position": [
+    660,
+    50
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "e18ecbbb-bc1b-43d8-8d8f-2c56cd3ccff0",
+   "name": "Mark Weather Alerted",
+   "parameters": {
+    "jsCode": "// Mark weather alerts only after Telegram accepted the aggregate message.\nconst src = $('Check Weather Alert').first().json || {};\nconst types = Array.isArray(src.types) ? src.types : [];\nif (!types.length) return [];\nconst today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());\nconst sd = $getWorkflowStaticData('global');\nif (!sd.alerted || sd.alerted.date !== today) sd.alerted = { date: today, list: [] };\nfor (const t of types) if (sd.alerted.list.indexOf(t) === -1) sd.alerted.list.push(t);\nreturn [{ json: { ok: true, types } }];"
+   },
+   "position": [
+    440,
+    270
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "051fd28c-dffe-4b73-bddb-0a99890bc8dc",
+   "name": "Mark Tomorrow Warned",
+   "parameters": {
+    "jsCode": "// Mark the evening warning only after Telegram accepted the message.\nconst src = $('Check Tomorrow Plan').first().json || {};\nconst day = String(src.warned_on || '');\nif (!day) return [];\nconst sd = $getWorkflowStaticData('global');\nsd.warnedOn = day;\nreturn [{ json: { ok: true, warned_on: day } }];"
+   },
+   "position": [
+    880,
+    490
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Scheduled"
+ ],
+ "updatedAt": "2026-10-27T22:02:42.694Z"
+}

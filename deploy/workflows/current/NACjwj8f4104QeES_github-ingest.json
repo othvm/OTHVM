@@ -1,0 +1,646 @@
+{
+ "active": true,
+ "connections": {
+  "Build Commits": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Ingest Commits",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Build Issues": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Ingest Issues",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Build Readme": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Ingest Readme",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Get Commits": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Build Commits",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Get Issues": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Build Issues",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Get Readme": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Build Readme",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Get Repos": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Repo List",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Get Repos",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "List Files": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Readme Paths",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Readme Paths": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Get Readme",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Repo List": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "List Files",
+      "type": "main"
+     },
+     {
+      "index": 0,
+      "node": "Get Issues",
+      "type": "main"
+     },
+     {
+      "index": 0,
+      "node": "Get Commits",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-19T11:20:38.613Z",
+ "id": "NACjwj8f4104QeES",
+ "name": "GitHub Ingest",
+ "nodes": [
+  {
+   "id": "kt019-4000-8000-000000000019",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "owner",
+       "type": "string"
+      },
+      {
+       "name": "repoLimit",
+       "type": "number"
+      },
+      {
+       "name": "issueLimit",
+       "type": "number"
+      },
+      {
+       "name": "commitLimit",
+       "type": "number"
+      }
+     ]
+    }
+   },
+   "position": [
+    -260,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt020-4000-8000-000000000020",
+   "name": "Get Repos",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "once",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Development — GitHub",
+     "mode": "list",
+     "value": "e7XvsPZcFoRT6Y7G"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "owner",
+       "id": "owner",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "limit",
+       "id": "limit",
+       "required": false,
+       "type": "number"
+      }
+     ],
+     "value": {
+      "limit": "={{ Math.max(1, Math.min(100, Number($json.repoLimit) || 10)) }}",
+      "operation": "user.getRepositories",
+      "owner": "={{ $json.owner || \"REPLACE_WITH_GITHUB_OWNER\" }}"
+     }
+    }
+   },
+   "position": [
+    -20,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "kt021-4000-8000-000000000021",
+   "name": "Repo List",
+   "parameters": {
+    "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (r.ok === false || !r.name) continue;\n  const full = r.full_name || r.name;\n  const parts = String(full).split(\"/\");\n  out.push({ json: { owner: parts[0] || full, repository: parts[1] || full, full_name: full, description: r.description || \"\", html_url: r.html_url || \"\" } });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    200,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt022-4000-8000-000000000022",
+   "name": "List Files",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "each",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Development — GitHub",
+     "mode": "list",
+     "value": "e7XvsPZcFoRT6Y7G"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "owner",
+       "id": "owner",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "repository",
+       "id": "repository",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "filePath",
+       "id": "filePath",
+       "required": false,
+       "type": "string"
+      }
+     ],
+     "value": {
+      "filePath": "",
+      "operation": "file.list",
+      "owner": "={{ $json.owner }}",
+      "repository": "={{ $json.repository }}"
+     }
+    }
+   },
+   "position": [
+    420,
+    -420
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "kt023-4000-8000-000000000023",
+   "name": "Readme Paths",
+   "parameters": {
+    "jsCode": "const repos = $(\"Repo List\").all().map(i => i.json);\nconst lists = $input.all().map(i => i.json);\nconst out = [];\nfor (let i = 0; i < lists.length; i++) {\n  const repo = repos[i] || {};\n  const r = lists[i] || {};\n  const arr = Array.isArray(r) ? r : (Array.isArray(r.items) ? r.items : [r]);\n  const readme = arr.find(x => x && /^readme/i.test(String(x.name || \"\")) && (x.type === \"file\" || !x.type));\n  if (!readme) continue;\n  out.push({ json: { owner: repo.owner, repository: repo.repository, full_name: repo.full_name, description: repo.description, html_url: repo.html_url, filePath: readme.name } });\n}\nreturn out;",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    640,
+    -420
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt024-4000-8000-000000000024",
+   "name": "Get Readme",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "each",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Development — GitHub",
+     "mode": "list",
+     "value": "e7XvsPZcFoRT6Y7G"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "owner",
+       "id": "owner",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "repository",
+       "id": "repository",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "filePath",
+       "id": "filePath",
+       "required": false,
+       "type": "string"
+      }
+     ],
+     "value": {
+      "filePath": "={{ $json.filePath }}",
+      "operation": "file.get",
+      "owner": "={{ $json.owner }}",
+      "repository": "={{ $json.repository }}"
+     }
+    }
+   },
+   "position": [
+    860,
+    -420
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "kt025-4000-8000-000000000025",
+   "name": "Build Readme",
+   "parameters": {
+    "jsCode": "const metas = $(\"Readme Paths\").all().map(i => i.json);\nconst reads = $input.all().map(i => i.json);\nconst items = [];\nfor (let i = 0; i < reads.length; i++) {\n  const m = metas[i] || {};\n  const r = reads[i] || {};\n  if (!r.content) continue;\n  let text = \"\";\n  try { text = Buffer.from(String(r.content), \"base64\").toString(\"utf8\"); } catch (e) { text = String(r.content); }\n  if (!text.trim()) continue;\n  items.push({ source_id: m.full_name + \"/README\", title: m.full_name + \" — README\", content: \"# \" + m.full_name + \"\\n\\n\" + (m.description || \"\") + \"\\n\\n\" + text, metadata: { repo: m.full_name, url: m.html_url, source: \"github\" } });\n}\nif (!items.length) return [];\nreturn [{ json: { operation: \"ingest\", source: \"github_readme\", items, chunk: true, replace_all: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    -420
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt026-4000-8000-000000000026",
+   "name": "Ingest Readme",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 300000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/knowledge"
+   },
+   "position": [
+    1300,
+    -420
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt027-4000-8000-000000000027",
+   "name": "Get Issues",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "each",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Development — GitHub",
+     "mode": "list",
+     "value": "e7XvsPZcFoRT6Y7G"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "owner",
+       "id": "owner",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "repository",
+       "id": "repository",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "limit",
+       "id": "limit",
+       "required": false,
+       "type": "number"
+      },
+      {
+       "displayName": "state",
+       "id": "state",
+       "required": false,
+       "type": "string"
+      }
+     ],
+     "value": {
+      "limit": "={{ Math.max(1, Math.min(100, Number($(\"Input\").first().json.issueLimit) || 30)) }}",
+      "operation": "repository.getIssues",
+      "owner": "={{ $json.owner }}",
+      "repository": "={{ $json.repository }}",
+      "state": "all"
+     }
+    }
+   },
+   "position": [
+    420,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "kt028-4000-8000-000000000028",
+   "name": "Build Issues",
+   "parameters": {
+    "jsCode": "const items = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (r.ok === false || !r.number || !r.title) continue;\n  const repo = String(r.url || \"\").split(\"/repos/\")[1] ? String(r.url).split(\"/repos/\")[1].split(\"/issues/\")[0] : \"\";\n  const body = [\"#\" + r.number + \" \" + r.title, \"State: \" + (r.state || \"\"), \"User: \" + (r.user || \"\"), \"Created: \" + (r.created_at || \"\"), \"\", r.body || \"\", r.html_url || \"\"].join(\"\\n\");\n  items.push({ source_id: \"issue-\" + r.id, title: \"#\" + r.number + \" \" + r.title, content: body, metadata: { repo, url: r.html_url || \"\", state: r.state || \"\", source: \"github\" } });\n}\nif (!items.length) return [];\nreturn [{ json: { operation: \"ingest\", source: \"github_issues\", items, chunk: true, replace_all: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    640,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt029-4000-8000-000000000029",
+   "name": "Ingest Issues",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 300000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/knowledge"
+   },
+   "position": [
+    860,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt030-4000-8000-000000000030",
+   "name": "Get Commits",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "each",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Development — GitHub",
+     "mode": "list",
+     "value": "e7XvsPZcFoRT6Y7G"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "owner",
+       "id": "owner",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "repository",
+       "id": "repository",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "limit",
+       "id": "limit",
+       "required": false,
+       "type": "number"
+      }
+     ],
+     "value": {
+      "limit": "={{ Math.max(1, Math.min(100, Number($(\"Input\").first().json.commitLimit) || 30)) }}",
+      "operation": "commit.list",
+      "owner": "={{ $json.owner }}",
+      "repository": "={{ $json.repository }}"
+     }
+    }
+   },
+   "position": [
+    420,
+    420
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "kt031-4000-8000-000000000031",
+   "name": "Build Commits",
+   "parameters": {
+    "jsCode": "const items = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (r.ok === false || !r.sha || !r.message) continue;\n  const content = \"Commit \" + r.sha + \"\\n\" + r.message + \"\\nAuthor: \" + (r.author || \"\") + \"\\nDate: \" + (r.date || \"\") + \"\\n\" + (r.url || \"\");\n  items.push({ source_id: r.url || (\"commit-\" + r.sha), title: \"Commit \" + r.sha, content, metadata: { sha: r.sha, author: r.author || \"\", date: r.date || \"\", source: \"github\" } });\n}\nif (!items.length) return [];\nreturn [{ json: { operation: \"ingest\", source: \"github_commits\", items, chunk: true, replace_all: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    640,
+    420
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt032-4000-8000-000000000032",
+   "name": "Ingest Commits",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 300000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/knowledge"
+   },
+   "position": [
+    860,
+    420
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Development"
+ ],
+ "updatedAt": "2026-10-22T12:33:26.012Z"
+}

@@ -1,0 +1,7 @@
+{
+  "telegram_bot_token": "REPLACE_WITH_BOT_TOKEN",
+  "telegram_secret": "REPLACE_WITH_TELEGRAM_WEBHOOK_SECRET",
+  "telegram_chat_id": "REPLACE_WITH_CHAT_ID",
+  "n8n_db_path": "C:/Windows/System32/config/systemprofile/.n8n/database.sqlite",
+  "thread_like": "REPLACE_WITH_AGENT_ID:%"
+}

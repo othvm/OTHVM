@@ -1,0 +1,208 @@
+{
+ "active": true,
+ "connections": {
+  "Gemini Classify": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Parse Classify",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Gmail Check (08:00)": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Last 24h Emails",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Last 24h Emails": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Prepare Triage",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Parse Classify": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Send Gmail Digest",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Prepare Triage": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Gemini Classify",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-16T22:50:10.446Z",
+ "id": "Ygv84MkRxGy4lfmz",
+ "name": "Email Brief",
+ "nodes": [
+  {
+   "id": "aa090101-4000-8000-0000-000000000001",
+   "name": "Gmail Check (08:00)",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "expression": "0 8 * * *",
+       "field": "cronExpression"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "executeOnce": true,
+   "id": "aa090102-4000-8000-0000-000000000002",
+   "name": "Last 24h Emails",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "filters": {
+     "q": "newer_than:1d"
+    },
+    "limit": 25,
+    "operation": "getAll",
+    "options": {},
+    "resource": "message",
+    "returnAll": false
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "2761e31d-545b-4d20-ae35-3da9403d8130"
+  },
+  {
+   "id": "aa090103-4000-8000-0000-000000000003",
+   "name": "Prepare Triage",
+   "parameters": {
+    "jsCode": "// OTHVM — Gmail Check: one batched Gemini classification request for all emails.\nconst msgs = $input.all().map((i) => i.json).filter((j) => j && !j.error && j.id);\nif (!msgs.length) return [];\nconst pick = (m, keys) => {\n  for (const k of keys) {\n    if (m[k] !== undefined && m[k] !== null && String(m[k]).trim() !== '') return String(m[k]);\n  }\n  return '';\n};\nconst headers = (m) => (m.headers && typeof m.headers === 'object' ? m.headers : {});\nconst compact = msgs.map((m) => {\n  const h = headers(m);\n  const labels = Array.isArray(m.labelIds) ? m.labelIds : [];\n  const unread = labels.includes('UNREAD');\n  const starred = labels.includes('STARRED');\n  const importantLabel = labels.includes('IMPORTANT');\n  const score = (unread ? 3 : 0) + (starred ? 2 : 0) + (importantLabel ? 1 : 0);\n  return {\n    id: m.id,\n    from: pick(m, ['from', 'From']) || pick(h, ['from', 'From']),\n    subject: pick(m, ['subject', 'Subject']) || pick(h, ['subject', 'Subject']),\n    date: pick(m, ['date', 'Date']) || pick(h, ['date', 'Date']),\n    snippet: String(pick(m, ['snippet', 'textPlain', 'textAsHtml']) || '').slice(0, 180),\n    unread,\n    score,\n  };\n}).sort((a, b) => b.score - a.score).slice(0, 12);\nif (!compact.length) return [];\nconst lines = compact.map((e, i) =>\n  (i + 1) + '. ID: ' + e.id + '\\nFrom: ' + e.from + '\\nSubject: ' + e.subject + '\\nSnippet: ' + e.snippet\n);\nconst prompt = 'Classify each email as IMPORTANT or NOT_IMPORTANT.\\n' +\n  'IMPORTANT = requires human reply or urgent action.\\n' +\n  'Return ONLY a JSON array of objects with keys \"id\" (string) and \"important\" (boolean), one object per email, no markdown.\\n\\n' +\n  'Emails:\\n' + lines.join('\\n\\n');\nreturn [{ json: { emails: compact, prompt } }];\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "credentials": {
+    "telegramApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Telegram account"
+    }
+   },
+   "id": "aa090106-4000-8000-0000-000000000006",
+   "name": "Send Gmail Digest",
+   "parameters": {
+    "additionalFields": {
+     "appendAttribution": false
+    },
+    "chatId": "REPLACE_WITH_TELEGRAM_CHAT_ID",
+    "operation": "sendMessage",
+    "resource": "message",
+    "text": "={{ $json.message }}"
+   },
+   "position": [
+    1100,
+    0
+   ],
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "webhookId": "3ea0772c-51c4-4392-9114-7c1c84506057"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googlePalmApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Gemini(PaLM) Api account"
+    }
+   },
+   "id": "aa020001-4000-8000-000000000001",
+   "name": "Gemini Classify",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ contents: [{ role: 'user', parts: [{ text: $json.prompt }] }], generationConfig: { temperature: 0, maxOutputTokens: 1024, responseMimeType: 'application/json', responseSchema: { type: 'ARRAY', items: { type: 'OBJECT', properties: { id: { type: 'STRING' }, important: { type: 'BOOLEAN' } }, required: ['id', 'important'] } } } }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googlePalmApi",
+    "options": {
+     "timeout": 60000
+    },
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent"
+   },
+   "position": [
+    760,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa020002-4000-8000-000000000002",
+   "name": "Parse Classify",
+   "parameters": {
+    "jsCode": "// OTHVM — Gmail Check: parse the single batched Gemini classification.\nconst emails = $('Prepare Triage').first().json.emails || [];\nlet text = '';\ntry {\n  text = (((($input.first().json || {}).candidates || [])[0] || {}).content || {}).parts.map((p) => p.text || '').join('').trim();\n} catch (e) { text = ''; }\nlet parsed = null;\ntry { parsed = JSON.parse(text); } catch (e) {}\nif (!Array.isArray(parsed) && parsed && Array.isArray(parsed.results)) parsed = parsed.results;\nif (!Array.isArray(parsed)) {\n  parsed = [];\n  const re = /\"id\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"important\"\\s*:\\s*(true|false)/gi;\n  let m;\n  while ((m = re.exec(text)) !== null) parsed.push({ id: m[1], important: m[2].toLowerCase() === 'true' });\n}\nconst importantIds = new Set(parsed\n  .filter((x) => x && (x.important === true || String(x.important).toLowerCase() === 'true'))\n  .map((x) => String(x.id)));\nconst important = emails.filter((e) => importantIds.has(String(e.id)));\nif (!important.length) return [];\nconst lines = important.map((e) => '• من: ' + (e.from || 'غير معروف') + ' — الموضوع: ' + (e.subject || '(بدون موضوع)') + (e.unread ? ' (غير مقروء)' : ''));\nreturn [{ json: { message: '📬 إيميلات مهمة (' + important.length + '):\\n' + lines.join('\\n') } }];\n",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1000,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Scheduled"
+ ],
+ "updatedAt": "2026-10-27T22:02:42.880Z"
+}

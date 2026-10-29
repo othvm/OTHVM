@@ -1,0 +1,138 @@
+{
+ "active": true,
+ "connections": {
+  "Every 5 Minutes": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Check Due Sleep Sessions",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Handle Sleep Button": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Sleep Button Page",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Sleep Button Webhook": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Handle Sleep Button",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-22T13:15:07.362Z",
+ "id": "VuZZX0P36eczE3Gw",
+ "name": "Sleep Wake Monitor",
+ "nodes": [
+  {
+   "id": "e2129f94-8a16-4a20-adf0-cd69800772fa",
+   "name": "Sleep Button Webhook",
+   "parameters": {
+    "httpMethod": "GET",
+    "options": {},
+    "path": "sleep-monitor",
+    "responseMode": "responseNode"
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "webhookId": "93db998f-4db7-4189-8fe9-fa61bfbb20f3"
+  },
+  {
+   "id": "e3c93a04-d2e5-45ec-8bf4-7e4bd5e871ea",
+   "name": "Handle Sleep Button",
+   "parameters": {
+    "jsCode": "// OTHVM Sleep Monitor - handle a Telegram URL button click, update the session, show an Arabic page.\nconst q = $json.query || $json;\nconst action = String(q.action || '').toLowerCase();\nconst sid = String(q.session_id || '');\nconst minutes = Number(q.minutes || 10);\nconst allowed = ['woke', 'still', 'snooze', 'cancel'];\nlet r = { ok: false, error: 'invalid request' };\nif (allowed.indexOf(action) >= 0 && sid) {\n  try {\n    r = await this.helpers.httpRequest({\n      method: 'POST',\n      url: 'http://127.0.0.1:8765/tools/sleep',\n      headers: { 'Content-Type': 'application/json', 'X-API-Key': 'REPLACE_WITH_MCP_API_KEY' },\n      body: { action: action, session_id: sid, minutes: minutes },\n      json: true,\n      timeout: 45000\n    });\n  } catch (e) {\n    r = { ok: false, error: String((e && e.message) || e) };\n  }\n}\nconst reply = String(r.reply || (r.ok ? 'تم.' : ('خطأ: ' + (r.error || 'تعذر تنفيذ الطلب'))));\nconst safe = reply.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\\n/g, '<br>');\nconst icon = r.ok ? '✅' : '⚠️';\nconst title = r.ok ? 'تم' : 'حصل خطأ';\nconst html = '<!doctype html><html lang=\"ar\" dir=\"rtl\"><head><meta charset=\"utf-8\">'\n  + '<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">'\n  + '<title>OTHVM Sleep</title><style>'\n  + 'body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0b1220;color:#e5e7eb;font-family:system-ui,Segoe UI,Arial,sans-serif}'\n  + '.card{max-width:520px;margin:24px;padding:32px 28px;border-radius:24px;background:#111a2e;border:1px solid #24324d;box-shadow:0 20px 60px rgba(0,0,0,.35);text-align:center}'\n  + '.icon{font-size:56px;line-height:1;margin-bottom:12px}'\n  + 'h1{font-size:26px;margin:0 0 14px}'\n  + 'p{font-size:17px;line-height:1.8;margin:0 0 10px;color:#cbd5e1}'\n  + '.hint{font-size:13px;color:#7c8aa5;margin-top:22px}'\n  + '</style></head><body><div class=\"card\"><div class=\"icon\">' + icon + '</div><h1>' + title + '</h1><p>' + safe + '</p>'\n  + '<p class=\"hint\">يمكنك قفل الصفحة والعودة إلى تيليجرام.</p></div></body></html>';\nreturn [{ json: { ok: !!r.ok, reply: reply, html: html, action: action, session_id: sid } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    224,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "885e8ef1-eb7a-434e-91fd-3bf1c186858b",
+   "name": "Sleep Button Page",
+   "parameters": {
+    "options": {
+     "responseHeaders": {
+      "entries": [
+       {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+       }
+      ]
+     }
+    },
+    "respondWith": "text",
+    "responseBody": "={{ $json.html }}"
+   },
+   "position": [
+    448,
+    0
+   ],
+   "type": "n8n-nodes-base.respondToWebhook",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "8efdfe9a-1653-4fc0-af39-e1c772271917",
+   "name": "Every 5 Minutes",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "field": "minutes",
+       "minutesInterval": 5
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    224
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "fd73ef8a-4ecb-407f-91a3-eeda43bdbaac",
+   "name": "Check Due Sleep Sessions",
+   "parameters": {
+    "jsCode": "// OTHVM Sleep Monitor - every 5 minutes ask the MCP to send due wake checks.\ntry {\n  const r = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'http://127.0.0.1:8765/tools/sleep',\n    headers: { 'Content-Type': 'application/json', 'X-API-Key': 'REPLACE_WITH_MCP_API_KEY' },\n    body: { action: 'due' },\n    json: true,\n    timeout: 45000\n  });\n  return [{ json: r }];\n} catch (e) {\n  return [{ json: { ok: false, error: String((e && e.message) || e) } }];\n}",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    224,
+    224
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-24T14:29:47.436Z"
+}

@@ -1,0 +1,13 @@
+fastapi==0.147.0
+uvicorn[standard]==0.54.0
+pyautogui==0.9.54
+playwright==1.64.0
+pygetwindow==0.0.9
+psutil==7.2.2
+pillow==13.0.0
+watchdog==6.0.0
+pywin32==312
+pyperclip==1.11.0
+imageio-ffmpeg==0.6.0
+httpx==0.28.1
+pydantic==2.14.1

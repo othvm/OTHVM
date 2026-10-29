@@ -1,0 +1,80 @@
+{
+ "active": true,
+ "connections": {
+  "Every 10 Minutes": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Summarize",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-19T11:37:32.043Z",
+ "id": "hfWwsq2WFlf8KZgG",
+ "name": "Conversation Summarizer",
+ "nodes": [
+  {
+   "id": "cx003-4000-8000-000000000003",
+   "name": "Every 10 Minutes",
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "field": "minutes",
+       "minutesInterval": 10
+      }
+     ]
+    }
+   },
+   "position": [
+    -260,
+    0
+   ],
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "cx004-4000-8000-000000000004",
+   "name": "Summarize",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "{\"operation\":\"maintain\",\"min_new\":10,\"max_messages\":40}",
+    "method": "POST",
+    "options": {
+     "timeout": 600000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/context"
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Scheduled"
+ ],
+ "updatedAt": "2026-10-23T10:15:16.247Z"
+}

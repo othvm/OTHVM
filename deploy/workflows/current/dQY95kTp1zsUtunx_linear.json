@@ -1,0 +1,788 @@
+{
+ "active": true,
+ "connections": {
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.addComment",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "issue.addLink",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "issue.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "issue.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "issue.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "issue.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "issue.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.addComment": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "comment.addComment — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "comment.addComment — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.addLink": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "issue.addLink — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.addLink — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "issue.create — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.create — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "issue.delete — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.delete — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "issue.get — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.get — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "issue.getAll — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.getAll — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "issue.update — format",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "issue.update — format": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-18T14:22:11.054Z",
+ "id": "dQY95kTp1zsUtunx",
+ "name": "Linear",
+ "nodes": [
+  {
+   "id": "aa080100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "issueId",
+       "type": "string"
+      },
+      {
+       "name": "teamId",
+       "type": "string"
+      },
+      {
+       "name": "title",
+       "type": "string"
+      },
+      {
+       "name": "description",
+       "type": "string"
+      },
+      {
+       "name": "assigneeId",
+       "type": "string"
+      },
+      {
+       "name": "stateId",
+       "type": "string"
+      },
+      {
+       "name": "priorityId",
+       "type": "number"
+      },
+      {
+       "name": "comment",
+       "type": "string"
+      },
+      {
+       "name": "parentId",
+       "type": "string"
+      },
+      {
+       "name": "link",
+       "type": "string"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa080200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "comment.addComment"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "comment.addComment"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "issue.addLink"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "issue.addLink"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "issue.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "issue.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "issue.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "issue.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "issue.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "issue.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "issue.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "issue.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "issue.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "issue.update"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa080300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa080400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"comment.addComment, issue.addLink, issue.create, issue.delete, issue.get, issue.getAll, issue.update\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1060
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "linearApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Linear account"
+    }
+   },
+   "id": "aa080500-4000-8000-000000000000",
+   "name": "comment.addComment",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "comment": "={{ $json.comment }}",
+    "issueId": "={{ $json.issueId }}",
+    "operation": "addComment",
+    "parentId": "={{ $json.parentId }}",
+    "resource": "comment"
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.linear",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa080600-4000-8000-000000000000",
+   "name": "comment.addComment — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','identifier','title','description','priority','priorityLabel','url','createdAt','updatedAt','dueDate','number','name','body','success'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.state && typeof x.state === 'object') o.state = x.state.name;\n  if (x.assignee && typeof x.assignee === 'object') o.assignee = x.assignee.name;\n  if (x.team && typeof x.team === 'object') o.team = x.team.name || x.team.key;\n  if (x.project && typeof x.project === 'object') o.project = x.project.name;\n  if (Array.isArray(x.labels)) o.labels = x.labels.map((l) => l.name);\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.nodes)) { for (const n of r.nodes) out.push({ json: pick(n) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "linearApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Linear account"
+    }
+   },
+   "id": "aa080700-4000-8000-000000000000",
+   "name": "issue.addLink",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "issueId": "={{ $json.issueId }}",
+    "link": "={{ $json.link }}",
+    "operation": "addLink",
+    "resource": "issue"
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.linear",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa080800-4000-8000-000000000000",
+   "name": "issue.addLink — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','identifier','title','description','priority','priorityLabel','url','createdAt','updatedAt','dueDate','number','name','body','success'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.state && typeof x.state === 'object') o.state = x.state.name;\n  if (x.assignee && typeof x.assignee === 'object') o.assignee = x.assignee.name;\n  if (x.team && typeof x.team === 'object') o.team = x.team.name || x.team.key;\n  if (x.project && typeof x.project === 'object') o.project = x.project.name;\n  if (Array.isArray(x.labels)) o.labels = x.labels.map((l) => l.name);\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.nodes)) { for (const n of r.nodes) out.push({ json: pick(n) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    130
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "linearApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Linear account"
+    }
+   },
+   "id": "aa080900-4000-8000-000000000000",
+   "name": "issue.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "assigneeId": "={{ $json.assigneeId }}",
+    "description": "={{ $json.description }}",
+    "operation": "create",
+    "priorityId": "={{ $json.priorityId }}",
+    "resource": "issue",
+    "stateId": "={{ $json.stateId }}",
+    "teamId": "={{ $json.teamId }}",
+    "title": "={{ $json.title }}"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.linear",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa081000-4000-8000-000000000000",
+   "name": "issue.create — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','identifier','title','description','priority','priorityLabel','url','createdAt','updatedAt','dueDate','number','name','body','success'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.state && typeof x.state === 'object') o.state = x.state.name;\n  if (x.assignee && typeof x.assignee === 'object') o.assignee = x.assignee.name;\n  if (x.team && typeof x.team === 'object') o.team = x.team.name || x.team.key;\n  if (x.project && typeof x.project === 'object') o.project = x.project.name;\n  if (Array.isArray(x.labels)) o.labels = x.labels.map((l) => l.name);\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.nodes)) { for (const n of r.nodes) out.push({ json: pick(n) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    260
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "linearApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Linear account"
+    }
+   },
+   "id": "aa081100-4000-8000-000000000000",
+   "name": "issue.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "issueId": "={{ $json.issueId }}",
+    "operation": "delete",
+    "resource": "issue"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.linear",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa081200-4000-8000-000000000000",
+   "name": "issue.delete — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','identifier','title','description','priority','priorityLabel','url','createdAt','updatedAt','dueDate','number','name','body','success'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.state && typeof x.state === 'object') o.state = x.state.name;\n  if (x.assignee && typeof x.assignee === 'object') o.assignee = x.assignee.name;\n  if (x.team && typeof x.team === 'object') o.team = x.team.name || x.team.key;\n  if (x.project && typeof x.project === 'object') o.project = x.project.name;\n  if (Array.isArray(x.labels)) o.labels = x.labels.map((l) => l.name);\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.nodes)) { for (const n of r.nodes) out.push({ json: pick(n) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    390
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "linearApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Linear account"
+    }
+   },
+   "id": "aa081300-4000-8000-000000000000",
+   "name": "issue.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "issueId": "={{ $json.issueId }}",
+    "operation": "get",
+    "resource": "issue"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.linear",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa081400-4000-8000-000000000000",
+   "name": "issue.get — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','identifier','title','description','priority','priorityLabel','url','createdAt','updatedAt','dueDate','number','name','body','success'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.state && typeof x.state === 'object') o.state = x.state.name;\n  if (x.assignee && typeof x.assignee === 'object') o.assignee = x.assignee.name;\n  if (x.team && typeof x.team === 'object') o.team = x.team.name || x.team.key;\n  if (x.project && typeof x.project === 'object') o.project = x.project.name;\n  if (Array.isArray(x.labels)) o.labels = x.labels.map((l) => l.name);\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.nodes)) { for (const n of r.nodes) out.push({ json: pick(n) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    520
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "linearApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Linear account"
+    }
+   },
+   "id": "aa081500-4000-8000-000000000000",
+   "name": "issue.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ Math.max(1, Math.min(100, Number($json.limit) || 50)) }}",
+    "operation": "getAll",
+    "resource": "issue",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.linear",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa081600-4000-8000-000000000000",
+   "name": "issue.getAll — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','identifier','title','description','priority','priorityLabel','url','createdAt','updatedAt','dueDate','number','name','body','success'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.state && typeof x.state === 'object') o.state = x.state.name;\n  if (x.assignee && typeof x.assignee === 'object') o.assignee = x.assignee.name;\n  if (x.team && typeof x.team === 'object') o.team = x.team.name || x.team.key;\n  if (x.project && typeof x.project === 'object') o.project = x.project.name;\n  if (Array.isArray(x.labels)) o.labels = x.labels.map((l) => l.name);\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.nodes)) { for (const n of r.nodes) out.push({ json: pick(n) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    650
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "linearApi": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Linear account"
+    }
+   },
+   "id": "aa081700-4000-8000-000000000000",
+   "name": "issue.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "assigneeId": "={{ $json.assigneeId }}",
+    "description": "={{ $json.description }}",
+    "issueId": "={{ $json.issueId }}",
+    "operation": "update",
+    "priorityId": "={{ $json.priorityId }}",
+    "resource": "issue",
+    "stateId": "={{ $json.stateId }}",
+    "teamId": "={{ $json.teamId }}",
+    "title": "={{ $json.title }}"
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.linear",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa081800-4000-8000-000000000000",
+   "name": "issue.update — format",
+   "parameters": {
+    "jsCode": "const KEYS = ['id','identifier','title','description','priority','priorityLabel','url','createdAt','updatedAt','dueDate','number','name','body','success'];\nconst pick = (x) => {\n  const o = {};\n  for (const k of KEYS) if (x[k] !== undefined && x[k] !== null && x[k] !== '') o[k] = x[k];\n  if (x.state && typeof x.state === 'object') o.state = x.state.name;\n  if (x.assignee && typeof x.assignee === 'object') o.assignee = x.assignee.name;\n  if (x.team && typeof x.team === 'object') o.team = x.team.name || x.team.key;\n  if (x.project && typeof x.project === 'object') o.project = x.project.name;\n  if (Array.isArray(x.labels)) o.labels = x.labels.map((l) => l.name);\n  return o;\n};\nconst out = [];\nfor (const item of $input.all()) {\n  if (item.error) { const _e = item.error; out.push({ json: { ok: false, error: String((_e && (_e.description || _e.message)) || _e || 'unknown error').slice(0, 400) } }); continue; }\n  const r = item.json || {};\n  if (Array.isArray(r.nodes)) { for (const n of r.nodes) out.push({ json: pick(n) }); continue; }\n  const o = pick(r);\n  out.push({ json: Object.keys(o).length ? o : r });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    780
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Development"
+ ],
+ "updatedAt": "2026-10-22T12:33:29.726Z"
+}

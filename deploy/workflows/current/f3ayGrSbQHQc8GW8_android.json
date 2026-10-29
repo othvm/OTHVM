@@ -1,0 +1,88 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Android Command",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-22T13:25:54.259Z",
+ "id": "f3ayGrSbQHQc8GW8",
+ "name": "Android",
+ "nodes": [
+  {
+   "id": "60d3e589-afb6-40a0-8c46-36f799bfea3d",
+   "name": "Input",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "action"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "47648ee2-311c-4aa3-b16a-61b1b624b200",
+   "name": "Android Command",
+   "parameters": {
+    "jsCode": "// OTHVM Android - agent tool proxy to the Android agent via laptop MCP.\nconst input = $json || {};\nconst payload = {};\nfor (const [k, v] of Object.entries(input)) {\n  if (k === 'params' || k === 'operation' || k === 'category') continue;\n  if (v === undefined || v === null) continue;\n  payload[k] = v;\n}\npayload.action = String(input.action || 'status');\ntry {\n  const r = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'http://127.0.0.1:8765/tools/android',\n    headers: { 'Content-Type': 'application/json', 'X-API-Key': 'REPLACE_WITH_MCP_API_KEY' },\n    body: payload,\n    json: true,\n    timeout: 60000\n  });\n  return [{ json: r }];\n} catch (e) {\n  return [{ json: { ok: false, error: String((e && e.message) || e) } }];\n}"
+   },
+   "position": [
+    384,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "6e33c5f2-bfd4-4fe3-8ce7-c1e437c7c43a",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand params; keep flat args and normalize action/operation.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nreturn [{ json: out }];"
+   },
+   "position": [
+    192,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-27T19:33:33.629Z"
+}

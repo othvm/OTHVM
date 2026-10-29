@@ -1,0 +1,2500 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.send",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.reply",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.addLabels",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.removeLabels",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.markAsRead",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.markAsUnread",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "draft.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "draft.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "draft.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "draft.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "thread.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "thread.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "thread.reply",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "thread.addLabels",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "thread.removeLabels",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "thread.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "thread.trash",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "thread.untrash",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.trash",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "message.untrash",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "label.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "draft.send",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "draft.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "draft.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "draft.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "draft.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "draft.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "draft.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "draft.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "draft.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "draft.send": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "draft.send pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "draft.send pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "label.update pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "label.update pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.addLabels": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.addLabels pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.addLabels pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.markAsRead": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.markAsUnread": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.removeLabels": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.removeLabels pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.removeLabels pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.reply": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.reply pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.reply pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.send": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.send pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.send pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.trash": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.trash pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.trash pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.untrash": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "message.untrash pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "message.untrash pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.addLabels": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "thread.addLabels pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.addLabels pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "thread.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.removeLabels": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "thread.removeLabels pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.removeLabels pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.reply": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "thread.reply pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.reply pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.trash": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "thread.untrash": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T01:03:12.160Z",
+ "id": "bvHBH9aLZJHeDrhx",
+ "name": "Gmail",
+ "nodes": [
+  {
+   "id": "aa010100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation",
+       "type": "string"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa010200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.send"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.send"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.reply"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.reply"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.addLabels"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.addLabels"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.removeLabels"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.removeLabels"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.markAsRead"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.markAsRead"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.markAsUnread"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.markAsUnread"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "draft.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "draft.create"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "draft.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "draft.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "draft.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "draft.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "draft.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "draft.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "thread.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "thread.get"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "thread.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "thread.getAll"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "thread.reply"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "thread.reply"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "thread.addLabels"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "thread.addLabels"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "thread.removeLabels"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "thread.removeLabels"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "thread.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "thread.delete"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "thread.trash"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "thread.trash"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "thread.untrash"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "thread.untrash"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.trash"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.trash"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "message.untrash"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "message.untrash"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "label.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "label.update"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "draft.send"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict"
+        }
+       },
+       "outputKey": "draft.send"
+      }
+     ]
+    }
+   },
+   "position": [
+    260,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa010300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  if (typeof j.operation === 'string' && /^[a-z]+[A-Za-z0-9]*.[a-zA-Z][A-Za-z0-9]*$/.test(j.operation) && j.id === undefined && j.ok !== true) { out.push({ json: { ok: false, error: 'الأداة مرجّعتش نتيجة تنفيذ حقيقية — الأغلب فشل (مصادقة أو اتصال أو مدخلات ناقصة). راجع الإعدادات أو جرّب تاني.' } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    1080,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa010400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"message.getAll, message.get, message.send, message.reply, message.delete, message.addLabels, message.removeLabels, message.markAsRead, message.markAsUnread, label.create, label.delete, label.get, label.getAll, draft.create, draft.delete, draft.get, draft.getAll, thread.get, thread.getAll, thread.reply, thread.addLabels, thread.removeLabels, thread.delete, thread.trash, thread.untrash, message.trash, message.untrash, label.update, draft.send\" } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3920
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa010500-4000-8000-000000000000",
+   "name": "message.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "filters": {
+     "q": "={{ $json.q || \"\" }}",
+     "readStatus": "={{ $json.readStatus || \"both\" }}"
+    },
+    "limit": "={{ $json.limit ? Number($json.limit) : 10 }}",
+    "operation": "getAll",
+    "resource": "message",
+    "returnAll": false,
+    "simple": true
+   },
+   "position": [
+    540,
+    0
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "7b2d8d48-d64e-46c6-9c1c-22f3130ad3e1"
+  },
+  {
+   "id": "aa010600-4000-8000-000000000000",
+   "name": "message.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"threadId\",\"snippet\",\"From\",\"Subject\",\"internalDate\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    40
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa010700-4000-8000-000000000000",
+   "name": "message.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "messageId": "={{ $json.messageId }}",
+    "operation": "get",
+    "resource": "message",
+    "simple": true
+   },
+   "position": [
+    540,
+    130
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "a6eb428e-2d0a-4b7a-99ff-403263e8198c"
+  },
+  {
+   "id": "aa010800-4000-8000-000000000000",
+   "name": "message.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"threadId\",\"subject\",\"from\",\"to\",\"cc\",\"internalDate\",\"snippet\",\"labelIds\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    170
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa010900-4000-8000-000000000000",
+   "name": "message.send",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "ccList": "={{ $json.cc || undefined }}",
+    "emailType": "html",
+    "message": "={{ $json.body }}",
+    "operation": "send",
+    "options": {
+     "appendAttribution": false
+    },
+    "resource": "message",
+    "sendTo": "={{ $json.sendTo }}",
+    "subject": "={{ $json.subject }}"
+   },
+   "position": [
+    540,
+    260
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "72a2d98a-ebe9-4f18-bbf4-be7acbeb8057"
+  },
+  {
+   "id": "aa011000-4000-8000-000000000000",
+   "name": "message.send pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"threadId\",\"labelIds\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    300
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa011100-4000-8000-000000000000",
+   "name": "message.reply",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "emailType": "html",
+    "message": "={{ $json.body }}",
+    "messageId": "={{ $json.messageId }}",
+    "operation": "reply",
+    "options": {
+     "appendAttribution": false
+    },
+    "resource": "message"
+   },
+   "position": [
+    540,
+    390
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "13bddbfd-2971-43b7-9ec4-6938b7b084a3"
+  },
+  {
+   "id": "aa011200-4000-8000-000000000000",
+   "name": "message.reply pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"threadId\",\"labelIds\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    430
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa011300-4000-8000-000000000000",
+   "name": "message.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "messageId": "={{ $json.messageId }}",
+    "operation": "delete",
+    "resource": "message"
+   },
+   "position": [
+    540,
+    520
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "5eddf232-f0ac-440e-840b-0011ad85e4d8"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa011400-4000-8000-000000000000",
+   "name": "message.addLabels",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "labelIds": "={{ String($json.labelId || \"\").split(\",\").map((s) => s.trim()).filter((s) => s) }}",
+    "messageId": "={{ $json.messageId }}",
+    "operation": "addLabels",
+    "resource": "message"
+   },
+   "position": [
+    540,
+    650
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "ea36e60b-ad3a-4b48-8aa1-d39ac741048e"
+  },
+  {
+   "id": "aa011500-4000-8000-000000000000",
+   "name": "message.addLabels pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"threadId\",\"labelIds\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    690
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa011600-4000-8000-000000000000",
+   "name": "message.removeLabels",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "labelIds": "={{ String($json.labelId || \"\").split(\",\").map((s) => s.trim()).filter((s) => s) }}",
+    "messageId": "={{ $json.messageId }}",
+    "operation": "removeLabels",
+    "resource": "message"
+   },
+   "position": [
+    540,
+    780
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "d9f5d807-c1bf-4434-9aaa-9a825db99723"
+  },
+  {
+   "id": "aa011700-4000-8000-000000000000",
+   "name": "message.removeLabels pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"threadId\",\"labelIds\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    820
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa011800-4000-8000-000000000000",
+   "name": "message.markAsRead",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "messageId": "={{ $json.messageId }}",
+    "operation": "markAsRead",
+    "resource": "message"
+   },
+   "position": [
+    540,
+    910
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "825c59b8-8c70-4757-80c8-ee11de60aa96"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa011900-4000-8000-000000000000",
+   "name": "message.markAsUnread",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "messageId": "={{ $json.messageId }}",
+    "operation": "markAsUnread",
+    "resource": "message"
+   },
+   "position": [
+    540,
+    1040
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "c5cc4062-315b-4cf1-a0ea-e47293f67eec"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa012000-4000-8000-000000000000",
+   "name": "label.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "name": "={{ $json.labelName }}",
+    "operation": "create",
+    "options": {
+     "labelListVisibility": "labelShow"
+    },
+    "resource": "label"
+   },
+   "position": [
+    540,
+    1170
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "19192c33-5f96-416f-a1fd-387a3eb738f0"
+  },
+  {
+   "id": "aa012100-4000-8000-000000000000",
+   "name": "label.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"name\",\"type\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1210
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa012200-4000-8000-000000000000",
+   "name": "label.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "labelId": "={{ $json.labelId }}",
+    "operation": "delete",
+    "resource": "label"
+   },
+   "position": [
+    540,
+    1300
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "c0dd3ca5-a55c-428d-a862-1174fb9535bc"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa012300-4000-8000-000000000000",
+   "name": "label.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "labelId": "={{ $json.labelId }}",
+    "operation": "get",
+    "resource": "label"
+   },
+   "position": [
+    540,
+    1430
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "627aa515-f554-40a7-b851-e6db12f36107"
+  },
+  {
+   "id": "aa012400-4000-8000-000000000000",
+   "name": "label.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"name\",\"type\",\"messagesTotal\",\"messagesUnread\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1470
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa012500-4000-8000-000000000000",
+   "name": "label.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ $json.limit ? Number($json.limit) : 50 }}",
+    "operation": "getAll",
+    "resource": "label",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    1560
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "c5fc97d5-bc01-4247-8c74-3c845b887f8a"
+  },
+  {
+   "id": "aa012600-4000-8000-000000000000",
+   "name": "label.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"name\",\"type\",\"messagesTotal\",\"messagesUnread\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1600
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa012700-4000-8000-000000000000",
+   "name": "draft.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "ccList": "={{ $json.cc || undefined }}",
+    "emailType": "html",
+    "message": "={{ $json.body }}",
+    "operation": "create",
+    "resource": "draft",
+    "subject": "={{ $json.subject }}"
+   },
+   "position": [
+    540,
+    1690
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "8f2a3ab2-79a5-4149-801a-c672fead83f6"
+  },
+  {
+   "id": "aa012800-4000-8000-000000000000",
+   "name": "draft.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"message\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    1730
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa012900-4000-8000-000000000000",
+   "name": "draft.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "messageId": "={{ $json.messageId }}",
+    "operation": "delete",
+    "resource": "draft"
+   },
+   "position": [
+    540,
+    1820
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "43b6f1cc-b5bf-4e68-ad8f-b1e14ee5101f"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa013000-4000-8000-000000000000",
+   "name": "draft.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "messageId": "={{ $json.messageId }}",
+    "operation": "get",
+    "resource": "draft"
+   },
+   "position": [
+    540,
+    1950
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "80d9ad24-abc9-4cdf-bc2f-1c1897ee6bed"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa013100-4000-8000-000000000000",
+   "name": "draft.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ $json.limit ? Number($json.limit) : 20 }}",
+    "operation": "getAll",
+    "resource": "draft",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    2080
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "3ee8e444-526c-4650-8f00-08ac31bcb18e"
+  },
+  {
+   "id": "aa013200-4000-8000-000000000000",
+   "name": "draft.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"message\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2120
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa013300-4000-8000-000000000000",
+   "name": "thread.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "get",
+    "resource": "thread",
+    "simple": true,
+    "threadId": "={{ $json.threadId }}"
+   },
+   "position": [
+    540,
+    2210
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "df8a795e-e007-4e29-a143-1a6b6e69f304"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa013400-4000-8000-000000000000",
+   "name": "thread.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "limit": "={{ $json.limit ? Number($json.limit) : 20 }}",
+    "operation": "getAll",
+    "resource": "thread",
+    "returnAll": false
+   },
+   "position": [
+    540,
+    2340
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "7d545389-3139-4077-8440-0a318f5ec2a1"
+  },
+  {
+   "id": "aa013500-4000-8000-000000000000",
+   "name": "thread.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"historyId\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2380
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa013600-4000-8000-000000000000",
+   "name": "thread.reply",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "emailType": "html",
+    "message": "={{ $json.body }}",
+    "messageId": "={{ $json.messageId }}",
+    "operation": "reply",
+    "options": {
+     "appendAttribution": false
+    },
+    "resource": "thread",
+    "threadId": "={{ $json.threadId }}"
+   },
+   "position": [
+    540,
+    2470
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "0cc26cc2-e575-472f-a901-eb01ee3a5380"
+  },
+  {
+   "id": "aa013700-4000-8000-000000000000",
+   "name": "thread.reply pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"messages\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2510
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa013800-4000-8000-000000000000",
+   "name": "thread.addLabels",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "labelIds": "={{ String($json.labelId || \"\").split(\",\").map((s) => s.trim()).filter((s) => s) }}",
+    "operation": "addLabels",
+    "resource": "thread",
+    "threadId": "={{ $json.threadId }}"
+   },
+   "position": [
+    540,
+    2600
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "722c7ce1-069f-4e35-a7c4-76fdeae96be6"
+  },
+  {
+   "id": "aa013900-4000-8000-000000000000",
+   "name": "thread.addLabels pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"historyId\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2640
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa014000-4000-8000-000000000000",
+   "name": "thread.removeLabels",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "labelIds": "={{ String($json.labelId || \"\").split(\",\").map((s) => s.trim()).filter((s) => s) }}",
+    "operation": "removeLabels",
+    "resource": "thread",
+    "threadId": "={{ $json.threadId }}"
+   },
+   "position": [
+    540,
+    2730
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "9935af7d-4cc4-4bbb-8478-12473d43145c"
+  },
+  {
+   "id": "aa014100-4000-8000-000000000000",
+   "name": "thread.removeLabels pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"snippet\",\"historyId\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    2770
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa014200-4000-8000-000000000000",
+   "name": "thread.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "delete",
+    "resource": "thread",
+    "threadId": "={{ $json.threadId }}"
+   },
+   "position": [
+    540,
+    2860
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "2e9873f1-81d7-41b5-a4e4-a719bb4ec3b4"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa014300-4000-8000-000000000000",
+   "name": "thread.trash",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "trash",
+    "resource": "thread",
+    "threadId": "={{ $json.threadId }}"
+   },
+   "position": [
+    540,
+    2990
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "34a9c0ea-f7a6-4312-b815-574c2e87c778"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa014400-4000-8000-000000000000",
+   "name": "thread.untrash",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "operation": "untrash",
+    "resource": "thread",
+    "threadId": "={{ $json.threadId }}"
+   },
+   "position": [
+    540,
+    3120
+   ],
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "webhookId": "2977580b-32de-4346-8e79-96b4dbf92fa9"
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa014500-4000-8000-000000000000",
+   "name": "message.trash",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "POST",
+    "nodeCredentialType": "gmailOAuth2",
+    "options": {},
+    "url": "=https://gmail.googleapis.com/gmail/v1/users/me/messages/{{ $json.messageId }}/trash"
+   },
+   "position": [
+    540,
+    3250
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa014600-4000-8000-000000000000",
+   "name": "message.trash pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"labelIds\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3290
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa014700-4000-8000-000000000000",
+   "name": "message.untrash",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "POST",
+    "nodeCredentialType": "gmailOAuth2",
+    "options": {},
+    "url": "=https://gmail.googleapis.com/gmail/v1/users/me/messages/{{ $json.messageId }}/untrash"
+   },
+   "position": [
+    540,
+    3380
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa014800-4000-8000-000000000000",
+   "name": "message.untrash pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"labelIds\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3420
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa014900-4000-8000-000000000000",
+   "name": "label.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ name: $json.labelName }) }}",
+    "method": "PATCH",
+    "nodeCredentialType": "gmailOAuth2",
+    "options": {},
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "=https://gmail.googleapis.com/gmail/v1/users/me/labels/{{ $json.labelId }}"
+   },
+   "position": [
+    540,
+    3510
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa015000-4000-8000-000000000000",
+   "name": "label.update pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"name\",\"type\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3550
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Gmail account"
+    }
+   },
+   "id": "aa015100-4000-8000-000000000000",
+   "name": "draft.send",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ id: $json.messageId }) }}",
+    "method": "POST",
+    "nodeCredentialType": "gmailOAuth2",
+    "options": {},
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://gmail.googleapis.com/gmail/v1/users/me/drafts/send"
+   },
+   "position": [
+    540,
+    3640
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa015200-4000-8000-000000000000",
+   "name": "draft.send pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"threadId\",\"labelIds\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    800,
+    3680
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "2e886b9d-6fa9-4c40-9c2a-0f7dd6ddb21c",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand params; keep flat args and normalize action/operation.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nreturn [{ json: out }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    180,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-27T19:33:33.351Z"
+}

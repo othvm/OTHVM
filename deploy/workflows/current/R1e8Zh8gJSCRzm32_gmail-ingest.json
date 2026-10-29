@@ -1,0 +1,175 @@
+{
+ "active": true,
+ "connections": {
+  "Build Items": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Ingest",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Find Emails": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Build Items",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Find Emails",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-19T11:20:38.433Z",
+ "id": "R1e8Zh8gJSCRzm32",
+ "name": "Gmail Ingest",
+ "nodes": [
+  {
+   "id": "kt009-4000-8000-000000000009",
+   "name": "Input",
+   "parameters": {
+    "inputSource": "workflowInputs",
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "q",
+       "type": "string"
+      },
+      {
+       "name": "limit",
+       "type": "number"
+      }
+     ]
+    }
+   },
+   "position": [
+    -260,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt010-4000-8000-000000000010",
+   "name": "Find Emails",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "mode": "once",
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "source": "database",
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Google — Gmail",
+     "mode": "list",
+     "value": "bvHBH9aLZJHeDrhx"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "q",
+       "id": "q",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "limit",
+       "id": "limit",
+       "required": false,
+       "type": "number"
+      }
+     ],
+     "value": {
+      "limit": "={{ Math.max(1, Math.min(100, Number($json.limit) || 100)) }}",
+      "operation": "message.getAll",
+      "q": "={{ $json.q || \"newer_than:6m -category:promotions -category:social\" }}"
+     }
+    }
+   },
+   "position": [
+    -20,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "kt011-4000-8000-000000000011",
+   "name": "Build Items",
+   "parameters": {
+    "jsCode": "const items = [];\nfor (const item of $input.all()) {\n  const r = item.json || {};\n  if (r.ok === false || !r.id) continue;\n  const date = r.internalDate ? new Date(Number(r.internalDate)).toISOString() : \"\";\n  const body = [\"Subject: \" + (r.Subject || r.subject || \"\"), \"From: \" + (r.From || r.from || \"\"), \"Date: \" + date, \"\", r.snippet || \"\"].join(\"\\n\").trim();\n  items.push({ source_id: r.id, title: r.Subject || r.subject || \"(no subject)\", content: body, metadata: { from: r.From || r.from || \"\", date, threadId: r.threadId || \"\" } });\n}\nif (!items.length) return [];\nreturn [{ json: { operation: \"ingest\", source: \"gmail\", items, chunk: true, replace_all: false } }];",
+    "mode": "runOnceForAllItems"
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "kt012-4000-8000-000000000012",
+   "name": "Ingest",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "X-API-Key",
+       "value": "REPLACE_WITH_MCP_API_KEY"
+      }
+     ]
+    },
+    "jsonBody": "={{ JSON.stringify($json) }}",
+    "method": "POST",
+    "options": {
+     "timeout": 300000
+    },
+    "sendBody": true,
+    "sendHeaders": true,
+    "specifyBody": "json",
+    "url": "http://127.0.0.1:8765/tools/knowledge"
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "executionOrder": "v1",
+  "timezone": "Africa/Cairo"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-22T12:33:26.095Z"
+}

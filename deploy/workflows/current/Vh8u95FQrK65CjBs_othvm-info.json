@@ -1,0 +1,788 @@
+{
+ "active": true,
+ "connections": {
+  "Flatten Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route by Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route by Tool": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Call weather",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call prayer",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call search",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call news",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call fetch",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call wiki",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call translate",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call youtube",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call books",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Call nasa",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown Tool",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "When Executed by Another Workflow": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Flatten Params",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-24T21:32:30.971Z",
+ "id": "Vh8u95FQrK65CjBs",
+ "name": "OTHVM — Info",
+ "nodes": [
+  {
+   "id": "d516ba62-da4c-49dc-aa65-b66f76bf6e2f",
+   "name": "When Executed by Another Workflow",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "tool"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    0,
+    0
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "579e37fb-3912-4957-9f7e-351765d12546",
+   "name": "Call weather",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Weather Forecast",
+     "mode": "list",
+     "value": "fRbjxY4Vm4mZMOGA"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "location",
+       "id": "location",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "days",
+       "id": "days",
+       "required": false,
+       "type": "number"
+      }
+     ],
+     "value": {
+      "days": "={{ $json.params.days }}",
+      "location": "={{ $json.params.location }}"
+     }
+    }
+   },
+   "position": [
+    720,
+    -320
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "3f0a2fc2-d525-4638-86ce-25cfc2e02219",
+   "name": "Call prayer",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Prayer Times",
+     "mode": "list",
+     "value": "QKWruJYfuqtKt8JC"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "date",
+       "id": "date",
+       "required": false,
+       "type": "string"
+      },
+      {
+       "displayName": "days",
+       "id": "days",
+       "required": false,
+       "type": "number"
+      }
+     ],
+     "value": {
+      "date": "={{ $json.params.date }}",
+      "days": "={{ $json.params.days }}"
+     }
+    }
+   },
+   "position": [
+    720,
+    -176
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "94c99883-328f-4e92-a079-d8a98f92e999",
+   "name": "Call search",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Web Search",
+     "mode": "list",
+     "value": "rRh2pplrLL0XhvAH"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ \"web.search\" }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    720,
+    -32
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "c66c8433-dfe9-4306-b8db-0f97b0f948ee",
+   "name": "Call news",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Web Search",
+     "mode": "list",
+     "value": "rRh2pplrLL0XhvAH"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ \"web.news\" }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    720,
+    112
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "a187b375-da67-48c6-bb69-9ee86651b4c7",
+   "name": "Call fetch",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Web Search",
+     "mode": "list",
+     "value": "rRh2pplrLL0XhvAH"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ \"web.fetch\" }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    720,
+    256
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "696d027b-3058-4a65-b39b-e710aaad3abb",
+   "name": "Call wiki",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Wikipedia",
+     "mode": "list",
+     "value": "PtmKyOOLgBNP5p1l"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ $json.params.operation || \"search.get\" }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    720,
+    384
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "id": "92ae2f7b-e564-48a4-9fe2-778a895f5c7b",
+   "name": "Call translate",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Translation",
+     "mode": "list",
+     "value": "saEBKPzzi4XlkaKg"
+    },
+    "workflowInputs": {
+     "mappingMode": "defineBelow",
+     "schema": [
+      {
+       "displayName": "operation",
+       "id": "operation",
+       "required": true,
+       "type": "string"
+      },
+      {
+       "displayName": "params",
+       "id": "params",
+       "required": false,
+       "type": "object"
+      }
+     ],
+     "value": {
+      "operation": "={{ \"language.translate\" }}",
+      "params": "={{ $json.params }}"
+     }
+    }
+   },
+   "position": [
+    720,
+    528
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "5c8b6632-ffb2-4999-8f01-e80a765f49d4",
+   "name": "Route by Tool",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "unknown"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "weather"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "prayer"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "search"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "news"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "fetch"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "wiki"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "translate"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "youtube"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "youtube"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "books"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "books"
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.tool }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "nasa"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       },
+       "outputKey": "nasa"
+      }
+     ]
+    }
+   },
+   "position": [
+    440,
+    0
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "0ae2206f-dfd4-4643-a8c0-45aebdc619c1",
+   "name": "Unknown Tool",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'unknown tool: ' + String($json.tool || '') + '. use: weather, prayer, search, news, fetch, wiki, translate, youtube, books, nasa' } }];"
+   },
+   "position": [
+    720,
+    688
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "1e3eb7bc-3dac-415d-96ae-3124af0f14aa",
+   "name": "Flatten Params",
+   "parameters": {
+    "jsCode": "// OTHVM — flatten params; keep flat args, normalize action/operation, and expose merged params.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nif (j.tool !== undefined) out.tool = j.tool;\n\nout.params = { ...out };\nreturn [{ json: out }];"
+   },
+   "position": [
+    220,
+    0
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "92915133-1d2c-41b4-b84c-7b71c5112b42",
+   "name": "Call youtube",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "YouTube",
+     "mode": "list",
+     "value": "qeCbfWbL28K82P2c"
+    },
+    "workflowInputs": {
+     "mappingMode": "autoMapInputData",
+     "schema": [],
+     "value": {}
+    }
+   },
+   "position": [
+    660,
+    848
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "5ffb5786-2087-4fc2-96df-62fa95bad30e",
+   "name": "Call books",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "Google Books",
+     "mode": "list",
+     "value": "eas5JwtqMZqzJQvo"
+    },
+    "workflowInputs": {
+     "mappingMode": "autoMapInputData",
+     "schema": [],
+     "value": {}
+    }
+   },
+   "position": [
+    660,
+    1008
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "ccc1a88b-052d-4fac-bd47-a924e42f497a",
+   "name": "Call nasa",
+   "parameters": {
+    "options": {
+     "waitForSubWorkflow": true
+    },
+    "workflowId": {
+     "__rl": true,
+     "cachedResultName": "NASA",
+     "mode": "list",
+     "value": "dmAuMGGB0NBHeSa8"
+    },
+    "workflowInputs": {
+     "mappingMode": "autoMapInputData",
+     "schema": [],
+     "value": {}
+    }
+   },
+   "position": [
+    660,
+    1168
+   ],
+   "type": "n8n-nodes-base.executeWorkflow",
+   "typeVersion": 1.3
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [],
+ "updatedAt": "2026-10-27T19:33:33.926Z"
+}

@@ -1,0 +1,1006 @@
+{
+ "active": true,
+ "connections": {
+  "Expand Params": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Route",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Input": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Expand Params",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Route": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "event.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "event.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "event.get",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "event.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "event.update",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "calendar.availability",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "calendar.getAll",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "event.move",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "calendar.create",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "calendar.delete",
+      "type": "main"
+     }
+    ],
+    [
+     {
+      "index": 0,
+      "node": "Unknown op",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "Unknown op": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "calendar.availability": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "calendar.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "calendar.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "calendar.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "calendar.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "calendar.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "calendar.getAll — compact",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "calendar.getAll — compact": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.create": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "event.create pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.create pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.delete": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.get": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "event.get pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.get pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.getAll": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "event.getAll pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.getAll pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.move": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "event.move pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.move pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.update": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "event.update pick",
+      "type": "main"
+     }
+    ]
+   ]
+  },
+  "event.update pick": {
+   "main": [
+    [
+     {
+      "index": 0,
+      "node": "Output",
+      "type": "main"
+     }
+    ]
+   ]
+  }
+ },
+ "createdAt": "2026-10-17T01:11:35.972Z",
+ "id": "o0mMFCT8UUTeW0Je",
+ "name": "Calendar",
+ "nodes": [
+  {
+   "id": "aa040100-4000-8000-000000000000",
+   "name": "Input",
+   "parameters": {
+    "workflowInputs": {
+     "values": [
+      {
+       "name": "operation"
+      },
+      {
+       "name": "params",
+       "type": "object"
+      }
+     ]
+    }
+   },
+   "position": [
+    -160,
+    128
+   ],
+   "type": "n8n-nodes-base.executeWorkflowTrigger",
+   "typeVersion": 1.1
+  },
+  {
+   "id": "aa040200-4000-8000-000000000000",
+   "name": "Route",
+   "parameters": {
+    "options": {
+     "fallbackOutput": "extra",
+     "renameFallbackOutput": "Unknown op"
+    },
+    "rules": {
+     "values": [
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "event.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "event.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "event.get"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "event.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "event.update"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "calendar.availability"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "calendar.getAll"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "event.move"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "calendar.create"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      },
+      {
+       "conditions": {
+        "combinator": "and",
+        "conditions": [
+         {
+          "leftValue": "={{ $json.operation }}",
+          "operator": {
+           "operation": "equals",
+           "type": "string"
+          },
+          "rightValue": "calendar.delete"
+         }
+        ],
+        "options": {
+         "caseSensitive": false,
+         "leftValue": "",
+         "typeValidation": "strict",
+         "version": 1
+        }
+       }
+      }
+     ]
+    }
+   },
+   "position": [
+    240,
+    -16
+   ],
+   "type": "n8n-nodes-base.switch",
+   "typeVersion": 3.4
+  },
+  {
+   "id": "aa040300-4000-8000-000000000000",
+   "name": "Output",
+   "parameters": {
+    "jsCode": "// OTHVM — final output normalizer: compact JSON, capped strings, capped total size\nconst out = [];\nlet total = 0;\nfor (const item of $input.all().slice(0, 25)) {\n  if (item.error) { const e = item.error; const msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error'; out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const j = item.json || {};\n  if (j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) { const e = j.error; const msg = typeof e === 'string' ? e : (e && typeof e === 'object' ? ([e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error') : String(e || 'unknown error')); out.push({ json: { ok: false, error: msg.slice(0, 400) } }); continue; }\n  const o = {};\n  for (const [k, v] of Object.entries(j)) {\n    if (v === null || v === undefined) continue;\n    if (typeof v === 'string') o[k] = v.length > 400 ? v.slice(0, 400) + '\\u2026' : v;\n    else if (typeof v === 'object') { const s = JSON.stringify(v); o[k] = s.length > 500 ? s.slice(0, 500) + '\\u2026' : v; }\n    else o[k] = v;\n  }\n  if (!Object.keys(o).length) continue;\n  const s = JSON.stringify(o);\n  if (total + s.length > 12000) break;\n  total += s.length;\n  out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    1088,
+    -32
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "id": "aa040400-4000-8000-000000000000",
+   "name": "Unknown op",
+   "parameters": {
+    "jsCode": "return [{ json: { ok: false, error: 'عملية غير معروفة: \"' + String(($json.operation || '')) + '\". العمليات المتاحة: ' + \"event.create, event.delete, event.get, event.getAll, event.update, calendar.availability, calendar.getAll, event.move, calendar.create, calendar.delete\" } }];"
+   },
+   "position": [
+    800,
+    1152
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa040500-4000-8000-000000000000",
+   "name": "event.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "additionalFields": {
+     "description": "={{ $json.description || undefined }}",
+     "location": "={{ $json.location || undefined }}",
+     "rrule": "={{ $json.rrule || undefined }}",
+     "summary": "={{ $json.summary || undefined }}"
+    },
+    "calendar": {
+     "__rl": true,
+     "cachedResultName": "primary",
+     "mode": "list",
+     "value": "primary"
+    },
+    "end": "={{ $json.end || undefined }}",
+    "start": "={{ $json.start || undefined }}"
+   },
+   "position": [
+    544,
+    -32
+   ],
+   "type": "n8n-nodes-base.googleCalendar",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "aa040600-4000-8000-000000000000",
+   "name": "event.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"htmlLink\",\"summary\",\"start\",\"end\",\"location\",\"status\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    -32
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa040700-4000-8000-000000000000",
+   "name": "event.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "calendar": {
+     "__rl": true,
+     "cachedResultName": "primary",
+     "mode": "list",
+     "value": "primary"
+    },
+    "eventId": "={{ $json.eventId }}",
+    "operation": "delete",
+    "options": {}
+   },
+   "position": [
+    544,
+    112
+   ],
+   "type": "n8n-nodes-base.googleCalendar",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa040800-4000-8000-000000000000",
+   "name": "event.get",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "calendar": {
+     "__rl": true,
+     "cachedResultName": "primary",
+     "mode": "list",
+     "value": "primary"
+    },
+    "eventId": "={{ $json.eventId }}",
+    "operation": "get",
+    "options": {}
+   },
+   "position": [
+    544,
+    240
+   ],
+   "type": "n8n-nodes-base.googleCalendar",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "aa040900-4000-8000-000000000000",
+   "name": "event.get pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"summary\",\"description\",\"location\",\"start\",\"end\",\"attendees\",\"htmlLink\",\"status\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    240
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa041000-4000-8000-000000000000",
+   "name": "event.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "calendar": {
+     "__rl": true,
+     "cachedResultName": "primary",
+     "mode": "list",
+     "value": "primary"
+    },
+    "limit": "={{ $json.limit ? Number($json.limit) : 50 }}",
+    "operation": "getAll",
+    "options": {
+     "orderBy": "startTime"
+    },
+    "timeMax": "={{ $json.timeMax || undefined }}",
+    "timeMin": "={{ $json.timeMin || $now.toISO() }}"
+   },
+   "position": [
+    544,
+    368
+   ],
+   "type": "n8n-nodes-base.googleCalendar",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "aa041100-4000-8000-000000000000",
+   "name": "event.getAll pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"summary\",\"start\",\"end\",\"location\",\"status\",\"htmlLink\",\"attendees\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    368
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa041200-4000-8000-000000000000",
+   "name": "event.update",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "calendar": {
+     "__rl": true,
+     "cachedResultName": "primary",
+     "mode": "list",
+     "value": "primary"
+    },
+    "eventId": "={{ $json.eventId }}",
+    "operation": "update",
+    "updateFields": {
+     "description": "={{ $json.description || undefined }}",
+     "end": "={{ $json.end || undefined }}",
+     "location": "={{ $json.location || undefined }}",
+     "start": "={{ $json.start || undefined }}",
+     "summary": "={{ $json.summary || undefined }}"
+    }
+   },
+   "position": [
+    544,
+    496
+   ],
+   "type": "n8n-nodes-base.googleCalendar",
+   "typeVersion": 1.3
+  },
+  {
+   "id": "aa041300-4000-8000-000000000000",
+   "name": "event.update pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"summary\",\"start\",\"end\",\"location\",\"status\",\"htmlLink\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    496
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa041400-4000-8000-000000000000",
+   "name": "calendar.availability",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "calendar": {
+     "__rl": true,
+     "cachedResultName": "primary",
+     "mode": "list",
+     "value": "primary"
+    },
+    "options": {
+     "outputFormat": "availability"
+    },
+    "resource": "calendar",
+    "timeMax": "={{ $json.timeMax }}",
+    "timeMin": "={{ $json.timeMin }}"
+   },
+   "position": [
+    544,
+    624
+   ],
+   "type": "n8n-nodes-base.googleCalendar",
+   "typeVersion": 1.3
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa041500-4000-8000-000000000000",
+   "name": "calendar.getAll",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "nodeCredentialType": "googleCalendarOAuth2Api",
+    "options": {},
+    "url": "https://www.googleapis.com/calendar/v3/users/me/calendarList?maxResults=100"
+   },
+   "position": [
+    544,
+    752
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa041600-4000-8000-000000000000",
+   "name": "calendar.getAll — compact",
+   "parameters": {
+    "jsCode": "return ((($json.items) || [])).map((c) => ({ json: { id: c.id, summary: c.summary, primary: c.primary || false, accessRole: c.accessRole } }));"
+   },
+   "position": [
+    800,
+    752
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa041700-4000-8000-000000000000",
+   "name": "event.move",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "POST",
+    "nodeCredentialType": "googleCalendarOAuth2Api",
+    "options": {},
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "destination",
+       "value": "={{ $json.destinationCalendarId }}"
+      }
+     ]
+    },
+    "sendQuery": true,
+    "url": "=https://www.googleapis.com/calendar/v3/calendars/{{ $json.calendarId || \"primary\" }}/events/{{ $json.eventId }}/move"
+   },
+   "position": [
+    544,
+    880
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa041800-4000-8000-000000000000",
+   "name": "event.move pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"summary\",\"htmlLink\",\"status\",\"start\",\"end\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    880
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa041900-4000-8000-000000000000",
+   "name": "calendar.create",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "jsonBody": "={{ JSON.stringify({ summary: $json.calendarTitle }) }}",
+    "method": "POST",
+    "nodeCredentialType": "googleCalendarOAuth2Api",
+    "options": {},
+    "sendBody": true,
+    "specifyBody": "json",
+    "url": "https://www.googleapis.com/calendar/v3/calendars"
+   },
+   "position": [
+    544,
+    1008
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "aa042000-4000-8000-000000000000",
+   "name": "calendar.create pick",
+   "parameters": {
+    "jsCode": "// keep only these fields (case-insensitive key match); error items pass through\nconst KEEP = [\"id\",\"summary\",\"timeZone\"];\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (item.error || j.ok === false || (Object.keys(j).length === 1 && 'error' in j)) {\n    const e = item.error || j.error;\n    let msg;\n    if (typeof e === 'string') msg = e;\n    else if (e && typeof e === 'object') msg = [e.message, e.description].filter((x) => typeof x === 'string' && x).join(' — ') || 'unknown error';\n    else msg = String(e || 'unknown error');\n    out.push({ json: { ok: false, error: msg.slice(0, 400) } });\n    continue;\n  }\n  const lower = {};\n  for (const k of Object.keys(j)) lower[k.toLowerCase()] = k;\n  const o = {};\n  for (const k of KEEP) {\n    const real = Object.prototype.hasOwnProperty.call(j, k) ? k : lower[k.toLowerCase()];\n    const v = real ? j[real] : undefined;\n    if (v === undefined || v === null || v === '') continue;\n    o[k] = (typeof v === 'string' && v.length > 300) ? v.slice(0, 300) + '\\u2026' : v;\n  }\n  if (Object.keys(o).length) out.push({ json: o });\n}\nreturn out.length ? out : [{ json: { ok: true, note: 'no results' } }];"
+   },
+   "position": [
+    800,
+    1008
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  },
+  {
+   "alwaysOutputData": true,
+   "credentials": {
+    "googleCalendarOAuth2Api": {
+     "id": "REPLACE_WITH_CREDENTIAL_ID",
+     "name": "Google Calendar account"
+    }
+   },
+   "id": "aa042100-4000-8000-000000000000",
+   "name": "calendar.delete",
+   "onError": "continueRegularOutput",
+   "parameters": {
+    "authentication": "predefinedCredentialType",
+    "method": "DELETE",
+    "nodeCredentialType": "googleCalendarOAuth2Api",
+    "options": {},
+    "url": "=https://www.googleapis.com/calendar/v3/calendars/{{ $json.calendarId }}"
+   },
+   "position": [
+    544,
+    1152
+   ],
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2
+  },
+  {
+   "id": "db5db156-ddff-4b3f-84d4-12d89901e8d8",
+   "name": "Expand Params",
+   "parameters": {
+    "jsCode": "// OTHVM — expand params; keep flat args and normalize action/operation.\nconst j = $json || {};\nlet p = j.params;\nif (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = {}; } }\nif (!p || typeof p !== 'object' || Array.isArray(p)) p = {};\nconst out = {};\nfor (const [k, v] of Object.entries(j)) {\n  if (k === 'params') continue;\n  out[k] = v;\n}\nObject.assign(out, p);\nif (out.action === undefined && out.operation !== undefined) out.action = out.operation;\nif (out.operation === undefined && out.action !== undefined) out.operation = out.action;\nreturn [{ json: out }];"
+   },
+   "position": [
+    32,
+    128
+   ],
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2
+  }
+ ],
+ "settings": {
+  "availableInMCP": true,
+  "binaryMode": "separate",
+  "executionOrder": "v1"
+ },
+ "tags": [
+  "Google"
+ ],
+ "updatedAt": "2026-10-27T19:33:33.572Z"
+}
