@@ -21,6 +21,8 @@ The current installation was built and checked with these versions:
 | Supabase Postgres | hosted project with `pgvector` |
 | Tailscale | current Windows client |
 | Android platform-tools | current `adb` |
+| Desktop pet | Pillow 13.0.0, sounddevice 0.5.6, Edge TTS 7.3.1 |
+| Local STT | faster-whisper 1.2.1 (optional fallback) |
 
 Use Python 3.12 for every venv. Newer versions may work, but they are not the
 verified runtime.
@@ -35,8 +37,10 @@ Install:
 4. **NSSM** and **Caddy** (Chocolatey is the simplest: `choco install nssm caddy`).
 5. Optional: **ngrok** or another HTTPS tunnel, **Tailscale**, and Android
    **platform-tools** for the phone.
-6. A **Supabase** project and an **n8n** installation (both have free tiers).
-7. Accounts/API keys for the services you want: Google Cloud OAuth, Telegram
+6. Optional: a microphone and speakers for the desktop pet. The local Whisper
+   base model needs about 70 MB of disk (larger models need more).
+7. A **Supabase** project and an **n8n** installation (both have free tiers).
+8. Accounts/API keys for the services you want: Google Cloud OAuth, Telegram
    BotFather, Gemini, NVIDIA, Groq, Notion, Linear, Todoist, Airtable, Stripe,
    NASA, Discord, GitHub.
 
@@ -46,7 +50,7 @@ tiers or local hardware.
 ## 2. Clone and create the Python environments
 
 ```powershell
-git clone <your-repo-url> D:\OTHVM
+git clone https://github.com/othvm/OTHVM.git D:\OTHVM
 Set-Location D:\OTHVM
 
 py -3.12 -m venv mcp_server\.venv
@@ -95,7 +99,8 @@ $files = @(
   '009_code_sessions.sql',
   '010_modes_builder_tables.sql',
   '011_unified_memory.sql',
-  '012_runtime_tables.sql'
+  '012_runtime_tables.sql',
+  '013_memory_graph.sql'
 )
 foreach ($f in $files) {
   mcp_server\.venv\Scripts\python.exe supabase\scripts\apply_sql.py "supabase\migrations\$f"
@@ -107,12 +112,21 @@ foreach ($f in $files) {
 ```sql
 select count(*) from public.memory_items;
 select count(*) from public.knowledge_base;
+select count(*) from public.memory_entities;
+select count(*) from public.memory_relations;
+select count(*) from public.memory_episodes;
 select proname from pg_proc where proname in
-  ('match_memory','search_memory_text','touch_memory','exec_sql');
+  ('match_memory','search_memory_text','touch_memory','exec_sql',
+   'match_entities','match_episodes','memory_traverse','memory_graph_stats');
 ```
 
 `011` backfills the legacy tables into `memory_items`. On a fresh project those
 tables are empty unless you ran `002`, so the result is normally zero rows.
+`013` is additive and leaves `memory_items` untouched.
+
+If you are upgrading an existing installation, run
+`scripts\backup_memory.py` first and keep the JSON plus manifest until the graph
+backfill is verified. See [`docs/memory.md`](memory.md#backup-and-recovery).
 
 ## 4. Install and start n8n
 
@@ -321,7 +335,58 @@ Service names:
 | `OTHVM-FastPath` | 5681 |
 | `OTHVM-Caddy` | 5680 |
 
-## 10. Android (optional)
+## 10. Desktop pet and voice (optional)
+
+The pet is a local view over the existing agent. It does not create a second
+agent, tool registry, or memory store. It uses the MCP bridge (`/agent/chat`),
+which calls the published n8n agent and reads its real message log.
+
+1. Install its Python dependencies into the existing MCP virtualenv:
+
+```powershell
+mcp_server\.venv\Scripts\python.exe -m pip install -r desktop_pet\requirements.txt
+Copy-Item desktop_pet\config.example.json desktop_pet\config.json
+```
+
+2. Confirm `mcp_server\config.json` has `agent_id`, `n8n_mcp_key`, and a readable
+   `n8n_db_path`. Then check:
+
+```powershell
+$cfg = Get-Content mcp_server\config.json -Raw | ConvertFrom-Json
+Invoke-RestMethod http://127.0.0.1:8765/agent/status `
+  -Headers @{ 'X-API-Key' = $cfg.api_key }
+```
+
+3. Start it in the **interactive desktop session**:
+
+```powershell
+mcp_server\.venv\Scripts\python.exe desktop_pet\app.py --debug
+```
+
+   Use `pythonw.exe` without `--debug` for normal use. The pet cannot render a
+   layered window from session 0.
+
+4. Optional: preload the offline STT model (about 70 MB, one time):
+
+```powershell
+mcp_server\.venv\Scripts\python.exe -c "from faster_whisper import WhisperModel; WhisperModel('base', device='cpu', compute_type='int8', download_root='desktop_pet/cache/whisper'); print('model ready')"
+```
+
+   Gemini STT is the primary backend; local Whisper is the fallback. Edge TTS is
+   the primary Arabic voice, with Windows SAPI as the offline fallback.
+
+5. Optional autostart for the current user:
+
+```powershell
+mcp_server\.venv\Scripts\python.exe desktop_pet\autostart.py install --hidden
+```
+
+`desktop_pet\config.json` is untracked and must contain no secrets. The pet reads
+the MCP and Gemini keys from `mcp_server\config.json` or environment variables.
+See [`desktop_pet/README.md`](../desktop_pet/README.md) for controls and
+troubleshooting.
+
+## 11. Android (optional)
 
 1. Enable **Developer options → USB debugging**.
 2. Connect USB once and run `adb tcpip 5555`, or use Android 11+ wireless
@@ -331,7 +396,7 @@ Service names:
 5. Check `GET http://127.0.0.1:8767/health` and confirm `connected=true` before
    claiming phone control works.
 
-## 11. Telegram Personal (optional)
+## 12. Telegram Personal (optional)
 
 1. Create an app at <https://my.telegram.org> and copy `api_id` / `api_hash`.
 2. Fill `telegram_personal/config.json`.
@@ -343,7 +408,7 @@ Service names:
 This component is optional and may be blocked on networks that cannot reach
 Telegram MTProto. The bot path does not depend on it.
 
-## 12. First-run checks
+## 13. First-run checks
 
 ```powershell
 # Ports
@@ -358,6 +423,16 @@ Invoke-RestMethod http://127.0.0.1:8766/health
 Invoke-RestMethod http://127.0.0.1:5681/health
 Invoke-WebRequest http://127.0.0.1:5678/healthz
 
+# Agent bridge
+$cfg = Get-Content mcp_server\config.json -Raw | ConvertFrom-Json
+$headers = @{ 'X-API-Key' = $cfg.api_key }
+Invoke-RestMethod http://127.0.0.1:8765/agent/status -Headers $headers
+
+# Memory graph
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8765/tools/db `
+  -Headers $headers -ContentType 'application/json' `
+  -Body (@{ operation = 'memory.graph_stats' } | ConvertTo-Json)
+
 # Workflow mirror vs live
 mcp_server\.venv\Scripts\python.exe deploy\workflows\sync_workflows.py check
 
@@ -367,7 +442,9 @@ mcp_server\.venv\Scripts\python.exe deploy\workflows\sync_workflows.py scan
 
 Then send the bot a normal message, a memory query, and a wake command. A fresh
 install is complete only when the agent replies, a tool call succeeds, and
-`memory.stats` reports zero missing embeddings.
+`memory.stats` reports zero missing embeddings. If the pet is installed, also
+send one panel message and confirm a real response; a healthy `/agent/status`
+alone is not proof that the agent answered.
 
 See `docs/validation.md` for the checks that were actually executed on this
 repository and the ones that require hardware or a second machine.

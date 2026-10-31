@@ -1,10 +1,13 @@
 # Memory
 
-OTHVM has two different retrieval stores and one audit trail:
+OTHVM has one canonical fact store, a graph layer, a document store, and one
+audit trail:
 
 | Store | Purpose | Authority |
 | --- | --- | --- |
 | `memory_items` | Curated, durable facts about the operator and the system | Unified memory v1 |
+| `memory_entities` / `memory_relations` / `memory_episodes` | Typed entities, explicit edges, and time-bounded events | Memory Graph v1 |
+| `memory_entity_mentions` / `memory_episode_items` / `memory_episode_entities` | Provenance links between the graph and facts | Memory Graph v1 |
 | `memory_events` | Append-only audit of writes, deletes, merges, restores | Audit |
 | `knowledge_base` | Chunked documents for RAG (Notion, Gmail, Drive, GitHub) | Document store |
 
@@ -110,6 +113,114 @@ The MCP server dual-writes them on `remember`, `forget`, and `restore`. Triggers
 in `011` mirror direct legacy writes back into `memory_items`. Do not write the
 legacy tables directly; use the memory tool.
 
+## Memory Graph v1
+
+`supabase/migrations/013_memory_graph.sql` adds a graph layer without moving or
+deleting any `memory_items` row. The canonical fact store remains
+`memory_items`; the graph adds structure, time, and provenance.
+
+| Table | Contents |
+| --- | --- |
+| `memory_entities` | Typed things: person, project, tool, workflow, skill, service, component, concept. `canonical_key` is a stable slug unique per namespace; `aliases` supports explicit mention matching. Status is `active`, `forgotten`, or `merged`. |
+| `memory_relations` | Explicit directed edges (`from_entity_id`, `predicate`, `to_entity_id`) with confidence `0..1`, `valid_from`, `valid_to`, source, and status `active`, `forgotten`, or `expired`. Self-edges and duplicate edges are rejected. |
+| `memory_episodes` | Time-bounded events or conversations with `session_id`, `title`, `summary`, `occurred_at`, `ended_at`, `participants`, importance, and status `active` or `forgotten`. |
+| `memory_entity_mentions` | Which memory items explicitly mention an entity, with confidence and source. |
+| `memory_episode_items` | Which memory items belong to an episode, with a role. |
+| `memory_episode_entities` | Which entities participate in an episode, with a role. |
+
+Entities and episodes use 3072-dimension Gemini embeddings with HNSW cosine
+indexes and generated `tsvector` columns for keyword search. Edges are never
+inferred during retrieval: only explicitly stored relations are traversed.
+`valid_to IS NULL` means an edge is still valid; expired or forgotten edges stay
+for audit but are not traversed by default.
+
+### Graph operations
+
+All operations use `POST /tools/db` with
+`{"operation": "memory.<op>", ...}`. Write and destructive operations require the
+MCP permission mode `write` or `full`; destructive operations additionally
+require `confirm: true`.
+
+| Operation | Key parameters | Behavior |
+| --- | --- | --- |
+| `entity_upsert` | `name`, `entity_type?`, `description?`, `aliases?`, `attributes?`, `importance?`, `namespace?`, `source?`, `embed?` | Creates or updates by `(namespace, canonical_key)`; returns `created`, `changed`, `embedded` |
+| `entity_get` | `id` or `name`, `namespace?`, `include_graph?` | Returns the entity, its relations, and linked memory items |
+| `entity_search` | `query` or no query, `namespace?`, `entity_type?`, `limit?`, `min_similarity?` | Vector search with keyword fallback; no query lists active entities |
+| `entity_forget` | `id` or `name`, `confirm:true`, `reason?` | Soft-forgets the entity and its active relations; audit rows remain |
+| `relation_upsert` | `from`, `to` (IDs or names), `predicate?`, `confidence?`, `valid_from?`, `valid_to?`, `source?` | Creates or updates one explicit edge |
+| `relation_query` | `id`/`name?`, `direction?` (`in`/`out`/`both`), `predicate?`, `active_only?`, `limit?` | Lists edges, optionally for one entity |
+| `relation_forget` | `id`, `confirm:true`, `reason?` | Soft-forgets one edge |
+| `traverse` | `id` or `name`, `depth?` (1–5), `namespace?`, `predicate?` | Bounded graph traversal; returns edges, not synthesized prose |
+| `episode_add` | `title?`, `summary`, `session_id?`, `occurred_at?`, `ended_at?`, `participants?`, `memory_ids?`, `entity_ids?`, `importance?` | Creates an episode and its provenance links |
+| `episode_search` | `query` or no query, `namespace?`, `from?`, `to?`, `limit?`, `min_similarity?` | Vector/keyword search or a recent time window |
+| `episode_forget` | `id`, `confirm:true`, `reason?` | Soft-forgets an episode and clears its embedding |
+| `graph_stats` | `namespace?` | Counts active entities, episodes, relations, predicates, entity types, and mention links |
+| `backfill_graph` | `dry_run?` (default true), `namespace?` (default `system`), `embed?` | Creates entities from the live capability inventory and explicit mention links |
+| `recall_hybrid` | `query`, `namespace?`, `limit?`, `min_similarity?`, `graph_depth?`, `include_graph?`, `from?`, `to?` | Runs fact, entity, and episode retrieval plus bounded traversal |
+
+### Hybrid retrieval
+
+`memory.recall_hybrid` is the preferred read when a question mixes facts,
+projects, tools, and past events. It returns:
+
+- `memories` from `memory.recall` (vector with keyword fallback);
+- `entities` from `match_entities` / `search_entities_text`;
+- `episodes` from `match_episodes` / `search_episodes_text`;
+- `linked_memories` reached through explicit entity mentions;
+- `relations` reached by bounded traversal (depth capped at 5) and direct edges;
+- `combined`, a single ranked list tagged with `kind` (`memory`, `entity`,
+  `episode`, `linked_memory`);
+- `provenance`, listing the retrievers and every memory, entity, and episode ID
+  used.
+
+Entity and episode vector scoring follows the same shape as fact retrieval:
+`0.85 * cosine similarity + 0.15 * text rank`. If an embedding call fails, the
+response includes `entity_embed_error` or `episode_embed_error` and the
+corresponding keyword fallback is tagged; the operation does not pretend the
+semantic path succeeded.
+
+### Backfill and current state
+
+The 2026-10-30 backfill ran against the live database with `dry_run=false`:
+
+| Metric | Value |
+| --- | --- |
+| Active entities | 90 |
+| Entity rows including merged/forgotten | 91 |
+| Entity types | 15 tools, 65 workflows, 5 skills, 2 services, 2 components, 1 agent |
+| Explicit relations | 1 (`uses_tool`) |
+| Entity mention links | 45 |
+| Episodes | 0 |
+| Errors on rerun | 0 |
+
+The backfill is idempotent: it matches existing entities by canonical key and
+uses `resolution=ignore-duplicates` for mention links. Run the dry-run first:
+
+```powershell
+$cfg = Get-Content mcp_server\config.json -Raw | ConvertFrom-Json
+$headers = @{ 'X-API-Key' = $cfg.api_key }
+$body = @{ operation = 'memory.backfill_graph'; dry_run = $true } | ConvertTo-Json
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8765/tools/db `
+  -Headers $headers -ContentType 'application/json' -Body $body
+```
+
+Then repeat with `dry_run = $false` only after reviewing the counts.
+
+### Deletion and temporal validity
+
+Deletion is soft and audited. `entity_forget` calls the database RPC, marks the
+entity `forgotten`, soft-forgets its active relations, and leaves mention and
+audit rows intact. `relation_forget` and `episode_forget` mark only that row
+`forgotten`. `memory_items` deletion continues to use `memory.forget`, which
+clears the embedding and writes a `memory_events` row. Graph statistics exclude
+forgotten entities and episodes, so deleted knowledge disappears from retrieval
+without destroying the evidence that it existed.
+
+Entity, relation, and episode deletion is not reversible through the MCP API.
+Restore from a verified Supabase export if a deletion was a mistake. The
+`valid_from` / `valid_to` fields let a relation expire without deleting its
+history; `relation_query` filters to active edges by default.
+
 ## Consolidation
 
 The 2026-10-28 pass reduced active memory from 98 rows to 35 canonical rows:
@@ -201,16 +312,29 @@ brief as the previous session.
 
 ## Backup and recovery
 
+- `scripts/backup_memory.py` is the pre-migration snapshot tool. It is read-only
+  against Supabase, writes a timestamped JSON file plus SHA-256 manifest under
+  `backups/memory/` (git-ignored), re-reads the file, and verifies every row
+  count and hash against the live tables.
+- The 2026-10-30 snapshot before `013` was verified: 128 `memory_items`, 128
+  `memory_events`, 19 `othman_memory`, and 16 `othvm_memory` rows. See
+  `backups/memory/memory_20261030T020540Z.json` and its `.manifest.json` on the
+  host.
 - `deploy/scripts/ops/maintenance.py` exports every public Supabase table
-  (skipping vector columns) to `OTHVM_BACKUPS/<date>/supabase/`.
+  (skipping vector columns) to `OTHVM_BACKUPS/<date>/supabase/`. That export is
+  the one that includes the graph and provenance tables.
 - Workflows are recoverable from `deploy/workflows/current/` and re-importable
   with `import_workflows.py`.
-- Memory rows are recoverable from the Supabase export. Restore into a fresh
-  project, then run `memory.embed` to rebuild embeddings.
+- Restore memory rows into a fresh project, then run `memory.embed` to rebuild
+  embeddings. Restore graph rows only after `011` and `013` are applied; rerun
+  `memory.backfill_graph` to rebuild explicit mention links if a graph export is
+  incomplete.
 - `memory_events` is append-only and should be exported with the rest of the
   database.
-- If embeddings are lost, `memory.embed` regenerates them in batches; retrieval
-  falls back to keyword search until the backfill completes.
+- If embeddings are lost, `memory.embed` regenerates fact embeddings in batches.
+  Graph embeddings are rebuilt by the graph backfill; verify with
+  `graph_stats` and a keyword/semantic `recall_hybrid` query. Retrieval falls
+  back to keyword search until the backfill completes.
 
 ## Hygiene rules
 
@@ -220,5 +344,12 @@ brief as the previous session.
 - Do not store project documentation, code, logs, or transient chatter.
 - Do not store secrets, tokens, passwords, or full chat transcripts.
 - Use `metadata` for provenance, not for the fact itself.
-- Run `stats` after changes and confirm `missing_embeddings=0`.
-- Run `consolidate` as a dry-run before applying it.
+- Keep graph edges explicit. Do not create a relation unless the source states
+  it; retrieval must never invent one.
+- Use stable entity names and aliases; `entity_upsert` canonicalizes the key and
+  updates instead of duplicating.
+- Use `valid_from` / `valid_to` for relationships that change over time instead
+  of deleting history.
+- Run `stats` after changes and confirm `missing_embeddings=0`; run
+  `graph_stats` and confirm the expected active entity/relation counts.
+- Run `consolidate` and `backfill_graph` as dry-runs before applying them.

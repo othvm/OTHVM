@@ -29,6 +29,7 @@ from __future__ import annotations
 import asyncio
 import ast
 import base64
+import queue as thread_queue
 import difflib
 import fnmatch
 import glob as globmod
@@ -58,8 +59,10 @@ from zoneinfo import ZoneInfo
 import httpx
 import psutil
 from fastapi import FastAPI, Header, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 import uvicorn
+
+from agent_bridge import AgentBridge, AgentBridgeError, classify_tool
 
 # --------------------------------------------------------------------------- paths
 BASE_DIR = Path(__file__).resolve().parent
@@ -91,6 +94,10 @@ DEFAULT_CONFIG = {
     "supabase_service_key": "",
     "max_command_timeout": 300,
     "max_record_seconds": 300,
+    "n8n_base": "http://localhost:5678",
+    "n8n_mcp_key": "",
+    "agent_id": "",
+    "agent_timeout_seconds": 300,
 }
 
 
@@ -125,6 +132,16 @@ if not CFG.get("api_key"):
     save_json(CONFIG_FILE, CFG)
 
 API_KEY = CFG["api_key"]
+
+# The desktop/voice layer calls the existing published n8n agent through n8n's
+# own MCP server.  No second agent or duplicated tools live here.
+AGENT_BRIDGE = AgentBridge(
+    n8n_base=str(CFG.get("n8n_base") or "http://localhost:5678"),
+    n8n_mcp_key=str(CFG.get("n8n_mcp_key") or ""),
+    agent_id=str(CFG.get("agent_id") or ""),
+    db_path=str(CFG.get("n8n_db_path") or ""),
+    timeout=float(CFG.get("agent_timeout_seconds") or 300),
+)
 
 # --------------------------------------------------------------------------- permissions
 LEVELS = {"none": 0, "read": 1, "write": 2, "full": 3}
@@ -199,6 +216,57 @@ def log_action(category: str, action: str, body: dict, status: str, detail: str 
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")
     except Exception:
         pass
+    # A compact, payload-free event for the desktop pet and diagnostics.
+    try:
+        ACTION_EVENTS.put_nowait({
+            "type": "tool",
+            "ts": entry["ts"],
+            "category": category,
+            "action": action,
+            "status": status,
+            "ms": ms,
+            "state": _state_for_action(category, action, status),
+        })
+    except Exception:
+        pass
+
+
+# --------------------------------------------------------------------------- event bus
+ACTION_EVENTS: thread_queue.Queue = thread_queue.Queue(maxsize=500)
+EVENT_SUBSCRIBERS: set[asyncio.Queue] = set()
+EVENT_PUMP_TASK: asyncio.Task | None = None
+
+
+def _state_for_action(category: str, action: str, status: str) -> str:
+    if str(status).lower() in ("error", "failed", "failure"):
+        return "ERROR"
+    try:
+        return classify_tool(category, {"action": action})[0]
+    except Exception:
+        return "WORKING"
+
+
+async def publish_event(event_type: str, data: dict) -> None:
+    """Broadcast an event to every connected desktop/diagnostic SSE client."""
+    payload = {"type": event_type, "ts": datetime.now(timezone.utc).isoformat(), **(data or {})}
+    for subscriber in list(EVENT_SUBSCRIBERS):
+        try:
+            subscriber.put_nowait(payload)
+        except Exception:
+            pass
+
+
+async def _event_pump() -> None:
+    while True:
+        try:
+            item = await asyncio.to_thread(ACTION_EVENTS.get, True, 1.0)
+        except Exception:
+            continue
+        for subscriber in list(EVENT_SUBSCRIBERS):
+            try:
+                subscriber.put_nowait(item)
+            except Exception:
+                pass
 
 
 # --------------------------------------------------------------------------- telegram
@@ -5766,13 +5834,702 @@ async def _memory_exec(query: str) -> int:
     return int(res.get("row_count") or 0)
 
 
+# --------------------------------------------------------------------------- memory graph v1
+MEMORY_ENTITY_DEFAULT_TYPE = "concept"
+
+
+def _mem_canonical(value: Any, default: str = "") -> str:
+    return _mem_slug(value, default).lower()
+
+
+def _mem_uuid(value: Any) -> str | None:
+    s = str(value or "").strip()
+    if re.fullmatch(r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-"
+                    r"[0-9a-fA-F]{4}-[0-9a-fA-F]{12}", s):
+        return s
+    return None
+
+
+def _mem_str_list(value: Any) -> list[str]:
+    if isinstance(value, (list, tuple, set)):
+        items = [str(v).strip() for v in value]
+    elif isinstance(value, str):
+        items = [v.strip() for v in re.split(r"[,;\n]", value)]
+    else:
+        items = []
+    out: list[str] = []
+    seen: set[str] = set()
+    for item in items:
+        if item and item.casefold() not in seen:
+            seen.add(item.casefold())
+            out.append(item)
+    return out
+
+
+def _mem_iso(value: Any, default: str | None = None) -> str | None:
+    if value in (None, ""):
+        return default
+    try:
+        dt = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.isoformat()
+    except Exception:
+        return default
+
+
+def _mem_entity_compact(row: dict, max_description: int = 600) -> dict:
+    if not isinstance(row, dict):
+        return {}
+    out = {
+        "id": row.get("id"),
+        "namespace": row.get("namespace"),
+        "type": row.get("entity_type"),
+        "name": row.get("name"),
+        "canonical_key": row.get("canonical_key"),
+        "aliases": row.get("aliases") or [],
+        "description": str(row.get("description") or "")[:max_description],
+        "attributes": row.get("attributes") or {},
+        "importance": row.get("importance"),
+        "status": row.get("status") or "active",
+        "updated_at": row.get("updated_at"),
+    }
+    if row.get("similarity") is not None:
+        out["similarity"] = round(float(row["similarity"]), 4)
+    if row.get("score") is not None:
+        out["score"] = round(float(row["score"]), 4)
+    if row.get("fallback"):
+        out["fallback"] = row.get("fallback")
+    return out
+
+
+def _mem_relation_compact(row: dict) -> dict:
+    if not isinstance(row, dict):
+        return {}
+    return {
+        "id": row.get("id"),
+        "namespace": row.get("namespace"),
+        "predicate": row.get("predicate"),
+        "confidence": row.get("confidence"),
+        "status": row.get("status"),
+        "source": row.get("source"),
+        "valid_from": row.get("valid_from"),
+        "valid_to": row.get("valid_to"),
+        "from": {"id": row.get("from_id"), "name": row.get("from_name"),
+                 "type": row.get("from_type")},
+        "to": {"id": row.get("to_id"), "name": row.get("to_name"),
+               "type": row.get("to_type")},
+    }
+
+
+def _mem_episode_compact(row: dict, max_summary: int = 1200) -> dict:
+    if not isinstance(row, dict):
+        return {}
+    out = {
+        "id": row.get("id"),
+        "namespace": row.get("namespace"),
+        "session_id": row.get("session_id"),
+        "title": row.get("title"),
+        "summary": str(row.get("summary") or "")[:max_summary],
+        "occurred_at": row.get("occurred_at"),
+        "ended_at": row.get("ended_at"),
+        "participants": row.get("participants") or [],
+        "importance": row.get("importance"),
+        "status": row.get("status") or "active",
+        "updated_at": row.get("updated_at"),
+    }
+    if row.get("similarity") is not None:
+        out["similarity"] = round(float(row["similarity"]), 4)
+    if row.get("score") is not None:
+        out["score"] = round(float(row["score"]), 4)
+    if row.get("fallback"):
+        out["fallback"] = row.get("fallback")
+    return out
+
+
+async def _mem_entity_get(namespace: str, *, entity_id: Any = None,
+                          canonical_key: str | None = None,
+                          name: str | None = None) -> dict | None:
+    if entity_id:
+        uid = _mem_uuid(entity_id)
+        if not uid:
+            return None
+        rows = await _mem_rest(
+            "memory_entities", "GET",
+            "id=eq." + quote(uid, safe="") + "&limit=1")
+        return rows[0] if rows else None
+    if canonical_key:
+        rows = await _mem_rest(
+            "memory_entities", "GET",
+            f"namespace=eq.{quote(namespace, safe='')}"
+            f"&canonical_key=eq.{quote(canonical_key, safe='')}&limit=1")
+        if rows:
+            return rows[0]
+    if name:
+        rows = await _mem_rest(
+            "memory_entities", "GET",
+            f"namespace=eq.{quote(namespace, safe='')}"
+            f"&name=eq.{quote(name, safe='')}&limit=1")
+        if rows:
+            return rows[0]
+    return None
+
+
+def _mem_entity_embed_text(namespace: str, entity_type: str, name: str,
+                           description: str, aliases: list[str],
+                           attributes: dict) -> str:
+    return (
+        f"{namespace} | entity:{entity_type} | {name}\n{description}\n"
+        f"{' '.join(aliases)}\n{json.dumps(attributes, ensure_ascii=False)}"
+    )[:9000]
+
+
+async def _mem_entity_upsert(*, namespace: str, name: str, entity_type: str = "",
+                             description: str = "", aliases: Any = None,
+                             attributes: dict | None = None, importance: int = 3,
+                             source: str = "agent", metadata: dict | None = None,
+                             embed: bool = True,
+                             embedding: list[float] | None = None) -> dict:
+    """Create or update one entity.  Existing values are merged, never cleared."""
+    name = str(name or "").strip()
+    if not name:
+        raise ValueError("entity name is required")
+    canonical_key = _mem_canonical(name)
+    if not canonical_key:
+        raise ValueError("entity name has no usable characters")
+    existing = await _mem_entity_get(namespace, canonical_key=canonical_key)
+    existing = existing or {}
+
+    merged_aliases = _mem_str_list(existing.get("aliases"))
+    for alias in _mem_str_list(aliases):
+        if alias.casefold() != name.casefold() and alias.casefold() not in {
+            a.casefold() for a in merged_aliases
+        }:
+            merged_aliases.append(alias)
+    merged_attributes = dict(existing.get("attributes") or {})
+    if isinstance(attributes, dict):
+        merged_attributes.update(attributes)
+    merged_meta = dict(existing.get("metadata") or {})
+    if isinstance(metadata, dict):
+        merged_meta.update(metadata)
+    old_description = str(existing.get("description") or "")
+    final_description = str(description or "").strip() or old_description
+    entity_type = _mem_slug(entity_type or existing.get("entity_type")
+                            or MEMORY_ENTITY_DEFAULT_TYPE,
+                            MEMORY_ENTITY_DEFAULT_TYPE).lower()
+    importance = max(1, min(5, int(importance or existing.get("importance") or 3)))
+    embed_text = _mem_entity_embed_text(namespace, entity_type, name,
+                                        final_description, merged_aliases,
+                                        merged_attributes)
+    text_hash = hashlib.sha1(embed_text.encode("utf-8")).hexdigest()
+    payload = {
+        "namespace": namespace,
+        "entity_type": entity_type,
+        "name": name,
+        "canonical_key": canonical_key,
+        "aliases": merged_aliases,
+        "description": final_description,
+        "attributes": merged_attributes,
+        "importance": importance,
+        "status": "active",
+        "source": str(source or existing.get("source") or "agent")[:80],
+        "metadata": merged_meta,
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    embed_error = ""
+    needs_embedding = bool(embed) and (
+        not existing or merged_meta.get("embedding_hash") != text_hash
+    )
+    if needs_embedding:
+        try:
+            vector = embedding if embedding is not None else (await gemini_embed([embed_text]))[0]
+            payload["embedding"] = _as_vector_literal(vector)
+            merged_meta["embedding_hash"] = text_hash
+            payload["metadata"] = merged_meta
+        except Exception as e:  # noqa: BLE001
+            embed_error = f"{type(e).__name__}: {e}"[:240]
+            if existing and final_description != old_description:
+                payload["embedding"] = None
+    if existing:
+        rows = await _mem_rest(
+            "memory_entities", "PATCH",
+            "id=eq." + quote(str(existing["id"]), safe=""), payload,
+            prefer="return=representation")
+        created = False
+    else:
+        rows = await _mem_rest(
+            "memory_entities", "POST", "on_conflict=namespace,canonical_key",
+            payload, prefer="resolution=merge-duplicates,return=representation")
+        created = True
+    row = rows[0] if isinstance(rows, list) and rows else (rows if isinstance(rows, dict) else {})
+    await _mem_event(
+        "entity_create" if created else "entity_update",
+        namespace=namespace, category="entity:" + entity_type, key=canonical_key,
+        old_value=old_description, new_value=final_description,
+        reason=str(metadata.get("reason") if isinstance(metadata, dict) else "") or "",
+        actor=str(source or "agent"),
+        metadata={"entity_id": row.get("id"), "entity_type": entity_type},
+    )
+    out = {"entity": _mem_entity_compact(row), "created": created}
+    if embed_error:
+        out["embed_error"] = embed_error
+    return out
+
+
+async def _mem_resolve_entity(value: Any, namespace: str) -> dict | None:
+    if isinstance(value, dict):
+        value = value.get("id") or value.get("name") or value.get("key")
+    raw = str(value or "").strip()
+    if not raw:
+        return None
+    uid = _mem_uuid(raw)
+    if uid:
+        return await _mem_entity_get(namespace, entity_id=uid)
+    return await _mem_entity_get(namespace, canonical_key=_mem_canonical(raw), name=raw)
+
+
+async def _mem_entity_search(query: str, namespace: str | None = None,
+                             entity_type: str | None = None, limit: int = 8,
+                             min_similarity: float = 0.35,
+                             embed: bool = True) -> tuple[list[dict], str]:
+    rows: list[dict] = []
+    embed_error = ""
+    if query and embed:
+        try:
+            vector = (await gemini_embed([query], task_type="RETRIEVAL_QUERY"))[0]
+            rows = await sb_rpc("match_entities", {
+                "query_embedding": _as_vector_literal(vector),
+                "query_text": query,
+                "match_count": limit,
+                "filter_namespace": namespace,
+                "filter_type": entity_type,
+                "min_similarity": min_similarity,
+            }) or []
+        except Exception as e:  # noqa: BLE001
+            embed_error = str(e)[:240]
+    if not rows and query:
+        rows = await sb_rpc("search_entities_text", {
+            "p_query": query,
+            "p_namespace": namespace,
+            "p_type": entity_type,
+            "p_limit": limit,
+        }) or []
+        if embed_error:
+            for row in rows:
+                row["fallback"] = "keyword"
+    return rows, embed_error
+
+
+async def _mem_relation_upsert(*, namespace: str, from_entity: dict, to_entity: dict,
+                               predicate: str, confidence: float = 1.0,
+                               source: str = "agent", metadata: dict | None = None,
+                               valid_from: Any = None, valid_to: Any = None) -> dict:
+    predicate = _mem_slug(predicate or "related_to", "related_to").lower()
+    if not predicate:
+        raise ValueError("predicate is required")
+    if str(from_entity.get("id")) == str(to_entity.get("id")):
+        raise ValueError("a relation cannot point an entity at itself")
+    confidence = max(0.0, min(1.0, float(confidence if confidence is not None else 1.0)))
+    existing_rows = await _mem_rest(
+        "memory_relations", "GET",
+        f"namespace=eq.{quote(namespace, safe='')}"
+        f"&from_entity_id=eq.{quote(str(from_entity['id']), safe='')}"
+        f"&predicate=eq.{quote(predicate, safe='')}"
+        f"&to_entity_id=eq.{quote(str(to_entity['id']), safe='')}&limit=1")
+    existing = existing_rows[0] if existing_rows else None
+    payload = {
+        "namespace": namespace,
+        "from_entity_id": from_entity["id"],
+        "predicate": predicate,
+        "to_entity_id": to_entity["id"],
+        "confidence": confidence,
+        "status": "active",
+        "source": str(source or "agent")[:80],
+        "metadata": metadata or {},
+        "valid_from": _mem_iso(valid_from) or datetime.now(timezone.utc).isoformat(),
+        "valid_to": _mem_iso(valid_to),
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    if existing:
+        rows = await _mem_rest(
+            "memory_relations", "PATCH",
+            "id=eq." + quote(str(existing["id"]), safe=""), payload,
+            prefer="return=representation")
+        created = False
+    else:
+        rows = await _mem_rest(
+            "memory_relations", "POST",
+            "on_conflict=namespace,from_entity_id,predicate,to_entity_id",
+            payload, prefer="resolution=merge-duplicates,return=representation")
+        created = True
+    row = rows[0] if isinstance(rows, list) and rows else (rows if isinstance(rows, dict) else {})
+    await _mem_event(
+        "relation_create" if created else "relation_update",
+        namespace=namespace, category="relation", key=predicate,
+        new_value=f"{from_entity.get('name')} {predicate} {to_entity.get('name')}",
+        actor=str(source or "agent"),
+        metadata={"relation_id": row.get("id"), "from": from_entity.get("id"),
+                  "to": to_entity.get("id")},
+    )
+    row["from_id"] = from_entity.get("id")
+    row["from_name"] = from_entity.get("name")
+    row["from_type"] = from_entity.get("entity_type")
+    row["to_id"] = to_entity.get("id")
+    row["to_name"] = to_entity.get("name")
+    row["to_type"] = to_entity.get("entity_type")
+    return {"relation": _mem_relation_compact(row), "created": created}
+
+
+async def _mem_relation_rows(namespace: str | None, entity_id: str | None,
+                             direction: str = "both", predicate: str | None = None,
+                             active_only: bool = True, limit: int = 50) -> list[dict]:
+    where = []
+    if namespace:
+        where.append("r.namespace = " + _sql_lit(namespace))
+    if entity_id:
+        if direction == "out":
+            where.append("r.from_entity_id = " + _sql_lit(entity_id))
+        elif direction == "in":
+            where.append("r.to_entity_id = " + _sql_lit(entity_id))
+        else:
+            where.append("(r.from_entity_id = " + _sql_lit(entity_id) +
+                         " OR r.to_entity_id = " + _sql_lit(entity_id) + ")")
+    if predicate:
+        where.append("r.predicate = " + _sql_lit(predicate))
+    if active_only:
+        where.append("r.status = 'active'")
+    clause = (" WHERE " + " AND ".join(where)) if where else ""
+    return await _memory_sql(f"""
+        SELECT r.id, r.namespace, r.predicate, r.confidence, r.status, r.source,
+               r.valid_from, r.valid_to, r.metadata,
+               f.id AS from_id, f.name AS from_name, f.entity_type AS from_type,
+               t.id AS to_id, t.name AS to_name, t.entity_type AS to_type
+        FROM public.memory_relations r
+        JOIN public.memory_entities f ON f.id = r.from_entity_id
+        JOIN public.memory_entities t ON t.id = r.to_entity_id
+        {clause}
+        ORDER BY r.updated_at DESC
+        LIMIT {max(1, min(int(limit), 200))}
+    """)
+
+
+async def _mem_traverse(start_id: str, depth: int = 2,
+                        namespace: str | None = None,
+                        predicate: str | None = None) -> list[dict]:
+    uid = _mem_uuid(start_id)
+    if not uid:
+        return []
+    rows = await sb_rpc("memory_traverse", {
+        "p_start": uid,
+        "p_depth": max(1, min(int(depth), 5)),
+        "p_namespace": namespace,
+        "p_predicate": predicate,
+    }) or []
+    from_ids = sorted({str(r.get("from_id")) for r in rows if r.get("from_id")})
+    names: dict[str, dict] = {}
+    if from_ids:
+        entities = await _mem_rest(
+            "memory_entities", "GET",
+            "id=in.(" + ",".join(quote(i, safe="") for i in from_ids) +
+            ")&select=id,name,entity_type&limit=100")
+        names = {str(e["id"]): e for e in entities or []}
+    for row in rows:
+        source = names.get(str(row.get("from_id"))) or {}
+        row["from_name"] = source.get("name")
+        row["from_type"] = source.get("entity_type")
+    return rows
+
+
+async def _mem_episode_add(*, namespace: str, title: str = "", summary: str = "",
+                           session_id: str = "", occurred_at: Any = None,
+                           ended_at: Any = None, participants: Any = None,
+                           importance: int = 3, source: str = "agent",
+                           metadata: dict | None = None, memory_ids: Any = None,
+                           entity_ids: Any = None, embed: bool = True) -> dict:
+    summary = str(summary or "").strip()
+    title = str(title or "").strip() or summary[:120]
+    if not title and not summary:
+        raise ValueError("title or summary is required")
+    participant_list = _mem_str_list(participants)
+    embed_text = (
+        f"{namespace} | episode | {title}\n{summary}\n"
+        f"{' '.join(participant_list)}"
+    )[:9000]
+    payload = {
+        "namespace": namespace,
+        "session_id": str(session_id or "").strip() or None,
+        "title": title[:300],
+        "summary": summary[:12000],
+        "occurred_at": _mem_iso(occurred_at) or datetime.now(timezone.utc).isoformat(),
+        "ended_at": _mem_iso(ended_at),
+        "participants": participant_list,
+        "importance": max(1, min(5, int(importance or 3))),
+        "status": "active",
+        "source": str(source or "agent")[:80],
+        "metadata": metadata or {},
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    embed_error = ""
+    if embed:
+        try:
+            vector = (await gemini_embed([embed_text]))[0]
+            payload["embedding"] = _as_vector_literal(vector)
+        except Exception as e:  # noqa: BLE001
+            embed_error = f"{type(e).__name__}: {e}"[:240]
+    rows = await _mem_rest("memory_episodes", "POST", "", payload,
+                           prefer="return=representation")
+    row = rows[0] if isinstance(rows, list) and rows else (rows if isinstance(rows, dict) else {})
+
+    item_ids = [u for u in (_mem_uuid(v) for v in _mem_str_list(memory_ids)) if u]
+    item_links = 0
+    if item_ids:
+        existing = await _mem_rest(
+            "memory_items", "GET",
+            "id=in.(" + ",".join(quote(i, safe="") for i in item_ids) +
+            ")&select=id&limit=100")
+        valid = [str(i["id"]) for i in existing or []]
+        if valid:
+            links = [{"episode_id": row.get("id"), "memory_id": mid,
+                      "role": "mentioned"} for mid in valid]
+            await _mem_rest("memory_episode_items", "POST", "", links,
+                            prefer="resolution=ignore-duplicates,return=minimal")
+            item_links = len(valid)
+
+    entity_links = 0
+    linked_entity_ids: set[str] = set()
+    for raw in _mem_str_list(entity_ids) + participant_list:
+        entity = await _mem_resolve_entity(raw, namespace)
+        if not entity or str(entity.get("id")) in linked_entity_ids:
+            continue
+        linked_entity_ids.add(str(entity.get("id")))
+        await _mem_rest(
+            "memory_episode_entities", "POST", "", {
+                "episode_id": row.get("id"),
+                "entity_id": entity["id"],
+                "role": "participant",
+            }, prefer="resolution=ignore-duplicates,return=minimal")
+        entity_links += 1
+
+    await _mem_event(
+        "episode_add", namespace=namespace, category="episode",
+        key=str(row.get("id") or title)[:160], new_value=title,
+        reason=str(metadata.get("reason") if isinstance(metadata, dict) else "") or "",
+        actor=str(source or "agent"),
+        metadata={"episode_id": row.get("id"), "memory_links": item_links,
+                  "entity_links": entity_links},
+    )
+    out = {"episode": _mem_episode_compact(row), "memory_links": item_links,
+           "entity_links": entity_links}
+    if embed_error:
+        out["embed_error"] = embed_error
+    return out
+
+
+async def _mem_episode_search(query: str, namespace: str | None = None,
+                              from_time: Any = None, to_time: Any = None,
+                              limit: int = 8, min_similarity: float = 0.35,
+                              embed: bool = True) -> tuple[list[dict], str]:
+    rows: list[dict] = []
+    embed_error = ""
+    from_iso = _mem_iso(from_time)
+    to_iso = _mem_iso(to_time)
+    if query and embed:
+        try:
+            vector = (await gemini_embed([query], task_type="RETRIEVAL_QUERY"))[0]
+            rows = await sb_rpc("match_episodes", {
+                "query_embedding": _as_vector_literal(vector),
+                "query_text": query,
+                "match_count": limit,
+                "filter_namespace": namespace,
+                "p_from": from_iso,
+                "p_to": to_iso,
+                "min_similarity": min_similarity,
+            }) or []
+        except Exception as e:  # noqa: BLE001
+            embed_error = str(e)[:240]
+    if not rows and query:
+        rows = await sb_rpc("search_episodes_text", {
+            "p_query": query,
+            "p_namespace": namespace,
+            "p_from": from_iso,
+            "p_to": to_iso,
+            "p_limit": limit,
+        }) or []
+        if embed_error:
+            for row in rows:
+                row["fallback"] = "keyword"
+    return rows, embed_error
+
+
+async def _mem_linked_memories(entity_ids: list[str], limit: int = 30) -> list[dict]:
+    ids = [u for u in (_mem_uuid(v) for v in entity_ids) if u]
+    if not ids:
+        return []
+    links = await _mem_rest(
+        "memory_entity_mentions", "GET",
+        "entity_id=in.(" + ",".join(quote(i, safe="") for i in ids) +
+        ")&select=entity_id,memory_id,confidence&order=confidence.desc&limit=300")
+    by_memory: dict[str, dict] = {}
+    for link in links or []:
+        mid = str(link.get("memory_id") or "")
+        if not mid:
+            continue
+        entry = by_memory.setdefault(mid, {"confidence": 0.0, "entities": []})
+        entry["confidence"] = max(entry["confidence"], float(link.get("confidence") or 0))
+        entry["entities"].append(str(link.get("entity_id")))
+    if not by_memory:
+        return []
+    memory_ids = list(by_memory)[:limit]
+    rows = await _mem_rest(
+        "memory_items", "GET",
+        "id=in.(" + ",".join(quote(i, safe="") for i in memory_ids) +
+        ")&status=eq.active&select=id,namespace,category,key,value,importance,"
+        "version,status,updated_at&limit=" + str(max(1, min(limit, 100))))
+    out = []
+    for row in rows or []:
+        mid = str(row.get("id"))
+        item = _mem_compact(row)
+        item["provenance"] = {
+            "via_entities": by_memory.get(mid, {}).get("entities", []),
+            "confidence": by_memory.get(mid, {}).get("confidence", 0),
+        }
+        out.append(item)
+    return out
+
+
+def _mem_backfill_candidates() -> list[dict]:
+    """Build entity candidates from tracked, non-secret configuration files."""
+    root = BASE_DIR.parent
+    candidates: list[dict] = []
+    agent_path = root / "agent" / "agent.example.json"
+    if agent_path.exists():
+        try:
+            agent = json.loads(agent_path.read_text(encoding="utf-8-sig"))
+        except Exception:
+            agent = {}
+        if isinstance(agent, dict):
+            candidates.append({
+                "name": str(agent.get("name") or "OTHVM"),
+                "entity_type": "agent",
+                "description": "The OTHVM personal agent. Tools, workflows, and skills are "
+                               "executed by this single published agent.",
+                "attributes": {
+                    "model": agent.get("model"),
+                    "tool_count": len(agent.get("tools") or []),
+                    "skill_count": len(agent.get("skills") or []),
+                },
+                "source": "backfill:agent/agent.example.json",
+            })
+            for tool in agent.get("tools") or []:
+                if not isinstance(tool, dict):
+                    continue
+                name = str(tool.get("name") or tool.get("workflow") or "").strip()
+                if not name:
+                    continue
+                candidates.append({
+                    "name": name,
+                    "entity_type": "tool",
+                    "description": str(tool.get("description") or "")[:2000],
+                    "attributes": {"workflow": tool.get("workflow"),
+                                   "tool_type": tool.get("type")},
+                    "source": "backfill:agent/agent.example.json",
+                })
+            for skill in agent.get("skills") or []:
+                if not isinstance(skill, dict):
+                    continue
+                name = str(skill.get("name") or "").strip()
+                if name:
+                    candidates.append({
+                        "name": name,
+                        "entity_type": "skill",
+                        "description": "Agent skill: " + name,
+                        "attributes": {"skill_id": skill.get("id")},
+                        "source": "backfill:agent/agent.example.json",
+                    })
+    workflow_dir = root / "deploy" / "workflows" / "current"
+    for path in sorted(workflow_dir.glob("*.json")):
+        try:
+            workflow = json.loads(path.read_text(encoding="utf-8-sig"))
+        except Exception:
+            continue
+        if not isinstance(workflow, dict):
+            continue
+        name = str(workflow.get("name") or workflow.get("id") or path.stem).strip()
+        candidates.append({
+            "name": name,
+            "entity_type": "workflow",
+            "description": "n8n workflow mirrored from the live instance.",
+            "attributes": {"workflow_id": workflow.get("id"),
+                           "active": bool(workflow.get("active")),
+                           "tags": [t.get("name") if isinstance(t, dict) else t
+                                    for t in (workflow.get("tags") or [])]},
+            "source": "backfill:deploy/workflows/current",
+        })
+    for name, entity_type, description in (
+        ("n8n", "service", "Workflow automation runtime hosting the OTHVM agent."),
+        ("MCP Server", "service", "Local FastAPI tool server on port 8765."),
+        ("Desktop Pet", "component", "Transparent desktop character and voice layer."),
+        ("Memory Graph", "component", "Entities, relations, and episodes over unified memory."),
+    ):
+        candidates.append({
+            "name": name, "entity_type": entity_type, "description": description,
+            "attributes": {}, "source": "backfill:repository",
+        })
+    deduped: dict[tuple[str, str], dict] = {}
+    for candidate in candidates:
+        key = ("personal", _mem_canonical(candidate["name"]))
+        if key[1] and key not in deduped:
+            deduped[key] = candidate
+    return list(deduped.values())
+
+
+def _mem_mentions(haystack: str, term: str) -> bool:
+    term = str(term or "").strip()
+    if len(term) < 5:
+        return False
+    if re.fullmatch(r"[\x00-\x7F]+", term):
+        return re.search(r"(?<![A-Za-z0-9_])" + re.escape(term) + r"(?![A-Za-z0-9_])",
+                         haystack, re.IGNORECASE) is not None
+    return term.casefold() in haystack.casefold()
+
+
+def _mem_build_mention_links(items: list[dict], entities: list[dict]) -> list[dict]:
+    """Link memory items to entities only when a name/alias appears verbatim."""
+    links: list[dict] = []
+    for item in items or []:
+        haystack = f"{item.get('key') or ''} {item.get('value') or ''}"
+        matches: list[tuple[dict, float]] = []
+        for entity in entities or []:
+            terms = [str(entity.get("name") or "")] + list(entity.get("aliases") or [])
+            for term in terms:
+                if _mem_mentions(haystack, term):
+                    matches.append((entity, 0.75 if term == entity.get("name") else 0.65))
+                    break
+        matches.sort(key=lambda pair: len(str(pair[0].get("name") or "")), reverse=True)
+        for entity, confidence in matches[:8]:
+            links.append({
+                "entity_id": entity.get("id"),
+                "memory_id": item.get("id"),
+                "namespace": item.get("namespace") or "personal",
+                "confidence": confidence,
+                "source": "backfill:keyword",
+            })
+    return links
+
+
 async def op_memory(body: dict) -> dict:
     raw = str(body.get("operation") or body.get("action") or "").strip().lower()
     op = raw.split(".", 1)[1] if raw.startswith("memory.") else raw
     if op in ("remember", "save", "upsert", "add", "forget", "delete", "remove",
-              "restore", "undo", "embed", "reindex", "backfill"):
+              "restore", "undo", "embed", "reindex", "backfill",
+              "entity_upsert", "entity_add", "entity_save",
+              "entity_forget", "entity_delete",
+              "relation_upsert", "relation_add", "relation_forget",
+              "episode_add", "episode_save", "episode_forget"):
         require("write", "memory." + op)
     elif op in ("consolidate", "dedupe", "merge"):
+        require("read" if body.get("dry_run", True) is not False else "write", "memory." + op)
+    elif op in ("backfill_graph", "graph_backfill"):
         require("read" if body.get("dry_run", True) is not False else "write", "memory." + op)
     else:
         require("read", "memory." + (op or "recall"))
@@ -6133,6 +6890,487 @@ async def op_memory(body: dict) -> dict:
             return _ok(operation="memory.embed", embedded=int(n or len(items)),
                        remaining=len(remaining))
 
+        # ---------------------------------------------------------- graph: entities
+        if op in ("entity_upsert", "entity_add", "entity_save"):
+            namespace = _mem_namespace(body.get("namespace") or body.get("scope"))
+            name = str(body.get("name") or body.get("entity") or "").strip()
+            if not name:
+                return _fail("name is required")
+            try:
+                result = await _mem_entity_upsert(
+                    namespace=namespace,
+                    name=name,
+                    entity_type=str(body.get("entity_type") or body.get("type") or ""),
+                    description=str(body.get("description") or body.get("summary") or ""),
+                    aliases=body.get("aliases"),
+                    attributes=body.get("attributes") if isinstance(body.get("attributes"), dict) else {},
+                    importance=int(body.get("importance") or 3),
+                    source=str(body.get("source") or "agent"),
+                    metadata=body.get("metadata") if isinstance(body.get("metadata"), dict) else {},
+                    embed=body.get("embed", True) is not False,
+                )
+            except ValueError as e:
+                return _fail(str(e))
+            return _ok(operation="memory.entity_upsert", **result)
+
+        if op in ("entity_get",):
+            namespace = _mem_namespace(body.get("namespace") or body.get("scope"))
+            entity = await _mem_resolve_entity(
+                body.get("id") or body.get("entity") or body.get("name") or body.get("key"),
+                namespace)
+            if not entity:
+                return _fail("entity not found")
+            out = _ok(operation="memory.entity_get",
+                      entity=_mem_entity_compact(entity))
+            if body.get("include_graph", True) is not False:
+                out["relations"] = [
+                    _mem_relation_compact(r) for r in await _mem_relation_rows(
+                        namespace, str(entity["id"]), "both", None, True,
+                        int(body.get("relation_limit") or 50))
+                ]
+                out["linked_memories"] = await _mem_linked_memories(
+                    [str(entity["id"])], int(body.get("memory_limit") or 20))
+            return out
+
+        if op in ("entity_search", "entity_find", "entities"):
+            namespace = _mem_namespace(body["namespace"]) if body.get("namespace") else None
+            entity_type = _mem_slug(body.get("entity_type") or body.get("type")).lower() or None
+            query = str(body.get("query") or body.get("q") or "").strip()
+            limit = max(1, min(int(body.get("limit") or 8), 50))
+            if not query:
+                parts = ["status=eq.active", "order=importance.desc,updated_at.desc",
+                         f"limit={limit}",
+                         "select=id,namespace,entity_type,name,canonical_key,aliases,"
+                         "description,attributes,importance,status,updated_at"]
+                if namespace:
+                    parts.append("namespace=eq." + quote(namespace, safe=""))
+                if entity_type:
+                    parts.append("entity_type=eq." + quote(entity_type, safe=""))
+                rows = await _mem_rest("memory_entities", "GET", "&".join(parts))
+                return _ok(operation="memory.entity_search", query="", count=len(rows),
+                           results=[_mem_entity_compact(r) for r in rows])
+            rows, embed_error = await _mem_entity_search(
+                query, namespace, entity_type, limit,
+                float(body.get("min_similarity", 0.35) or 0),
+                embed=body.get("embed", True) is not False)
+            out = _ok(operation="memory.entity_search", query=query,
+                      count=len(rows),
+                      results=[_mem_entity_compact(r) for r in rows])
+            if embed_error:
+                out["embed_error"] = embed_error
+                out["fallback"] = "keyword"
+            return out
+
+        if op in ("entity_forget", "entity_delete"):
+            if body.get("confirm") is not True and body.get("confirmed") is not True:
+                return {"ok": False, "needs_approval": True,
+                        "error": "memory.entity_forget is destructive — ask the founder, "
+                                 "then call again with confirm=true."}
+            namespace = _mem_namespace(body.get("namespace") or body.get("scope"))
+            entity = await _mem_resolve_entity(
+                body.get("id") or body.get("entity") or body.get("name") or body.get("key"),
+                namespace)
+            if not entity:
+                return _fail("entity not found")
+            result = await sb_rpc("memory_forget_entity", {
+                "p_id": entity["id"],
+                "p_reason": str(body.get("reason") or "")[:500] or None,
+            })
+            if not isinstance(result, dict) or not result.get("ok"):
+                return _fail(str(result or "entity forget failed"))
+            await _mem_event(
+                "entity_forget", namespace=namespace, category="entity:" +
+                str(entity.get("entity_type") or "concept"), key=str(entity.get("canonical_key")),
+                old_value=entity.get("description"), reason=str(body.get("reason") or ""),
+                actor=str(body.get("source") or "agent"),
+                metadata={"entity_id": entity.get("id"),
+                          "relations_forgotten": result.get("relations_forgotten")})
+            return _ok(operation="memory.entity_forget", forgotten=True,
+                       id=entity.get("id"), name=entity.get("name"),
+                       relations_forgotten=result.get("relations_forgotten"),
+                       restorable=False, note="soft-forgotten; audit rows are retained")
+
+        # ---------------------------------------------------------- graph: relations
+        if op in ("relation_upsert", "relation_add"):
+            namespace = _mem_namespace(body.get("namespace") or body.get("scope"))
+            from_ref = body.get("from_id") or body.get("from") or body.get("from_entity")
+            to_ref = body.get("to_id") or body.get("to") or body.get("to_entity")
+            from_entity = await _mem_resolve_entity(from_ref, namespace)
+            to_entity = await _mem_resolve_entity(to_ref, namespace)
+            if not from_entity:
+                return _fail("from entity not found (create it with memory.entity_upsert first)")
+            if not to_entity:
+                return _fail("to entity not found (create it with memory.entity_upsert first)")
+            try:
+                result = await _mem_relation_upsert(
+                    namespace=namespace,
+                    from_entity=from_entity,
+                    to_entity=to_entity,
+                    predicate=str(body.get("predicate") or body.get("relation") or "related_to"),
+                    confidence=float(body.get("confidence") if body.get("confidence") is not None else 1.0),
+                    source=str(body.get("source") or "agent"),
+                    metadata=body.get("metadata") if isinstance(body.get("metadata"), dict) else {},
+                    valid_from=body.get("valid_from"),
+                    valid_to=body.get("valid_to"),
+                )
+            except ValueError as e:
+                return _fail(str(e))
+            return _ok(operation="memory.relation_upsert", **result)
+
+        if op in ("relation_query", "relations", "relation_list"):
+            namespace = _mem_namespace(body["namespace"]) if body.get("namespace") else None
+            entity = None
+            if body.get("id") or body.get("entity") or body.get("name") or body.get("key"):
+                namespace_for_lookup = namespace or "personal"
+                entity = await _mem_resolve_entity(
+                    body.get("id") or body.get("entity") or body.get("name") or body.get("key"),
+                    namespace_for_lookup)
+                if not entity:
+                    return _fail("entity not found")
+            direction = str(body.get("direction") or "both").lower()
+            if direction not in ("in", "out", "both"):
+                direction = "both"
+            rows = await _mem_relation_rows(
+                namespace, str(entity["id"]) if entity else None, direction,
+                _mem_slug(body.get("predicate")).lower() or None,
+                body.get("active_only", True) is not False,
+                int(body.get("limit") or 50))
+            return _ok(operation="memory.relation_query", count=len(rows),
+                       entity=_mem_entity_compact(entity) if entity else None,
+                       relations=[_mem_relation_compact(r) for r in rows])
+
+        if op in ("relation_forget", "relation_delete"):
+            if body.get("confirm") is not True and body.get("confirmed") is not True:
+                return {"ok": False, "needs_approval": True,
+                        "error": "memory.relation_forget is destructive — ask the founder, "
+                                 "then call again with confirm=true."}
+            relation_id = _mem_uuid(body.get("id") or body.get("relation_id"))
+            if not relation_id:
+                return _fail("relation id is required")
+            await _mem_rest("memory_relations", "PATCH",
+                            "id=eq." + quote(relation_id, safe=""),
+                            {"status": "forgotten",
+                             "metadata": {"forget_reason": str(body.get("reason") or "")[:500]},
+                             "updated_at": datetime.now(timezone.utc).isoformat()},
+                            prefer="return=minimal")
+            await _mem_event("relation_forget", namespace=str(body.get("namespace") or "personal"),
+                             category="relation", key=relation_id,
+                             reason=str(body.get("reason") or ""),
+                             actor=str(body.get("source") or "agent"),
+                             metadata={"relation_id": relation_id})
+            return _ok(operation="memory.relation_forget", forgotten=True, id=relation_id)
+
+        if op in ("traverse", "graph_traverse"):
+            namespace = _mem_namespace(body["namespace"]) if body.get("namespace") else None
+            entity = await _mem_resolve_entity(
+                body.get("id") or body.get("entity") or body.get("name") or body.get("key"),
+                namespace or "personal")
+            if not entity:
+                return _fail("start entity not found")
+            rows = await _mem_traverse(
+                str(entity["id"]),
+                int(body.get("depth") or 2),
+                namespace,
+                _mem_slug(body.get("predicate")).lower() or None)
+            return _ok(operation="memory.traverse",
+                       start=_mem_entity_compact(entity),
+                       depth=max(1, min(int(body.get("depth") or 2), 5)),
+                       count=len(rows), edges=rows)
+
+        # ---------------------------------------------------------- graph: episodes
+        if op in ("episode_add", "episode_save"):
+            namespace = _mem_namespace(body.get("namespace") or body.get("scope"))
+            try:
+                result = await _mem_episode_add(
+                    namespace=namespace,
+                    title=str(body.get("title") or ""),
+                    summary=str(body.get("summary") or body.get("text") or body.get("content") or ""),
+                    session_id=str(body.get("session_id") or ""),
+                    occurred_at=body.get("occurred_at") or body.get("at"),
+                    ended_at=body.get("ended_at"),
+                    participants=body.get("participants"),
+                    importance=int(body.get("importance") or 3),
+                    source=str(body.get("source") or "agent"),
+                    metadata=body.get("metadata") if isinstance(body.get("metadata"), dict) else {},
+                    memory_ids=body.get("memory_ids"),
+                    entity_ids=body.get("entity_ids"),
+                    embed=body.get("embed", True) is not False,
+                )
+            except ValueError as e:
+                return _fail(str(e))
+            return _ok(operation="memory.episode_add", **result)
+
+        if op in ("episode_search", "episodes"):
+            namespace = _mem_namespace(body["namespace"]) if body.get("namespace") else None
+            query = str(body.get("query") or body.get("q") or "").strip()
+            limit = max(1, min(int(body.get("limit") or 8), 50))
+            from_time = body.get("from") or body.get("from_time")
+            to_time = body.get("to") or body.get("to_time")
+            if not query:
+                parts = ["status=eq.active", "order=occurred_at.desc", f"limit={limit}",
+                         "select=id,namespace,session_id,title,summary,occurred_at,"
+                         "ended_at,participants,importance,status,updated_at"]
+                if namespace:
+                    parts.append("namespace=eq." + quote(namespace, safe=""))
+                if _mem_iso(from_time):
+                    parts.append("occurred_at=gte." + quote(_mem_iso(from_time), safe=""))
+                if _mem_iso(to_time):
+                    parts.append("occurred_at=lte." + quote(_mem_iso(to_time), safe=""))
+                rows = await _mem_rest("memory_episodes", "GET", "&".join(parts))
+                return _ok(operation="memory.episode_search", query="", count=len(rows),
+                           results=[_mem_episode_compact(r) for r in rows])
+            rows, embed_error = await _mem_episode_search(
+                query, namespace, from_time, to_time, limit,
+                float(body.get("min_similarity", 0.35) or 0),
+                embed=body.get("embed", True) is not False)
+            out = _ok(operation="memory.episode_search", query=query, count=len(rows),
+                      results=[_mem_episode_compact(r) for r in rows])
+            if embed_error:
+                out["embed_error"] = embed_error
+                out["fallback"] = "keyword"
+            return out
+
+        if op in ("episode_forget", "episode_delete"):
+            if body.get("confirm") is not True and body.get("confirmed") is not True:
+                return {"ok": False, "needs_approval": True,
+                        "error": "memory.episode_forget is destructive — ask the founder, "
+                                 "then call again with confirm=true."}
+            episode_id = _mem_uuid(body.get("id") or body.get("episode_id"))
+            if not episode_id:
+                return _fail("episode id is required")
+            await _mem_rest("memory_episodes", "PATCH",
+                            "id=eq." + quote(episode_id, safe=""),
+                            {"status": "forgotten", "embedding": None,
+                             "metadata": {"forget_reason": str(body.get("reason") or "")[:500]},
+                             "updated_at": datetime.now(timezone.utc).isoformat()},
+                            prefer="return=minimal")
+            await _mem_event("episode_forget",
+                             namespace=str(body.get("namespace") or "personal"),
+                             category="episode", key=episode_id,
+                             reason=str(body.get("reason") or ""),
+                             actor=str(body.get("source") or "agent"),
+                             metadata={"episode_id": episode_id})
+            return _ok(operation="memory.episode_forget", forgotten=True, id=episode_id)
+
+        # ---------------------------------------------------------- graph: stats/backfill/hybrid
+        if op in ("graph_stats", "graph_status"):
+            namespace = _mem_namespace(body["namespace"]) if body.get("namespace") else None
+            stats = await sb_rpc("memory_graph_stats", {"p_namespace": namespace})
+            if not isinstance(stats, dict):
+                stats = {}
+            memory_rows = await _memory_sql(
+                "select count(*) filter (where status='active')::int as active, "
+                "count(*)::int as total from public.memory_items")
+            stats["memory_items"] = int((memory_rows[0] or {}).get("total") or 0) if memory_rows else 0
+            stats["memory_active"] = int((memory_rows[0] or {}).get("active") or 0) if memory_rows else 0
+            return _ok(operation="memory.graph_stats", namespace=namespace or "all", **stats)
+
+        if op in ("backfill_graph", "graph_backfill"):
+            dry = body.get("dry_run", True) is not False
+            embed = body.get("embed", True) is not False
+            namespace = _mem_namespace(body.get("namespace") or "system")
+            candidates = _mem_backfill_candidates()
+            existing_by_key: dict[str, dict] = {}
+            for candidate in candidates:
+                key = _mem_canonical(candidate["name"])
+                existing = await _mem_entity_get(namespace, canonical_key=key)
+                if existing:
+                    existing_by_key[key] = existing
+            existing_count = len(existing_by_key)
+            to_create = len(candidates) - existing_count
+            active_items = await _mem_rest(
+                "memory_items", "GET",
+                "status=eq.active&select=id,namespace,key,value&limit=1000")
+            entities = await _mem_rest(
+                "memory_entities", "GET",
+                "status=eq.active&select=id,namespace,name,canonical_key,aliases&limit=1000")
+            # On a first dry run the entity table is still empty; preview against
+            # the candidate names so the report is meaningful.
+            preview_entities = entities or [
+                {"id": None, "name": candidate["name"], "aliases": []}
+                for candidate in candidates
+            ]
+            mention_links = _mem_build_mention_links(active_items or [], preview_entities)
+            summary = {
+                "dry_run": dry,
+                "namespace": namespace,
+                "candidates": len(candidates),
+                "existing_entities": existing_count,
+                "new_entities": to_create,
+                "active_memory_items": len(active_items or []),
+                "mention_links": len(mention_links),
+                "sample_entities": [c["name"] for c in candidates[:12]],
+                "sample_links": [
+                    {"entity_id": link["entity_id"], "memory_id": link["memory_id"],
+                     "confidence": link["confidence"]}
+                    for link in mention_links[:10]
+                ],
+            }
+            if dry:
+                return _ok(operation="memory.backfill_graph", **summary,
+                           note="dry run; pass dry_run=false to write entities and links")
+            created = 0
+            updated = 0
+            errors = []
+            vectors: dict[str, list[float]] = {}
+            if embed:
+                pending: list[tuple[str, str]] = []
+                for candidate in candidates:
+                    key = _mem_canonical(candidate["name"])
+                    existing = existing_by_key.get(key) or {}
+                    entity_type = _mem_slug(
+                        candidate.get("entity_type") or existing.get("entity_type")
+                        or MEMORY_ENTITY_DEFAULT_TYPE,
+                        MEMORY_ENTITY_DEFAULT_TYPE).lower()
+                    aliases = _mem_str_list(existing.get("aliases"))
+                    attributes = dict(existing.get("attributes") or {})
+                    attributes.update(candidate.get("attributes") or {})
+                    description = (str(candidate.get("description") or "").strip()
+                                   or str(existing.get("description") or ""))
+                    text = _mem_entity_embed_text(namespace, entity_type,
+                                                  candidate["name"], description,
+                                                  aliases, attributes)
+                    text_hash = hashlib.sha1(text.encode("utf-8")).hexdigest()
+                    if not existing or (existing.get("metadata") or {}).get("embedding_hash") != text_hash:
+                        pending.append((key, text))
+                if pending:
+                    try:
+                        embedded = await gemini_embed([text for _, text in pending])
+                        vectors = {key: vector for (key, _), vector in zip(pending, embedded)}
+                    except Exception as e:  # noqa: BLE001
+                        errors.append(f"batch embedding: {type(e).__name__}: {e}"[:240])
+            for candidate in candidates:
+                try:
+                    key = _mem_canonical(candidate["name"])
+                    result = await _mem_entity_upsert(
+                        namespace=namespace,
+                        name=candidate["name"],
+                        entity_type=candidate.get("entity_type") or "concept",
+                        description=candidate.get("description") or "",
+                        attributes=candidate.get("attributes") or {},
+                        source=candidate.get("source") or "backfill",
+                        metadata={"backfill": True},
+                        embed=key in vectors,
+                        embedding=vectors.get(key),
+                    )
+                    if result.get("created"):
+                        created += 1
+                    else:
+                        updated += 1
+                    if result.get("embed_error"):
+                        errors.append(f"{candidate['name']}: {result['embed_error']}")
+                except Exception as e:  # noqa: BLE001
+                    errors.append(f"{candidate['name']}: {type(e).__name__}: {e}"[:240])
+            entities = await _mem_rest(
+                "memory_entities", "GET",
+                "status=eq.active&select=id,namespace,name,canonical_key,aliases&limit=1000")
+            mention_links = _mem_build_mention_links(active_items or [], entities or [])
+            linked = 0
+            for i in range(0, len(mention_links), 100):
+                batch = mention_links[i:i + 100]
+                if not batch:
+                    continue
+                await _mem_rest("memory_entity_mentions", "POST", "", batch,
+                                prefer="resolution=ignore-duplicates,return=minimal")
+                linked += len(batch)
+            summary.update({
+                "entities_created": created,
+                "entities_updated": updated,
+                "mention_links": len(mention_links),
+                "mention_links_written": linked,
+                "errors": errors[:20],
+            })
+            return _ok(operation="memory.backfill_graph", **summary)
+
+        if op in ("recall_hybrid", "hybrid_recall"):
+            query = str(body.get("query") or body.get("q") or "").strip()
+            if not query:
+                return _fail("query is required")
+            namespace = _mem_namespace(body["namespace"]) if body.get("namespace") else None
+            limit = max(1, min(int(body.get("limit") or 8), 30))
+            min_sim = float(body.get("min_similarity", 0.35) or 0)
+            embed = body.get("embed", True) is not False
+            memory_result = await op_memory({
+                "operation": "recall",
+                "query": query,
+                "namespace": namespace,
+                "category": body.get("category"),
+                "limit": limit,
+                "min_similarity": min_sim,
+            })
+            memories = (memory_result.get("results") or []) if memory_result.get("ok") else []
+            entity_rows, entity_error = await _mem_entity_search(
+                query, namespace, _mem_slug(body.get("entity_type")).lower() or None,
+                limit, min_sim, embed=embed)
+            episode_rows, episode_error = await _mem_episode_search(
+                query, namespace, body.get("from") or body.get("from_time"),
+                body.get("to") or body.get("to_time"), limit, min_sim, embed=embed)
+            entity_ids = [str(r.get("id")) for r in entity_rows if r.get("id")]
+            linked_memories = await _mem_linked_memories(entity_ids, limit)
+            relation_rows: list[dict] = []
+            graph_depth = max(1, min(int(body.get("graph_depth") or 2), 5))
+            if body.get("include_graph", True) is not False:
+                seen_relations: set[str] = set()
+                for entity_id in entity_ids[:4]:
+                    for row in await _mem_traverse(entity_id, graph_depth, namespace, None):
+                        key = str(row.get("to_id")) + "|" + str(row.get("predicate")) + "|" + str(row.get("from_id"))
+                        if key not in seen_relations:
+                            seen_relations.add(key)
+                            relation_rows.append(row)
+                    for row in await _mem_relation_rows(
+                            namespace, entity_id, "both", None, True, limit):
+                        key = str(row.get("id"))
+                        if key not in seen_relations:
+                            seen_relations.add(key)
+                            relation_rows.append(row)
+            combined = []
+            for row in memories:
+                combined.append({"kind": "memory", "id": row.get("id"),
+                                 "score": float(row.get("similarity") or row.get("score") or 0),
+                                 "label": row.get("key")})
+            for row in entity_rows:
+                combined.append({"kind": "entity", "id": row.get("id"),
+                                 "score": float(row.get("similarity") or row.get("score") or 0),
+                                 "label": row.get("name")})
+            for row in episode_rows:
+                combined.append({"kind": "episode", "id": row.get("id"),
+                                 "score": float(row.get("similarity") or row.get("score") or 0),
+                                 "label": row.get("title")})
+            for row in linked_memories:
+                combined.append({"kind": "linked_memory", "id": row.get("id"),
+                                 "score": float(row.get("provenance", {}).get("confidence") or 0),
+                                 "label": row.get("key")})
+            combined.sort(key=lambda item: item["score"], reverse=True)
+            out = _ok(
+                operation="memory.recall_hybrid",
+                query=query,
+                namespace=namespace or "all",
+                memories=memories,
+                entities=[_mem_entity_compact(r) for r in entity_rows],
+                episodes=[_mem_episode_compact(r) for r in episode_rows],
+                linked_memories=linked_memories,
+                relations=[_mem_relation_compact(r) for r in relation_rows[:limit]],
+                combined=combined[:limit],
+                provenance={
+                    "retrievers": [
+                        "memory.semantic+keyword",
+                        "entity.semantic+keyword",
+                        "episode.semantic+keyword",
+                        "graph.traverse",
+                        "entity_mentions",
+                    ],
+                    "memory_ids": [r.get("id") for r in memories],
+                    "entity_ids": entity_ids,
+                    "episode_ids": [r.get("id") for r in episode_rows],
+                    "graph_depth": graph_depth,
+                },
+            )
+            if entity_error:
+                out["entity_embed_error"] = entity_error
+            if episode_error:
+                out["episode_embed_error"] = episode_error
+            return out
+
         if op in ("stats", "status"):
             rows = await _memory_sql(
                 "select namespace, status, count(*)::int as n, count(embedding)::int as embedded "
@@ -6173,7 +7411,10 @@ async def op_memory(body: dict) -> dict:
                        items=[_mem_compact(r) for r in rows])
 
         return _fail(f'unknown memory operation "{op}" '
-                     "(remember | recall | forget | restore | consolidate | embed | stats | history | list)")
+                     "(remember | recall | forget | restore | consolidate | embed | stats | "
+                     "history | list | entity_upsert | entity_search | entity_get | entity_forget | "
+                     "relation_upsert | relation_query | traverse | episode_add | episode_search | "
+                     "episode_forget | graph_stats | backfill_graph | recall_hybrid)")
     except Exception as e:
         return _fail(f"{type(e).__name__}: {e}", operation="memory." + (op or "?"))
 
@@ -11549,7 +12790,19 @@ async def _context_summarize_log(force: bool = False, min_new: int = 10, max_mes
 async def op_db(body: dict) -> dict:
     raw = _arg_str(body, "operation", "op", "action", default="read").lower()
     mode_hint = ""
-    if raw.startswith("memory.") or raw in ("remember", "recall", "forget", "restore", "consolidate"):
+    memory_ops = (
+        "remember", "recall", "forget", "restore", "consolidate", "embed",
+        "stats", "history", "list",
+        "entity_upsert", "entity_add", "entity_save", "entity_get",
+        "entity_search", "entity_find", "entities", "entity_forget",
+        "entity_delete", "relation_upsert", "relation_add", "relation_query",
+        "relations", "relation_list", "relation_forget", "relation_delete",
+        "traverse", "graph_traverse", "episode_add", "episode_save",
+        "episode_search", "episodes", "episode_forget", "episode_delete",
+        "graph_stats", "graph_status", "backfill_graph", "graph_backfill",
+        "recall_hybrid", "hybrid_recall",
+    )
+    if raw.startswith("memory.") or raw in memory_ops:
         mem_op = raw.split(".", 1)[1] if raw.startswith("memory.") else raw
         return await op_memory({**body, "operation": mem_op})
     if raw.startswith("knowledge.") or raw in ("knowledge", "vector_search", "semantic_search"):
@@ -12615,9 +13868,163 @@ async def tool_endpoint(category: str, request: Request, x_api_key: str = Header
     return result
 
 
+def _sse(event_type: str, data: dict) -> str:
+    return f"event: {event_type}\ndata: {json.dumps(data, ensure_ascii=False, default=str)}\n\n"
+
+
+@app.get("/events")
+async def event_stream(request: Request, x_api_key: str = Header(default="")):
+    """Server-Sent Events for real local tool activity and agent state."""
+    if x_api_key != API_KEY:
+        return JSONResponse({"ok": False, "error": "invalid api key"}, status_code=401)
+    subscriber: asyncio.Queue = asyncio.Queue(maxsize=200)
+    EVENT_SUBSCRIBERS.add(subscriber)
+
+    async def generate():
+        try:
+            yield ": connected\n\n"
+            while True:
+                if await request.is_disconnected():
+                    break
+                try:
+                    item = await asyncio.wait_for(subscriber.get(), timeout=15)
+                except asyncio.TimeoutError:
+                    yield ": keepalive\n\n"
+                    continue
+                yield _sse(str(item.get("type") or "event"), item)
+        finally:
+            EVENT_SUBSCRIBERS.discard(subscriber)
+
+    return StreamingResponse(generate(), media_type="text/event-stream", headers={
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no",
+    })
+
+
+@app.get("/agent/status")
+async def agent_status(x_api_key: str = Header(default="")):
+    if x_api_key != API_KEY:
+        return JSONResponse({"ok": False, "error": "invalid api key"}, status_code=401)
+    db_path = Path(str(CFG.get("n8n_db_path") or ""))
+    return {
+        "ok": True,
+        "agent_id": CFG.get("agent_id") or "",
+        "n8n_base": CFG.get("n8n_base") or "",
+        "n8n_mcp_configured": bool(CFG.get("n8n_mcp_key")),
+        "agent_configured": bool(CFG.get("agent_id") and CFG.get("n8n_mcp_key")),
+        "db_readable": db_path.exists(),
+        "db_path_configured": bool(str(CFG.get("n8n_db_path") or "")),
+        "timeout_seconds": int(CFG.get("agent_timeout_seconds") or 300),
+    }
+
+
+async def _agent_sse(request: Request, runner) -> StreamingResponse:
+    q: asyncio.Queue = asyncio.Queue(maxsize=300)
+
+    async def emit(event_type: str, data: dict) -> None:
+        payload = {"type": event_type, "ts": datetime.now(timezone.utc).isoformat(), **(data or {})}
+        try:
+            q.put_nowait(payload)
+        except asyncio.QueueFull:
+            pass
+        await publish_event(event_type, data)
+
+    async def run() -> None:
+        try:
+            await runner(emit)
+        except asyncio.CancelledError:
+            raise
+        except Exception as exc:  # noqa: BLE001
+            await emit("error", {"message": f"{type(exc).__name__}: {exc}"[:500]})
+        finally:
+            try:
+                q.put_nowait({"type": "__end__", "ts": datetime.now(timezone.utc).isoformat()})
+            except asyncio.QueueFull:
+                pass
+
+    task = asyncio.create_task(run())
+
+    async def generate():
+        try:
+            yield ": connected\n\n"
+            while True:
+                if await request.is_disconnected():
+                    break
+                try:
+                    item = await asyncio.wait_for(q.get(), timeout=15)
+                except asyncio.TimeoutError:
+                    yield ": keepalive\n\n"
+                    continue
+                if item.get("type") == "__end__":
+                    break
+                yield _sse(str(item.get("type") or "event"), item)
+        finally:
+            if not task.done():
+                task.cancel()
+
+    return StreamingResponse(generate(), media_type="text/event-stream", headers={
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no",
+    })
+
+
+@app.post("/agent/chat")
+async def agent_chat(request: Request, x_api_key: str = Header(default="")):
+    """Run the existing n8n agent and stream real execution events.
+
+    Body: {message, session_id?, request_type?: "message"|"approval",
+           continuation?, approved?}
+    """
+    if x_api_key != API_KEY:
+        return JSONResponse({"ok": False, "error": "invalid api key"}, status_code=401)
+    if not (CFG.get("agent_id") and CFG.get("n8n_mcp_key")):
+        return JSONResponse({
+            "ok": False,
+            "error": "agent bridge is not configured (agent_id / n8n_mcp_key)",
+        }, status_code=503)
+    try:
+        body = await request.json()
+    except Exception:
+        body = {}
+    if not isinstance(body, dict):
+        body = {}
+    request_type = str(body.get("request_type") or "message").lower()
+    if request_type == "approval":
+        continuation = body.get("continuation")
+        if not isinstance(continuation, dict):
+            return JSONResponse({"ok": False, "error": "continuation is required"}, status_code=400)
+        approved = body.get("approved") is True
+
+        async def runner(emit):
+            await AGENT_BRIDGE.approve(continuation, approved, emit)
+
+        return await _agent_sse(request, runner)
+
+    message = str(body.get("message") or "").strip()
+    if not message:
+        return JSONResponse({"ok": False, "error": "message is required"}, status_code=400)
+    if len(message) > 8000:
+        return JSONResponse({"ok": False, "error": "message is too long (max 8000)"}, status_code=400)
+    session_id = str(body.get("session_id") or "").strip() or None
+    timeout = body.get("timeout_seconds")
+    try:
+        timeout_value = float(timeout) if timeout else None
+    except Exception:
+        timeout_value = None
+
+    async def runner(emit):
+        await AGENT_BRIDGE.chat(message, session_id, emit, timeout=timeout_value)
+
+    return await _agent_sse(request, runner)
+
+
 @app.on_event("startup")
 async def _startup():
-    global LOOPS_WORKER_TASK, HEARTBEAT_TASK
+    global LOOPS_WORKER_TASK, HEARTBEAT_TASK, EVENT_PUMP_TASK
+    if EVENT_PUMP_TASK is None or EVENT_PUMP_TASK.done():
+        EVENT_PUMP_TASK = asyncio.create_task(_event_pump())
     if DESKTOP_MODE:
         return
     if LOOPS_WORKER_TASK is None or LOOPS_WORKER_TASK.done():
@@ -12628,12 +14035,13 @@ async def _startup():
 
 @app.on_event("shutdown")
 async def _shutdown():
-    global LOOPS_WORKER_TASK, HEARTBEAT_TASK
-    for task in (LOOPS_WORKER_TASK, HEARTBEAT_TASK):
+    global LOOPS_WORKER_TASK, HEARTBEAT_TASK, EVENT_PUMP_TASK
+    for task in (LOOPS_WORKER_TASK, HEARTBEAT_TASK, EVENT_PUMP_TASK):
         if task is not None:
             task.cancel()
     LOOPS_WORKER_TASK = None
     HEARTBEAT_TASK = None
+    EVENT_PUMP_TASK = None
     if DESKTOP_MODE:
         await BROWSER.close()
 

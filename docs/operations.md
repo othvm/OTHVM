@@ -33,6 +33,19 @@ wscript.exe <repo>\mcp_server\start_desktop.vbs
 
 If port 8766 is down, the `OTHVM-MCP-Desktop-Watchdog` task relaunches it.
 
+The desktop pet is an interactive-session process, not a service:
+
+```powershell
+mcp_server\.venv\Scripts\pythonw.exe desktop_pet\app.py
+mcp_server\.venv\Scripts\python.exe desktop_pet\autostart.py status
+mcp_server\.venv\Scripts\python.exe desktop_pet\autostart.py install --hidden
+mcp_server\.venv\Scripts\python.exe desktop_pet\autostart.py remove
+```
+
+It needs the MCP service and n8n reachable. Restarting `OTHVM-MCP` from inside a
+`system_command` can leave the service stopped because the stop terminates the
+caller; start it from an elevated shell afterward.
+
 ## Scheduled tasks
 
 | Task | Schedule | Purpose |
@@ -66,6 +79,8 @@ powershell -ExecutionPolicy Bypass -File guard\install_task.ps1
 | --- | --- | --- |
 | MCP service | `Invoke-RestMethod http://127.0.0.1:8765/health` | `ok: true`, `role: service`, `mode` |
 | MCP desktop | `Invoke-RestMethod http://127.0.0.1:8766/health` | `ok: true`, `role: desktop` |
+| Agent bridge | `GET /agent/status` with `X-API-Key` | `ok: true`, `agent_configured`, `db_readable` |
+| Desktop pet | Panel status line; `desktop_pet/logs/pet.log` | `events: connected`, `agent: ready`, `log: readable` |
 | FastPath | `Invoke-RestMethod http://127.0.0.1:5681/health` | `ok: true`, counters |
 | n8n | `Invoke-WebRequest http://127.0.0.1:5678/healthz` | HTTP 200 |
 | Caddy | `Invoke-WebRequest http://127.0.0.1:5680/healthz` | Proxied n8n response |
@@ -90,6 +105,7 @@ foreach ($p in 5678,5680,5681,8765,8766,8767,8768) {
 | MCP desktop | `mcp_server/logs/desktop.out.log`, `desktop.err.log` |
 | MCP audit | `mcp_server/logs/actions.log` (JSONL) |
 | MCP watchdog | `mcp_server/logs/watchdog.log` |
+| Desktop pet | `desktop_pet/logs/pet.log` |
 | FastPath | `deploy/webhook_fastpath/fastpath.log`, `service.*.log` |
 | Caddy | `deploy/webhook_fastpath/caddy_access.log`, `caddy.*.log` |
 | Guard | `guard/guard.log`, `guard/guard.out.log` |
@@ -104,10 +120,14 @@ Logs rotate at the sizes configured in the install scripts. They are untracked.
 
 1. All expected services are `Running`.
 2. `/health` on 8765, 8766, 5681, and n8n is OK.
-3. Telegram answers a normal message.
-4. `memory.stats` shows `missing_embeddings=0`.
-5. No new `failed` executions in n8n for scheduled workflows.
-6. Disk free space is sufficient for n8n executions and backups.
+3. `/agent/status` is `ok: true`, with `agent_configured` and `db_readable`.
+4. Telegram answers a normal message.
+5. `memory.stats` shows `missing_embeddings=0`; `memory.graph_stats` returns
+   plausible active counts.
+6. The pet panel shows `events: connected` and `agent: ready` if it is running.
+7. No new `failed` executions in n8n for scheduled workflows.
+8. Disk free space is sufficient for n8n executions, the Whisper cache, and
+   backups.
 
 ## Weekly maintenance
 
@@ -137,14 +157,18 @@ Override it with `OTHVM_BACKUP_DIR`.
 
 | What | How | Frequency |
 | --- | --- | --- |
-| Supabase tables | `maintenance.py` export | Weekly |
+| Supabase tables (including graph) | `maintenance.py` export | Weekly |
+| Memory before migration | `scripts\backup_memory.py` JSON + SHA-256 manifest | Before any memory migration |
 | Workflow definitions | `sync_workflows.py export` + git commit | After every live change |
 | n8n credentials + encryption key | Copy the n8n user folder while n8n is stopped | Before upgrades |
 | Local configs | Copy the untracked `config.json` files to an encrypted location | After changes |
 | Telethon session | Copy only to a secure offline location | After login |
 
 The n8n SQLite database alone is not a complete backup: credentials are encrypted
-with a key stored in the n8n user folder.
+with a key stored in the n8n user folder. The memory snapshot is separate from
+the repository; `backups/` is git-ignored. Keep the JSON and manifest together,
+because the manifest is the only proof that the file still matches what was
+exported.
 
 ## Restore
 
@@ -159,11 +183,14 @@ mcp_server\.venv\Scripts\python.exe deploy\workflows\import_workflows.py `
 
 ### Restore Supabase
 
-1. Create the project and apply migrations in order.
-2. Import the table exports with the Supabase dashboard or `psql`.
+1. Create the project and apply migrations in order, including `013`.
+2. Import the table exports with the Supabase dashboard or `psql`. Import
+   `memory_items` before graph/provenance tables so foreign keys resolve.
 3. Run `memory.embed` until `remaining=0`.
-4. Run `knowledge.stats` and re-ingest any source that is missing.
-5. Verify `memory.stats` and one semantic query.
+4. Run `memory.backfill_graph` with `dry_run=false` if graph mention links are
+   missing, then `memory.graph_stats`.
+5. Run `knowledge.stats` and re-ingest any source that is missing.
+6. Verify `memory.stats`, `memory.graph_stats`, and one `recall_hybrid` query.
 
 ### Restore n8n
 
@@ -220,6 +247,22 @@ git commit -m "Sync workflows from live"
 4. Start the desktop helper separately; the service does not provide GUI actions.
 5. Run `Invoke-RestMethod http://127.0.0.1:8765/health`.
 
+### Desktop pet is down or reconnecting
+
+1. Check the panel status line: `events: connected`, `agent: ready`,
+   `log: readable`.
+2. Run `GET /agent/status` with the MCP key; confirm `agent_configured` and
+   `db_readable`.
+3. If the panel says `reconnecting`, the MCP service or the network is down; the
+   client backs off and retries automatically. Do not keep restarting it.
+4. If the character is invisible, confirm the process is in the interactive
+   session and `desktop_pet/assets/pet_master.png` exists.
+5. If voice fails, check `desktop_pet/logs/pet.log` for the STT backend and
+   timeout; Gemini failures should fall back to local Whisper. Edge TTS failures
+   should fall back to SAPI if enabled.
+6. If the pet has no reply but `/agent/status` is healthy, send a real test
+   message; health alone does not prove the agent answered.
+
 ### n8n is down
 
 1. `Get-Service n8n`; start it.
@@ -261,10 +304,17 @@ the database while n8n is running.
 
 1. `memory.stats` — check active count and missing embeddings.
 2. `memory.embed` until `remaining=0`.
-3. `memory.recall` with a known key and with a natural-language query.
-4. If both fail, check the Gemini key and the Supabase service key.
-5. If only semantic search fails, keyword fallback still works; fix embeddings
+3. `memory.graph_stats` — check active entities, relations, and episodes; zero
+   may be correct on a fresh install.
+4. `memory.recall` with a known key and with a natural-language query.
+5. `memory.recall_hybrid` for a query that should reach an entity or episode;
+   inspect `provenance` and `fallback` fields instead of assuming semantic
+   search worked.
+6. If both fail, check the Gemini key and the Supabase service key.
+7. If only semantic search fails, keyword fallback still works; fix embeddings
    before trusting similarity.
+8. If a graph entity is missing, rerun `memory.backfill_graph` dry-run first;
+   do not create a duplicate by hand.
 
 ### Supabase is unreachable
 
@@ -305,5 +355,9 @@ the database while n8n is running.
 - Run `sync_workflows.py scan` before every commit.
 - Keep `permission.json` at the least privilege that still works.
 - Review `mcp_server/logs/actions.log` for unexpected writes.
+- Treat `desktop_pet/config.json` as a preference file, not a secret store. If a
+  key appears there, remove it and rotate the key.
+- The pet's autostart command contains only the interpreter and `app.py` paths;
+  review it with `desktop_pet\autostart.py status` before enabling it.
 
 See `docs/security.md` for the full inventory and incident response.

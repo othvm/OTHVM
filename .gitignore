@@ -73,6 +73,14 @@ tmp/
 trash/
 exports/
 backups/
+.tmp_*
+
+# Desktop pet runtime state
+desktop_pet/cache/
+desktop_pet/logs/
+desktop_pet/artifacts/state_*.png
+desktop_pet/artifacts/tk_arabic_test.png
+desktop_pet/config.json
 
 # Build artifacts and archives
 dist/

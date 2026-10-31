@@ -52,6 +52,7 @@ The exporter removes instance-only fields (`activeVersion`, `shared`, `pinData`,
 | Telegram chat/user ID | `REPLACE_WITH_TELEGRAM_CHAT_ID` |
 | Telegram bot token | `REPLACE_WITH_TELEGRAM_BOT_TOKEN` |
 | MCP API key | `REPLACE_WITH_MCP_API_KEY` |
+| Command webhook secret | `REPLACE_WITH_COMMAND_SECRET` |
 | Groq key | `REPLACE_WITH_GROQ_API_KEY` |
 | GitHub owner | `REPLACE_WITH_GITHUB_OWNER` |
 | Email, Supabase URL, ngrok host, JWT, Google API key, generic token | Pattern-based placeholder |

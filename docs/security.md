@@ -57,11 +57,13 @@ contains only placeholders.
 | Supabase service-role key | MCP config, n8n Supabase credential | Full database access | Rotate in Supabase; update both; restart |
 | n8n public API key | `mcp_server/config.json` (`n8n_api_key`) | Workflow and execution management | Revoke/create in n8n; update MCP |
 | n8n MCP token | `mcp_server/config.json` (`n8n_mcp_key`) | Optional MCP bridge | Revoke/create; update MCP |
+| Android agent API key | `android_agent/config.json` (`api_key`) | `X-API-Key` on local ADB bridge calls | Generate a new random key; update config and restart the Android agent |
 | n8n encryption key | n8n user folder (`config`) | Decrypt stored credentials | Rotating it requires re-entering every credential |
 | Google OAuth client/refresh tokens | n8n credentials | Gmail, Calendar, Drive, Docs, Sheets, Slides, Tasks, Contacts, YouTube, Books | Reconnect each credential in n8n |
 | GitHub OAuth token | n8n `githubOAuth2Api` credential | Repo and workflow operations | Reconnect credential |
 | Notion/Linear/Todoist/Airtable/Stripe/NASA/Discord keys | n8n credentials | Optional integrations | Reconnect the affected credential |
 | Groq key | Voice workflow Code/HTTP node | Speech transcription | Edit the workflow or move it to a credential |
+| OpenAI-compatible STT key | `OPENAI_API_KEY` environment variable only | Optional desktop-pet transcription | Update the environment and restart the pet; never put it in `desktop_pet/config.json` |
 | NVIDIA key | n8n `nvidiaApi` credential | Agent model | Reconnect credential |
 | ngrok authtoken | `%LOCALAPPDATA%\ngrok\ngrok.yml` | Public tunnel | Rotate in ngrok; update the file and restart |
 | Telethon session | `telegram_personal/*.session` | Personal Telegram login | Revoke the session in Telegram; log in again |
@@ -70,6 +72,9 @@ contains only placeholders.
 Never commit a live `config.json`, `.session`, `.env`, `credentials.json`,
 `import_report.json`, database file, log, or browser profile. `.gitignore`
 covers these paths; verify with `git status` before every push.
+`desktop_pet/config.json` is preferences only and is ignored; the pet reads keys
+from `mcp_server/config.json` or environment variables. The local Whisper cache
+under `desktop_pet/cache/` is also ignored and must not be committed.
 
 ## Sanitization
 
@@ -79,6 +84,7 @@ covers these paths; verify with `git status` before every push.
 - Telegram chat/user IDs with `REPLACE_WITH_TELEGRAM_CHAT_ID`;
 - bot tokens with `REPLACE_WITH_TELEGRAM_BOT_TOKEN`;
 - MCP API keys with `REPLACE_WITH_MCP_API_KEY`;
+- command webhook secrets with `REPLACE_WITH_COMMAND_SECRET`;
 - Groq keys with `REPLACE_WITH_GROQ_API_KEY`;
 - GitHub owners with `REPLACE_WITH_GITHUB_OWNER`;
 - emails, Supabase URLs, ngrok hosts, JWTs, Google API keys, and generic tokens
@@ -119,22 +125,28 @@ git status --short
 
 Also confirm:
 
-- no remote is configured until the history rewrite is complete;
-- the default branch contains a single clean root commit;
+- the remote is `https://github.com/othvm/OTHVM.git` and the branch is `master`;
+- the initial root commit is clean and the follow-up commits do not reintroduce a
+  live key;
 - `git log -p` does not contain a live key;
-- GitHub secret scanning and push protection are enabled after the first push;
-- the repository is private unless a license and a deliberate decision to
-  publish exist.
+- GitHub secret scanning and push protection are enabled for the public
+  repository;
+- the repository is public by explicit decision; do not add private data just
+  because the history was rewritten.
 
 ## Git history purge
 
-The first snapshot of this repository contained a live MCP API key inside
-sanitized workflow files. The history was rebuilt as a single clean root commit
-before publication. To verify:
+The first pushed root contained a live MCP API key inside workflow exports. A
+later audit found two more hardcoded values in that root: the Android agent API
+key and the Telegram command webhook secret. All three were removed, the
+workflow sanitizer was tightened, and the root commit was amended before the
+feature push; later commits build on the sanitized root. The live Android and
+command-webhook values were not rotated automatically (the Android restart needs
+elevation and the command caller is external). Rotate them now. To verify:
 
 ```powershell
-git log --oneline --all          # one commit
-git rev-list --all --count       # 1
+git log --oneline --all
+git rev-list --all --count
 git grep -n -F '<old-key>' $(git rev-list --all)  # no output
 ```
 

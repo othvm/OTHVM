@@ -1,0 +1,17 @@
+# OTHVM desktop pet — Python 3.11+ on Windows.
+# Install into the existing MCP virtualenv so the pet reuses the same runtime:
+#   mcp_server\.venv\Scripts\python.exe -m pip install -r desktop_pet\requirements.txt
+
+httpx==0.28.1
+Pillow==13.0.0
+numpy==2.5.4
+sounddevice==0.5.6
+soundfile==0.14.0
+edge-tts==7.3.1
+arabic-reshaper==3.0.1
+python-bidi==0.6.12
+pywin32==312
+# Offline STT fallback. The first run downloads the selected Whisper model
+# into desktop_pet/cache/whisper (about 145 MB for "base"); it is not stored
+# in git.
+faster-whisper==1.2.1

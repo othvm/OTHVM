@@ -1,8 +1,9 @@
 # Validation
 
-**Last run:** 2026-10-29 (Asia/Cairo) on the live host.
+**Last run:** 2026-10-30 (Asia/Cairo) on the live host.
 **Scope:** repository hygiene, syntax, workflow mirror, import plan, database
-schema, memory, local services, and publication safety.
+schema, memory and the memory graph, local services, the desktop pet, voice,
+and publication safety.
 
 This page records what was actually executed. Checks that need a second machine,
 extra hardware, or elevation are listed separately and are **not** claimed as
@@ -19,6 +20,9 @@ passing.
 | NSSM | 2.24 |
 | Caddy | 2.11.7 |
 | Supabase Postgres | hosted project with `vector` 3072-dim support |
+| faster-whisper | 1.2.1 (ctranslate2 4.8.4, av 19.0.2) |
+| Edge TTS | 7.3.1 |
+| Desktop pet | Python 3.12, Tk 8.6, Pillow 13.0.0 |
 
 Python dependencies are pinned in each `requirements.txt`; `pip check` reports no
 broken requirements in the MCP and Telegram Personal venvs.
@@ -102,15 +106,19 @@ It does **not** prove a fresh-instance import; see blocked checks.
 | --- | --- |
 | `011_unified_memory.sql` | `{"ok": true, "mode": "exec"}` |
 | `012_runtime_tables.sql` | `{"ok": true, "mode": "exec"}` |
+| `013_memory_graph.sql` | `{"ok": true, "mode": "exec"}` |
 
-Both are idempotent and were re-applied during this validation without changing
-the memory counts. Live schema checks:
+All three are idempotent and were re-applied during this validation without
+changing the memory counts. Live schema checks:
 
 - 31 public tables, including `memory_items`, `memory_events`,
-  `knowledge_base`, `agent_registry`, `loops`, `reminders`, and `todos`.
+  `memory_entities`, `memory_relations`, `memory_episodes`, the three provenance
+  tables, `knowledge_base`, `agent_registry`, `loops`, `reminders`, and `todos`.
 - Functions present: `exec_sql`, `match_knowledge`, `match_memory`,
-  `memory_set_embeddings`, `search_memory_text`, `sync_legacy_memory`,
-  `touch_memory`.
+  `match_entities`, `match_episodes`, `search_entities_text`,
+  `search_episodes_text`, `memory_traverse`, `memory_graph_stats`,
+  `memory_forget_entity`, `memory_set_embeddings`, `search_memory_text`,
+  `sync_legacy_memory`, `touch_memory`.
 - Extensions present: `vector`, `pgcrypto`, `uuid-ossp`, `plpgsql`,
   `pg_stat_statements`, `supabase_vault`.
 
@@ -129,12 +137,80 @@ the memory counts. Live schema checks:
 The recall test returned live personal values; they are intentionally not copied
 into this document.
 
+### Memory Graph v1
+
+The pre-migration backup was written and verified before `013` was applied:
+
+| Check | Result |
+| --- | --- |
+| Snapshot | `backups/memory/memory_20261030T020540Z.json` |
+| Manifest | `memory_20261030T020540Z.manifest.json` |
+| `memory_items` | 128 rows |
+| `memory_events` | 128 rows |
+| `othman_memory` / `othvm_memory` | 19 / 16 rows |
+| Verification | File hashes and live row counts matched |
+
+`memory.backfill_graph` was then run against the live database:
+
+| Check | Result |
+| --- | --- |
+| Active entities | 90 (91 rows including one merged/forgotten) |
+| Entity types | 15 tools, 65 workflows, 5 skills, 2 services, 2 components, 1 agent |
+| Explicit relations | 1 (`uses_tool`) |
+| Entity mention links | 45 |
+| Active episodes | 0 |
+| Rerun | Idempotent; 0 errors |
+
+Live retrieval checks:
+
+- `memory.graph_stats` returned the counts above plus `memory_items=128` and
+  `memory_active=35`.
+- `memory.recall_hybrid` returned ranked facts with similarity/score and the
+  expected `provenance` object.
+- A real agent request called the `memory` tool, reached the `WORKING` state from
+  the actual tool record, returned `ok: true`, and replied with the exact stored
+  value for `projects`.
+- The graph schema, indexes, RPCs, and soft-delete functions were applied
+  successfully; deletion is not exercised against live data because there was
+  nothing safe to delete.
+
+### Desktop pet, voice, and bridge
+
+| Check | Result |
+| --- | --- |
+| Layered window transparency | Corner pixel delta `0.0` against the hidden desktop; center delta `105.3`; transparent pixels click-through; opaque pixels hit-testable |
+| Window behavior | Always-on-top; animation frames changed (`28,199` pixels); `Ctrl+Alt+O` hides/shows |
+| Dragging | Logged drag start/end matched the window delta after switching to `GetMessagePos()` |
+| Real chat stream | `accepted → thread → thinking → assistant_text → response → done`; `BRIDGE_CHAT_OK` in 10.78 s |
+| Real tool telemetry | A `computer` tool call produced `EXECUTING`, `ok: true`, and the real response `# OTHVM` in 27.42 s |
+| Real memory call | `memory` tool call produced `WORKING`, `ok: true`, exact stored reply in 90.07 s |
+| Panel transcript | Posted Tk messages appeared in the transcript; `events: connected`, `agent: ready · log: readable`, state `SPEAKING` |
+| State after TTS | `done` while speaking no longer leaves `request_active`; `SUCCESS`/`IDLE` is applied after `speaking_end` |
+| Real error path | NVIDIA timeout surfaced in the transcript; state went `ERROR → IDLE`; no fabricated success |
+| Approval card | Synthetic approve/deny/informational paths passed and recorded the exact continuation payload |
+| Edge TTS | Arabic MP3 `32,832` bytes; 16 kHz mono WAV `175,182` bytes; `speaking_end` engine `edge` |
+| SAPI fallback | `speaking_end` engine `sapi`; English-only voices on this host |
+| Recorder | Real microphone capture: `35,820` bytes, 1.12 s, 16 kHz mono |
+| Local Whisper | Arabic transcript correct; language `ar`, probability `1.0`, decode `0.55–0.75 s` after load |
+| Gemini → local fallback | Gemini timed out at 15 s; local returned in 20.72 s total with `engine: local` and `fallback_from` |
+| Autostart | `not installed → installed → status → removed → not installed` |
+| Wake word / auto-send | Disabled, missing phrase, phrase stripping, manual-send, and empty-transcript paths passed |
+| Foreground/background dedup | Known session ignored; unrelated background animates; active foreground keeps `THINKING`; expired session stops suppressing |
+| SSE reconnect | Controlled server: 2 attempts, 2 connected events, events from both connections; real restart showed exponential backoff |
+| Approval resume | **Blocked**: the published agent has no approval-gated tools; changing its policy is out of scope |
+
+`desktop_pet/artifacts/approval_card.png` is the real Tk panel captured with
+`PrintWindow`; it shows the approval card, both action buttons, and the live
+panel status line. Behavior was also verified through the real Tk widgets and
+payload assertions.
+
 ### Services
 
 | Check | Result |
 | --- | --- |
 | MCP service `:8765` | `ok: true`, role `service`, mode `full`, loops worker running |
 | MCP desktop `:8766` | `ok: true`, role `desktop`, interactive session |
+| Agent bridge | `/agent/status` returned `ok: true`, `agent_id`, `agent_configured: true`, `db_readable: true` |
 | FastPath `:5681` | `ok: true`, service `othvm-telegram-fastpath` |
 | n8n `:5678/healthz` | HTTP 200 |
 | Android `:8767` | `ok: true`; `adb.devices=[]`, `connected=false` |
@@ -152,10 +228,11 @@ The health checks are the authoritative result.
 
 ### Documentation
 
-- 22 Markdown files; every relative link resolves.
+- All tracked Markdown relative links were checked on 2026-10-30; none were
+  broken.
 - `docs/audits/AUDIT_2026-10-28.md` was folded into this page and removed.
-- Component READMEs cover the MCP server, workflow mirror, FastPath, Android,
-  Telegram Personal, and agent.
+- Component READMEs cover the MCP server, desktop pet, workflow mirror,
+  FastPath, Android, Telegram Personal, and agent.
 - The main README is a short entry point with a documentation index.
 
 ## Historical fixes folded from the 2026-10-28 audit
@@ -179,29 +256,46 @@ workflow definitions:
 | --- | --- | --- |
 | Fresh install on a second machine | No second Windows host or new n8n instance | Importer dry-run against the populated live instance; migrations re-applied idempotently |
 | Fresh Supabase project restore | Would require a second project | Schema and functions verified on the live project; migrations are ordered and idempotent |
+| Live approval resume from the pet | The published agent has no approval-gated tools; changing its policy is out of scope | Approval card and continuation payload verified synthetically with the real Tk widgets |
+| Gemini STT availability | `gemini-3.8-flash` intermittently returns `503 UNAVAILABLE` or hangs; older models return `404 no longer available` | 15 s timeout and local Whisper fallback verified end-to-end |
+| NVIDIA agent availability | `integrate.api.nvidia.com:443` intermittently times out at 10 s | The real error is surfaced; no success is fabricated |
+| MCP restart from inside itself | `nssm restart` stops the service and the caller; starting it again requires elevation | Recovered with an elevated `Start-Service`; documented as an operational caveat |
 | Android live control | `adb.devices=[]`; phone offline in Tailscale | `/health` and service status verified; endpoint contract reviewed |
 | Telegram Personal live send | Not exercised to avoid sending a real message | Offline selftest passed; `/health` shows authorized |
 | Google Contacts | People API/credential returns `Forbidden` | Workflow and credential structure reviewed; not claimed as working |
 | Shopify | `SHOPIFY_STORE_DOMAIN` / `SHOPIFY_ADMIN_TOKEN` absent | Workflow is active but returns a configuration error; documented |
 | Windows watchdog task install | Needs an elevated shell | Service health verified; `OTHVM-MCP-Desktop-Watchdog` exists, `OTHVM-MCP-Watchdog-5m` not confirmed |
 | Scheduled end-to-end run | Would require waiting for the next schedule | Workflow definitions and triggers verified; not claimed as executed |
-| Git history purge | Pass | One root commit; the previous commit is unreachable; the live MCP key is absent from every reachable revision |
+| Git history purge | Pass | Sanitized root plus feature commits; the previous root is unreachable from the branch; the MCP, Android, and command-webhook secrets are absent from every reachable revision |
 
 ## Publication state
 
-The repository history is a single clean root commit and is ready for
-publication. The first snapshot contained a live MCP API key inside workflow
-exports; that history was discarded rather than amended. Final verification:
+The sanitized root snapshot is commit `6c0124f`
+(`Initial clean OTHVM repository`) on `master` at
+`https://github.com/othvm/OTHVM.git`. The follow-up commit adds the desktop pet,
+voice layer, agent bridge, memory graph, and documentation.
+
+The first pushed root (`5f5fb0d`) still contained two hardcoded credentials: the
+Android agent API key in `android_agent/main.py` and the Telegram command
+webhook secret in the workflow mirror. Both were removed from the tree, the
+workflow sanitizer was tightened to catch underscore-bearing `othvm_` values,
+and the root commit was amended before the feature push. The old root is
+unreachable from the branch. The live values remain active and must be rotated;
+see [`security.md`](security.md) for the incident procedure.
+
+Before the follow-up push:
 
 ```powershell
-git log --oneline --all          # one commit
-git rev-list --all --count       # 1
-git status --short               # clean
+git log --oneline --all
+git status --short
 $env:OTHVM_OPERATOR_NAME='<name>'
 $env:OTHVM_OPERATOR_NAME_AR='<name>'
 mcp_server\.venv\Scripts\python.exe deploy\workflows\sync_workflows.py scan
 ```
 
-The old commit object no longer exists, and the live MCP key is absent from every
-reachable revision. Do not add a remote until these checks pass. See
-`docs/security.md` for the rotation and incident procedures.
+The old root is unreachable from the branch, and the MCP, Android, and
+command-webhook secrets are absent from every reachable revision. The live
+Android and command-webhook values were not rotated because the Android service
+restart requires elevation and the command webhook caller is not defined in this
+repository; rotate both before treating them as safe. See `docs/security.md` for
+the rotation and incident procedures.

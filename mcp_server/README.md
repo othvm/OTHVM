@@ -34,6 +34,38 @@ Autostart for the desktop helper:
 
 ---
 
+## Agent bridge (desktop pet)
+
+`agent_bridge.py` lets the desktop pet talk to the **existing** published n8n
+agent. It does not contain a prompt, tool registry, or second reasoning loop.
+
+| Endpoint | Purpose |
+| --- | --- |
+| `GET /agent/status` | Whether `agent_id`, `n8n_mcp_key`, and `n8n_db_path` are configured/readable |
+| `POST /agent/chat` | Request-scoped SSE stream: `{message, session_id?}` or `{request_type:"approval", continuation, approved}` |
+| `GET /events` | Server-wide SSE stream of real MCP tool activity and chat events |
+
+The bridge:
+
+1. calls n8n MCP `call_agent` with the configured `agent_id`;
+2. discovers the draft-chat thread and tails n8n's `agents_messages` SQLite log
+   read-only;
+3. converts only real `reasoning`, `tool-call`, and `text` records into events;
+4. classifies tool names into execution states for animation;
+5. passes a suspended result's real continuation back through the same
+   `call_agent` path for approve/deny.
+
+Chat events are republished on `/events`, so clients must deduplicate by
+`session_id`. The pet ignores background activity while a foreground request is
+active. No message text or tool payload is written to the bridge log.
+
+Required config: `agent_id`, `n8n_mcp_key`, `n8n_db_path`, and `n8n_base`.
+`n8n_mcp_key` is a separate n8n MCP token, not the public API key. The service
+normally runs as LocalSystem and can read the SYSTEM-profile n8n database; the
+interactive user may not be able to.
+
+---
+
 ## Permissions
 
 `permission.json` holds the current mode:
@@ -95,12 +127,22 @@ All calls are `POST /tools/<category>` with `{"action": "...", ...params}`.
 - Ingestion workflows: `Notion Ingest`, `Gmail Ingest`, `Drive Ingest`, `GitHub Ingest`.
 - Upsert key: `(source, source_id)` via `resolution=merge-duplicates`.
 
-### `/tools/db` (SQL + unified memory)
+### `/tools/db` (SQL + unified memory + graph)
 Database actions: `read`, `write`, `delete`, `query`, `execute`, `count`,
 `schema.*`, `context.*`, `admin.*`. Memory actions use the same route with
-`operation: memory.<op>` (`stats`, `remember`, `recall`, `forget`, `restore`,
-`consolidate`, `embed`, `history`, `list`); the shorthand `remember`, `recall`,
-`forget`, `restore`, and `consolidate` also work. See `docs/memory.md`.
+`operation: memory.<op>`:
+
+- facts: `stats`, `remember`, `recall`, `forget`, `restore`, `consolidate`,
+  `embed`, `history`, `list`;
+- graph: `entity_upsert`, `entity_get`, `entity_search`, `entity_forget`,
+  `relation_upsert`, `relation_query`, `relation_forget`, `traverse`,
+  `episode_add`, `episode_search`, `episode_forget`, `graph_stats`,
+  `backfill_graph`;
+- hybrid: `recall_hybrid`.
+
+The shorthand `remember`, `recall`, `forget`, `restore`, and `consolidate` also
+work. Destructive graph operations require `confirm:true`. See
+`docs/memory.md` for the schema, retrieval, and deletion rules.
 
 ### `/tools/workflows` and `/tools/loops`
 `workflows` wraps the n8n public API (`list`, `get`, `create`, `update`,
@@ -126,7 +168,8 @@ extraction/export. These are asynchronous actions on the generic endpoint.
 - `context.latest` is injected into the Morning Brief as **🧠 آخر جلسة:**.
 
 ### Other
-`GET /health` (no auth), `GET /permission` (auth).
+`GET /health` (no auth), `GET /permission` (auth), `GET /agent/status` (auth),
+`POST /agent/chat` (auth, SSE), `GET /events` (auth, SSE).
 
 ---
 
@@ -134,7 +177,8 @@ extraction/export. These are asynchronous actions on the generic endpoint.
 
 | File | Purpose |
 |------|---------|
-| `main.py` | the whole server (both roles) |
+| `main.py` | the whole server (both roles) plus `/agent/*` and `/events` |
+| `agent_bridge.py` | n8n MCP `call_agent` bridge and real telemetry reader |
 | `config.example.json` | sanitized configuration template |
 | `config.json` | local API key, ports, Telegram, Gemini, Supabase (untracked) |
 | `permission.json` | current mode |
@@ -162,10 +206,14 @@ wscript.exe .\start_desktop.vbs
 # health
 curl http://127.0.0.1:8765/health
 curl http://127.0.0.1:8766/health
+
+# agent bridge (use the real key)
+curl -H "X-API-Key: <api_key>" http://127.0.0.1:8765/agent/status
 ```
 
 Logs: `logs/service.out.log`, `logs/service.err.log`, `logs/desktop.out.log`,
-`logs/desktop.err.log`, `logs/actions.log`.
+`logs/desktop.err.log`, `logs/actions.log`. The desktop pet writes its own
+`desktop_pet/logs/pet.log`.
 
 ---
 
@@ -177,3 +225,7 @@ Logs: `logs/service.out.log`, `logs/service.err.log`, `logs/desktop.out.log`,
   a Telegram-delivered code that only the founder sees.
 - `system_command` runs with the full privileges of the caller (SYSTEM in service
   role) — treat it as root.
+- `/agent/chat` uses `n8n_mcp_key` and can invoke the same tools as Telegram. It
+  is protected by the MCP API key; do not expose port 8765 beyond loopback.
+- The bridge reads n8n's database read-only. It never writes agent memory or
+  fabricates an event; a failed n8n call is returned as an error.

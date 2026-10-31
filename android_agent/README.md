@@ -8,7 +8,9 @@ and phone addresses before the first run.
 
 ## Endpoints
 
-All endpoints except `/health` require `X-API-Key: <api_key>`.
+All endpoints except `/health` require `X-API-Key: <api_key>`. The service
+refuses authenticated requests with HTTP 503 when `api_key` is empty, so set a
+long random value in `config.json` before starting it. Never commit that file.
 
 | Endpoint | Purpose |
 |---|---|

@@ -1,0 +1,49 @@
+{
+  "mcp_base_url": "http://127.0.0.1:8765",
+  "pet_scale": 1.0,
+  "always_on_top": true,
+  "show_state_label": true,
+  "show_global_activity": true,
+  "start_hidden": false,
+  "pet_visible": true,
+  "position": null,
+  "window_width": 380,
+  "window_height": 470,
+  "frame_ms": 40,
+  "input_device": "",
+  "tts": {
+    "enabled": true,
+    "engine": "edge",
+    "voice": "ar-EG-SalmaNeural",
+    "rate": "+0%",
+    "volume": "+0%",
+    "max_chars": 600,
+    "sapi_voice": "",
+    "allow_sapi_fallback": true
+  },
+  "stt": {
+    "engine": "gemini",
+    "model": "gemini-3.8-flash",
+    "language": "ar-EG",
+    "max_seconds": 30,
+    "auto_send": true,
+    "openai_base_url": "",
+    "openai_model": "whisper-1",
+    "gemini_timeout_seconds": 15,
+    "gemini_retries": 1,
+    "local_fallback": true,
+    "local_model": "base",
+    "local_device": "cpu",
+    "local_compute_type": "int8",
+    "local_beam_size": 1,
+    "local_vad": true,
+    "local_timeout_seconds": 120,
+    "local_load_timeout_seconds": 900,
+    "local_preload": true,
+    "local_download_root": ""
+  },
+  "wake_word": {
+    "enabled": false,
+    "phrase": "othvm"
+  }
+}

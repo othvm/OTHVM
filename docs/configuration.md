@@ -17,6 +17,7 @@ be compared with the templates.
 | File | Template | Used by | Tracked |
 | --- | --- | --- | --- |
 | `mcp_server/config.json` | `config.example.json` | MCP service and desktop helper | No |
+| `desktop_pet/config.json` | `config.example.json` | Desktop pet and voice layer | No |
 | `deploy/webhook_fastpath/config.json` | `config.example.json` | FastPath | No |
 | `android_agent/config.json` | `config.example.json` | Android agent | No |
 | `telegram_personal/config.json` | `config.example.json` | Telegram Personal | No |
@@ -59,6 +60,52 @@ Generate the API key and the FastPath secret with:
 ```powershell
 python -c "import secrets; print(secrets.token_urlsafe(32))"
 ```
+
+## Desktop pet
+
+`desktop_pet/config.json` holds display and voice preferences only. It is
+git-ignored and must contain **no secrets**. The MCP API key and Gemini key are
+read from `mcp_server/config.json`; `OTHVM_MCP_API_KEY` and `GEMINI_API_KEY`
+override them. An optional OpenAI-compatible STT key is read only from
+`OPENAI_API_KEY`.
+
+| Key | Default | Purpose |
+| --- | --- | --- |
+| `mcp_base_url` | `http://127.0.0.1:8765` | MCP service used by the bridge |
+| `pet_scale` | `1.0` | Character scale |
+| `always_on_top` | `true` | Keep the layered window above other windows |
+| `show_state_label` | `true` | Show the current telemetry state |
+| `show_global_activity` | `true` | Animate unrelated MCP tool activity |
+| `start_hidden` | `false` | Start with the panel hidden |
+| `pet_visible` | `true` | Show the character at startup |
+| `position` | `null` | Saved drag position; written automatically |
+| `window_width` / `window_height` | `380` / `470` | Panel size |
+| `frame_ms` | `40` | Animation frame interval |
+| `input_device` | `""` | Optional `sounddevice` input device name |
+| `tts.enabled` | `true` | Speak agent replies |
+| `tts.engine` | `edge` | `edge` or `sapi` |
+| `tts.voice` | `ar-EG-SalmaNeural` | Edge TTS voice |
+| `tts.allow_sapi_fallback` | `true` | Offline fallback when Edge fails |
+| `stt.engine` | `gemini` | Primary STT backend |
+| `stt.model` | `gemini-3.8-flash` | Gemini STT model |
+| `stt.language` | `ar-EG` | Recognition language |
+| `stt.max_seconds` | `30` | Push-to-talk clip cap |
+| `stt.auto_send` | `true` | Send the transcript automatically |
+| `stt.gemini_timeout_seconds` | `15` | Bound a hanging Gemini call |
+| `stt.gemini_retries` | `1` | Retries for transient Gemini errors |
+| `stt.local_fallback` | `true` | Enable local `faster-whisper` |
+| `stt.local_model` | `base` | Whisper model size |
+| `stt.local_device` | `cpu` | Whisper device |
+| `stt.local_compute_type` | `int8` | Whisper compute type |
+| `stt.local_preload` | `true` | Warm the model in the background |
+| `stt.local_download_root` | `""` | Empty means `desktop_pet/cache/whisper` |
+| `stt.openai_base_url` | `""` | Optional OpenAI-compatible STT endpoint |
+| `wake_word.enabled` | `false` | Require a phrase before sending |
+| `wake_word.phrase` | `othvm` | Wake phrase |
+
+The pet's runtime state lives under `desktop_pet/cache/`, `logs/`, and
+`artifacts/state_*.png`; all are git-ignored. The authoritative character is
+`assets/pet.jpg`, and derived transparent PNGs live under `desktop_pet/assets/`.
 
 ## Telegram FastPath
 
@@ -143,6 +190,9 @@ scheduled tasks that should not read the MCP config directly.
 | `N8N_API_KEY` | `sync_workflows.py`, `import_workflows.py`, `maintenance.py` | Override the n8n public API key. |
 | `N8N_BASE` | `maintenance.py` | n8n base URL. |
 | `OTHVM_BACKUP_DIR` | `maintenance.py` | Backup root; default `../OTHVM-backups`. |
+| `OTHVM_MCP_API_KEY` | Desktop pet | Override the MCP key from `mcp_server/config.json`. |
+| `GEMINI_API_KEY` | Desktop pet | Override the Gemini key from `mcp_server/config.json`. |
+| `OPENAI_API_KEY` | Desktop pet | Optional key for the OpenAI-compatible STT backend. Never store it in `desktop_pet/config.json`. |
 | `OTHVM_OPERATOR_NAME` | `sync_workflows.py` | Operator's English name; redacted from exports when set. |
 | `OTHVM_OPERATOR_NAME_AR` | `sync_workflows.py` | Operator's Arabic name; redacted from exports when set. |
 | `NSSM_EXE` | Install scripts | Path to `nssm.exe`. |
